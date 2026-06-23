@@ -1,0 +1,1495 @@
+<!doctype html>
+<html lang="zh-CN"><head><script data-od-sandbox-shim="">(function(){
+  function makeStore(){
+    var data = {};
+    var api = {
+      getItem: function(k){ return Object.prototype.hasOwnProperty.call(data, k) ? data[k] : null; },
+      setItem: function(k, v){ data[k] = String(v); },
+      removeItem: function(k){ delete data[k]; },
+      clear: function(){ data = {}; },
+      key: function(i){ return Object.keys(data)[i] || null; }
+    };
+    Object.defineProperty(api, 'length', { get: function(){ return Object.keys(data).length; } });
+    return api;
+  }
+  function tryShim(name){
+    var works = false;
+    try { works = !!window[name] && typeof window[name].getItem === 'function'; void window[name].length; }
+    catch (_) { works = false; }
+    if (works) return;
+    try { Object.defineProperty(window, name, { configurable: true, value: makeStore() }); }
+    catch (_) { try { window[name] = makeStore(); } catch (__) {} }
+  }
+  tryShim('localStorage');
+  tryShim('sessionStorage');
+  document.addEventListener('click', (e) => {
+    if (!e.target || !(e.target instanceof Element)) return;
+    var link = e.target.closest('a[href]');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (href === null) return;
+    var isAnchor = href.startsWith('#') || href === '';
+    if (isAnchor) {
+      e.preventDefault();
+      if (href === '' || href === '#') {
+        window.scrollTo({ top: 0 });
+        history.replaceState(null, '', ' ');
+      } else {
+        var targetId = href.slice(1);
+        var target = targetId ? document.getElementById(targetId) : null;
+        if (target) {
+          target.scrollIntoView();
+          location.hash === href && history.replaceState(null, '', ' ');
+          location.hash = href;
+        }
+      }
+    } else if (link.getAttribute('target') === '_blank') {
+      e.preventDefault();
+      let safe = false;
+      try {
+        var url = new URL(href, location.href);
+        safe =
+          url.protocol === 'http:' ||
+          url.protocol === 'https:' ||
+          url.protocol === 'mailto:';
+      } catch (_) {}
+      safe && window.open(href, '_blank', 'noopener,noreferrer');
+    }
+  });
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数创服务平台 — 中心端</title>
+<style>
+:root {
+  --bg: #f0f2f5;
+  --surface: #ffffff;
+  --surface-warm: #f7f9fc;
+  --fg: #111111;
+  --fg-2: #1a2236;
+  --muted: #6b6b6b;
+  --meta: #9ba3af;
+  --border: #e5e5e5;
+  --border-soft: #eef0f3;
+  --accent: #2f6feb;
+  --accent-on: #ffffff;
+  --accent-hover: color-mix(in oklab, #2f6feb, black 8%);
+  --accent-active: color-mix(in oklab, #2f6feb, black 14%);
+  --success: #17a34a;
+  --warn: #eab308;
+  --danger: #dc2626;
+  --sidebar-bg: #0f172a;
+  --sidebar-fg: #e2e8f0;
+  --sidebar-muted: #64748b;
+  --sidebar-hover: rgba(47,111,235,0.15);
+  --sidebar-active: rgba(47,111,235,0.22);
+  --header-bg: #ffffff;
+  --ai-glow: 0 0 20px rgba(47,111,235,0.15);
+  --font-display: "Inter", -apple-system, system-ui, sans-serif;
+  --font-body: "Inter", -apple-system, system-ui, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", monospace;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --elev-raised: 0 2px 8px rgba(17,17,17,0.08);
+  --motion-fast: 150ms;
+  --motion-base: 200ms;
+  --ease-standard: cubic-bezier(0.2,0,0,1);
+  --sidebar-w: 240px;
+  --header-h: 60px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: var(--font-body); font-size: var(--text-base); color: var(--fg); background: var(--bg); overflow: hidden; }
+
+/* ── Shell layout ── */
+.shell { display: grid; grid-template-columns: var(--sidebar-w) 1fr; grid-template-rows: var(--header-h) 1fr; height: 100vh; }
+
+/* ── Sidebar ── */
+.sidebar { grid-row: 1/-1; background: var(--sidebar-bg); display: flex; flex-direction: column; overflow: hidden; z-index: 100; }
+.sidebar-logo { height: var(--header-h); display: flex; align-items: center; gap: var(--space-3); padding: 0 var(--space-5); border-bottom: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
+.logo-icon { width: 32px; height: 32px; border-radius: var(--radius-sm); background: linear-gradient(135deg,#2f6feb 0%,#06b6d4 100%); display: flex; align-items: center; justify-content: center; box-shadow: var(--ai-glow); }
+.logo-icon svg { width: 18px; height: 18px; fill: none; stroke: white; stroke-width: 2; }
+.logo-text { font-size: var(--text-sm); font-weight: 600; color: #f1f5f9; letter-spacing: -0.01em; line-height: 1.2; }
+.logo-sub { font-size: 10px; color: var(--sidebar-muted); font-family: var(--font-mono); }
+.sidebar-nav { flex: 1; overflow-y: auto; padding: var(--space-3) 0; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent; }
+.nav-group-label { font-size: 10px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--sidebar-muted); padding: var(--space-4) var(--space-5) var(--space-1); }
+.nav-item { display: flex; align-items: center; gap: var(--space-3); padding: 9px var(--space-5); cursor: pointer; color: var(--sidebar-fg); font-size: var(--text-sm); transition: background var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard); border-left: 2px solid transparent; user-select: none; }
+.nav-item:hover { background: var(--sidebar-hover); }
+.nav-item.active { background: var(--sidebar-active); border-left-color: var(--accent); color: #93c5fd; font-weight: 500; }
+.nav-item svg { width: 17px; height: 17px; flex-shrink: 0; opacity: 0.7; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.nav-item.active svg { opacity: 1; }
+.sidebar-footer { padding: var(--space-4); border-top: 1px solid rgba(255,255,255,0.06); }
+.user-card { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-radius: var(--radius-md); cursor: pointer; transition: background var(--motion-fast) var(--ease-standard); }
+.user-card:hover { background: var(--sidebar-hover); }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,#2f6feb,#06b6d4); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: white; flex-shrink: 0; }
+.avatar-sm { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg,#2f6feb,#06b6d4); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: white; flex-shrink: 0; }
+.user-info { min-width: 0; }
+.user-name { font-size: var(--text-sm); font-weight: 500; color: var(--sidebar-fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.user-role { font-size: 11px; color: var(--sidebar-muted); }
+
+/* ── Header ── */
+.header { background: var(--header-bg); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-6); z-index: 90; }
+.breadcrumb { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--muted); }
+.breadcrumb-sep { color: var(--border); }
+.breadcrumb-current { color: var(--fg); font-weight: 500; }
+.header-right { display: flex; align-items: center; gap: var(--space-3); }
+.header-action { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--muted); transition: all var(--motion-fast) var(--ease-standard); position: relative; }
+.header-action:hover { border-color: var(--accent); color: var(--accent); }
+.header-action svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--danger); border: 2px solid white; position: absolute; top: -2px; right: -2px; }
+.ai-btn { display: flex; align-items: center; gap: var(--space-2); padding: 7px 14px; border-radius: var(--radius-sm); background: linear-gradient(135deg,#2f6feb 0%,#06b6d4 100%); color: white; font-size: var(--text-sm); font-weight: 500; cursor: pointer; border: none; transition: opacity var(--motion-fast); box-shadow: 0 2px 8px rgba(47,111,235,0.3); }
+.ai-btn:hover { opacity: 0.9; }
+.ai-btn svg { width: 15px; height: 15px; stroke: white; fill: none; stroke-width: 2; }
+
+/* ── Main ── */
+.main { overflow-y: auto; padding: var(--space-6); background: var(--bg); }
+.view { display: none; }
+.view.active { display: block; }
+.page-header { margin-bottom: var(--space-6); }
+.page-title { font-size: var(--text-xl); font-weight: 600; color: var(--fg-2); letter-spacing: -0.01em; margin-bottom: 4px; }
+.page-sub { font-size: var(--text-sm); color: var(--muted); }
+
+/* ── Stats ── */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-4); margin-bottom: var(--space-6); }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-5); display: flex; align-items: flex-start; justify-content: space-between; transition: box-shadow var(--motion-fast) var(--ease-standard); }
+.stat-card:hover { box-shadow: var(--elev-raised); }
+.stat-label { font-size: var(--text-sm); color: var(--muted); margin-bottom: var(--space-2); }
+.stat-value { font-size: 28px; font-weight: 700; font-family: var(--font-mono); letter-spacing: -0.02em; color: var(--fg-2); font-variant-numeric: tabular-nums; }
+.stat-delta { font-size: var(--text-xs); color: var(--success); margin-top: 4px; font-family: var(--font-mono); }
+.stat-delta.warn { color: var(--warn); }
+.stat-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.stat-icon svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.icon-blue { background: rgba(47,111,235,0.1); color: var(--accent); }
+.icon-green { background: rgba(23,163,74,0.1); color: var(--success); }
+.icon-warn { background: rgba(234,179,8,0.1); color: var(--warn); }
+.icon-cyan { background: rgba(6,182,212,0.1); color: #06b6d4; }
+.icon-purple { background: rgba(139,92,246,0.1); color: #8b5cf6; }
+
+/* ── Card ── */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-5); }
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); }
+.card-title { font-size: var(--text-sm); font-weight: 600; color: var(--fg); }
+.card + .card { margin-top: var(--space-4); }
+
+/* ── Hero dark bar ── */
+.hero-stats { background: var(--sidebar-bg); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-6); }
+.hero-stat { border-right: 1px solid rgba(255,255,255,0.08); padding-right: var(--space-6); }
+.hero-stat:last-child { border-right: none; padding-right: 0; }
+.hero-stat-label { font-size: var(--text-xs); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--sidebar-muted); margin-bottom: var(--space-2); }
+.hero-stat-value { font-size: 36px; font-weight: 700; font-family: var(--font-mono); color: #f1f5f9; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.hero-stat-sub { font-size: var(--text-xs); color: #94a3b8; margin-top: 4px; font-family: var(--font-mono); }
+.hero-stat-sub span { color: #4ade80; }
+
+/* ── Two col ── */
+.two-col { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-4); }
+
+/* ── Tables ── */
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { font-size: var(--text-xs); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--border); text-align: left; font-weight: 500; white-space: nowrap; }
+.data-table td { padding: 10px var(--space-3); font-size: var(--text-sm); color: var(--fg); border-bottom: 1px solid var(--border-soft); vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: var(--surface-warm); }
+.data-table td.mono { font-family: var(--font-mono); color: var(--muted); font-size: var(--text-xs); }
+.data-table td.bold { font-weight: 500; }
+
+/* ── Badges ── */
+.badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 500; font-family: var(--font-mono); white-space: nowrap; }
+.badge-blue { background: rgba(47,111,235,0.1); color: var(--accent); }
+.badge-green { background: rgba(23,163,74,0.1); color: var(--success); }
+.badge-warn { background: rgba(234,179,8,0.12); color: #92680a; }
+.badge-danger { background: rgba(220,38,38,0.1); color: var(--danger); }
+.badge-gray { background: #f3f4f6; color: var(--muted); }
+.badge-cyan { background: rgba(6,182,212,0.1); color: #0891b2; }
+.badge-purple { background: rgba(139,92,246,0.1); color: #7c3aed; }
+
+/* ── Buttons ── */
+.btn { display: inline-flex; align-items: center; gap: var(--space-2); padding: 8px 14px; border-radius: var(--radius-sm); font-size: var(--text-sm); font-weight: 500; cursor: pointer; transition: all var(--motion-fast) var(--ease-standard); border: 1px solid transparent; white-space: nowrap; }
+.btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 2; }
+.btn-primary { background: var(--accent); color: white; border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.btn-secondary { background: var(--surface); color: var(--fg); border-color: var(--border); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-ghost { background: transparent; color: var(--accent); border-color: transparent; padding: 4px 8px; font-size: var(--text-xs); }
+.btn-ghost:hover { background: rgba(47,111,235,0.08); }
+.btn-danger { background: var(--danger); color: white; border-color: var(--danger); }
+
+/* ── Toolbar ── */
+.toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); gap: var(--space-3); flex-wrap: wrap; }
+.toolbar-left { display: flex; align-items: center; gap: var(--space-3); flex: 1; min-width: 0; flex-wrap: wrap; }
+.toolbar-right { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
+.search-input { display: flex; align-items: center; gap: var(--space-2); padding: 7px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--fg); font-size: var(--text-sm); font-family: inherit; min-width: 240px; transition: border-color var(--motion-fast) var(--ease-standard); }
+.search-input:focus { outline: none; border-color: var(--accent); }
+.search-input::placeholder { color: var(--meta); }
+select.filter-select { padding: 7px 28px 7px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); color: var(--fg); font-size: var(--text-sm); font-family: inherit; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 8px center; transition: border-color var(--motion-fast) var(--ease-standard); }
+select.filter-select:focus { outline: none; border-color: var(--accent); }
+
+/* ── Filter pills ── */
+.filter-pills { display: flex; gap: var(--space-2); margin-bottom: var(--space-4); flex-wrap: wrap; }
+.pill { padding: 5px 14px; border-radius: var(--radius-pill); font-size: var(--text-sm); cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--muted); transition: all var(--motion-fast) var(--ease-standard); font-family: var(--font-mono); }
+.pill:hover { border-color: var(--accent); color: var(--accent); }
+.pill.active { background: var(--accent); color: white; border-color: var(--accent); }
+.pill .pill-count { margin-left: 4px; opacity: 0.7; }
+
+/* ── Pagination ── */
+.pagination { display: flex; align-items: center; justify-content: space-between; margin-top: var(--space-4); padding-top: var(--space-4); border-top: 1px solid var(--border); }
+.pagination-info { font-size: var(--text-sm); color: var(--muted); font-family: var(--font-mono); }
+.pagination-pages { display: flex; align-items: center; gap: var(--space-1); }
+.page-btn { width: 32px; height: 32px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: var(--text-sm); cursor: pointer; border: 1px solid var(--border); background: var(--surface); color: var(--muted); transition: all var(--motion-fast) var(--ease-standard); font-family: var(--font-mono); }
+.page-btn:hover { border-color: var(--accent); color: var(--accent); }
+.page-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+/* ── Todo list ── */
+.todo-list { display: flex; flex-direction: column; gap: 1px; }
+.todo-item { display: flex; align-items: center; gap: var(--space-3); padding: 10px var(--space-3); border-radius: var(--radius-sm); cursor: pointer; transition: background var(--motion-fast) var(--ease-standard); }
+.todo-item:hover { background: var(--surface-warm); }
+.todo-item-content { flex: 1; min-width: 0; }
+.todo-item-title { font-size: var(--text-sm); color: var(--fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.todo-item-meta { font-size: var(--text-xs); color: var(--muted); margin-top: 2px; display: flex; align-items: center; gap: var(--space-2); }
+
+/* ── Charts (SVG) ── */
+.chart-area { padding: var(--space-3) 0; }
+
+/* ── Action links ── */
+.action-link { color: var(--accent); font-size: var(--text-xs); cursor: pointer; text-decoration: none; }
+.action-link:hover { text-decoration: underline; }
+.actions-cell { display: flex; align-items: center; gap: var(--space-2); }
+
+/* ── Project cards ── */
+.project-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-4); }
+.project-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); transition: box-shadow var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard); cursor: pointer; }
+.project-card:hover { box-shadow: var(--elev-raised); transform: translateY(-2px); }
+.project-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-2); }
+.project-name { font-size: var(--text-base); font-weight: 600; color: var(--fg-2); line-height: 1.3; }
+.project-desc { font-size: var(--text-sm); color: var(--muted); line-height: 1.5; }
+.progress-bar { height: 6px; background: var(--border); border-radius: var(--radius-pill); overflow: hidden; }
+.progress-fill { height: 100%; background: var(--accent); border-radius: var(--radius-pill); transition: width 0.6s var(--ease-standard); }
+.progress-fill.done { background: var(--success); }
+.progress-fill.warn { background: var(--warn); }
+.project-stats { display: flex; gap: var(--space-5); }
+.project-stat { text-align: center; }
+.project-stat-num { font-family: var(--font-mono); font-weight: 700; color: var(--fg-2); font-size: var(--text-base); font-variant-numeric: tabular-nums; }
+.project-stat-lbl { font-size: 10px; color: var(--muted); }
+.project-footer { display: flex; align-items: center; justify-content: space-between; padding-top: var(--space-3); border-top: 1px solid var(--border-soft); }
+.avatar-group { display: flex; }
+.avatar-group .avatar-sm { margin-left: -6px; border: 2px solid white; }
+.avatar-group .avatar-sm:first-child { margin-left: 0; }
+
+/* ── Permission matrix ── */
+.perm-layout { display: grid; grid-template-columns: 280px 1fr; gap: var(--space-4); }
+.role-list { display: flex; flex-direction: column; gap: var(--space-2); }
+.role-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-4); cursor: pointer; transition: all var(--motion-fast) var(--ease-standard); }
+.role-card:hover { border-color: var(--accent); }
+.role-card.active { border-color: var(--accent); background: rgba(47,111,235,0.04); }
+.role-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+.role-card-name { font-size: var(--text-sm); font-weight: 600; color: var(--fg); }
+.role-card-desc { font-size: var(--text-xs); color: var(--muted); line-height: 1.4; }
+.check-yes { color: var(--success); font-size: 14px; }
+.check-no { color: var(--meta); font-size: 14px; }
+
+/* ── File tree ── */
+.file-layout { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-4); }
+.tree-item { padding: 7px var(--space-3); font-size: var(--text-sm); cursor: pointer; border-radius: var(--radius-sm); display: flex; align-items: center; gap: var(--space-2); color: var(--fg); transition: background var(--motion-fast) var(--ease-standard); }
+.tree-item:hover { background: var(--surface-warm); }
+.tree-item.active { background: rgba(47,111,235,0.08); color: var(--accent); font-weight: 500; }
+.tree-item svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; flex-shrink: 0; }
+.tree-child { padding-left: var(--space-6); }
+.tree-section { font-size: 11px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--meta); padding: var(--space-3) var(--space-3) var(--space-1); }
+
+/* ── Personal center ── */
+.profile-layout { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-4); }
+.profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); }
+.avatar-lg { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg,#2f6feb,#06b6d4); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: white; }
+.profile-name { font-size: var(--text-xl); font-weight: 700; color: var(--fg-2); }
+.profile-title { font-size: var(--text-sm); color: var(--muted); }
+.profile-fields { width: 100%; display: flex; flex-direction: column; gap: var(--space-3); }
+.profile-field { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--border-soft); }
+.profile-field:last-child { border-bottom: none; }
+.profile-field-label { font-size: var(--text-xs); color: var(--muted); width: 64px; flex-shrink: 0; font-family: var(--font-mono); }
+.profile-field-value { font-size: var(--text-sm); color: var(--fg); }
+.security-item { display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) 0; border-bottom: 1px solid var(--border-soft); }
+.security-item:last-child { border-bottom: none; }
+.security-label { font-size: var(--text-sm); font-weight: 500; color: var(--fg); }
+.security-desc { font-size: var(--text-xs); color: var(--muted); margin-top: 2px; }
+
+/* ── Modal ── */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity var(--motion-base) var(--ease-standard); }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: var(--surface); border-radius: var(--radius-lg); padding: var(--space-6); width: 520px; max-width: 90vw; box-shadow: 0 20px 60px rgba(0,0,0,0.2); transform: translateY(12px); transition: transform var(--motion-base) var(--ease-standard); }
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-5); }
+.modal-title { font-size: var(--text-lg); font-weight: 600; color: var(--fg-2); }
+.modal-close { width: 32px; height: 32px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--muted); border: none; background: transparent; }
+.modal-close:hover { background: var(--surface-warm); color: var(--fg); }
+.modal-close svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+.form-row { margin-bottom: var(--space-4); }
+.form-label { font-size: var(--text-sm); font-weight: 500; color: var(--fg); margin-bottom: var(--space-2); display: block; }
+.form-input { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: var(--text-sm); font-family: inherit; color: var(--fg); background: var(--surface); transition: border-color var(--motion-fast) var(--ease-standard); }
+.form-input:focus { outline: none; border-color: var(--accent); }
+.form-input::placeholder { color: var(--meta); }
+textarea.form-input { resize: vertical; min-height: 80px; }
+.modal-footer { display: flex; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-5); padding-top: var(--space-5); border-top: 1px solid var(--border); }
+
+/* ── Notification tab variant ── */
+.tab-bar { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: var(--space-4); }
+.tab { padding: 10px 18px; font-size: var(--text-sm); cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--motion-fast) var(--ease-standard); white-space: nowrap; }
+.tab:hover { color: var(--fg); }
+.tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
+
+/* ── Read rate bar ── */
+.read-bar { width: 80px; height: 6px; background: var(--border); border-radius: var(--radius-pill); overflow: hidden; }
+.read-fill { height: 100%; background: var(--success); border-radius: var(--radius-pill); }
+</style>
+<style data-od-tweaks-bridge-style="">
+[data-od-tweaks-hidden] .tw-panel {
+  transform: translateX(calc(100% + 32px)) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+.tw-restore { display: none !important; }
+</style><script data-od-tweaks-bridge="">(function(){
+  // Synchronously hide BEFORE the artifact body parses so the panel never
+  // flashes on initial paint. The host removes the attribute via postMessage
+  // once it knows the desired state.
+  document.documentElement.setAttribute('data-od-tweaks-hidden', '');
+
+  var suppressEcho = false;
+  var observer = null;
+
+  function panelEl(){ return document.querySelector('.tw-panel'); }
+
+  function applyClassesToPanel(visible){
+    var panel = panelEl();
+    if (panel) panel.classList.toggle('tw-hidden', !visible);
+  }
+
+  function setPanelVisible(visible){
+    suppressEcho = true;
+    document.documentElement.toggleAttribute('data-od-tweaks-hidden', !visible);
+    applyClassesToPanel(visible);
+    // Clear flag after the MutationObserver has had a chance to fire for this
+    // change so we don't echo our own host-driven toggles back to the host.
+    Promise.resolve().then(function(){ suppressEcho = false; });
+  }
+
+  function postState(){
+    var panel = panelEl();
+    if (!panel) return;
+    try {
+      parent.postMessage({
+        type: 'od:tweaks-panel-state',
+        visible: !panel.classList.contains('tw-hidden'),
+      }, '*');
+    } catch (e) {}
+  }
+
+  function postAvailability(){
+    try {
+      parent.postMessage({
+        type: 'od:tweaks-available',
+        available: !!panelEl(),
+      }, '*');
+    } catch (e) {}
+  }
+
+  function attachObserver(){
+    var panel = panelEl();
+    if (!panel || observer) return;
+    observer = new MutationObserver(function(){
+      if (suppressEcho) return;
+      postState();
+    });
+    observer.observe(panel, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  function onReady(){
+    // Capture the panel authored visibility BEFORE we apply the host hidden
+    // attribute. The bridge sets data-od-tweaks-hidden synchronously in head
+    // (before the body parses), so on entry to onReady the attribute is
+    // always present even though the artifact may have authored the panel
+    // as default-visible. Reading the panel class first is the only place
+    // we can still observe the author intent. Then drive the attribute,
+    // classes, and posted state from that captured value so a default
+    // visible tw-panel reports visible:true and the toolbar toggle starts
+    // ON. Issue surfaced in PR #1643 review.
+    var panel = panelEl();
+    var initialVisible = !!panel && !panel.classList.contains('tw-hidden');
+    document.documentElement.toggleAttribute('data-od-tweaks-hidden', !initialVisible);
+    applyClassesToPanel(initialVisible);
+    attachObserver();
+    postAvailability();
+    // Post the captured initial visibility so the toolbar toggle reflects
+    // the default state on mount. Without this the toggle reads OFF while
+    // a default-visible tw-panel artifact clearly shows its panel and the
+    // user would have to click toggle-on then toggle-off to actually hide.
+    postState();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
+
+  window.addEventListener('message', function(ev){
+    if (!ev.data || ev.data.type !== 'od:tweaks-panel-visible') return;
+    setPanelVisible(!!ev.data.visible);
+  });
+})();</script></head>
+<body>
+
+<!-- Modal: Create Notification -->
+<div class="modal-overlay" id="notif-modal" data-od-id="path-0">
+  <div class="modal" data-od-id="path-0-0">
+    <div class="modal-header">
+      <span class="modal-title">创建通知</span>
+      <button class="modal-close" onclick="closeModal()" data-od-id="path-0-0-0-1">
+        <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <div class="form-row">
+      <label class="form-label">通知标题</label>
+      <input class="form-input" type="text" placeholder="请输入通知标题...">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="form-row">
+        <label class="form-label">通知类型</label>
+        <select class="form-input filter-select">
+          <option>系统公告</option>
+          <option>需求通知</option>
+          <option>验收通知</option>
+          <option>问题通知</option>
+          <option>其他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="form-label">发送对象</label>
+        <select class="form-input filter-select">
+          <option>全体人员</option>
+          <option>业务角色</option>
+          <option>产品/研发/测试</option>
+          <option>指定人员</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <label class="form-label">通知内容</label>
+      <textarea class="form-input" placeholder="请输入通知内容..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal()" data-od-id="path-0-0-4-0">取消</button>
+      <button class="btn btn-primary" onclick="closeModal()" data-od-id="path-0-0-4-1">
+        <svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7z"></path></svg>
+        发布通知
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="shell" data-od-id="path-1">
+  <!-- Sidebar -->
+  <aside class="sidebar" data-od-id="path-1-0">
+    <div class="sidebar-logo" data-od-id="path-1-0-0">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+      </div>
+      <div>
+        <div class="logo-text">数创服务平台</div>
+        <div class="logo-sub">中心管理端</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" data-od-id="path-1-0-1">
+      <div class="nav-group-label" data-od-id="path-1-0-1-0">概览</div>
+      <div class="nav-item active" data-view="home" data-od-id="path-1-0-1-1">
+        <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        首页
+      </div>
+      <div class="nav-group-label" data-od-id="path-1-0-1-2">业务管理</div>
+      <div class="nav-item" data-view="req-pool" data-od-id="path-1-0-1-3">
+        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+        需求池
+      </div>
+      <div class="nav-item" data-view="issue-pool" data-od-id="path-1-0-1-4">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        问题池
+      </div>
+      <div class="nav-item" data-view="acceptance" data-od-id="path-1-0-1-5">
+        <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"></rect><path d="M5 6h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path><path d="m9 12 2 2 4-4"></path></svg>
+        验收管理
+      </div>
+      <div class="nav-item" data-view="projects" data-od-id="path-1-0-1-6">
+        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+        项目管理
+      </div>
+      <div class="nav-group-label" data-od-id="path-1-0-1-7">运营管理</div>
+      <div class="nav-item" data-view="members" data-od-id="path-1-0-1-8">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        人员管理
+      </div>
+      <div class="nav-item" data-view="library" data-od-id="path-1-0-1-9">
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+        资料库管理
+      </div>
+      <div class="nav-item" data-view="complaints" data-od-id="path-1-0-1-10">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        投诉/建议处理
+      </div>
+      <div class="nav-item" data-view="notifications" data-od-id="path-1-0-1-11">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        通知管理
+      </div>
+      <div class="nav-group-label" data-od-id="path-1-0-1-12">系统设置</div>
+      <div class="nav-item" data-view="roles" data-od-id="path-1-0-1-13">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        角色权限
+      </div>
+      <div class="nav-group-label" data-od-id="path-1-0-1-14">个人</div>
+      <div class="nav-item" data-view="profile" data-od-id="path-1-0-1-15">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        个人中心
+      </div>
+    </nav>
+    <div class="sidebar-footer" data-od-id="path-1-0-2">
+      <div class="user-card">
+        <div class="avatar">王</div>
+        <div class="user-info">
+          <div class="user-name">王建国</div>
+          <div class="user-role">产品经理</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="header" data-od-id="path-1-1">
+    <div class="breadcrumb" data-od-id="path-1-1-0">
+      <span>数创服务平台</span>
+      <span class="breadcrumb-sep">/</span>
+      <span class="breadcrumb-current" id="breadcrumb-text" data-od-id="path-1-1-0-2">控制台</span>
+    </div>
+    <div class="header-right" data-od-id="path-1-1-1">
+      <div class="header-action">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </div>
+      <div class="header-action">
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <div class="badge-dot"></div>
+      </div>
+      
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="main" data-od-id="path-1-2">
+
+    <!-- ── 首页 ── -->
+    <div class="view active" id="view-home" data-od-id="path-1-2-0">
+      <div class="page-header" data-od-id="path-1-2-0-0">
+        <div class="page-title">控制台</div>
+        <div class="page-sub">欢迎回来，王建国 · 今日数据概览 · <span style="font-family:var(--font-mono);color:var(--meta)">2024-06-03 09:42</span></div>
+      </div>
+      <div class="hero-stats" data-od-id="path-1-2-0-1">
+        <div class="hero-stat">
+          <div class="hero-stat-label">需求总数</div>
+          <div class="hero-stat-value">248</div>
+          <div class="hero-stat-sub">本月新增 <span>+12</span></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">问题总数</div>
+          <div class="hero-stat-value">186</div>
+          <div class="hero-stat-sub">本月新增 <span>+8</span></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">验收单</div>
+          <div class="hero-stat-value">34</div>
+          <div class="hero-stat-sub">待审批 <span style="color:#fbbf24">6</span> 张</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">进行中项目</div>
+          <div class="hero-stat-value">12</div>
+          <div class="hero-stat-sub">本月上线 <span>3</span> 个</div>
+        </div>
+      </div>
+      <div class="two-col" data-od-id="path-1-2-0-2">
+        <div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">需求趋势 — 近6月</span>
+              <span class="badge badge-blue">需求</span>
+            </div>
+            <div class="chart-area">
+              <svg width="100%" height="160" viewBox="0 0 520 160" preserveAspectRatio="xMidYMid meet">
+                <!-- Y axis labels -->
+                <text x="0" y="14" font-size="10" fill="#9ba3af" font-family="ui-monospace">80</text>
+                <text x="0" y="54" font-size="10" fill="#9ba3af" font-family="ui-monospace">60</text>
+                <text x="0" y="94" font-size="10" fill="#9ba3af" font-family="ui-monospace">40</text>
+                <text x="0" y="134" font-size="10" fill="#9ba3af" font-family="ui-monospace">20</text>
+                <!-- Grid lines -->
+                <line x1="28" y1="10" x2="520" y2="10" stroke="#e5e5e5" stroke-width="1"></line>
+                <line x1="28" y1="50" x2="520" y2="50" stroke="#e5e5e5" stroke-width="1"></line>
+                <line x1="28" y1="90" x2="520" y2="90" stroke="#e5e5e5" stroke-width="1"></line>
+                <line x1="28" y1="130" x2="520" y2="130" stroke="#e5e5e5" stroke-width="1"></line>
+                <!-- Bars: heights proportional to values 32,45,38,52,48,63 out of 80 -->
+                <rect x="50" y="90" width="50" height="50" rx="4" fill="#2f6feb" opacity="0.7"></rect>
+                <rect x="130" y="57" width="50" height="83" rx="4" fill="#2f6feb" opacity="0.7"></rect>
+                <rect x="210" y="72" width="50" height="68" rx="4" fill="#2f6feb" opacity="0.7"></rect>
+                <rect x="290" y="38" width="50" height="102" rx="4" fill="#2f6feb"></rect>
+                <rect x="370" y="44" width="50" height="96" rx="4" fill="#2f6feb"></rect>
+                <rect x="450" y="10" width="50" height="130" rx="4" fill="#2f6feb"></rect>
+                <!-- X labels -->
+                <text x="68" y="152" font-size="10" fill="#9ba3af" font-family="ui-monospace" text-anchor="middle">1月</text>
+                <text x="148" y="152" font-size="10" fill="#9ba3af" font-family="ui-monospace" text-anchor="middle">2月</text>
+                <text x="228" y="152" font-size="10" fill="#9ba3af" font-family="ui-monospace" text-anchor="middle">3月</text>
+                <text x="308" y="152" font-size="10" fill="#9ba3af" font-family="ui-monospace" text-anchor="middle">4月</text>
+                <text x="388" y="152" font-size="10" fill="#9ba3af" font-family="ui-monospace" text-anchor="middle">5月</text>
+                <text x="468" y="152" font-size="10" fill="#9ba3af" font-family="ui-monospace" text-anchor="middle">6月</text>
+                <!-- Value labels -->
+                <text x="68" y="87" font-size="10" fill="#2f6feb" font-family="ui-monospace" text-anchor="middle">32</text>
+                <text x="148" y="54" font-size="10" fill="#2f6feb" font-family="ui-monospace" text-anchor="middle">45</text>
+                <text x="228" y="69" font-size="10" fill="#2f6feb" font-family="ui-monospace" text-anchor="middle">38</text>
+                <text x="308" y="35" font-size="10" fill="#2f6feb" font-family="ui-monospace" text-anchor="middle">52</text>
+                <text x="388" y="41" font-size="10" fill="#2f6feb" font-family="ui-monospace" text-anchor="middle">48</text>
+                <text x="468" y="7" font-size="10" fill="#2f6feb" font-family="ui-monospace" text-anchor="middle">63</text>
+              </svg>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">问题分布</span>
+              <span class="badge badge-warn">问题</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:32px;padding:8px 0">
+              <svg width="120" height="120" viewBox="0 0 120 120">
+                <!-- Donut chart segments: 35%=126deg, 28%=100.8deg, 22%=79.2deg, 15%=54deg -->
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#e5e5e5" stroke-width="20"></circle>
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#2f6feb" stroke-width="20" stroke-dasharray="101 188" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle>
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#eab308" stroke-width="20" stroke-dasharray="81 208" stroke-dashoffset="-101" transform="rotate(-90 60 60)"></circle>
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#17a34a" stroke-width="20" stroke-dasharray="63 226" stroke-dashoffset="-182" transform="rotate(-90 60 60)"></circle>
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#94a3b8" stroke-width="20" stroke-dasharray="44 245" stroke-dashoffset="-245" transform="rotate(-90 60 60)"></circle>
+                <circle cx="60" cy="60" r="36" fill="white"></circle>
+                <text x="60" y="56" text-anchor="middle" font-size="14" font-weight="700" font-family="ui-monospace" fill="#1a2236">186</text>
+                <text x="60" y="70" text-anchor="middle" font-size="9" fill="#9ba3af" font-family="ui-monospace">总计</text>
+              </svg>
+              <div style="display:flex;flex-direction:column;gap:10px;flex:1">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:10px;height:10px;border-radius:50%;background:#2f6feb;flex-shrink:0"></span>
+                  <span style="font-size:13px;color:var(--fg);flex:1">功能异常</span>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">35%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:10px;height:10px;border-radius:50%;background:#eab308;flex-shrink:0"></span>
+                  <span style="font-size:13px;color:var(--fg);flex:1">操作疑问</span>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">28%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:10px;height:10px;border-radius:50%;background:#17a34a;flex-shrink:0"></span>
+                  <span style="font-size:13px;color:var(--fg);flex:1">性能问题</span>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">22%</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:10px;height:10px;border-radius:50%;background:#94a3b8;flex-shrink:0"></span>
+                  <span style="font-size:13px;color:var(--fg);flex:1">其他</span>
+                  <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted)">15%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="height:100%">
+            <div class="card-header">
+              <span class="card-title">待处理事项</span>
+              <span class="badge badge-danger" style="font-variant-numeric:tabular-nums">8</span>
+            </div>
+            <div class="todo-list">
+              <div class="todo-item">
+                <span class="badge badge-blue" style="font-size:10px">需求</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">REQ-2024-089 OA系统报销流程优化</div>
+                  <div class="todo-item-meta"><span>待评估</span><span>·</span><span>李明</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-warn" style="font-size:10px">问题</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">ISS-2024-234 财务系统查询超时问题</div>
+                  <div class="todo-item-meta"><span>待处理</span><span>·</span><span>张芳</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-green" style="font-size:10px">验收</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">ACC-2024-031 人事系统V2.1验收单</div>
+                  <div class="todo-item-meta"><span>待审批</span><span>·</span><span>陈磊</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-blue" style="font-size:10px">需求</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">REQ-2024-091 移动端审批流程</div>
+                  <div class="todo-item-meta"><span>待评估</span><span>·</span><span>王华</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-danger" style="font-size:10px">投诉</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">CPL-2024-018 系统响应速度投诉</div>
+                  <div class="todo-item-meta"><span>待处理</span><span>·</span><span>刘梅</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-blue" style="font-size:10px">需求</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">REQ-2024-093 数据导出功能需求</div>
+                  <div class="todo-item-meta"><span>待评估</span><span>·</span><span>赵强</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-warn" style="font-size:10px">问题</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">ISS-2024-238 移动端登录异常</div>
+                  <div class="todo-item-meta"><span>待处理</span><span>·</span><span>孙丽</span></div>
+                </div>
+              </div>
+              <div class="todo-item">
+                <span class="badge badge-green" style="font-size:10px">验收</span>
+                <div class="todo-item-content">
+                  <div class="todo-item-title">ACC-2024-033 供应链系统验收</div>
+                  <div class="todo-item-meta"><span>待审批</span><span>·</span><span>周宇</span></div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:right;margin-top:12px;padding-top:12px;border-top:1px solid var(--border-soft)">
+              <a class="action-link" data-od-id="path-1-2-0-2-1-0-2-0">查看全部待办 →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 需求池 ── -->
+    <div class="view" id="view-req-pool" data-od-id="path-1-2-1">
+      <div class="page-header" data-od-id="path-1-2-1-0">
+        <div class="page-title">需求池</div>
+        <div class="page-sub">汇总管理所有业务端提交的需求</div>
+      </div>
+      <div class="toolbar" data-od-id="path-1-2-1-1">
+        <div class="toolbar-left">
+          <input class="search-input" type="text" placeholder="搜索需求编号、标题、提交人...">
+          <select class="filter-select"><option>全部状态</option><option>待评估</option><option>进行中</option><option>已完成</option><option>已搁置</option></select>
+          <select class="filter-select"><option>全部系统</option><option>OA系统</option><option>HR系统</option><option>财务系统</option><option>供应链</option><option>CRM</option></select>
+          <select class="filter-select"><option>全部优先级</option><option>高</option><option>中</option><option>低</option></select>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn btn-secondary" data-od-id="path-1-2-1-1-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>导出</button>
+          <button class="btn btn-secondary" data-od-id="path-1-2-1-1-1-1">批量处理</button>
+          <button class="btn btn-primary" data-od-id="path-1-2-1-1-1-2"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>新建需求</button>
+        </div>
+      </div>
+      <div class="filter-pills" data-od-id="path-1-2-1-2">
+        <div class="pill active">全部 <span class="pill-count">248</span></div>
+        <div class="pill">待评估 <span class="pill-count">45</span></div>
+        <div class="pill">进行中 <span class="pill-count">89</span></div>
+        <div class="pill">已完成 <span class="pill-count">98</span></div>
+        <div class="pill">已搁置 <span class="pill-count">16</span></div>
+      </div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-1-3">
+        <table class="data-table">
+          <thead><tr><th>需求编号</th><th>标题</th><th>提交人/部门</th><th>系统</th><th>优先级</th><th>状态</th><th>提交时间</th><th>负责人</th><th>操作</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">REQ-2024-089</td><td class="bold">OA系统报销流程优化</td><td>李明 / 财务部</td><td><span class="badge badge-gray">OA系统</span></td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-warn">待评估</span></td><td class="mono">2024-06-01</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-0-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-1-3-0-1-0-8-0-1">分配</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-088</td><td class="bold">HR系统绩效模块新增导出</td><td>张芳 / 人事部</td><td><span class="badge badge-gray">HR系统</span></td><td><span class="badge badge-blue">中</span></td><td><span class="badge badge-blue">进行中</span></td><td class="mono">2024-05-28</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-1-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-1-3-0-1-1-8-0-1">查看</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-087</td><td class="bold">财务系统月报自动生成</td><td>陈磊 / 财务部</td><td><span class="badge badge-gray">财务系统</span></td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-blue">进行中</span></td><td class="mono">2024-05-25</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-2-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-1-3-0-1-2-8-0-1">查看</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-086</td><td class="bold">供应链系统库存预警功能</td><td>刘梅 / 采购部</td><td><span class="badge badge-gray">供应链</span></td><td><span class="badge badge-blue">中</span></td><td><span class="badge badge-green">已完成</span></td><td class="mono">2024-05-20</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-3-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-085</td><td class="bold">移动端考勤打卡体验优化</td><td>王华 / 行政部</td><td><span class="badge badge-gray">考勤系统</span></td><td><span class="badge badge-gray">低</span></td><td><span class="badge badge-warn">待评估</span></td><td class="mono">2024-05-18</td><td>—</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-4-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-1-3-0-1-4-8-0-1">分配</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-084</td><td class="bold">合同管理系统电子签章</td><td>赵强 / 法务部</td><td><span class="badge badge-gray">合同系统</span></td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-blue">进行中</span></td><td class="mono">2024-05-15</td><td>陈磊</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-5-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-1-3-0-1-5-8-0-1">查看</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-083</td><td class="bold">客户档案批量导入功能</td><td>周宇 / 销售部</td><td><span class="badge badge-gray">CRM</span></td><td><span class="badge badge-blue">中</span></td><td><span class="badge badge-green">已完成</span></td><td class="mono">2024-05-12</td><td>李明</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-6-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-082</td><td class="bold">报表中心新增多维度分析</td><td>吴静 / 数据部</td><td><span class="badge badge-gray">报表系统</span></td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-gray">已搁置</span></td><td class="mono">2024-05-10</td><td>—</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-7-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-081</td><td class="bold">邮件附件大小限制调整</td><td>郑浩 / IT部</td><td><span class="badge badge-gray">邮件系统</span></td><td><span class="badge badge-gray">低</span></td><td><span class="badge badge-green">已完成</span></td><td class="mono">2024-05-08</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-8-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">REQ-2024-080</td><td class="bold">OA审批流程节点配置</td><td>黄燕 / 综合部</td><td><span class="badge badge-gray">OA系统</span></td><td><span class="badge badge-blue">中</span></td><td><span class="badge badge-blue">进行中</span></td><td class="mono">2024-05-05</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-1-3-0-1-9-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-1-3-0-1-9-8-0-1">查看</a></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination" data-od-id="path-1-2-1-4">
+        <span class="pagination-info">共 248 条 · 每页 10 条</span>
+        <div class="pagination-pages">
+          <div class="page-btn">‹</div>
+          <div class="page-btn active">1</div>
+          <div class="page-btn">2</div>
+          <div class="page-btn">3</div>
+          <div class="page-btn" style="border:none;background:transparent;cursor:default;color:var(--muted)">…</div>
+          <div class="page-btn">25</div>
+          <div class="page-btn">›</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 问题池 ── -->
+    <div class="view" id="view-issue-pool" data-od-id="path-1-2-2">
+      <div class="page-header" data-od-id="path-1-2-2-0">
+        <div class="page-title">问题池</div>
+        <div class="page-sub">汇总管理所有业务端反馈的系统/操作问题</div>
+      </div>
+      <div class="toolbar" data-od-id="path-1-2-2-1">
+        <div class="toolbar-left">
+          <input class="search-input" type="text" placeholder="搜索问题编号、描述、反馈人...">
+          <select class="filter-select"><option>全部状态</option><option>待处理</option><option>处理中</option><option>已解决</option><option>已关闭</option></select>
+          <select class="filter-select"><option>全部系统</option><option>OA系统</option><option>HR系统</option><option>财务系统</option><option>供应链</option></select>
+          <select class="filter-select"><option>全部等级</option><option>严重</option><option>一般</option><option>轻微</option></select>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn btn-secondary" data-od-id="path-1-2-2-1-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>导出</button>
+          <button class="btn btn-secondary" data-od-id="path-1-2-2-1-1-1">批量处理</button>
+        </div>
+      </div>
+      <div class="filter-pills" data-od-id="path-1-2-2-2">
+        <div class="pill active">全部 <span class="pill-count">186</span></div>
+        <div class="pill">待处理 <span class="pill-count">38</span></div>
+        <div class="pill">处理中 <span class="pill-count">67</span></div>
+        <div class="pill">已解决 <span class="pill-count">72</span></div>
+        <div class="pill">已关闭 <span class="pill-count">9</span></div>
+      </div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-2-3">
+        <table class="data-table">
+          <thead><tr><th>问题编号</th><th>问题描述</th><th>反馈人/部门</th><th>系统</th><th>严重等级</th><th>状态</th><th>反馈时间</th><th>处理人</th><th>操作</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">ISS-2024-234</td><td class="bold">财务系统查询超时（&gt;30s）</td><td>张芳 / 财务部</td><td><span class="badge badge-gray">财务系统</span></td><td><span class="badge badge-danger">严重</span></td><td><span class="badge badge-warn">待处理</span></td><td class="mono">2024-06-01</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-0-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-2-3-0-1-0-8-0-1">处理</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-233</td><td class="bold">HR系统导出Excel格式错误</td><td>李明 / 人事部</td><td><span class="badge badge-gray">HR系统</span></td><td><span class="badge badge-warn">一般</span></td><td><span class="badge badge-blue">处理中</span></td><td class="mono">2024-05-30</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-1-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-2-3-0-1-1-8-0-1">查看</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-232</td><td class="bold">OA审批流程卡在特定节点</td><td>陈磊 / 行政部</td><td><span class="badge badge-gray">OA系统</span></td><td><span class="badge badge-danger">严重</span></td><td><span class="badge badge-blue">处理中</span></td><td class="mono">2024-05-29</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-2-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-2-3-0-1-2-8-0-1">查看</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-231</td><td class="bold">考勤数据统计偏差问题</td><td>刘梅 / HR部</td><td><span class="badge badge-gray">考勤系统</span></td><td><span class="badge badge-warn">一般</span></td><td><span class="badge badge-green">已解决</span></td><td class="mono">2024-05-27</td><td>李明</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-3-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-230</td><td class="bold">供应链系统无法打印采购单</td><td>王华 / 采购部</td><td><span class="badge badge-gray">供应链</span></td><td><span class="badge badge-gray">轻微</span></td><td><span class="badge badge-warn">待处理</span></td><td class="mono">2024-05-26</td><td>—</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-4-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-2-3-0-1-4-8-0-1">处理</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-229</td><td class="bold">CRM客户画像加载失败</td><td>赵强 / 销售部</td><td><span class="badge badge-gray">CRM</span></td><td><span class="badge badge-danger">严重</span></td><td><span class="badge badge-green">已解决</span></td><td class="mono">2024-05-24</td><td>陈磊</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-5-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-228</td><td class="bold">邮件系统发送延迟问题</td><td>周宇 / 综合部</td><td><span class="badge badge-gray">邮件系统</span></td><td><span class="badge badge-warn">一般</span></td><td><span class="badge badge-blue">处理中</span></td><td class="mono">2024-05-22</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-6-8-0-0">详情</a><a class="action-link" data-od-id="path-1-2-2-3-0-1-6-8-0-1">查看</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-227</td><td class="bold">合同系统附件无法在线预览</td><td>吴静 / 法务部</td><td><span class="badge badge-gray">合同系统</span></td><td><span class="badge badge-gray">轻微</span></td><td><span class="badge badge-green">已解决</span></td><td class="mono">2024-05-20</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-7-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-226</td><td class="bold">报表中心图表不渲染</td><td>郑浩 / 数据部</td><td><span class="badge badge-gray">报表系统</span></td><td><span class="badge badge-warn">一般</span></td><td><span class="badge badge-gray">已关闭</span></td><td class="mono">2024-05-18</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-8-8-0-0">详情</a></div></td></tr>
+            <tr><td class="mono">ISS-2024-225</td><td class="bold">移动端登录token过期问题</td><td>黄燕 / IT部</td><td><span class="badge badge-gray">考勤系统</span></td><td><span class="badge badge-danger">严重</span></td><td><span class="badge badge-green">已解决</span></td><td class="mono">2024-05-16</td><td>李明</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-2-3-0-1-9-8-0-0">详情</a></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination" data-od-id="path-1-2-2-4">
+        <span class="pagination-info">共 186 条 · 每页 10 条</span>
+        <div class="pagination-pages">
+          <div class="page-btn">‹</div>
+          <div class="page-btn active">1</div>
+          <div class="page-btn">2</div>
+          <div class="page-btn">3</div>
+          <div class="page-btn" style="border:none;background:transparent;cursor:default;color:var(--muted)">…</div>
+          <div class="page-btn">19</div>
+          <div class="page-btn">›</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 验收管理 ── -->
+    <div class="view" id="view-acceptance" data-od-id="path-1-2-3">
+      <div class="page-header" data-od-id="path-1-2-3-0">
+        <div class="page-title">验收管理</div>
+        <div class="page-sub">验收单创建、审批、下发及归档管理</div>
+      </div>
+      <div class="toolbar" data-od-id="path-1-2-3-1">
+        <div class="toolbar-left"><div style="display:flex;gap:8px"></div></div>
+        <div class="toolbar-right">
+          <button class="btn btn-secondary" data-od-id="path-1-2-3-1-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>批量导出</button>
+          <button class="btn btn-primary" data-od-id="path-1-2-3-1-1-1"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建验收单</button>
+        </div>
+      </div>
+      <div class="stats-row" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px" data-od-id="path-1-2-3-2">
+        <div class="stat-card"><div><div class="stat-label">验收单总数</div><div class="stat-value" style="font-size:22px">34</div></div><div class="stat-icon icon-blue"><svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"></rect><path d="M5 6h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path></svg></div></div>
+        <div class="stat-card"><div><div class="stat-label">待审批</div><div class="stat-value" style="font-size:22px;color:var(--warn)">6</div></div><div class="stat-icon icon-warn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg></div></div>
+        <div class="stat-card"><div><div class="stat-label">进行中</div><div class="stat-value" style="font-size:22px;color:var(--accent)">18</div></div><div class="stat-icon icon-cyan"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg></div></div>
+        <div class="stat-card"><div><div class="stat-label">已归档</div><div class="stat-value" style="font-size:22px;color:var(--success)">10</div></div><div class="stat-icon icon-green"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div></div>
+      </div>
+      <div class="tab-bar" data-od-id="path-1-2-3-3">
+        <div class="tab active">全部</div>
+        <div class="tab">草稿</div>
+        <div class="tab">待审批</div>
+        <div class="tab">审批中</div>
+        <div class="tab">已下发</div>
+        <div class="tab">已完成</div>
+        <div class="tab">已归档</div>
+      </div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-3-4">
+        <table class="data-table">
+          <thead><tr><th>验收单号</th><th>项目名称</th><th>系统版本</th><th>创建人</th><th>创建时间</th><th>审批人</th><th>状态</th><th>计划验收日期</th><th>操作</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">ACC-2024-034</td><td class="bold">人事系统V2.2</td><td class="mono">V2.2.0</td><td>王建国</td><td class="mono">2024-06-02</td><td>张总</td><td><span class="badge badge-gray">草稿</span></td><td class="mono">2024-06-15</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-0-8-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-3-4-0-1-0-8-0-1">提交审批</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-033</td><td class="bold">供应链系统V1.5</td><td class="mono">V1.5.3</td><td>孙丽</td><td class="mono">2024-06-01</td><td>王总</td><td><span class="badge badge-warn">待审批</span></td><td class="mono">2024-06-10</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-1-8-0-0">查看</a><a class="action-link" data-od-id="path-1-2-3-4-0-1-1-8-0-1">审批</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-032</td><td class="bold">OA系统V3.1补丁</td><td class="mono">V3.1.2</td><td>赵强</td><td class="mono">2024-05-28</td><td>张总</td><td><span class="badge badge-blue">审批中</span></td><td class="mono">2024-06-08</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-2-8-0-0">查看</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-031</td><td class="bold">人事系统V2.1</td><td class="mono">V2.1.0</td><td>王建国</td><td class="mono">2024-05-20</td><td>王总</td><td><span class="badge badge-green">已下发</span></td><td class="mono">2024-05-30</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-3-8-0-0">查看</a><a class="action-link" data-od-id="path-1-2-3-4-0-1-3-8-0-1">归档</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-030</td><td class="bold">财务系统V4.0</td><td class="mono">V4.0.1</td><td>陈磊</td><td class="mono">2024-05-15</td><td>张总</td><td><span class="badge badge-green">已完成</span></td><td class="mono">2024-05-25</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-4-8-0-0">查看</a><a class="action-link" data-od-id="path-1-2-3-4-0-1-4-8-0-1">归档</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-029</td><td class="bold">CRM V2.8</td><td class="mono">V2.8.0</td><td>李明</td><td class="mono">2024-05-10</td><td>王总</td><td><span class="badge badge-gray">已归档</span></td><td class="mono">2024-05-20</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-5-8-0-0">查看</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-028</td><td class="bold">考勤系统V1.3</td><td class="mono">V1.3.5</td><td>孙丽</td><td class="mono">2024-05-05</td><td>张总</td><td><span class="badge badge-gray">已归档</span></td><td class="mono">2024-05-15</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-6-8-0-0">查看</a></div></td></tr>
+            <tr><td class="mono">ACC-2024-027</td><td class="bold">合同系统V1.1</td><td class="mono">V1.1.0</td><td>赵强</td><td class="mono">2024-04-28</td><td>王总</td><td><span class="badge badge-gray">已归档</span></td><td class="mono">2024-05-08</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-3-4-0-1-7-8-0-0">查看</a></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── 项目管理 ── -->
+    <div class="view" id="view-projects" data-od-id="path-1-2-4">
+      <div class="page-header" data-od-id="path-1-2-4-0">
+        <div class="page-title">项目管理</div>
+        <div class="page-sub">创建、配置和管理数字化项目及版本</div>
+      </div>
+      <div class="toolbar" data-od-id="path-1-2-4-1">
+        <div class="toolbar-left">
+          <input class="search-input" type="text" placeholder="搜索项目名称...">
+          <select class="filter-select"><option>全部状态</option><option>调研中</option><option>立项中</option><option>研发中</option><option>验收中</option><option>已上线</option><option>已停止</option></select>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn btn-primary" data-od-id="path-1-2-4-1-1-0"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>新建项目</button>
+        </div>
+      </div>
+      <div class="project-grid" data-od-id="path-1-2-4-2">
+        <div class="project-card">
+          <div class="project-card-head">
+            <div>
+              <div class="project-name">OA办公系统升级</div>
+              <div style="margin-top:4px"><span class="badge badge-gray">OA系统</span></div>
+            </div>
+            <span class="badge badge-blue">研发中</span>
+          </div>
+          <div class="project-desc">完成审批流程优化及移动端适配，提升整体协作效率</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;color:var(--muted)">整体进度</span><span style="font-size:12px;font-family:var(--font-mono);color:var(--accent)">68%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+          </div>
+          <div class="project-stats">
+            <div class="project-stat"><div class="project-stat-num">12</div><div class="project-stat-lbl">需求数</div></div>
+            <div class="project-stat"><div class="project-stat-num">3</div><div class="project-stat-lbl">问题数</div></div>
+            <div class="project-stat"><div class="project-stat-num">4</div><div class="project-stat-lbl">版本数</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="avatar-group">
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#2f6feb,#06b6d4)">王</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">孙</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">赵</div>
+            </div>
+            <a class="action-link" style="font-size:13px" data-od-id="path-1-2-4-2-0-4-1">查看详情 →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-head">
+            <div>
+              <div class="project-name">HR人事系统V2</div>
+              <div style="margin-top:4px"><span class="badge badge-cyan">HR系统</span></div>
+            </div>
+            <span class="badge badge-blue">研发中</span>
+          </div>
+          <div class="project-desc">绩效管理模块重构及历史数据迁移，支持新考核周期</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;color:var(--muted)">整体进度</span><span style="font-size:12px;font-family:var(--font-mono);color:var(--accent)">45%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
+          </div>
+          <div class="project-stats">
+            <div class="project-stat"><div class="project-stat-num">8</div><div class="project-stat-lbl">需求数</div></div>
+            <div class="project-stat"><div class="project-stat-num">2</div><div class="project-stat-lbl">问题数</div></div>
+            <div class="project-stat"><div class="project-stat-num">3</div><div class="project-stat-lbl">版本数</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="avatar-group">
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#17a34a,#0d9488)">陈</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#2f6feb,#06b6d4)">王</div>
+            </div>
+            <a class="action-link" style="font-size:13px" data-od-id="path-1-2-4-2-1-4-1">查看详情 →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-head">
+            <div>
+              <div class="project-name">财务管理系统V4</div>
+              <div style="margin-top:4px"><span class="badge badge-warn">财务系统</span></div>
+            </div>
+            <span class="badge badge-warn">验收中</span>
+          </div>
+          <div class="project-desc">月报自动化生成及报表中心升级，支持多维度分析</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;color:var(--muted)">整体进度</span><span style="font-size:12px;font-family:var(--font-mono);color:var(--warn)">92%</span></div>
+            <div class="progress-bar"><div class="progress-fill warn" style="width:92%"></div></div>
+          </div>
+          <div class="project-stats">
+            <div class="project-stat"><div class="project-stat-num">15</div><div class="project-stat-lbl">需求数</div></div>
+            <div class="project-stat"><div class="project-stat-num">4</div><div class="project-stat-lbl">问题数</div></div>
+            <div class="project-stat"><div class="project-stat-num">5</div><div class="project-stat-lbl">版本数</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="avatar-group">
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">赵</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#2f6feb,#06b6d4)">王</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">李</div>
+            </div>
+            <a class="action-link" style="font-size:13px" data-od-id="path-1-2-4-2-2-4-1">查看详情 →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-head">
+            <div>
+              <div class="project-name">供应链协同平台</div>
+              <div style="margin-top:4px"><span class="badge badge-gray">供应链</span></div>
+            </div>
+            <span class="badge badge-purple">立项中</span>
+          </div>
+          <div class="project-desc">采购流程数字化改造，打通供应商协同与库存预警</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;color:var(--muted)">整体进度</span><span style="font-size:12px;font-family:var(--font-mono);color:var(--muted)">15%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:15%;background:var(--muted)"></div></div>
+          </div>
+          <div class="project-stats">
+            <div class="project-stat"><div class="project-stat-num">5</div><div class="project-stat-lbl">需求数</div></div>
+            <div class="project-stat"><div class="project-stat-num">0</div><div class="project-stat-lbl">问题数</div></div>
+            <div class="project-stat"><div class="project-stat-num">1</div><div class="project-stat-lbl">版本数</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="avatar-group">
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#17a34a,#0d9488)">孙</div>
+            </div>
+            <a class="action-link" style="font-size:13px" data-od-id="path-1-2-4-2-3-4-1">查看详情 →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-head">
+            <div>
+              <div class="project-name">CRM客户系统V3</div>
+              <div style="margin-top:4px"><span class="badge badge-cyan">CRM</span></div>
+            </div>
+            <span class="badge badge-green">已上线</span>
+          </div>
+          <div class="project-desc">客户画像升级及移动端销售工具，覆盖全渠道销售场景</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;color:var(--muted)">整体进度</span><span style="font-size:12px;font-family:var(--font-mono);color:var(--success)">100%</span></div>
+            <div class="progress-bar"><div class="progress-fill done" style="width:100%"></div></div>
+          </div>
+          <div class="project-stats">
+            <div class="project-stat"><div class="project-stat-num">20</div><div class="project-stat-lbl">需求数</div></div>
+            <div class="project-stat"><div class="project-stat-num">8</div><div class="project-stat-lbl">问题数</div></div>
+            <div class="project-stat"><div class="project-stat-num">6</div><div class="project-stat-lbl">版本数</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="avatar-group">
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#2f6feb,#06b6d4)">王</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">赵</div>
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">陈</div>
+            </div>
+            <a class="action-link" style="font-size:13px" data-od-id="path-1-2-4-2-4-4-1">查看详情 →</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-card-head">
+            <div>
+              <div class="project-name">移动端统一入口</div>
+              <div style="margin-top:4px"><span class="badge badge-gray">移动端</span></div>
+            </div>
+            <span class="badge badge-gray">调研中</span>
+          </div>
+          <div class="project-desc">多系统移动端统一登录及消息推送，提升移动办公体验</div>
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:12px;color:var(--muted)">整体进度</span><span style="font-size:12px;font-family:var(--font-mono);color:var(--muted)">8%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:8%;background:var(--meta)"></div></div>
+          </div>
+          <div class="project-stats">
+            <div class="project-stat"><div class="project-stat-num">3</div><div class="project-stat-lbl">需求数</div></div>
+            <div class="project-stat"><div class="project-stat-num">0</div><div class="project-stat-lbl">问题数</div></div>
+            <div class="project-stat"><div class="project-stat-num">1</div><div class="project-stat-lbl">版本数</div></div>
+          </div>
+          <div class="project-footer">
+            <div class="avatar-group">
+              <div class="avatar-sm" style="background:linear-gradient(135deg,#17a34a,#0d9488)">黄</div>
+            </div>
+            <a class="action-link" style="font-size:13px" data-od-id="path-1-2-4-2-5-4-1">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 人员管理 ── -->
+    <div class="view" id="view-members" data-od-id="path-1-2-5">
+      <div class="page-header" data-od-id="path-1-2-5-0">
+        <div class="page-title">人员管理</div>
+        <div class="page-sub">中心人员信息、职位及业务职责管理</div>
+      </div>
+      <div class="toolbar" data-od-id="path-1-2-5-1">
+        <div class="toolbar-left">
+          <input class="search-input" type="text" placeholder="搜索姓名、职位...">
+          <select class="filter-select"><option>全部部门</option><option>数字创新中心</option></select>
+          <select class="filter-select"><option>全部职位</option><option>产品经理</option><option>研发工程师</option><option>测试工程师</option><option>项目经理</option><option>数据分析师</option></select>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn btn-primary" data-od-id="path-1-2-5-1-1-0"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>添加人员</button>
+        </div>
+      </div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-5-2">
+        <table class="data-table">
+          <thead><tr><th>姓名</th><th>职位</th><th>所属部门</th><th>负责业务</th><th>联系方式</th><th>入职时间</th><th>状态</th><th>操作</th></tr></thead>
+          <tbody>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm">王</div>王建国</div></td><td>产品经理</td><td>数字创新中心</td><td>OA / HR系统</td><td class="mono">138****8801</td><td class="mono">2021-03-15</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-0-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-0-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#17a34a,#0d9488)">孙</div>孙丽</div></td><td>产品经理</td><td>数字创新中心</td><td>财务 / 合同系统</td><td class="mono">139****2234</td><td class="mono">2020-08-22</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-1-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-1-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">赵</div>赵强</div></td><td>研发工程师</td><td>数字创新中心</td><td>全平台后端</td><td class="mono">137****5567</td><td class="mono">2019-11-10</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-2-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-2-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)">陈</div>陈磊</div></td><td>研发工程师</td><td>数字创新中心</td><td>全平台前端</td><td class="mono">136****7789</td><td class="mono">2022-01-08</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-3-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-3-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#ef4444,#f97316)">李</div>李明</div></td><td>测试工程师</td><td>数字创新中心</td><td>OA / 供应链测试</td><td class="mono">135****9912</td><td class="mono">2021-06-20</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-4-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-4-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#06b6d4,#3b82f6)">张</div>张芳</div></td><td>项目经理</td><td>数字创新中心</td><td>项目统筹协调</td><td class="mono">134****1123</td><td class="mono">2018-05-30</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-5-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-5-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#10b981,#3b82f6)">周</div>周宇</div></td><td>研发工程师</td><td>数字创新中心</td><td>移动端开发</td><td class="mono">133****3345</td><td class="mono">2023-03-12</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-6-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-6-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#a855f7,#ec4899)">吴</div>吴静</div></td><td>数据分析师</td><td>数字创新中心</td><td>数据平台 / 报表</td><td class="mono">132****5578</td><td class="mono">2022-09-01</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-7-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-7-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#f59e0b,#84cc16)">黄</div>黄燕</div></td><td>产品经理</td><td>数字创新中心</td><td>CRM / 移动端</td><td class="mono">131****7790</td><td class="mono">2020-12-15</td><td><span class="badge badge-warn">休假</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-8-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-8-7-0-1">详情</a></div></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar-sm" style="background:linear-gradient(135deg,#6366f1,#06b6d4)">郑</div>郑浩</div></td><td>测试工程师</td><td>数字创新中心</td><td>HR / 财务测试</td><td class="mono">130****9901</td><td class="mono">2023-07-18</td><td><span class="badge badge-green">在职</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-5-2-0-1-9-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-5-2-0-1-9-7-0-1">详情</a></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ── 资料库管理 ── -->
+    <div class="view" id="view-library" data-od-id="path-1-2-6">
+      <div class="page-header" data-od-id="path-1-2-6-0">
+        <div class="page-title">资料库管理</div>
+        <div class="page-sub">项目PRD、原型文档、操作手册及系统访问信息管理</div>
+      </div>
+      <div class="file-layout" data-od-id="path-1-2-6-1">
+        <div class="card" style="padding:var(--space-3)">
+          <div class="tree-section">系统文档</div>
+          <div class="tree-item active">
+            <svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>
+            OA系统
+          </div>
+          <div class="tree-item tree-child active" style="color:var(--accent)">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            PRD文档 <span class="badge badge-gray" style="margin-left:auto;font-size:10px">3</span>
+          </div>
+          <div class="tree-item tree-child">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            原型文档 <span class="badge badge-gray" style="margin-left:auto;font-size:10px">2</span>
+          </div>
+          <div class="tree-item tree-child">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            操作手册 <span class="badge badge-gray" style="margin-left:auto;font-size:10px">1</span>
+          </div>
+          <div class="tree-item">
+            <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+            HR系统
+          </div>
+          <div class="tree-item">
+            <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+            财务系统
+          </div>
+          <div class="tree-item">
+            <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+            供应链系统
+          </div>
+          <div class="tree-section" style="margin-top:8px">通用资料</div>
+          <div class="tree-item">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            系统访问信息
+          </div>
+          <div class="tree-item">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+            规范文档
+          </div>
+          <div class="tree-item">
+            <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            培训资料
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;font-size:13px;color:var(--muted)">
+            <a class="action-link" style="color:var(--muted)" data-od-id="path-1-2-6-1-1-0-0">资料库</a>
+            <span>›</span>
+            <a class="action-link" style="color:var(--muted)" data-od-id="path-1-2-6-1-1-0-2">OA系统</a>
+            <span>›</span>
+            <span style="color:var(--fg)">PRD文档</span>
+          </div>
+          <div class="toolbar" style="margin-bottom:16px">
+            <div class="toolbar-left">
+              <input class="search-input" type="text" placeholder="搜索文件名...">
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-secondary" data-od-id="path-1-2-6-1-1-1-1-0">新建文件夹</button>
+              <button class="btn btn-primary" data-od-id="path-1-2-6-1-1-1-1-1"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>上传文件</button>
+            </div>
+          </div>
+          <div class="card" style="padding:0">
+            <table class="data-table">
+              <thead><tr><th>文件名</th><th>类型</th><th>大小</th><th>更新人</th><th>更新时间</th><th>操作</th></tr></thead>
+              <tbody>
+                <tr><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>OA系统需求规格说明书V3.1.pdf</div></td><td><span class="badge badge-danger">PDF</span></td><td class="mono">2.4 MB</td><td>王建国</td><td class="mono">2024-05-28</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-0-5-0-0">预览</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-0-5-0-1">下载</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-0-5-0-2">更多</a></div></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>OA审批流程PRD-V2.pdf</div></td><td><span class="badge badge-danger">PDF</span></td><td class="mono">1.8 MB</td><td>孙丽</td><td class="mono">2024-05-20</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-1-5-0-0">预览</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-1-5-0-1">下载</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-1-5-0-2">更多</a></div></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f6feb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>OA移动端需求说明.docx</div></td><td><span class="badge badge-blue">DOC</span></td><td class="mono">956 KB</td><td>黄燕</td><td class="mono">2024-05-15</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-2-5-0-0">预览</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-2-5-0-1">下载</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-2-5-0-2">更多</a></div></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#17a34a" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>OA接口规范文档V2.1.xlsx</div></td><td><span class="badge badge-green">XLS</span></td><td class="mono">234 KB</td><td>赵强</td><td class="mono">2024-05-10</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-3-5-0-0">预览</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-3-5-0-1">下载</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-3-5-0-2">更多</a></div></td></tr>
+                <tr><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>OA产品原型Axure-v5.rp</div></td><td><span class="badge badge-warn">RP</span></td><td class="mono">8.1 MB</td><td>林晓明</td><td class="mono">2024-04-22</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-4-5-0-0">预览</a><a class="action-link" data-od-id="path-1-2-6-1-1-2-0-1-4-5-0-1">下载</a></div></td></tr>
+              </tbody></table></div></div></div></div>
+    <!-- complaints -->
+    <div class="view" id="view-complaints" data-od-id="path-1-2-7">
+      <div class="page-header" data-od-id="path-1-2-7-0"><div class="page-title">投诉/建议处理</div><div class="page-sub">管理和处理业务端提交的投诉与建议</div></div>
+      <div class="toolbar" data-od-id="path-1-2-7-1"><div class="toolbar-left">
+        <input class="search-input" type="text" placeholder="搜索投诉/建议内容...">
+        <select class="filter-select"><option>全部类型</option><option>投诉</option><option>建议</option></select>
+        <select class="filter-select"><option>全部状态</option><option>待处理</option><option>处理中</option><option>已关闭</option></select>
+      </div><div class="toolbar-right"><button class="btn btn-secondary" data-od-id="path-1-2-7-1-1-0">导出</button></div></div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-7-2"><table class="data-table">
+        <thead><tr><th>编号</th><th>类型</th><th>标题</th><th>提交人</th><th>提交时间</th><th>状态</th><th>处理人</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">CP-2024-018</td><td><span class="badge badge-danger">投诉</span></td><td>OA系统审批流程操作繁琐</td><td>张伟</td><td class="mono">2024-06-01</td><td><span class="badge badge-warn">处理中</span></td><td>陈静</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-7-2-0-1-0-7-0-0">查看</a><a class="action-link" data-od-id="path-1-2-7-2-0-1-0-7-0-1">回复</a><a class="action-link" data-od-id="path-1-2-7-2-0-1-0-7-0-2">关闭</a></div></td></tr>
+          <tr><td class="mono">CP-2024-017</td><td><span class="badge badge-blue">建议</span></td><td>建议增加移动端审批功能</td><td>李娜</td><td class="mono">2024-05-28</td><td><span class="badge badge-green">已关闭</span></td><td>王建国</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-7-2-0-1-1-7-0-0">查看</a><a class="action-link" data-od-id="path-1-2-7-2-0-1-1-7-0-1">回复</a></div></td></tr>
+          <tr><td class="mono">CP-2024-016</td><td><span class="badge badge-danger">投诉</span></td><td>财务系统报表导出经常失败</td><td>赵磊</td><td class="mono">2024-05-25</td><td><span class="badge badge-warn">待处理</span></td><td>—</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-7-2-0-1-2-7-0-0">查看</a><a class="action-link" data-od-id="path-1-2-7-2-0-1-2-7-0-1">回复</a><a class="action-link" data-od-id="path-1-2-7-2-0-1-2-7-0-2">关闭</a></div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <!-- notifications -->
+    <div class="view" id="view-notifications" data-od-id="path-1-2-8">
+      <div class="page-header" data-od-id="path-1-2-8-0"><div class="page-title">通知管理</div><div class="page-sub">创建、推送并管理系统消息通知</div></div>
+      <div class="toolbar" data-od-id="path-1-2-8-1"><div class="toolbar-left">
+        <input class="search-input" type="text" placeholder="搜索通知标题...">
+        <select class="filter-select"><option>全部状态</option><option>草稿</option><option>已发布</option><option>已撤回</option></select>
+      </div><div class="toolbar-right">
+        <button class="btn btn-primary" onclick="openModal()" data-od-id="path-1-2-8-1-1-0">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建通知
+        </button>
+      </div></div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-8-2"><table class="data-table">
+        <thead><tr><th>编号</th><th>标题</th><th>目标群体</th><th>发布人</th><th>发布时间</th><th>阅读数</th><th>状态</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">MSG-2024-042</td><td>6月系统升级停机通知</td><td>全员</td><td>王建国</td><td class="mono">2024-06-01</td><td class="mono">1,248</td><td><span class="badge badge-green">已发布</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-8-2-0-1-0-7-0-0">查看</a><a class="action-link" data-od-id="path-1-2-8-2-0-1-0-7-0-1">撤回</a></div></td></tr>
+          <tr><td class="mono">MSG-2024-041</td><td>OA新版本上线培训安排</td><td>业务人员</td><td>林晓明</td><td class="mono">2024-05-20</td><td class="mono">892</td><td><span class="badge badge-green">已发布</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-8-2-0-1-1-7-0-0">查看</a><a class="action-link" data-od-id="path-1-2-8-2-0-1-1-7-0-1">撤回</a></div></td></tr>
+          <tr><td class="mono">MSG-2024-040</td><td>Q2验收计划草稿</td><td>业务负责人</td><td>孙丽</td><td class="mono">—</td><td class="mono">—</td><td><span class="badge badge-muted">草稿</span></td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-8-2-0-1-2-7-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-8-2-0-1-2-7-0-1">发布</a><a class="action-link" data-od-id="path-1-2-8-2-0-1-2-7-0-2">删除</a></div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <!-- roles -->
+    <div class="view" id="view-roles" data-od-id="path-1-2-9">
+      <div class="page-header" data-od-id="path-1-2-9-0"><div class="page-title">角色权限</div><div class="page-sub">创建和维护系统角色及对应功能权限配置</div></div>
+      <div class="toolbar" data-od-id="path-1-2-9-1"><div class="toolbar-left"><input class="search-input" type="text" placeholder="搜索角色名称..."></div>
+        <div class="toolbar-right"><button class="btn btn-primary" data-od-id="path-1-2-9-1-1-0">新建角色</button></div></div>
+      <div class="card" style="padding:0" data-od-id="path-1-2-9-2"><table class="data-table">
+        <thead><tr><th>角色名称</th><th>描述</th><th>人员数量</th><th>可见模块</th><th>创建时间</th><th>操作</th></tr></thead>
+        <tbody>
+          <tr><td><strong>业务人员</strong></td><td>普通员工，提交需求/问题/反馈</td><td class="mono">248</td><td>首页 / 验收单 / 需求 / 问题 / 资料库 / 对接人 / 投诉建议</td><td class="mono">2023-01-01</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-9-2-0-1-0-5-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-9-2-0-1-0-5-0-1">查看</a></div></td></tr>
+          <tr><td><strong>团队负责人</strong></td><td>管理团队需求与问题看板，跟踪项目进度</td><td class="mono">12</td><td>首页 / 验收单 / 团队看板 / 项目进度</td><td class="mono">2023-01-01</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-9-2-0-1-1-5-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-9-2-0-1-1-5-0-1">查看</a></div></td></tr>
+          <tr><td><strong>产品经理</strong></td><td>需求/问题池管理，项目进度跟踪</td><td class="mono">8</td><td>首页 / 验收单 / 需求池 / 问题池 / 项目管理</td><td class="mono">2023-01-01</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-9-2-0-1-2-5-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-9-2-0-1-2-5-0-1">查看</a></div></td></tr>
+          <tr><td><strong>研发工程师</strong></td><td>接收需求任务，跟进开发进度</td><td class="mono">32</td><td>首页 / 验收单 / 需求池 / 问题池 / 项目管理</td><td class="mono">2023-01-01</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-9-2-0-1-3-5-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-9-2-0-1-3-5-0-1">查看</a></div></td></tr>
+          <tr><td><strong>中心管理员</strong></td><td>全功能访问，含系统设置、角色权限、通知管理</td><td class="mono">3</td><td>全部模块</td><td class="mono">2023-01-01</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-1-2-9-2-0-1-4-5-0-0">编辑</a><a class="action-link" data-od-id="path-1-2-9-2-0-1-4-5-0-1">查看</a></div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+    <!-- profile -->
+    <div class="view" id="view-profile" data-od-id="path-1-2-10">
+      <div class="page-header" data-od-id="path-1-2-10-0"><div class="page-title">个人中心</div><div class="page-sub">管理个人信息与账号设置</div></div>
+      <div style="max-width:700px">
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><div class="card-title">基本信息</div><button class="btn btn-secondary" data-od-id="path-1-2-10-1-0-0-1">编辑</button></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div><div style="font-size:12px;color:var(--muted)">姓名</div><div style="font-size:14px;margin-top:4px">王建国</div></div>
+            <div><div style="font-size:12px;color:var(--muted)">工号</div><div class="mono" style="font-size:14px;margin-top:4px">EMP-20190238</div></div>
+            <div><div style="font-size:12px;color:var(--muted)">职位</div><div style="font-size:14px;margin-top:4px">产品经理</div></div>
+            <div><div style="font-size:12px;color:var(--muted)">部门</div><div style="font-size:14px;margin-top:4px">数字化创新中心</div></div>
+            <div><div style="font-size:12px;color:var(--muted)">邮箱</div><div style="font-size:14px;margin-top:4px">wangjg@company.com</div></div>
+            <div><div style="font-size:12px;color:var(--muted)">手机</div><div style="font-size:14px;margin-top:4px">138****8899</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">账号安全</div></div>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-soft)">
+              <div><div style="font-size:14px;font-weight:500">登录密码</div><div style="font-size:12px;color:var(--muted);margin-top:2px">上次修改：2024-03-15</div></div>
+              <button class="btn btn-secondary" data-od-id="path-1-2-10-1-1-1-0-1">修改密码</button>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0">
+              <div><div style="font-size:14px;font-weight:500">双因素认证</div><div style="font-size:12px;color:var(--muted);margin-top:2px">已启用 — 短信验证码</div></div>
+              <button class="btn btn-secondary" data-od-id="path-1-2-10-1-1-1-1-1">管理</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+<script>
+const VIEWS={home:'控制台','req-pool':'需求池','issue-pool':'问题池',acceptance:'验收管理',projects:'项目管理',members:'人员管理',library:'资料库管理',complaints:'投诉/建议处理',notifications:'通知管理',roles:'角色权限',profile:'个人中心'};
+function switchView(id){
+  try{
+    document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
+    document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
+    var v=document.getElementById('view-'+id);
+    if(v)v.classList.add('active');
+    var n=document.querySelector('.nav-item[data-view="'+id+'"]');
+    if(n)n.classList.add('active');
+    var bc=document.getElementById('breadcrumb-text');
+    if(bc)bc.textContent=VIEWS[id]||id;
+    try{localStorage.setItem('center-view',id);}catch(e){}
+  }catch(e){console.error(e);}
+}
+function openModal(){try{var m=document.getElementById('modal-notif');if(m)m.classList.add('open');}catch(e){}}
+function closeModal(){try{var m=document.getElementById('modal-notif');if(m)m.classList.remove('open');}catch(e){}}
+function showToast(msg,type){
+  try{
+    var t=document.createElement('div');
+    t.textContent=msg;
+    t.style.cssText='position:fixed;bottom:24px;right:24px;z-index:9999;padding:10px 18px;border-radius:8px;font-size:14px;font-weight:500;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.15);';
+    t.style.background=type==='success'?'#17a34a':type==='warn'?'#eab308':'#2f6feb';
+    document.body.appendChild(t);
+    setTimeout(function(){t.remove();},2800);
+  }catch(e){}
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var saved;
+  try{saved=localStorage.getItem('center-view');}catch(e){}
+  switchView(saved||'home');
+  document.querySelectorAll('.nav-item[data-view]').forEach(function(item){
+    item.addEventListener('click',function(){
+      var v=this.getAttribute('data-view');
+      if(v)switchView(v);
+    });
+  });
+});
+</script>
+<script data-od-snapshot-bridge="">(function(){
+  var SNAPSHOT_STYLE_PROPS = [
+    'display','position','box-sizing','width','height','min-width','max-width','min-height','max-height',
+    'margin','margin-top','margin-right','margin-bottom','margin-left',
+    'padding','padding-top','padding-right','padding-bottom','padding-left',
+    'border','border-top','border-right','border-bottom','border-left','border-radius',
+    'font','font-family','font-size','font-weight','font-style','line-height','letter-spacing',
+    'color','background-color','opacity','transform','transform-origin','overflow','overflow-x','overflow-y',
+    'white-space','text-align','vertical-align','object-fit','object-position',
+    'flex','flex-direction','flex-wrap','flex-grow','flex-shrink','flex-basis',
+    'grid','grid-template-columns','grid-template-rows','grid-column','grid-row',
+    'gap','row-gap','column-gap','align-items','align-content','align-self',
+    'justify-items','justify-content','justify-self','inset','top','right','bottom','left',
+    'z-index','box-shadow','text-shadow'
+  ];
+  function copyComputedStyle(source, target){
+    if (!source || !target || source.nodeType !== 1 || target.nodeType !== 1) return;
+    var computed = window.getComputedStyle(source);
+    var style = target.getAttribute('style') || '';
+    for (var i = 0; i < SNAPSHOT_STYLE_PROPS.length; i++){
+      var prop = SNAPSHOT_STYLE_PROPS[i];
+      var value = computed.getPropertyValue(prop);
+      if (value) style += prop + ':' + value + ';';
+    }
+    target.setAttribute('style', style);
+  }
+  function syncElementState(source, target){
+    var tag = source.tagName ? source.tagName.toLowerCase() : '';
+    if (tag === 'img' && source.currentSrc) target.setAttribute('src', source.currentSrc);
+    if (tag === 'input' || tag === 'textarea') target.setAttribute('value', source.value || '');
+    if (tag === 'canvas') {
+      try {
+        var img = document.createElement('img');
+        img.setAttribute('src', source.toDataURL('image/png'));
+        img.setAttribute('style', target.getAttribute('style') || '');
+        target.parentNode && target.parentNode.replaceChild(img, target);
+      } catch (_) {}
+    }
+  }
+  function inlineSnapshotStyles(originalRoot, cloneRoot){
+    copyComputedStyle(originalRoot, cloneRoot);
+    syncElementState(originalRoot, cloneRoot);
+    var originals = originalRoot.querySelectorAll('*');
+    var clones = cloneRoot.querySelectorAll('*');
+    var count = Math.min(originals.length, clones.length, 3500);
+    for (var i = 0; i < count; i++){
+      copyComputedStyle(originals[i], clones[i]);
+      syncElementState(originals[i], clones[i]);
+    }
+    var scripts = cloneRoot.querySelectorAll('script');
+    for (var s = scripts.length - 1; s >= 0; s--) scripts[s].remove();
+    var links = cloneRoot.querySelectorAll('link[rel~="stylesheet"], link[rel~="preload"], link[rel~="preconnect"]');
+    for (var l = links.length - 1; l >= 0; l--) links[l].remove();
+    var styles = cloneRoot.querySelectorAll('style');
+    for (var st = 0; st < styles.length; st++) {
+      styles[st].textContent = (styles[st].textContent || '')
+        .replace(/@import[^;]+;/gi, '')
+        .replace(/@font-face\s*\{[^}]*\}/gi, '');
+    }
+  }
+  function waitForImages(){
+    var imgs = Array.prototype.slice.call(document.images || []);
+    return Promise.all(imgs.map(function(img){
+      if (img.complete) return Promise.resolve();
+      return new Promise(function(resolve){
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
+      });
+    }));
+  }
+  function scrollOffset(){
+    var doc = document.documentElement;
+    var body = document.body;
+    return {
+      x: Math.max(window.scrollX || 0, doc ? doc.scrollLeft || 0 : 0, body ? body.scrollLeft || 0 : 0),
+      y: Math.max(window.scrollY || 0, doc ? doc.scrollTop || 0 : 0, body ? body.scrollTop || 0 : 0)
+    };
+  }
+  function escapeAttribute(value){
+    return String(value || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  }
+  function renderSnapshot(id){
+    var w = Math.max(1, window.innerWidth || document.documentElement.clientWidth || 1);
+    var h = Math.max(1, window.innerHeight || document.documentElement.clientHeight || 1);
+    var dpr = window.devicePixelRatio || 1;
+    var docW = Math.max(w, document.documentElement.scrollWidth || 0, document.body ? document.body.scrollWidth : 0);
+    var docH = Math.max(h, document.documentElement.scrollHeight || 0, document.body ? document.body.scrollHeight : 0);
+    var clone = document.documentElement.cloneNode(true);
+    clone.setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
+    inlineSnapshotStyles(document.documentElement, clone);
+    var scroll = scrollOffset();
+    var cloneBody = clone.querySelector('body');
+    var rootStyle = clone.getAttribute('style') || '';
+    var bodyStyle = cloneBody ? cloneBody.getAttribute('style') || '' : '';
+    var bodyContent = cloneBody ? cloneBody.innerHTML : clone.innerHTML;
+    var wrapperStyle = rootStyle + bodyStyle +
+      'margin:0;position:relative;left:' + (-scroll.x) + 'px;top:' + (-scroll.y) + 'px;' +
+      'width:' + docW + 'px;height:' + docH + 'px;overflow:visible;';
+    var html = '<div xmlns="http://www.w3.org/1999/xhtml" style="' + escapeAttribute(wrapperStyle) + '">' + bodyContent + '</div>';
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '">' +
+      '<foreignObject x="0" y="0" width="' + docW + '" height="' + docH + '">' +
+      html +
+      '</foreignObject></svg>';
+    var img = new Image();
+    img.onload = function(){
+      try {
+        var canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.floor(w * dpr));
+        canvas.height = Math.max(1, Math.floor(h * dpr));
+        var ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('no 2d context');
+        ctx.scale(dpr, dpr);
+        ctx.drawImage(img, 0, 0, w, h);
+        window.parent.postMessage({ type: 'od:snapshot:result', id: id, dataUrl: canvas.toDataURL('image/png'), w: canvas.width, h: canvas.height }, '*');
+      } catch (err) {
+        window.parent.postMessage({ type: 'od:snapshot:result', id: id, error: String(err && err.message || err) }, '*');
+      }
+    };
+    function encodedSvgDataUrl(){
+      var encoded = encodeURIComponent(svg);
+      return 'data:image/svg+xml;charset=utf-8,' + encoded;
+    }
+    img.onerror = function(){
+      window.parent.postMessage({ type: 'od:snapshot:result', id: id, error: 'snapshot image failed' }, '*');
+    };
+    img.src = encodedSvgDataUrl();
+  }
+  window.addEventListener('message', function(ev){
+    var data = ev && ev.data;
+    if (!data || data.type !== 'od:snapshot' || !data.id) return;
+    waitForImages().then(function(){ renderSnapshot(String(data.id)); });
+  });
+})();</script><script data-od-srcdoc-transport-activation="">(function(){
+  window.addEventListener('message', function(ev){
+    var data = ev && ev.data;
+    if (!data || data.type !== 'od:srcdoc-transport-activate' || typeof data.html !== 'string') return;
+    document.open();
+    document.write(data.html);
+    document.close();
+  });
+})();</script></body></html>
