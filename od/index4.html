@@ -281,8 +281,6 @@ table.data tr:last-child td{border-bottom:none}
 .sched-today-label{position:absolute;top:-18px;transform:translateX(-50%);font-size:.62rem;font-family:var(--font-mono);color:var(--danger);font-weight:700;white-space:nowrap}
 .sched-note{margin-top:12px;font-size:.78rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px}
 .sched-overlap-tip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:6px;color:#B45309;font-size:.72rem;font-weight:500}
-.sched-gantt.proj-cal .sched-gantt-header,
-.sched-gantt.proj-cal .sched-gantt-row{grid-template-columns:200px 1fr}
 
 .task-overview-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .task-stat-card{background:#fff;border:1px solid var(--border-light,#EEF2F6);border-radius:12px;padding:16px 18px;position:relative;overflow:hidden}
@@ -373,6 +371,29 @@ table.data tr:last-child td{border-bottom:none}
 .cal-nav-btn{width:28px;height:28px;border-radius:var(--radius-sm);border:1.5px solid var(--border);background:var(--card);color:var(--text-secondary);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:var(--transition)}
 .cal-nav-btn:hover{border-color:var(--primary);color:var(--primary)}
 .cal-range{font-size:.9rem;font-weight:700;color:var(--text);font-family:var(--font-mono)}
+.gantt-wrap{overflow-x:auto}
+.gantt{min-width:920px}
+.gantt-header{display:grid;grid-template-columns:200px 1fr;border-bottom:2px solid var(--border);padding-bottom:8px;margin-bottom:6px}
+.gantt-header-label{font-size:.7rem;font-family:var(--font-mono);text-transform:uppercase;color:var(--text-secondary)}
+.gantt-months{display:grid;grid-template-columns:repeat(3,1fr)}
+.gantt-month{font-size:.75rem;font-family:var(--font-mono);text-transform:uppercase;color:var(--text-secondary);text-align:center;border-left:1px dashed var(--border-light)}
+.gantt-month:first-child{border-left:none}
+.gantt-body{display:flex;flex-direction:column;gap:2px}
+.gantt-row{display:grid;grid-template-columns:200px 1fr;padding:8px 0;border-radius:var(--radius-sm);transition:var(--transition);align-items:center;min-height:40px}
+.gantt-row:hover{background:#F8FAFC}
+.gantt-project{display:flex;align-items:center;gap:10px;padding:0 10px;min-width:0}
+.gantt-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.gantt-name{font-size:.85rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.gantt-code{font-size:.7rem;font-family:var(--font-mono);color:var(--text-muted);flex-shrink:0}
+.gantt-track{position:relative;height:26px;background-image:linear-gradient(to right,var(--border-light) 1px,transparent 1px);background-size:calc(100% / 13) 100%}
+.gantt-bar{position:absolute;top:3px;height:20px;border-radius:4px;display:flex;align-items:center;padding:0 8px;font-size:.7rem;font-family:var(--font-mono);font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;cursor:pointer;transition:var(--transition)}
+.gantt-bar:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(15,23,42,.12)}
+.phase-req{background:var(--primary)}
+.phase-dev{background:#8b5cf6}
+.phase-test{background:var(--accent)}
+.phase-accept{background:var(--success)}
+.phase-online{background:#10b981}
+
 /* Tree */
 .file-layout{display:grid;grid-template-columns:240px 1fr;gap:16px}
 .tree-item{padding:9px 12px;font-size:.85rem;cursor:pointer;border-radius:var(--radius-sm);display:flex;align-items:center;gap:8px;color:var(--text);transition:var(--transition)}
@@ -1048,41 +1069,26 @@ table.data tr:last-child td{border-bottom:none}
               <span class="badge badge-primary">12 个进行中</span>
             </div>
             <div style="display:flex;align-items:center;gap:16px">
-              <div class="cal-nav"><button class="cal-nav-btn" onclick="shiftHomeCal(-1)" data-od-id="path-3-1-1-0-4-0-1-0-0">‹</button><span class="cal-range" id="home-cal-range" data-od-id="path-3-1-1-0-4-0-1-0-1">2026 年 6 月</span><button class="cal-nav-btn" onclick="shiftHomeCal(1)" data-od-id="path-3-1-1-0-4-0-1-0-2">›</button></div>
+              <div class="cal-nav"><button class="cal-nav-btn" onclick="shiftCal(-1)" data-od-id="path-3-1-1-0-4-0-1-0-0">‹</button><span class="cal-range">2026.06 — 2026.08</span><button class="cal-nav-btn" onclick="shiftCal(1)" data-od-id="path-3-1-1-0-4-0-1-0-2">›</button></div>
               <select class="filter-select" style="min-width:140px"><option>全部项目</option><option>需求评审中</option><option>研发中</option><option>测试中</option><option>验收中</option><option>已上线</option></select>
             </div>
           </div>
-          <div style="overflow-x:auto">
-            <div class="sched-gantt proj-cal">
-              <div class="sched-gantt-header">
-                <div class="sched-stage-col">项目</div>
-                <div class="sched-date-track" id="home-cal-dates" data-od-id="path-3-1-1-0-4-1-0-0-1"></div>
-              </div>
-              <div class="sched-gantt-row">
-                <div class="sched-stage-col"><span style="width:8px;height:8px;border-radius:50%;background:#4F46E5;flex-shrink:0"></span><div style="min-width:0;line-height:1.25"><div style="font-size:.82rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">油葱商城V4.30</div><div style="font-size:.68rem;font-family:var(--font-mono);color:var(--text-muted)">PJ-20260601-0001</div></div></div>
-                <div class="sched-track" id="home-cal-track-0" data-od-id="path-3-1-1-0-4-1-0-1-1"></div>
-              </div>
-              <div class="sched-gantt-row">
-                <div class="sched-stage-col"><span style="width:8px;height:8px;border-radius:50%;background:#8b5cf6;flex-shrink:0"></span><div style="min-width:0;line-height:1.25"><div style="font-size:.82rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">OA系统V3.2</div><div style="font-size:.68rem;font-family:var(--font-mono);color:var(--text-muted)">PJ-20260520-0005</div></div></div>
-                <div class="sched-track" id="home-cal-track-1" data-od-id="path-3-1-1-0-4-1-0-2-1"></div>
-              </div>
-              <div class="sched-gantt-row">
-                <div class="sched-stage-col"><span style="width:8px;height:8px;border-radius:50%;background:#06B6D4;flex-shrink:0"></span><div style="min-width:0;line-height:1.25"><div style="font-size:.82rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">人事系统V2.1</div><div style="font-size:.68rem;font-family:var(--font-mono);color:var(--text-muted)">PJ-20260418-0008</div></div></div>
-                <div class="sched-track" id="home-cal-track-2" data-od-id="path-3-1-1-0-4-1-0-3-1"></div>
-              </div>
-              <div class="sched-gantt-row">
-                <div class="sched-stage-col"><span style="width:8px;height:8px;border-radius:50%;background:#10B981;flex-shrink:0"></span><div style="min-width:0;line-height:1.25"><div style="font-size:.82rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">数据中台V1.5</div><div style="font-size:.68rem;font-family:var(--font-mono);color:var(--text-muted)">PJ-20260510-0012</div></div></div>
-                <div class="sched-track" id="home-cal-track-3" data-od-id="path-3-1-1-0-4-1-0-4-1"></div>
+          <div class="gantt-wrap">
+            <div class="gantt">
+              <div class="gantt-header"><div class="gantt-header-label">项目</div><div class="gantt-months"><div class="gantt-month">2026 · 06</div><div class="gantt-month">2026 · 07</div><div class="gantt-month">2026 · 08</div></div></div>
+              <div class="gantt-body">
+                <div class="gantt-row"><div class="gantt-project"><span class="gantt-dot" style="background:#4F46E5"></span><span class="gantt-name">油葱商城V4.30</span><span class="gantt-code">PJ-20260601-0001</span></div><div class="gantt-track"><div class="gantt-bar phase-req" style="left:0%;width:10%">需求</div><div class="gantt-bar phase-dev" style="left:10%;width:30%">研发</div><div class="gantt-bar phase-test" style="left:40%;width:15%">测试</div></div></div>
+                <div class="gantt-row"><div class="gantt-project"><span class="gantt-dot" style="background:#8b5cf6"></span><span class="gantt-name">OA系统V3.2</span><span class="gantt-code">PJ-20260520-0005</span></div><div class="gantt-track"><div class="gantt-bar phase-dev" style="left:5%;width:25%">研发</div><div class="gantt-bar phase-test" style="left:30%;width:20%">测试</div></div></div>
+                <div class="gantt-row"><div class="gantt-project"><span class="gantt-dot" style="background:#06B6D4"></span><span class="gantt-name">人事系统V2.1</span><span class="gantt-code">PJ-20260418-0008</span></div><div class="gantt-track"><div class="gantt-bar phase-accept" style="left:0%;width:20%">验收</div></div></div>
+                <div class="gantt-row"><div class="gantt-project"><span class="gantt-dot" style="background:#10B981"></span><span class="gantt-name">数据中台V1.5</span><span class="gantt-code">PJ-20260510-0012</span></div><div class="gantt-track"><div class="gantt-bar phase-dev" style="left:20%;width:40%">研发</div></div></div>
               </div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;justify-content:center;gap:22px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-light);flex-wrap:wrap">
-            <div class="legend-row"><span class="legend-dot" style="background:#2563EB"></span><span>评审</span></div>
-            <div class="legend-row"><span class="legend-dot" style="background:#C2410C"></span><span>研发</span></div>
-            <div class="legend-row"><span class="legend-dot" style="background:#9333EA"></span><span>测试</span></div>
-            <div class="legend-row"><span class="legend-dot" style="background:#059669"></span><span>验收</span></div>
-            <div class="legend-row"><span class="legend-dot" style="background:#16A34A"></span><span>上线</span></div>
-            <div class="legend-row"><span class="legend-dot" style="background:var(--danger);border-radius:2px"></span><span>今日</span></div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:24px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border-light);flex-wrap:wrap">
+            <div class="legend-row"><span class="legend-dot" style="background:var(--primary)"></span><span>需求阶段</span></div>
+            <div class="legend-row"><span class="legend-dot" style="background:#8b5cf6"></span><span>研发阶段</span></div>
+            <div class="legend-row"><span class="legend-dot" style="background:var(--accent)"></span><span>测试阶段</span></div>
+            <div class="legend-row"><span class="legend-dot" style="background:var(--success)"></span><span>验收/上线</span></div>
           </div>
         </div>
       </div>
@@ -3348,82 +3354,15 @@ function initHome() {
   }
 }
 
-/* ===== Homepage project calendar (sched-style, month nav) ===== */
-var HOME_CAL = {
-  year: 2026, month: 5, today: 18,
-  phaseColor: {review:'#2563EB', dev:'#C2410C', test:'#9333EA', accept:'#059669', live:'#16A34A'},
-  phaseName:  {review:'评审', dev:'研发', test:'测试', accept:'验收', live:'上线'},
-  projects: [
-    {name:'油葱商城V4.30', code:'PJ-20260601-0001', dot:'#4F46E5', bars:[
-      {s:'review', start:'2026-06-01', end:'2026-06-03'},
-      {s:'dev',    start:'2026-06-04', end:'2026-06-12'},
-      {s:'test',   start:'2026-06-13', end:'2026-06-18'},
-      {s:'accept', start:'2026-06-19', end:'2026-06-24'},
-      {s:'live',   start:'2026-06-25', end:'2026-06-30'}
-    ]},
-    {name:'OA系统V3.2', code:'PJ-20260520-0005', dot:'#8b5cf6', bars:[
-      {s:'dev',    start:'2026-06-20', end:'2026-07-05'},
-      {s:'test',   start:'2026-07-06', end:'2026-07-15'},
-      {s:'accept', start:'2026-07-16', end:'2026-07-22'},
-      {s:'live',   start:'2026-07-23', end:'2026-07-28'}
-    ]},
-    {name:'人事系统V2.1', code:'PJ-20260418-0008', dot:'#06B6D4', bars:[
-      {s:'accept', start:'2026-06-15', end:'2026-06-22'},
-      {s:'live',   start:'2026-06-23', end:'2026-06-30'}
-    ]},
-    {name:'数据中台V1.5', code:'PJ-20260510-0012', dot:'#10B981', bars:[
-      {s:'dev',    start:'2026-06-10', end:'2026-07-20'},
-      {s:'test',   start:'2026-07-21', end:'2026-08-05'},
-      {s:'accept', start:'2026-08-06', end:'2026-08-15'},
-      {s:'live',   start:'2026-08-18', end:'2026-08-25'}
-    ]}
-  ]
-};
-function daysInMonthCal(y, m){ return new Date(y, m + 1, 0).getDate(); }
-function renderHomeCal(){
-  var y = HOME_CAL.year, m = HOME_CAL.month;
-  var dim = daysInMonthCal(y, m);
-  var track = document.getElementById('home-cal-dates');
-  if(track){
-    var html = '';
-    for(var d = 1; d <= dim; d++){
-      var cls = 'sched-date-cell';
-      var dow = new Date(y, m, d).getDay();
-      if(dow === 0 || dow === 6) cls += ' is-weekend';
-      if(y === 2026 && m === 5 && d === HOME_CAL.today) cls += ' is-today';
-      html += '<div class="' + cls + '">' + d + '</div>';
-    }
-    track.innerHTML = html;
-    track.style.gridTemplateColumns = 'repeat(' + dim + ',1fr)';
-  }
-  var mStart = new Date(y, m, 1), mEnd = new Date(y, m, dim, 23, 59, 59);
-  HOME_CAL.projects.forEach(function(p, idx){
-    var tr = document.getElementById('home-cal-track-' + idx);
-    if(!tr) return;
-    tr.style.backgroundSize = 'calc(100% / ' + dim + ') 100%';
-    var barsHtml = '';
-    p.bars.forEach(function(b){
-      var bd = new Date(b.start), ed = new Date(b.end);
-      if(ed < mStart || bd > mEnd) return;
-      var cs = bd < mStart ? mStart : bd;
-      var ce = ed > mEnd ? mEnd : ed;
-      var sd = cs.getDate(), dd = ce.getDate();
-      var left = (sd - 1) / dim * 100, width = (dd - sd + 1) / dim * 100;
-      barsHtml += '<div class="sched-bar" style="left:' + left + '%;width:' + width + '%;background:' + HOME_CAL.phaseColor[b.s] + '">' + HOME_CAL.phaseName[b.s] + '</div>';
-    });
-    if(y === 2026 && m === 5){
-      barsHtml += '<div class="sched-today-line" style="left:' + ((HOME_CAL.today - 1) / dim * 100) + '%"></div>';
-    }
-    tr.innerHTML = barsHtml;
-  });
-  var lbl = document.getElementById('home-cal-range');
-  if(lbl) lbl.textContent = y + ' 年 ' + (m + 1) + ' 月';
-}
-function shiftHomeCal(dir){
-  HOME_CAL.month += dir;
-  if(HOME_CAL.month < 0){ HOME_CAL.month = 11; HOME_CAL.year--; }
-  if(HOME_CAL.month > 11){ HOME_CAL.month = 0; HOME_CAL.year++; }
-  renderHomeCal();
+/* ===== Calendar navigation ===== */
+let currentQuarter = 2;
+const quarterLabels = ['2026.01 — 2026.03', '2026.04 — 2026.06', '2026.07 — 2026.09', '2026.10 — 2026.12'];
+function shiftCal(dir) {
+  currentQuarter += dir;
+  if (currentQuarter < 1) currentQuarter = 4;
+  if (currentQuarter > 4) currentQuarter = 1;
+  const label = document.querySelector('.cal-range');
+  if (label) label.textContent = quarterLabels[currentQuarter - 1];
 }
 
 /* ===== Mobile menu ===== */
@@ -3879,7 +3818,6 @@ function saveSchedule(){ showToast('success', '排期已保存，日历视图已
 /* ===== Initialize ===== */
 document.addEventListener('DOMContentLoaded', () => {
   initHome();
-  renderHomeCal();
   renderSchedDates();
   renderSchedBars();
 });
