@@ -853,7 +853,7 @@ table.data tr:last-child td{border-bottom:none}
         <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>业务需求池
       </div>
       <div class="nav-item" data-view="issue-pool" onclick="switchView('issue-pool')" data-od-id="path-3-0-1-4">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>业务问题池
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>问题池
       </div>
       <div class="nav-item" data-view="bugs" onclick="switchView('bugs')" data-od-id="path-3-0-1-5">
         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>我的BUG
@@ -1127,9 +1127,9 @@ table.data tr:last-child td{border-bottom:none}
         <div class="pagination" data-od-id="path-3-1-1-1-4"><span class="pagination-info">共 248 条 · 每页 10 条</span><div class="pagination-pages"><span class="page-btn">‹</span><span class="page-btn active">1</span><span class="page-btn">2</span><span class="page-btn">3</span><span class="page-btn" style="border:none;background:transparent;cursor:default">…</span><span class="page-btn">25</span><span class="page-btn">›</span></div></div>
       </div>
 
-      <!-- ===== 业务问题池 ===== -->
+      <!-- ===== 问题池 ===== -->
       <div class="view" id="view-issue-pool" data-od-id="path-3-1-1-2">
-        <div class="page-header" data-od-id="path-3-1-1-2-0"><div class="page-title">业务问题池</div><div class="page-sub">跟进各环境系统的未确定问题，支持认领、指派、转化与关闭</div></div>
+        <div class="page-header" data-od-id="path-3-1-1-2-0"><div class="page-title">问题池</div><div class="page-sub">跟进各环境系统的未确定问题，支持认领、指派、转化与关闭</div></div>
         <div class="toolbar" data-od-id="path-3-1-1-2-1">
           <div class="toolbar-left">
             <input class="search-input" type="text" placeholder="搜索问题标题 / ID">
@@ -1139,6 +1139,7 @@ table.data tr:last-child td{border-bottom:none}
           <div class="toolbar-right">
             <button class="btn btn-secondary" data-od-id="path-3-1-1-2-1-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>导出</button>
             <button class="btn btn-secondary" data-od-id="path-3-1-1-2-1-1-1">批量处理</button>
+            <button class="btn btn-primary" onclick="openModal('modal-issue-create')" data-od-id="path-3-1-1-2-1-1-2"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建问题</button>
           </div>
         </div>
         <div class="tabs" data-od-id="path-3-1-1-2-2">
@@ -1600,7 +1601,7 @@ table.data tr:last-child td{border-bottom:none}
                 <thead><tr><th>功能模块</th><th>查看</th><th>新增</th><th>编辑</th><th>删除</th><th>导出</th></tr></thead>
                 <tbody>
                   <tr><td class="bold">业务需求池</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
-                  <tr><td class="bold">业务问题池</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">问题池</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
                   <tr><td class="bold">我的BUG</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
                   <tr><td class="bold">验收管理</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
                   <tr><td class="bold">项目管理</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
@@ -1690,7 +1691,7 @@ table.data tr:last-child td{border-bottom:none}
 
       <!-- ===== 问题详情 ===== -->
       <div class="view" id="view-issue-detail" data-od-id="path-3-1-1-14">
-        <div class="detail-back" onclick="switchView('issue-pool')" data-od-id="path-3-1-1-14-0"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="m15 18-6-6 6-6"></path></svg> 返回业务问题池</div>
+        <div class="detail-back" onclick="switchView('issue-pool')" data-od-id="path-3-1-1-14-0"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="m15 18-6-6 6-6"></path></svg> 返回问题池</div>
         <div class="detail-head" data-od-id="path-3-1-1-14-1">
           <div><span class="mono" id="issue-detail-id" style="color:var(--primary);font-weight:600" data-od-id="path-3-1-1-14-1-0-0">PR-B-20260615-0001</span><h2 style="margin:6px 0 0" data-od-id="path-3-1-1-14-1-0-1">财务查询超时（&gt;30s）</h2></div>
           <div style="display:flex;gap:8px">
@@ -1845,6 +1846,7 @@ table.data tr:last-child td{border-bottom:none}
               </select>
             </div>
             <button class="btn btn-secondary btn-sm" onclick="openModal('modal-add-version')" data-od-id="path-3-1-1-17-1-1-1">添加版本</button>
+            <button class="btn btn-danger btn-sm" onclick="openModal('modal-close-project')" data-od-id="path-3-1-1-17-1-1-2">关闭项目</button>
           </div>
         </div>
         <!-- 一级 Tab -->
@@ -1861,12 +1863,10 @@ table.data tr:last-child td{border-bottom:none}
         </div>
         <!-- 二级 Tab — 版本 -->
         <div class="proj-secondary-tabs" id="proj-secondary-version" style="display:none" data-od-id="path-3-1-1-17-4">
-          <div class="proj-secondary-tab active" onclick="switchProjectTab('versionInfo',this)" data-od-id="path-3-1-1-17-4-0">版本信息</div>
-          <div class="proj-secondary-tab" onclick="switchProjectTab('versionReqs',this)" data-od-id="path-3-1-1-17-4-1">版本需求池</div>
-          <div class="proj-secondary-tab" onclick="switchProjectTab('issues',this)" data-od-id="path-3-1-1-17-4-2">版本问题池</div>
-          <div class="proj-secondary-tab" onclick="switchProjectTab('bugs',this)" data-od-id="path-3-1-1-17-4-3">版本Bug</div>
-          <div class="proj-secondary-tab" onclick="switchProjectTab('schedule',this)" data-od-id="path-3-1-1-17-4-4">排期页</div>
-          <div class="proj-secondary-tab" onclick="switchProjectTab('tasks',this)" data-od-id="path-3-1-1-17-4-5">任务页</div>
+          <div class="proj-secondary-tab active" onclick="switchProjectTab('versionReqs',this)" data-od-id="path-3-1-1-17-4-0">版本需求池</div>
+          <div class="proj-secondary-tab" onclick="switchProjectTab('bugs',this)" data-od-id="path-3-1-1-17-4-1">版本Bug</div>
+          <div class="proj-secondary-tab" onclick="switchProjectTab('schedule',this)" data-od-id="path-3-1-1-17-4-2">排期页</div>
+          <div class="proj-secondary-tab" onclick="switchProjectTab('tasks',this)" data-od-id="path-3-1-1-17-4-3">任务页</div>
         </div>
 
         <!-- 首页 -->
@@ -1978,141 +1978,20 @@ table.data tr:last-child td{border-bottom:none}
           </div>
         </div>
 
-        <!-- 版本信息 -->
-        <div class="proj-detail-pane" id="proj-pane-versionInfo" style="display:none" data-od-id="path-3-1-1-17-8">
-          <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
-            <!-- 版本基本信息 -->
-            <div class="card" style="grid-column:1/-1">
-              <div class="card-header">
-                <div class="card-title">版本基本信息</div>
-                <span class="badge badge-accent">验收中</span>
-              </div>
-              <div class="info-grid" style="padding:16px;grid-template-columns:repeat(4,1fr)">
-                <div class="info-item"><div class="info-label">版本号</div><div class="info-value" style="font-family:var(--font-mono);font-weight:700">V4.30.0</div></div>
-                <div class="info-item"><div class="info-label">创建时间</div><div class="info-value">2026-05-06</div></div>
-                <div class="info-item"><div class="info-label">创建人</div><div class="info-value">王建国</div></div>
-                <div class="info-item"><div class="info-label">计划发版</div><div class="info-value">2026-06-20</div></div>
-                <div class="info-item"><div class="info-label">当前阶段</div><div class="info-value"><span class="stage-badge stage-acceptance">验收阶段</span></div></div>
-                <div class="info-item"><div class="info-label">关联验收单</div><div class="info-value" style="color:var(--primary);cursor:pointer">IC-20260613-0007</div></div>
-                <div class="info-item" style="grid-column:span 2"><div class="info-label">版本描述</div><div class="info-value">电商中台 V4.30.0 版本，主要包含购物车优化、支付流程重构及会员积分体系升级，目标提升下单转化率 15%。</div></div>
-              </div>
-            </div>
-            <!-- 参与人员 -->
-            <div class="card">
-              <div class="card-header"><div class="card-title">参与人员</div><button class="btn btn-sm" style="font-size:.78rem" onclick="openModal('modal-add-member')" data-od-id="path-3-1-1-17-8-0-1-0-1">+ 添加成员</button></div>
-              <div style="padding:16px;display:flex;flex-direction:column;gap:16px">
-                <!-- 产品 -->
-                <div>
-                  <div style="font-size:.78rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">产品</div>
-                  <div style="display:flex;flex-wrap:wrap;gap:8px">
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#2563EB">李</div>
-                      <div><div style="font-size:.85rem;font-weight:500">李晓明</div><div style="font-size:.75rem;color:var(--text-muted)">产品负责人</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#7C3AED">张</div>
-                      <div><div style="font-size:.85rem;font-weight:500">张思远</div><div style="font-size:.75rem;color:var(--text-muted)">产品经理</div></div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 研发 -->
-                <div>
-                  <div style="font-size:.78rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">研发</div>
-                  <div style="display:flex;flex-wrap:wrap;gap:8px">
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#C2410C">李</div>
-                      <div><div style="font-size:.85rem;font-weight:500">李明</div><div style="font-size:.75rem;color:var(--text-muted)">研发负责人</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#D97706">王</div>
-                      <div><div style="font-size:.85rem;font-weight:500">王建国</div><div style="font-size:.75rem;color:var(--text-muted)">前端开发</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#059669">赵</div>
-                      <div><div style="font-size:.85rem;font-weight:500">赵强</div><div style="font-size:.75rem;color:var(--text-muted)">后端开发</div></div>
-                    </div>
-                  </div>
-                </div>
-                <!-- 测试 -->
-                <div>
-                  <div style="font-size:.78rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">测试</div>
-                  <div style="display:flex;flex-wrap:wrap;gap:8px">
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#9333EA">孙</div>
-                      <div><div style="font-size:.85rem;font-weight:500">孙丽</div><div style="font-size:.75rem;color:var(--text-muted)">测试负责人</div></div>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;background:var(--bg-muted);border-radius:var(--radius-sm);padding:6px 10px">
-                      <div class="member-avatar" style="background:#0891B2">周</div>
-                      <div><div style="font-size:.85rem;font-weight:500">周宇</div><div style="font-size:.75rem;color:var(--text-muted)">测试工程师</div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 数据概览 -->
-            <div class="card">
-              <div class="card-header"><div class="card-title">数据概览</div></div>
-              <div style="padding:16px;display:flex;flex-direction:column;gap:16px">
-                <!-- 需求 -->
-                <div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-                    <span style="font-size:.85rem;font-weight:600">需求</span>
-                    <span style="font-size:.78rem;color:var(--text-muted)">共 18 条</span>
-                  </div>
-                  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center">
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:#2563EB;font-family:var(--font-mono)">3</div><div style="font-size:.72rem;color:var(--text-muted)">评审</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:#C2410C;font-family:var(--font-mono)">4</div><div style="font-size:.72rem;color:var(--text-muted)">研发</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:#9333EA;font-family:var(--font-mono)">2</div><div style="font-size:.72rem;color:var(--text-muted)">测试</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:#059669;font-family:var(--font-mono)">5</div><div style="font-size:.72rem;color:var(--text-muted)">验收</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:#16A34A;font-family:var(--font-mono)">4</div><div style="font-size:.72rem;color:var(--text-muted)">已上线</div></div>
-                  </div>
-                  <div class="progress-bar" style="margin-top:8px"><div class="progress-fill" style="width:72%"></div></div>
-                  <div style="font-size:.75rem;color:var(--text-muted);text-align:right;margin-top:4px">完成率 72%</div>
-                </div>
-                <!-- 问题 -->
-                <div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-                    <span style="font-size:.85rem;font-weight:600">问题</span>
-                    <span style="font-size:.78rem;color:var(--text-muted)">共 9 条</span>
-                  </div>
-                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono)">4</div><div style="font-size:.72rem;color:var(--text-muted)">处理中</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--success);font-family:var(--font-mono)">3</div><div style="font-size:.72rem;color:var(--text-muted)">已解决</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--text-muted);font-family:var(--font-mono)">2</div><div style="font-size:.72rem;color:var(--text-muted)">已关闭</div></div>
-                  </div>
-                </div>
-                <!-- Bug -->
-                <div>
-                  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-                    <span style="font-size:.85rem;font-weight:600">Bug</span>
-                    <span style="font-size:.78rem;color:var(--text-muted)">共 14 条</span>
-                  </div>
-                  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center">
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--danger);font-family:var(--font-mono)">3</div><div style="font-size:.72rem;color:var(--text-muted)">激活</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono)">5</div><div style="font-size:.72rem;color:var(--text-muted)">修复中</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--success);font-family:var(--font-mono)">4</div><div style="font-size:.72rem;color:var(--text-muted)">已解决</div></div>
-                    <div style="background:var(--bg-muted);border-radius:var(--radius-sm);padding:10px 4px"><div style="font-size:1.1rem;font-weight:700;color:var(--text-muted);font-family:var(--font-mono)">2</div><div style="font-size:.72rem;color:var(--text-muted)">已关闭</div></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- 版本需求池 -->
-        <div class="proj-detail-pane" id="proj-pane-versionReqs" style="display:none" data-od-id="path-3-1-1-17-9">
-          <div class="toolbar" style="margin-top:16px" data-od-id="path-3-1-1-17-9-0">
+        <div class="proj-detail-pane" id="proj-pane-versionReqs" style="display:none" data-od-id="path-3-1-1-17-8">
+          <div class="toolbar" style="margin-top:16px" data-od-id="path-3-1-1-17-8-0">
             <div class="toolbar-left"><input class="search-input" type="text" placeholder="搜索需求标题 / ID"></div>
             <div class="toolbar-right">
-              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-accept-create')" data-od-id="path-3-1-1-17-9-0-1-0">创建验收单</button>
-              <button class="btn btn-secondary btn-sm" onclick="confirmBatchRemoveVersionReq()" data-od-id="path-3-1-1-17-9-0-1-1">批量移除</button>
-              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-batch-assign-user')" data-od-id="path-3-1-1-17-9-0-1-2">批量指派</button>
-              <button class="btn btn-secondary btn-sm" data-od-id="path-3-1-1-17-9-0-1-3">导出</button>
-              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-feishu-meeting')" style="border-color:var(--primary);color:var(--primary)" data-od-id="path-3-1-1-17-9-0-1-4">发起评审</button>
-              <button class="btn btn-primary btn-sm" onclick="openModal('modal-req-create')" data-od-id="path-3-1-1-17-9-0-1-5">新建需求</button>
+              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-accept-create')" data-od-id="path-3-1-1-17-8-0-1-0">创建验收单</button>
+              <button class="btn btn-secondary btn-sm" onclick="confirmBatchRemoveVersionReq()" data-od-id="path-3-1-1-17-8-0-1-1">批量移除</button>
+              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-batch-assign-user')" data-od-id="path-3-1-1-17-8-0-1-2">批量指派</button>
+              <button class="btn btn-secondary btn-sm" data-od-id="path-3-1-1-17-8-0-1-3">导出</button>
+              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-feishu-meeting')" style="border-color:var(--primary);color:var(--primary)" data-od-id="path-3-1-1-17-8-0-1-4">发起评审</button>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modal-req-create')" data-od-id="path-3-1-1-17-8-0-1-5">新建需求</button>
             </div>
           </div>
-          <div class="pool-layout" style="margin-top:12px" data-od-id="path-3-1-1-17-9-1">
+          <div class="pool-layout" style="margin-top:12px" data-od-id="path-3-1-1-17-8-1">
             <div class="module-sidebar">
               <div class="module-sidebar-title">功能模块</div>
               <div class="module-item active" onclick="selectModule(this)">全部 <span class="module-count">15</span></div>
@@ -2125,111 +2004,76 @@ table.data tr:last-child td{border-bottom:none}
               <table class="data">
                 <thead><tr><th><input type="checkbox"></th><th>需求ID</th><th>复制</th><th>需求标题</th><th>模块</th><th>优先级</th><th>阶段</th><th>创建人</th><th>指派给</th><th>创建日期</th><th>操作</th></tr></thead>
                 <tbody>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-9-1-1-0-1-0-2-0">复制</button></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')">首页改版</td><td>用户中心</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-review">评审</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-15</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('首页改版')" data-od-id="path-3-1-1-17-9-1-1-0-1-0-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-9-1-1-0-1-0-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-9-1-1-0-1-0-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260615-0010','首页改版')" data-od-id="path-3-1-1-17-9-1-1-0-1-0-10-0-3">问题</a><a class="action-link action-link-primary" onclick="advanceStage('DE-C-20260615-0010','启研','研发')" data-od-id="path-3-1-1-17-9-1-1-0-1-0-10-0-4">启研</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0013</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-9-1-1-0-1-1-2-0">复制</button></td><td>优惠券叠加规则</td><td>营销模块</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-dev">研发</span></td><td>李娜</td><td>赵强</td><td class="mono">2026-06-13</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('优惠券叠加规则')" data-od-id="path-3-1-1-17-9-1-1-0-1-1-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-9-1-1-0-1-1-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-9-1-1-0-1-1-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260615-0013','优惠券叠加规则')" data-od-id="path-3-1-1-17-9-1-1-0-1-1-10-0-3">问题</a><a class="action-link action-link-primary" onclick="advanceStage('DE-C-20260615-0013','提测','测试')" data-od-id="path-3-1-1-17-9-1-1-0-1-1-10-0-4">提测</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260612-0008</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-9-1-1-0-1-2-2-0">复制</button></td><td>订单拆分逻辑优化</td><td>交易模块</td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-test">测试</span></td><td>张伟</td><td>孙丽</td><td class="mono">2026-06-12</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('订单拆分逻辑优化')" data-od-id="path-3-1-1-17-9-1-1-0-1-2-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-9-1-1-0-1-2-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-9-1-1-0-1-2-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260612-0008','订单拆分逻辑优化')" data-od-id="path-3-1-1-17-9-1-1-0-1-2-10-0-3">问题</a><a class="action-link action-link-warn" onclick="advanceStage('DE-C-20260612-0008','驳回','评审')" data-od-id="path-3-1-1-17-9-1-1-0-1-2-10-0-4">驳回</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260608-0005</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-9-1-1-0-1-3-2-0">复制</button></td><td>商品搜索筛选重构</td><td>交易模块</td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-accept">验收</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-08</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('商品搜索筛选重构')" data-od-id="path-3-1-1-17-9-1-1-0-1-3-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-9-1-1-0-1-3-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-9-1-1-0-1-3-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260608-0005','商品搜索筛选重构')" data-od-id="path-3-1-1-17-9-1-1-0-1-3-10-0-3">问题</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260601-0002</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-9-1-1-0-1-4-2-0">复制</button></td><td>会员等级体系上线</td><td>用户中心</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-live">已上线</span></td><td>李娜</td><td>周宇</td><td class="mono">2026-06-01</td><td><div class="actions-cell"><span style="color:var(--text-4);font-size:12px">—</span></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-8-1-1-0-1-0-2-0">复制</button></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')">首页改版</td><td>用户中心</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-review">评审</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-15</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('首页改版')" data-od-id="path-3-1-1-17-8-1-1-0-1-0-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-8-1-1-0-1-0-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-8-1-1-0-1-0-10-0-2">复制</a><a class="action-link action-link-primary" onclick="advanceStage('DE-C-20260615-0010','启研','研发')" data-od-id="path-3-1-1-17-8-1-1-0-1-0-10-0-3">启研</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0013</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-8-1-1-0-1-1-2-0">复制</button></td><td>优惠券叠加规则</td><td>营销模块</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-dev">研发</span></td><td>李娜</td><td>赵强</td><td class="mono">2026-06-13</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('优惠券叠加规则')" data-od-id="path-3-1-1-17-8-1-1-0-1-1-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-8-1-1-0-1-1-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-8-1-1-0-1-1-10-0-2">复制</a><a class="action-link action-link-primary" onclick="advanceStage('DE-C-20260615-0013','提测','测试')" data-od-id="path-3-1-1-17-8-1-1-0-1-1-10-0-3">提测</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260612-0008</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-8-1-1-0-1-2-2-0">复制</button></td><td>订单拆分逻辑优化</td><td>交易模块</td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-test">测试</span></td><td>张伟</td><td>孙丽</td><td class="mono">2026-06-12</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('订单拆分逻辑优化')" data-od-id="path-3-1-1-17-8-1-1-0-1-2-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-8-1-1-0-1-2-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-8-1-1-0-1-2-10-0-2">复制</a><a class="action-link action-link-warn" onclick="advanceStage('DE-C-20260612-0008','驳回','评审')" data-od-id="path-3-1-1-17-8-1-1-0-1-2-10-0-3">驳回</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260608-0005</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-8-1-1-0-1-3-2-0">复制</button></td><td>商品搜索筛选重构</td><td>交易模块</td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-accept">验收</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-08</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('商品搜索筛选重构')" data-od-id="path-3-1-1-17-8-1-1-0-1-3-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-8-1-1-0-1-3-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-8-1-1-0-1-3-10-0-2">复制</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260601-0002</td><td><button class="btn btn-ghost" onclick="showToast('success','已复制需求ID')" data-od-id="path-3-1-1-17-8-1-1-0-1-4-2-0">复制</button></td><td>会员等级体系上线</td><td>用户中心</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-live">已上线</span></td><td>李娜</td><td>周宇</td><td class="mono">2026-06-01</td><td><div class="actions-cell"><span style="color:var(--text-4);font-size:12px">—</span></div></td></tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
 
-        <!-- 版本问题池 -->
-        <div class="proj-detail-pane" id="proj-pane-issues" style="display:none" data-od-id="path-3-1-1-17-10">
-          <div class="toolbar" style="margin-top:16px" data-od-id="path-3-1-1-17-10-0">
-            <div class="toolbar-left">
-              <input class="search-input" type="text" placeholder="搜索问题标题 / ID">
-              <select class="filter-select"><option>全部系统</option><option>电商中台</option><option>供应链系统</option></select>
-              <select class="filter-select"><option>全部级别</option><option>紧急</option><option>高</option><option>中</option><option>低</option></select>
-            </div>
-            <div class="toolbar-right">
-              <button class="btn btn-secondary" data-od-id="path-3-1-1-17-10-0-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>导出</button>
-              <button class="btn btn-secondary" data-od-id="path-3-1-1-17-10-0-1-1">批量处理</button>
-              <button class="btn btn-primary" onclick="openModal('modal-version-issue-create')" data-od-id="path-3-1-1-17-10-0-1-2"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建问题</button>
-            </div>
-          </div>
-          <div class="tabs" data-od-id="path-3-1-1-17-10-1">
-            <div class="tab active">全部 <span style="font-family:var(--font-mono);opacity:.7">12</span></div>
-            <div class="tab">待处理 <span style="font-family:var(--font-mono);opacity:.7">3</span></div>
-            <div class="tab">处理中 <span style="font-family:var(--font-mono);opacity:.7">5</span></div>
-            <div class="tab">已解决 <span style="font-family:var(--font-mono);opacity:.7">4</span></div>
-          </div>
-          <div class="table-wrap" data-od-id="path-3-1-1-17-10-2">
-            <table class="data" id="version-issues-table" data-od-id="path-3-1-1-17-10-2-0">
-              <thead><tr><th>问题ID</th><th>所属项目-系统</th><th>关联需求</th><th>问题标题</th><th>级别</th><th>状态</th><th>反馈日期</th><th>反馈人</th><th>跟进人</th><th>操作</th></tr></thead>
-              <tbody>
-                <tr><td class="mono">PR-V-20260615-0001 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td><span class="badge badge-gray">油葱商城</span><span class="badge badge-accent" style="margin-left:4px">V4.30.0</span></td><td class="mono" style="color:var(--primary)">DE-C-20260615-0010</td><td class="bold" style="cursor:pointer" onclick="showIssueDetail('PR-V-20260615-0001')">首页推荐位加载白屏</td><td><span class="badge badge-danger">紧急</span></td><td><span class="badge badge-warn">待处理</span></td><td class="mono">2026-06-15</td><td>张芳</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="showToast('success','已认领，状态变为处理中')" data-od-id="path-3-1-1-17-10-2-0-1-0-9-0-0">认领</a><a class="action-link" onclick="openAssignModal('指派问题')" data-od-id="path-3-1-1-17-10-2-0-1-0-9-0-1">指派</a><a class="action-link" onclick="openModal('modal-issue-handle')" data-od-id="path-3-1-1-17-10-2-0-1-0-9-0-2">处理</a></div></td></tr>
-                <tr><td class="mono">PR-V-20260614-0003 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td><span class="badge badge-gray">油葱商城</span><span class="badge badge-accent" style="margin-left:4px">V4.30.0</span></td><td class="mono" style="color:var(--primary)">DE-C-20260615-0013</td><td class="bold" style="cursor:pointer" onclick="showIssueDetail('PR-V-20260614-0003')">优惠券叠加后金额不符</td><td><span class="badge badge-primary">高</span></td><td><span class="badge badge-info">处理中</span></td><td class="mono">2026-06-14</td><td>李明</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派问题')" data-od-id="path-3-1-1-17-10-2-0-1-1-9-0-0">指派</a><a class="action-link" onclick="openModal('modal-issue-handle')" data-od-id="path-3-1-1-17-10-2-0-1-1-9-0-1">处理</a></div></td></tr>
-                <tr><td class="mono">PR-V-20260613-0008 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td><span class="badge badge-gray">油葱商城</span><span class="badge badge-accent" style="margin-left:4px">V4.30.0</span></td><td class="mono" style="color:var(--primary)">DE-C-20260612-0008</td><td class="bold" style="cursor:pointer" onclick="showIssueDetail('PR-V-20260613-0008')">订单拆分后运费计算缺失</td><td><span class="badge badge-danger">紧急</span></td><td><span class="badge badge-info">处理中</span></td><td class="mono">2026-06-13</td><td>黄燕</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派问题')" data-od-id="path-3-1-1-17-10-2-0-1-2-9-0-0">指派</a><a class="action-link" onclick="openModal('modal-issue-handle')" data-od-id="path-3-1-1-17-10-2-0-1-2-9-0-1">处理</a></div></td></tr>
-                <tr><td class="mono">PR-V-20260612-0002 <span class="action-link">📋</span></td><td><span class="badge badge-gray">油葱商城</span><span class="badge badge-accent" style="margin-left:4px">V4.30.0</span></td><td class="mono" style="color:var(--primary)">DE-C-20260608-0005</td><td class="bold">搜索筛选条件缓存未清空</td><td><span class="badge badge-primary">高</span></td><td><span class="badge badge-success">已解决</span></td><td class="mono">2026-06-12</td><td>陈磊</td><td>李明</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-10-2-0-1-3-9-0-0">详情</a></div></td></tr>
-                <tr><td class="mono">PR-V-20260610-0005 <span class="action-link">📋</span></td><td><span class="badge badge-gray">油葱商城</span><span class="badge badge-accent" style="margin-left:4px">V4.30.0</span></td><td class="mono" style="color:var(--primary)">DE-C-20260601-0002</td><td class="bold">会员等级权益未生效</td><td><span class="badge badge-warn">中</span></td><td><span class="badge badge-warn">待处理</span></td><td class="mono">2026-06-10</td><td>王华</td><td>—</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-10-2-0-1-4-9-0-0">认领</a><a class="action-link" data-od-id="path-3-1-1-17-10-2-0-1-4-9-0-1">指派</a><a class="action-link" onclick="openModal('modal-issue-handle')" data-od-id="path-3-1-1-17-10-2-0-1-4-9-0-2">处理</a></div></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="pagination" data-od-id="path-3-1-1-17-10-3"><span class="pagination-info">共 12 条 · 每页 10 条</span><div class="pagination-pages"><span class="page-btn">‹</span><span class="page-btn active">1</span><span class="page-btn">2</span><span class="page-btn">›</span></div></div>
-        </div>
-
         <!-- 版本Bug -->
-        <div class="proj-detail-pane" id="proj-pane-bugs" style="display:none" data-od-id="path-3-1-1-17-11">
-          <div class="toolbar" style="margin-top:16px" data-od-id="path-3-1-1-17-11-0">
+        <div class="proj-detail-pane" id="proj-pane-bugs" style="display:none" data-od-id="path-3-1-1-17-9">
+          <div class="toolbar" style="margin-top:16px" data-od-id="path-3-1-1-17-9-0">
             <div class="toolbar-left"><input class="search-input" type="text" placeholder="搜索BUG"><select class="filter-select"><option>全部状态</option><option>激活</option><option>已解决</option><option>已关闭</option></select></div>
-            <div class="toolbar-right"><button class="btn btn-primary btn-sm" onclick="openModal('modal-bug-create')" data-od-id="path-3-1-1-17-11-0-1-0">新建BUG</button></div>
+            <div class="toolbar-right"><button class="btn btn-primary btn-sm" onclick="openModal('modal-bug-create')" data-od-id="path-3-1-1-17-9-0-1-0">新建BUG</button></div>
           </div>
-          <div class="table-wrap" data-od-id="path-3-1-1-17-11-1">
+          <div class="table-wrap" data-od-id="path-3-1-1-17-9-1">
             <table class="data">
               <thead><tr><th>BUG ID</th><th>标题</th><th>严重级别</th><th>状态</th><th>影响版本</th><th>指派给</th><th>操作</th></tr></thead>
               <tbody>
-                <tr><td class="mono">BUG-20260615-0001</td><td style="cursor:pointer" onclick="showBugDetail('BUG-20260615-0001')">订单金额计算错误</td><td><span class="badge badge-danger">致命</span></td><td><span class="badge badge-danger">激活</span></td><td class="mono">V4.30.0</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-bug-solve')" data-od-id="path-3-1-1-17-11-1-0-1-0-6-0-0">解决</a><a class="action-link" onclick="confirmCloseBug('BUG-20260615-0001')" data-od-id="path-3-1-1-17-11-1-0-1-0-6-0-1">关闭</a><a class="action-link" data-od-id="path-3-1-1-17-11-1-0-1-0-6-0-2">复制</a></div></td></tr>
-                <tr><td class="mono">BUG-20260613-0002</td><td>分享页面标题显示不全</td><td><span class="badge badge-gray">一般</span></td><td><span class="badge badge-danger">激活</span></td><td class="mono">V4.30.0</td><td>周宇</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-bug-solve')" data-od-id="path-3-1-1-17-11-1-0-1-1-6-0-0">解决</a><a class="action-link" onclick="confirmCloseBug('BUG-20260613-0002')" data-od-id="path-3-1-1-17-11-1-0-1-1-6-0-1">关闭</a><a class="action-link" data-od-id="path-3-1-1-17-11-1-0-1-1-6-0-2">复制</a></div></td></tr>
-                <tr><td class="mono">BUG-20260610-0008</td><td>支付回调超时</td><td><span class="badge badge-danger">严重</span></td><td><span class="badge badge-info">已解决</span></td><td class="mono">V4.29.5</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" onclick="confirmActivateBug('BUG-20260610-0008')" data-od-id="path-3-1-1-17-11-1-0-1-2-6-0-0">激活</a><a class="action-link" data-od-id="path-3-1-1-17-11-1-0-1-2-6-0-1">复制</a></div></td></tr>
+                <tr><td class="mono">BUG-20260615-0001</td><td style="cursor:pointer" onclick="showBugDetail('BUG-20260615-0001')">订单金额计算错误</td><td><span class="badge badge-danger">致命</span></td><td><span class="badge badge-danger">激活</span></td><td class="mono">V4.30.0</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-bug-solve')" data-od-id="path-3-1-1-17-9-1-0-1-0-6-0-0">解决</a><a class="action-link" onclick="confirmCloseBug('BUG-20260615-0001')" data-od-id="path-3-1-1-17-9-1-0-1-0-6-0-1">关闭</a><a class="action-link" data-od-id="path-3-1-1-17-9-1-0-1-0-6-0-2">复制</a></div></td></tr>
+                <tr><td class="mono">BUG-20260613-0002</td><td>分享页面标题显示不全</td><td><span class="badge badge-gray">一般</span></td><td><span class="badge badge-danger">激活</span></td><td class="mono">V4.30.0</td><td>周宇</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-bug-solve')" data-od-id="path-3-1-1-17-9-1-0-1-1-6-0-0">解决</a><a class="action-link" onclick="confirmCloseBug('BUG-20260613-0002')" data-od-id="path-3-1-1-17-9-1-0-1-1-6-0-1">关闭</a><a class="action-link" data-od-id="path-3-1-1-17-9-1-0-1-1-6-0-2">复制</a></div></td></tr>
+                <tr><td class="mono">BUG-20260610-0008</td><td>支付回调超时</td><td><span class="badge badge-danger">严重</span></td><td><span class="badge badge-info">已解决</span></td><td class="mono">V4.29.5</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" onclick="confirmActivateBug('BUG-20260610-0008')" data-od-id="path-3-1-1-17-9-1-0-1-2-6-0-0">激活</a><a class="action-link" data-od-id="path-3-1-1-17-9-1-0-1-2-6-0-1">复制</a></div></td></tr>
               </tbody>
             </table>
           </div>
         </div>
 
         <!-- 排期页 -->
-        <div class="proj-detail-pane" id="proj-pane-schedule" style="display:none" data-od-id="path-3-1-1-17-12">
-          <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-12-0">
+        <div class="proj-detail-pane" id="proj-pane-schedule" style="display:none" data-od-id="path-3-1-1-17-10">
+          <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-10-0">
             <div class="card-header">
               <div class="card-title">阶段排期配置</div>
               <div style="display:flex;align-items:center;gap:12px">
                 <span style="font-size:.8rem;color:var(--text-secondary)">版本 V4.30.0 · 计划发版 2026-06-30</span>
-                <button class="btn btn-primary btn-sm" onclick="saveSchedule()" data-od-id="path-3-1-1-17-12-0-0-1-1">保存排期</button>
+                <button class="btn btn-primary btn-sm" onclick="saveSchedule()" data-od-id="path-3-1-1-17-10-0-0-1-1">保存排期</button>
               </div>
             </div>
             <div style="padding:16px">
               <div class="sched-config-list">
                 <div class="sched-config-row">
                   <span class="stage-badge stage-review">评审阶段</span>
-                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-review" value="2026-06-01" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-0-1-1"></div>
-                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-review" value="2026-06-05" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-0-2-1"></div>
-                  <div class="sched-dur" id="sched-dur-review" data-od-id="path-3-1-1-17-12-0-1-0-0-3">5 天</div>
+                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-review" value="2026-06-01" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-0-1-1"></div>
+                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-review" value="2026-06-05" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-0-2-1"></div>
+                  <div class="sched-dur" id="sched-dur-review" data-od-id="path-3-1-1-17-10-0-1-0-0-3">5 天</div>
                 </div>
                 <div class="sched-config-row">
                   <span class="stage-badge stage-dev">研发阶段</span>
-                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-dev" value="2026-06-04" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-1-1-1"></div>
-                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-dev" value="2026-06-18" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-1-2-1"></div>
-                  <div class="sched-dur" id="sched-dur-dev" data-od-id="path-3-1-1-17-12-0-1-0-1-3">15 天</div>
+                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-dev" value="2026-06-04" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-1-1-1"></div>
+                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-dev" value="2026-06-18" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-1-2-1"></div>
+                  <div class="sched-dur" id="sched-dur-dev" data-od-id="path-3-1-1-17-10-0-1-0-1-3">15 天</div>
                 </div>
                 <div class="sched-config-row">
                   <span class="stage-badge stage-test">测试阶段</span>
-                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-test" value="2026-06-15" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-2-1-1"></div>
-                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-test" value="2026-06-24" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-2-2-1"></div>
-                  <div class="sched-dur" id="sched-dur-test" data-od-id="path-3-1-1-17-12-0-1-0-2-3">10 天</div>
+                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-test" value="2026-06-15" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-2-1-1"></div>
+                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-test" value="2026-06-24" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-2-2-1"></div>
+                  <div class="sched-dur" id="sched-dur-test" data-od-id="path-3-1-1-17-10-0-1-0-2-3">10 天</div>
                 </div>
                 <div class="sched-config-row">
                   <span class="stage-badge stage-accept">验收阶段</span>
-                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-accept" value="2026-06-22" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-3-1-1"></div>
-                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-accept" value="2026-06-27" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-3-2-1"></div>
-                  <div class="sched-dur" id="sched-dur-accept" data-od-id="path-3-1-1-17-12-0-1-0-3-3">6 天</div>
+                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-accept" value="2026-06-22" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-3-1-1"></div>
+                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-accept" value="2026-06-27" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-3-2-1"></div>
+                  <div class="sched-dur" id="sched-dur-accept" data-od-id="path-3-1-1-17-10-0-1-0-3-3">6 天</div>
                 </div>
                 <div class="sched-config-row">
                   <span class="stage-badge stage-live">上线阶段</span>
-                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-live" value="2026-06-27" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-4-1-1"></div>
-                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-live" value="2026-06-30" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-12-0-1-0-4-2-1"></div>
-                  <div class="sched-dur" id="sched-dur-live" data-od-id="path-3-1-1-17-12-0-1-0-4-3">4 天</div>
+                  <div class="sched-field"><label>开始</label><input type="date" id="sched-start-live" value="2026-06-27" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-4-1-1"></div>
+                  <div class="sched-field"><label>结束</label><input type="date" id="sched-end-live" value="2026-06-30" onchange="onSchedDateChange()" data-od-id="path-3-1-1-17-10-0-1-0-4-2-1"></div>
+                  <div class="sched-dur" id="sched-dur-live" data-od-id="path-3-1-1-17-10-0-1-0-4-3">4 天</div>
                 </div>
               </div>
               <div class="sched-note">
@@ -2239,7 +2083,7 @@ table.data tr:last-child td{border-bottom:none}
             </div>
           </div>
 
-          <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-12-1">
+          <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-10-1">
             <div class="card-header">
               <div class="card-title">排期日历视图</div>
               <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
@@ -2256,27 +2100,27 @@ table.data tr:last-child td{border-bottom:none}
                 <div class="sched-gantt">
                   <div class="sched-gantt-header">
                     <div class="sched-stage-col">2026 年 6 月</div>
-                    <div class="sched-date-track" id="sched-date-track" data-od-id="path-3-1-1-17-12-1-1-0-0-0-1"></div>
+                    <div class="sched-date-track" id="sched-date-track" data-od-id="path-3-1-1-17-10-1-1-0-0-0-1"></div>
                   </div>
                   <div class="sched-gantt-row">
                     <div class="sched-stage-col"><span class="stage-badge stage-review">评审</span></div>
-                    <div class="sched-track"><div class="sched-bar" id="sched-bar-review" style="left:0%;width:16.67%;background:#2563EB" data-od-id="path-3-1-1-17-12-1-1-0-0-1-1-0">评审 06-01~06-05</div></div>
+                    <div class="sched-track"><div class="sched-bar" id="sched-bar-review" style="left:0%;width:16.67%;background:#2563EB" data-od-id="path-3-1-1-17-10-1-1-0-0-1-1-0">评审 06-01~06-05</div></div>
                   </div>
                   <div class="sched-gantt-row">
                     <div class="sched-stage-col"><span class="stage-badge stage-dev">研发</span></div>
-                    <div class="sched-track"><div class="sched-bar" id="sched-bar-dev" style="left:10%;width:50%;background:#C2410C" data-od-id="path-3-1-1-17-12-1-1-0-0-2-1-0">研发 06-04~06-18</div></div>
+                    <div class="sched-track"><div class="sched-bar" id="sched-bar-dev" style="left:10%;width:50%;background:#C2410C" data-od-id="path-3-1-1-17-10-1-1-0-0-2-1-0">研发 06-04~06-18</div></div>
                   </div>
                   <div class="sched-gantt-row">
                     <div class="sched-stage-col"><span class="stage-badge stage-test">测试</span></div>
-                    <div class="sched-track"><div class="sched-bar" id="sched-bar-test" style="left:46.67%;width:33.33%;background:#9333EA" data-od-id="path-3-1-1-17-12-1-1-0-0-3-1-0">测试 06-15~06-24</div></div>
+                    <div class="sched-track"><div class="sched-bar" id="sched-bar-test" style="left:46.67%;width:33.33%;background:#9333EA" data-od-id="path-3-1-1-17-10-1-1-0-0-3-1-0">测试 06-15~06-24</div></div>
                   </div>
                   <div class="sched-gantt-row">
                     <div class="sched-stage-col"><span class="stage-badge stage-accept">验收</span></div>
-                    <div class="sched-track"><div class="sched-bar" id="sched-bar-accept" style="left:70%;width:20%;background:#059669" data-od-id="path-3-1-1-17-12-1-1-0-0-4-1-0">验收 06-22~06-27</div></div>
+                    <div class="sched-track"><div class="sched-bar" id="sched-bar-accept" style="left:70%;width:20%;background:#059669" data-od-id="path-3-1-1-17-10-1-1-0-0-4-1-0">验收 06-22~06-27</div></div>
                   </div>
                   <div class="sched-gantt-row">
                     <div class="sched-stage-col"><span class="stage-badge stage-live">上线</span></div>
-                    <div class="sched-track"><div class="sched-bar" id="sched-bar-live" style="left:86.67%;width:13.33%;background:#16A34A" data-od-id="path-3-1-1-17-12-1-1-0-0-5-1-0">上线 06-27~06-30</div></div>
+                    <div class="sched-track"><div class="sched-bar" id="sched-bar-live" style="left:86.67%;width:13.33%;background:#16A34A" data-od-id="path-3-1-1-17-10-1-1-0-0-5-1-0">上线 06-27~06-30</div></div>
                   </div>
                 </div>
               </div>
@@ -2286,8 +2130,8 @@ table.data tr:last-child td{border-bottom:none}
         </div>
 
         <!-- 任务页 -->
-        <div class="proj-detail-pane" id="proj-pane-tasks" style="display:none" data-od-id="path-3-1-1-17-13">
-          <div class="task-overview-grid" style="margin-top:16px" data-od-id="path-3-1-1-17-13-0">
+        <div class="proj-detail-pane" id="proj-pane-tasks" style="display:none" data-od-id="path-3-1-1-17-11">
+          <div class="task-overview-grid" style="margin-top:16px" data-od-id="path-3-1-1-17-11-0">
             <div class="task-stat-card">
               <div class="ts-bar" style="background:linear-gradient(90deg,var(--primary),var(--primary-light))"></div>
               <div class="ts-num">6</div><div class="ts-lbl">总任务数</div>
@@ -2306,7 +2150,7 @@ table.data tr:last-child td{border-bottom:none}
             </div>
           </div>
 
-          <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-13-1">
+          <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-11-1">
             <div class="card-header">
               <div class="card-title">参与人任务进度</div>
               <div style="display:flex;gap:8px">
@@ -2438,34 +2282,34 @@ table.data tr:last-child td{border-bottom:none}
         </div>
 
         <!-- 项目配置 -->
-        <div class="proj-detail-pane" id="proj-pane-config" style="display:none" data-od-id="path-3-1-1-17-14">
-          <div class="config-tabs" style="margin-top:16px" data-od-id="path-3-1-1-17-14-0">
+        <div class="proj-detail-pane" id="proj-pane-config" style="display:none" data-od-id="path-3-1-1-17-12">
+          <div class="config-tabs" style="margin-top:16px" data-od-id="path-3-1-1-17-12-0">
             <div class="config-tab active" onclick="switchConfigTab('team',this)">团队人员</div>
             <div class="config-tab" onclick="switchConfigTab('dynamics',this)">动态</div>
             <div class="config-tab" onclick="switchConfigTab('docs',this)">文档</div>
             <div class="config-tab" onclick="switchConfigTab('close',this)">关闭项目申请</div>
           </div>
 
-          <div class="config-pane active" id="config-pane-team" data-od-id="path-3-1-1-17-14-1">
-            <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn btn-primary btn-sm" onclick="openModal('modal-team-add')" data-od-id="path-3-1-1-17-14-1-0-0">新增成员</button></div>
-            <div class="member-list" data-od-id="path-3-1-1-17-14-1-1">
+          <div class="config-pane active" id="config-pane-team" data-od-id="path-3-1-1-17-12-1">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn btn-primary btn-sm" onclick="openModal('modal-team-add')" data-od-id="path-3-1-1-17-12-1-0-0">新增成员</button></div>
+            <div class="member-list" data-od-id="path-3-1-1-17-12-1-1">
               <div class="member-item">
                 <div class="member-info"><div class="member-avatar">王</div><div><div class="member-name">王建国</div><div class="member-role">项目负责人</div></div></div>
-                <button class="btn btn-ghost" style="color:var(--danger)" onclick="confirmRemoveMember('王建国')" data-od-id="path-3-1-1-17-14-1-1-0-1">移除</button>
+                <button class="btn btn-ghost" style="color:var(--danger)" onclick="confirmRemoveMember('王建国')" data-od-id="path-3-1-1-17-12-1-1-0-1">移除</button>
               </div>
               <div class="member-item">
                 <div class="member-info"><div class="member-avatar" style="background:var(--accent)">李</div><div><div class="member-name">李明</div><div class="member-role">研发负责人</div></div></div>
-                <button class="btn btn-ghost" style="color:var(--danger)" onclick="confirmRemoveMember('李明')" data-od-id="path-3-1-1-17-14-1-1-1-1">移除</button>
+                <button class="btn btn-ghost" style="color:var(--danger)" onclick="confirmRemoveMember('李明')" data-od-id="path-3-1-1-17-12-1-1-1-1">移除</button>
               </div>
               <div class="member-item">
                 <div class="member-info"><div class="member-avatar" style="background:var(--warning)">孙</div><div><div class="member-name">孙丽</div><div class="member-role">测试负责人</div></div></div>
-                <button class="btn btn-ghost" style="color:var(--danger)" onclick="confirmRemoveMember('孙丽')" data-od-id="path-3-1-1-17-14-1-1-2-1">移除</button>
+                <button class="btn btn-ghost" style="color:var(--danger)" onclick="confirmRemoveMember('孙丽')" data-od-id="path-3-1-1-17-12-1-1-2-1">移除</button>
               </div>
             </div>
           </div>
 
-          <div class="config-pane" id="config-pane-dynamics" data-od-id="path-3-1-1-17-14-2">
-            <div class="dynamic-list" data-od-id="path-3-1-1-17-14-2-0">
+          <div class="config-pane" id="config-pane-dynamics" data-od-id="path-3-1-1-17-12-2">
+            <div class="dynamic-list" data-od-id="path-3-1-1-17-12-2-0">
               <div class="dynamic-item"><div class="dynamic-time">2026-06-15 14:32</div><div class="dynamic-content"><strong>王建国</strong> 将需求 <strong>DE-C-20260615-0010</strong> 从业务需求池转化到项目需求池，状态变为调研中。</div></div>
               <div class="dynamic-item"><div class="dynamic-time">2026-06-14 09:18</div><div class="dynamic-content"><strong>李明</strong> 创建了版本 <strong>V4.31.0</strong>，计划发版时间 2026-07-15。</div></div>
               <div class="dynamic-item"><div class="dynamic-time">2026-06-13 16:45</div><div class="dynamic-content"><strong>孙丽</strong> 解决了 BUG <strong>BUG-20260610-0008</strong> 支付回调超时，待验证。</div></div>
@@ -2473,33 +2317,33 @@ table.data tr:last-child td{border-bottom:none}
             </div>
           </div>
 
-          <div class="config-pane" id="config-pane-docs" data-od-id="path-3-1-1-17-14-3">
-            <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn btn-primary btn-sm" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-14-3-0-0">上传文档</button></div>
-            <div class="doc-list" data-od-id="path-3-1-1-17-14-3-1">
+          <div class="config-pane" id="config-pane-docs" data-od-id="path-3-1-1-17-12-3">
+            <div style="display:flex;justify-content:flex-end;margin-bottom:12px"><button class="btn btn-primary btn-sm" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-12-3-0-0">上传文档</button></div>
+            <div class="doc-list" data-od-id="path-3-1-1-17-12-3-1">
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>油葱商城V4.30需求规格说明书.pdf</div><div class="doc-meta">PRD文档 · 2.4 MB · 王建国 · 2026-06-14</div></div></div>
-                <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-14-3-1-0-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-14-3-1-0-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-14-3-1-0-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('油葱商城V4.30需求规格说明书.pdf')" data-od-id="path-3-1-1-17-14-3-1-0-1-3">删除</a></div>
+                <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-12-3-1-0-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-12-3-1-0-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-12-3-1-0-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('油葱商城V4.30需求规格说明书.pdf')" data-od-id="path-3-1-1-17-12-3-1-0-1-3">删除</a></div>
               </div>
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>油葱商城产品原型Axure.rp</div><div class="doc-meta">原型文档 · 8.1 MB · 林晓明 · 2026-06-10</div></div></div>
-                <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-14-3-1-1-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-14-3-1-1-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-14-3-1-1-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('油葱商城产品原型Axure.rp')" data-od-id="path-3-1-1-17-14-3-1-1-1-3">删除</a></div>
+                <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-12-3-1-1-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-12-3-1-1-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-12-3-1-1-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('油葱商城产品原型Axure.rp')" data-od-id="path-3-1-1-17-12-3-1-1-1-3">删除</a></div>
               </div>
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f6feb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>UAT验收操作指引.docx</div><div class="doc-meta">验收SOP · 956 KB · 黄燕 · 2026-06-08</div></div></div>
-                <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-14-3-1-2-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-14-3-1-2-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-14-3-1-2-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('UAT验收操作指引.docx')" data-od-id="path-3-1-1-17-14-3-1-2-1-3">删除</a></div>
+                <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-12-3-1-2-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-12-3-1-2-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-12-3-1-2-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('UAT验收操作指引.docx')" data-od-id="path-3-1-1-17-12-3-1-2-1-3">删除</a></div>
               </div>
             </div>
           </div>
 
-          <div class="config-pane" id="config-pane-close" data-od-id="path-3-1-1-17-14-4">
-            <div class="card" data-od-id="path-3-1-1-17-14-4-0">
+          <div class="config-pane" id="config-pane-close" data-od-id="path-3-1-1-17-12-4">
+            <div class="card" data-od-id="path-3-1-1-17-12-4-0">
               <div style="padding:14px 16px;background:var(--danger-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#991B1B;border-left:4px solid var(--danger)">
                 <strong>注意：</strong>关闭项目后，关联需求将由「已排期」变为「调研中」，需求不会被删除。此操作需中心总经理审批通过后才生效。
               </div>
-              <div class="form-group"><label>关闭原因 <span class="required">*</span></label><textarea id="close-project-reason" placeholder="请填写关闭项目的原因" data-od-id="path-3-1-1-17-14-4-0-1-1"></textarea></div>
+              <div class="form-group"><label>关闭原因 <span class="required">*</span></label><textarea id="close-project-reason" placeholder="请填写关闭项目的原因" data-od-id="path-3-1-1-17-12-4-0-1-1"></textarea></div>
               <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
-                <button class="btn btn-secondary" onclick="document.getElementById('close-project-reason').value=''" data-od-id="path-3-1-1-17-14-4-0-2-0">清空</button>
-                <button class="btn btn-danger" onclick="submitCloseProject()" data-od-id="path-3-1-1-17-14-4-0-2-1">提交关闭申请</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('close-project-reason').value=''" data-od-id="path-3-1-1-17-12-4-0-2-0">清空</button>
+                <button class="btn btn-danger" onclick="submitCloseProject()" data-od-id="path-3-1-1-17-12-4-0-2-1">提交关闭申请</button>
               </div>
             </div>
           </div>
@@ -2563,47 +2407,20 @@ table.data tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-version-issue-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-7">
-  <div class="modal wide" data-od-id="path-7-0">
-    <div class="modal-header"><h3 data-od-id="path-7-0-0-0">创建版本问题</h3><div class="modal-close" onclick="closeModal('modal-version-issue-create')">✕</div></div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label>关联需求</label>
-        <div id="version-issue-linked-req" style="padding:10px 12px;background:var(--surface-warm);border:1px solid var(--border-soft);border-radius:var(--radius-sm);font-size:.88rem;color:var(--fg)" data-od-id="path-7-0-1-0-1">
-          <span class="mono" style="color:var(--primary);font-weight:600" id="version-issue-req-id" data-od-id="path-7-0-1-0-1-0">—</span>
-          <span style="margin:0 8px">·</span>
-          <span id="version-issue-req-title" data-od-id="path-7-0-1-0-1-2">未选择需求</span>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>问题标题 <span class="required">*</span></label><input type="text" id="version-issue-title" placeholder="简述问题现象" data-od-id="path-7-0-1-1-0-1"></div>
-        <div class="form-group"><label>严重等级</label><select id="version-issue-level" data-od-id="path-7-0-1-1-1-1"><option>紧急</option><option selected="">高</option><option>中</option><option>低</option></select></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>所属项目-版本</label><select><option>油葱商城 V4.30.0</option></select></div>
-        <div class="form-group"><label>跟进人</label><select id="version-issue-owner" data-od-id="path-7-0-1-2-1-1"><option>未指派</option><option>王建国</option><option>李明</option><option>孙丽</option><option>赵强</option></select></div>
-      </div>
-      <div class="form-group"><label>问题描述</label><textarea id="version-issue-desc" placeholder="描述问题复现步骤、影响范围" data-od-id="path-7-0-1-3-1"></textarea></div>
-      <div class="form-group"><label>截图/附件</label><input type="file"></div>
-    </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-version-issue-create')" data-od-id="path-7-0-2-0">取消</button><button class="btn btn-primary" onclick="submitVersionIssueCreate()" data-od-id="path-7-0-2-1">保存</button></div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="modal-issue-handle" onclick="closeModalOnBackdrop(event)" data-od-id="path-8">
-  <div class="modal" data-od-id="path-8-0">
-    <div class="modal-header"><h3 data-od-id="path-8-0-0-0">处理问题</h3><div class="modal-close" onclick="closeModal('modal-issue-handle')">✕</div></div>
+<div class="modal-overlay" id="modal-issue-handle" onclick="closeModalOnBackdrop(event)" data-od-id="path-7">
+  <div class="modal" data-od-id="path-7-0">
+    <div class="modal-header"><h3 data-od-id="path-7-0-0-0">处理问题</h3><div class="modal-close" onclick="closeModal('modal-issue-handle')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>处理方式</label><select><option>转化需求</option><option>转BUG</option><option>正常业务</option><option>其他</option></select></div>
       <div class="form-group"><label>解决方案 / 备注</label><textarea placeholder="填写处理结论"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-issue-handle')" data-od-id="path-8-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-issue-handle');showToast('success','问题已处理')" data-od-id="path-8-0-2-1">提交</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-issue-handle')" data-od-id="path-7-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-issue-handle');showToast('success','问题已处理')" data-od-id="path-7-0-2-1">提交</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-bug-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-9">
-  <div class="modal wide" data-od-id="path-9-0">
-    <div class="modal-header"><h3 data-od-id="path-9-0-0-0">新建BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-create')">✕</div></div>
+<div class="modal-overlay" id="modal-bug-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-8">
+  <div class="modal wide" data-od-id="path-8-0">
+    <div class="modal-header"><h3 data-od-id="path-8-0-0-0">新建BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group"><label>BUG标题 <span class="required">*</span></label><input type="text" placeholder="一句话描述BUG"></div>
@@ -2619,25 +2436,25 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>复现步骤</label><textarea placeholder="详细描述复现步骤"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-create')" data-od-id="path-9-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-create');showToast('success','BUG创建成功')" data-od-id="path-9-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-create')" data-od-id="path-8-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-create');showToast('success','BUG创建成功')" data-od-id="path-8-0-2-1">保存</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-bug-solve" onclick="closeModalOnBackdrop(event)" data-od-id="path-10">
-  <div class="modal" data-od-id="path-10-0">
-    <div class="modal-header"><h3 data-od-id="path-10-0-0-0">解决BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-solve')">✕</div></div>
+<div class="modal-overlay" id="modal-bug-solve" onclick="closeModalOnBackdrop(event)" data-od-id="path-9">
+  <div class="modal" data-od-id="path-9-0">
+    <div class="modal-header"><h3 data-od-id="path-9-0-0-0">解决BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-solve')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>解决方案</label><select><option>需求设计如此</option><option>重复BUG</option><option>非BUG</option><option selected="">已解决</option><option>无法重现</option><option>不予解决</option><option>转化需求</option><option>上线验证</option></select></div>
       <div class="form-group"><label>指派给</label><select><option>测试工程师A</option></select></div>
       <div class="form-group"><label>备注</label><textarea placeholder="填写修复说明"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-solve')" data-od-id="path-10-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-solve');showToast('success','BUG已解决')" data-od-id="path-10-0-2-1">提交</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-solve')" data-od-id="path-9-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-solve');showToast('success','BUG已解决')" data-od-id="path-9-0-2-1">提交</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-accept-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-11">
-  <div class="modal wide" data-od-id="path-11-0">
-    <div class="modal-header"><h3 data-od-id="path-11-0-0-0">创建验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-create')">✕</div></div>
+<div class="modal-overlay" id="modal-accept-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-10">
+  <div class="modal wide" data-od-id="path-10-0">
+    <div class="modal-header"><h3 data-od-id="path-10-0-0-0">创建验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group"><label>验收单名称 <span class="required">*</span></label><input type="text" placeholder="请输入验收单名称"></div>
@@ -2647,40 +2464,40 @@ table.data tr:last-child td{border-bottom:none}
         <div class="form-group"><label>审批人</label><select><option>张总</option><option>李总</option></select></div>
         <div class="form-group"><label>计划验收日期</label><input type="date"></div>
       </div>
-      <div class="form-group"><label>验收需求</label><div class="table-wrap"><table class="data"><thead><tr><th>需求ID</th><th>需求标题</th><th>分端</th><th>操作</th></tr></thead><tbody><tr><td class="mono">DE-C-20260615-0010</td><td>首页改版</td><td>用户端</td><td><a class="action-link" data-od-id="path-11-0-1-2-1-0-1-0-3-0">移除</a></td></tr></tbody></table></div></div>
+      <div class="form-group"><label>验收需求</label><div class="table-wrap"><table class="data"><thead><tr><th>需求ID</th><th>需求标题</th><th>分端</th><th>操作</th></tr></thead><tbody><tr><td class="mono">DE-C-20260615-0010</td><td>首页改版</td><td>用户端</td><td><a class="action-link" data-od-id="path-10-0-1-2-1-0-1-0-3-0">移除</a></td></tr></tbody></table></div></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-create')" data-od-id="path-11-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-accept-create');showToast('success','验收单已创建')" data-od-id="path-11-0-2-1">保存草稿</button><button class="btn btn-primary" onclick="closeModal('modal-accept-create');showToast('success','验收单已提交审批')" data-od-id="path-11-0-2-2">提交审批</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-create')" data-od-id="path-10-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-accept-create');showToast('success','验收单已创建')" data-od-id="path-10-0-2-1">保存草稿</button><button class="btn btn-primary" onclick="closeModal('modal-accept-create');showToast('success','验收单已提交审批')" data-od-id="path-10-0-2-2">提交审批</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-project-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-12">
-  <div class="modal" data-od-id="path-12-0">
-    <div class="modal-header"><h3 data-od-id="path-12-0-0-0">创建项目</h3><div class="modal-close" onclick="closeModal('modal-project-create')">✕</div></div>
+<div class="modal-overlay" id="modal-project-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-11">
+  <div class="modal" data-od-id="path-11-0">
+    <div class="modal-header"><h3 data-od-id="path-11-0-0-0">创建项目</h3><div class="modal-close" onclick="closeModal('modal-project-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>项目名称 <span class="required">*</span></label><input type="text" placeholder="请输入项目名称"></div>
       <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" placeholder="如：油葱商城"></div>
       <div class="form-group"><label>项目负责人</label><select><option>王建国</option></select></div>
       <div class="form-group"><label>项目描述</label><textarea placeholder="简述项目背景与目标"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-project-create')" data-od-id="path-12-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-project-create');showToast('success','项目创建成功')" data-od-id="path-12-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-project-create')" data-od-id="path-11-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-project-create');showToast('success','项目创建成功')" data-od-id="path-11-0-2-1">保存</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-complaint-reply" onclick="closeModalOnBackdrop(event)" data-od-id="path-13">
-  <div class="modal" data-od-id="path-13-0">
-    <div class="modal-header"><h3 data-od-id="path-13-0-0-0">回复工单</h3><div class="modal-close" onclick="closeModal('modal-complaint-reply')">✕</div></div>
+<div class="modal-overlay" id="modal-complaint-reply" onclick="closeModalOnBackdrop(event)" data-od-id="path-12">
+  <div class="modal" data-od-id="path-12-0">
+    <div class="modal-header"><h3 data-od-id="path-12-0-0-0">回复工单</h3><div class="modal-close" onclick="closeModal('modal-complaint-reply')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>工单标题</label><input type="text" value="OA审批流程操作繁琐" disabled=""></div>
       <div class="form-group"><label>回复内容</label><textarea placeholder="请输入回复内容"></textarea></div>
       <div class="form-group"><label>附件</label><input type="file"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-complaint-reply')" data-od-id="path-13-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-complaint-reply');showToast('success','回复已提交')" data-od-id="path-13-0-2-1">提交回复</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-complaint-reply')" data-od-id="path-12-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-complaint-reply');showToast('success','回复已提交')" data-od-id="path-12-0-2-1">提交回复</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-notice-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-14">
-  <div class="modal wide" data-od-id="path-14-0">
-    <div class="modal-header"><h3 data-od-id="path-14-0-0-0">新建通知</h3><div class="modal-close" onclick="closeModal('modal-notice-create')">✕</div></div>
+<div class="modal-overlay" id="modal-notice-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-13">
+  <div class="modal wide" data-od-id="path-13-0">
+    <div class="modal-header"><h3 data-od-id="path-13-0-0-0">新建通知</h3><div class="modal-close" onclick="closeModal('modal-notice-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group"><label>通知标题 <span class="required">*</span></label><input type="text" placeholder="请输入通知标题"></div>
@@ -2689,13 +2506,13 @@ table.data tr:last-child td{border-bottom:none}
       <div class="form-group"><label>接收范围</label><select><option>全部中心端用户</option><option>油葱商城项目组</option><option>产品一组</option></select></div>
       <div class="form-group"><label>通知内容</label><textarea placeholder="请输入通知正文"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-notice-create')" data-od-id="path-14-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-notice-create');showToast('success','通知已保存为草稿')" data-od-id="path-14-0-2-1">保存草稿</button><button class="btn btn-primary" onclick="closeModal('modal-notice-create');showToast('success','通知已发送')" data-od-id="path-14-0-2-2">立即发送</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-notice-create')" data-od-id="path-13-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-notice-create');showToast('success','通知已保存为草稿')" data-od-id="path-13-0-2-1">保存草稿</button><button class="btn btn-primary" onclick="closeModal('modal-notice-create');showToast('success','通知已发送')" data-od-id="path-13-0-2-2">立即发送</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-account-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-15">
-  <div class="modal" data-od-id="path-15-0">
-    <div class="modal-header"><h3 data-od-id="path-15-0-0-0">新建账号</h3><div class="modal-close" onclick="closeModal('modal-account-create')">✕</div></div>
+<div class="modal-overlay" id="modal-account-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-14">
+  <div class="modal" data-od-id="path-14-0">
+    <div class="modal-header"><h3 data-od-id="path-14-0-0-0">新建账号</h3><div class="modal-close" onclick="closeModal('modal-account-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group"><label>账号 <span class="required">*</span></label><input type="text" placeholder="登录账号"></div>
@@ -2707,36 +2524,36 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>初始密码 <span class="required">*</span></label><input type="password" value="Perfect123!" placeholder="初始密码"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-account-create')" data-od-id="path-15-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-account-create');showToast('success','账号创建成功')" data-od-id="path-15-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-account-create')" data-od-id="path-14-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-account-create');showToast('success','账号创建成功')" data-od-id="path-14-0-2-1">保存</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-org-member" onclick="closeModalOnBackdrop(event)" data-od-id="path-16">
-  <div class="modal" data-od-id="path-16-0">
-    <div class="modal-header"><h3 data-od-id="path-16-0-0-0">添加成员到组织</h3><div class="modal-close" onclick="closeModal('modal-org-member')">✕</div></div>
+<div class="modal-overlay" id="modal-org-member" onclick="closeModalOnBackdrop(event)" data-od-id="path-15">
+  <div class="modal" data-od-id="path-15-0">
+    <div class="modal-header"><h3 data-od-id="path-15-0-0-0">添加成员到组织</h3><div class="modal-close" onclick="closeModal('modal-org-member')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>目标组织</label><input type="text" value="财务部" disabled=""></div>
       <div class="form-group"><label>选择成员</label><select multiple="" style="height:120px"><option>张伟</option><option>李娜</option><option>赵磊</option></select></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-org-member')" data-od-id="path-16-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-org-member');showToast('success','成员已添加')" data-od-id="path-16-0-2-1">确定</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-org-member')" data-od-id="path-15-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-org-member');showToast('success','成员已添加')" data-od-id="path-15-0-2-1">确定</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-role-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-17">
-  <div class="modal" data-od-id="path-17-0">
-    <div class="modal-header"><h3 data-od-id="path-17-0-0-0">新建角色</h3><div class="modal-close" onclick="closeModal('modal-role-create')">✕</div></div>
+<div class="modal-overlay" id="modal-role-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-16">
+  <div class="modal" data-od-id="path-16-0">
+    <div class="modal-header"><h3 data-od-id="path-16-0-0-0">新建角色</h3><div class="modal-close" onclick="closeModal('modal-role-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>角色名称 <span class="required">*</span></label><input type="text" placeholder="请输入角色名称"></div>
       <div class="form-group"><label>角色描述</label><input type="text" placeholder="简要说明角色职责"></div>
       <div class="form-group"><label>数据权限范围</label><select><option>个人</option><option>组</option><option>团队</option><option>中心</option></select></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-role-create')" data-od-id="path-17-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-role-create');showToast('success','角色创建成功')" data-od-id="path-17-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-role-create')" data-od-id="path-16-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-role-create');showToast('success','角色创建成功')" data-od-id="path-16-0-2-1">保存</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-profile-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-18">
-  <div class="modal" data-od-id="path-18-0">
-    <div class="modal-header"><h3 data-od-id="path-18-0-0-0">编辑资料</h3><div class="modal-close" onclick="closeModal('modal-profile-edit')">✕</div></div>
+<div class="modal-overlay" id="modal-profile-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-17">
+  <div class="modal" data-od-id="path-17-0">
+    <div class="modal-header"><h3 data-od-id="path-17-0-0-0">编辑资料</h3><div class="modal-close" onclick="closeModal('modal-profile-edit')">✕</div></div>
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group"><label>姓名</label><input type="text" value="王建国"></div>
@@ -2744,42 +2561,42 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>邮箱</label><input type="text" value="wangjianguo@example.com"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-profile-edit')" data-od-id="path-18-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-profile-edit');showToast('success','资料已保存')" data-od-id="path-18-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-profile-edit')" data-od-id="path-17-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-profile-edit');showToast('success','资料已保存')" data-od-id="path-17-0-2-1">保存</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-password-change" onclick="closeModalOnBackdrop(event)" data-od-id="path-19">
-  <div class="modal" data-od-id="path-19-0">
-    <div class="modal-header"><h3 data-od-id="path-19-0-0-0">修改密码</h3><div class="modal-close" onclick="closeModal('modal-password-change')">✕</div></div>
+<div class="modal-overlay" id="modal-password-change" onclick="closeModalOnBackdrop(event)" data-od-id="path-18">
+  <div class="modal" data-od-id="path-18-0">
+    <div class="modal-header"><h3 data-od-id="path-18-0-0-0">修改密码</h3><div class="modal-close" onclick="closeModal('modal-password-change')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>原密码</label><input type="password"></div>
       <div class="form-group"><label>新密码</label><input type="password"></div>
       <div class="form-group"><label>确认新密码</label><input type="password"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-password-change')" data-od-id="path-19-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-password-change');showToast('success','密码修改成功')" data-od-id="path-19-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-password-change')" data-od-id="path-18-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-password-change');showToast('success','密码修改成功')" data-od-id="path-18-0-2-1">保存</button></div>
   </div>
 </div>
 
-<div class="modal-overlay" id="modal-avatar-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-20">
-  <div class="modal" data-od-id="path-20-0">
-    <div class="modal-header"><h3 data-od-id="path-20-0-0-0">更换头像</h3><div class="modal-close" onclick="closeModal('modal-avatar-edit')">✕</div></div>
+<div class="modal-overlay" id="modal-avatar-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-19">
+  <div class="modal" data-od-id="path-19-0">
+    <div class="modal-header"><h3 data-od-id="path-19-0-0-0">更换头像</h3><div class="modal-close" onclick="closeModal('modal-avatar-edit')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>上传新头像</label><input type="file" accept="image/*"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-avatar-edit')" data-od-id="path-20-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-avatar-edit');showToast('success','头像已更新')" data-od-id="path-20-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-avatar-edit')" data-od-id="path-19-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-avatar-edit');showToast('success','头像已更新')" data-od-id="path-19-0-2-1">保存</button></div>
   </div>
 </div>
 
 <!-- ===== MESSAGE CENTER PANEL ===== -->
-<div class="msg-panel" id="msgPanel" data-od-id="path-21">
-  <div class="msg-panel-head" data-od-id="path-21-0">
-    <h4 data-od-id="path-21-0-0">消息中心</h4>
+<div class="msg-panel" id="msgPanel" data-od-id="path-20">
+  <div class="msg-panel-head" data-od-id="path-20-0">
+    <h4 data-od-id="path-20-0-0">消息中心</h4>
     <div style="display:flex;gap:8px">
-      <button class="btn btn-ghost btn-sm" onclick="showToast('info','已全部标记为已读')" data-od-id="path-21-0-1-0">全部已读</button>
+      <button class="btn btn-ghost btn-sm" onclick="showToast('info','已全部标记为已读')" data-od-id="path-20-0-1-0">全部已读</button>
       <div class="modal-close" onclick="toggleMsgPanel()" style="width:24px;height:24px;font-size:.85rem">✕</div>
     </div>
   </div>
-  <div class="msg-list" data-od-id="path-21-1">
+  <div class="msg-list" data-od-id="path-20-1">
     <div class="msg-item unread"><div class="msg-title">油葱商城V4.30 验收通知</div><div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:4px">UAT环境已完成发版，请在2026-06-20前完成验收</div><div class="msg-time">2026-06-29 10:05</div></div>
     <div class="msg-item unread"><div class="msg-title">需求指派通知</div><div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:4px">曹操(LG0246) 指派需求「移动端审批流程」给您</div><div class="msg-time">2026-06-28 17:30</div></div>
     <div class="msg-item unread"><div class="msg-title">BUG指派通知</div><div style="font-size:.82rem;color:var(--text-secondary);margin-bottom:4px">李明(LG0248) 创建BUG并指派给您：订单金额计算错误</div><div class="msg-time">2026-06-28 10:23</div></div>
@@ -2789,13 +2606,13 @@ table.data tr:last-child td{border-bottom:none}
 </div>
 
 <!-- ===== ASSIGN MODAL ===== -->
-<div class="modal-overlay" id="modal-assign" onclick="closeModalOnBackdrop(event)" data-od-id="path-22">
-  <div class="modal" data-od-id="path-22-0">
-    <div class="modal-header"><h3 id="assign-modal-title" data-od-id="path-22-0-0-0">指派</h3><div class="modal-close" onclick="closeModal('modal-assign')">✕</div></div>
+<div class="modal-overlay" id="modal-assign" onclick="closeModalOnBackdrop(event)" data-od-id="path-21">
+  <div class="modal" data-od-id="path-21-0">
+    <div class="modal-header"><h3 id="assign-modal-title" data-od-id="path-21-0-0-0">指派</h3><div class="modal-close" onclick="closeModal('modal-assign')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>搜索人员</label><input type="text" placeholder="输入姓名或工号搜索" oninput="filterAssignList(this.value)"></div>
       <div class="form-group"><label>选择指派人（可多选）</label>
-        <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="assignPersonList" data-od-id="path-22-0-1-1-1">
+        <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="assignPersonList" data-od-id="path-21-0-1-1-1">
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" style="width:auto;margin:0"> 王建国 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0245</span></label>
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" style="width:auto;margin:0"> 李明 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0248</span></label>
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" style="width:auto;margin:0"> 孙丽 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0251</span></label>
@@ -2805,14 +2622,14 @@ table.data tr:last-child td{border-bottom:none}
         </div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-assign')" data-od-id="path-22-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-assign');showToast('success','指派成功，已发送飞书通知')" data-od-id="path-22-0-2-1">确认指派</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-assign')" data-od-id="path-21-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-assign');showToast('success','指派成功，已发送飞书通知')" data-od-id="path-21-0-2-1">确认指派</button></div>
   </div>
 </div>
 
 <!-- ===== REQUIREMENT CONVERSION MODAL (3-level cascade) ===== -->
-<div class="modal-overlay" id="modal-req-convert" onclick="closeModalOnBackdrop(event)" data-od-id="path-23">
-  <div class="modal wide" data-od-id="path-23-0">
-    <div class="modal-header"><h3 data-od-id="path-23-0-0-0">需求转化</h3><div class="modal-close" onclick="closeModal('modal-req-convert')">✕</div></div>
+<div class="modal-overlay" id="modal-req-convert" onclick="closeModalOnBackdrop(event)" data-od-id="path-22">
+  <div class="modal wide" data-od-id="path-22-0">
+    <div class="modal-header"><h3 data-od-id="path-22-0-0-0">需求转化</h3><div class="modal-close" onclick="closeModal('modal-req-convert')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
         <strong>源需求：</strong>DE-B-20260615-1234 · OA系统报销流程优化
@@ -2824,7 +2641,7 @@ table.data tr:last-child td{border-bottom:none}
         </div>
       </div>
       <div class="form-group"><label>项目 <span class="required">*</span></label>
-        <select id="convertProject" onchange="onConvertProjectChange()" data-od-id="path-23-0-1-2-1">
+        <select id="convertProject" onchange="onConvertProjectChange()" data-od-id="path-22-0-1-2-1">
           <option value="">请选择项目</option>
           <option value="p1">油葱商城</option>
           <option value="p2">OA系统</option>
@@ -2832,19 +2649,19 @@ table.data tr:last-child td{border-bottom:none}
           <option value="p4">财务系统</option>
         </select>
       </div>
-      <div class="form-group" id="convertVersionGroup" style="display:none" data-od-id="path-23-0-1-3"><label>版本 <span class="required">*</span></label>
-        <select id="convertVersion" data-od-id="path-23-0-1-3-1">
+      <div class="form-group" id="convertVersionGroup" style="display:none" data-od-id="path-22-0-1-3"><label>版本 <span class="required">*</span></label>
+        <select id="convertVersion" data-od-id="path-22-0-1-3-1">
           <option value="">请先选择项目</option>
         </select>
       </div>
-      <div class="cascade-row" id="convertCascade" style="display:none" data-od-id="path-23-0-1-4">
-        <div class="form-group" data-od-id="path-23-0-1-4-0"><label>分端 <span class="required">*</span></label>
+      <div class="cascade-row" id="convertCascade" style="display:none" data-od-id="path-22-0-1-4">
+        <div class="form-group" data-od-id="path-22-0-1-4-0"><label>分端 <span class="required">*</span></label>
           <select><option value="">请选择</option><option>PC</option><option>APP</option><option>MP</option><option>H5</option><option>WX</option><option>QW</option></select>
         </div>
-        <div class="form-group" data-od-id="path-23-0-1-4-1"><label>功能模块 <span class="required">*</span></label>
+        <div class="form-group" data-od-id="path-22-0-1-4-1"><label>功能模块 <span class="required">*</span></label>
           <select><option value="">请选择</option><option>用户中心</option><option>交易模块</option><option>营销模块</option><option>供应链</option></select>
         </div>
-        <div class="form-group" data-od-id="path-23-0-1-4-2"><label>所属系统</label>
+        <div class="form-group" data-od-id="path-22-0-1-4-2"><label>所属系统</label>
           <select><option value="">自动匹配</option><option>管理后台</option><option>用户端</option></select>
         </div>
       </div>
@@ -2853,17 +2670,17 @@ table.data tr:last-child td{border-bottom:none}
       <div class="form-group"><label>影响范围描述</label><textarea placeholder="描述影响范围，可选"></textarea></div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('modal-req-convert')" data-od-id="path-23-0-2-0">取消</button>
-      <button class="btn btn-secondary" onclick="closeModal('modal-req-convert');showToast('success','需求已转化，可继续填写下一条');setTimeout(()=>{openModal('modal-req-convert')},800)" data-od-id="path-23-0-2-1">继续转化</button>
-      <button class="btn btn-primary" onclick="closeModal('modal-req-convert');showToast('success','需求转化成功')" data-od-id="path-23-0-2-2">转化</button>
+      <button class="btn btn-secondary" onclick="closeModal('modal-req-convert')" data-od-id="path-22-0-2-0">取消</button>
+      <button class="btn btn-secondary" onclick="closeModal('modal-req-convert');showToast('success','需求已转化，可继续填写下一条');setTimeout(()=>{openModal('modal-req-convert')},800)" data-od-id="path-22-0-2-1">继续转化</button>
+      <button class="btn btn-primary" onclick="closeModal('modal-req-convert');showToast('success','需求转化成功')" data-od-id="path-22-0-2-2">转化</button>
     </div>
   </div>
 </div>
 
 <!-- ===== BUG ACTIVATE MODAL ===== -->
-<div class="modal-overlay" id="modal-bug-activate" onclick="closeModalOnBackdrop(event)" data-od-id="path-24">
-  <div class="modal" data-od-id="path-24-0">
-    <div class="modal-header"><h3 data-od-id="path-24-0-0-0">激活BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-activate')">✕</div></div>
+<div class="modal-overlay" id="modal-bug-activate" onclick="closeModalOnBackdrop(event)" data-od-id="path-23">
+  <div class="modal" data-od-id="path-23-0">
+    <div class="modal-header"><h3 data-od-id="path-23-0-0-0">激活BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-activate')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--warning-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#92400E">
         <strong>BUG-20260614-0008</strong> · 审批节点人员选择器为空 · 当前状态：已解决
@@ -2873,53 +2690,53 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>备注 <span class="required">*</span></label><textarea placeholder="请填写激活原因"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-activate')" data-od-id="path-24-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-activate');showToast('success','BUG已激活')" data-od-id="path-24-0-2-1">确认激活</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-activate')" data-od-id="path-23-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-activate');showToast('success','BUG已激活')" data-od-id="path-23-0-2-1">确认激活</button></div>
   </div>
 </div>
 
 <!-- ===== BUG CLOSE MODAL ===== -->
-<div class="modal-overlay" id="modal-bug-close" onclick="closeModalOnBackdrop(event)" data-od-id="path-25">
-  <div class="modal" data-od-id="path-25-0">
-    <div class="modal-header"><h3 data-od-id="path-25-0-0-0">关闭BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-close')">✕</div></div>
+<div class="modal-overlay" id="modal-bug-close" onclick="closeModalOnBackdrop(event)" data-od-id="path-24">
+  <div class="modal" data-od-id="path-24-0">
+    <div class="modal-header"><h3 data-od-id="path-24-0-0-0">关闭BUG</h3><div class="modal-close" onclick="closeModal('modal-bug-close')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--success-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#065F46">
         <strong>BUG-20260614-0008</strong> · 审批节点人员选择器为空 · 当前状态：已解决
       </div>
       <div class="form-group"><label>备注 <span class="required">*</span></label><textarea placeholder="请填写关闭原因和确认信息"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-close')" data-od-id="path-25-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-close');showToast('success','BUG已关闭')" data-od-id="path-25-0-2-1">确认关闭</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-close')" data-od-id="path-24-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-bug-close');showToast('success','BUG已关闭')" data-od-id="path-24-0-2-1">确认关闭</button></div>
   </div>
 </div>
 
 <!-- ===== BUG TRASH BIN MODAL ===== -->
-<div class="modal-overlay" id="modal-bug-trash" onclick="closeModalOnBackdrop(event)" data-od-id="path-26">
-  <div class="modal wide" data-od-id="path-26-0">
-    <div class="modal-header"><h3 data-od-id="path-26-0-0-0">BUG垃圾箱</h3><div class="modal-close" onclick="closeModal('modal-bug-trash')">✕</div></div>
+<div class="modal-overlay" id="modal-bug-trash" onclick="closeModalOnBackdrop(event)" data-od-id="path-25">
+  <div class="modal wide" data-od-id="path-25-0">
+    <div class="modal-header"><h3 data-od-id="path-25-0-0-0">BUG垃圾箱</h3><div class="modal-close" onclick="closeModal('modal-bug-trash')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:#F8FAFC;border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:var(--text-secondary)">
         已删除的BUG将在此保留30天后永久删除。可点击「恢复」将BUG移回列表。
       </div>
       <div class="trash-item">
         <div class="trash-info"><div class="trash-title">库存预警推送延迟</div><div class="trash-meta">创建人：王建国 · 删除时间：2026-06-20 14:30</div></div>
-        <button class="btn btn-secondary btn-sm" onclick="showToast('success','BUG已恢复');closeModal('modal-bug-trash')" data-od-id="path-26-0-1-1-1">恢复</button>
+        <button class="btn btn-secondary btn-sm" onclick="showToast('success','BUG已恢复');closeModal('modal-bug-trash')" data-od-id="path-25-0-1-1-1">恢复</button>
       </div>
       <div class="trash-item">
         <div class="trash-info"><div class="trash-title">报表导出CSV编码异常</div><div class="trash-meta">创建人：陈磊 · 删除时间：2026-06-18 10:00</div></div>
-        <button class="btn btn-secondary btn-sm" onclick="showToast('success','BUG已恢复');closeModal('modal-bug-trash')" data-od-id="path-26-0-1-2-1">恢复</button>
+        <button class="btn btn-secondary btn-sm" onclick="showToast('success','BUG已恢复');closeModal('modal-bug-trash')" data-od-id="path-25-0-1-2-1">恢复</button>
       </div>
       <div class="trash-item">
         <div class="trash-info"><div class="trash-title">移动端消息推送重复</div><div class="trash-meta">创建人：孙丽 · 删除时间：2026-06-15 16:45</div></div>
-        <button class="btn btn-secondary btn-sm" onclick="showToast('success','BUG已恢复');closeModal('modal-bug-trash')" data-od-id="path-26-0-1-3-1">恢复</button>
+        <button class="btn btn-secondary btn-sm" onclick="showToast('success','BUG已恢复');closeModal('modal-bug-trash')" data-od-id="path-25-0-1-3-1">恢复</button>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-trash')" data-od-id="path-26-0-2-0">关闭</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-bug-trash')" data-od-id="path-25-0-2-0">关闭</button></div>
   </div>
 </div>
 
 <!-- ===== ACCEPTANCE APPROVAL MODAL ===== -->
-<div class="modal-overlay" id="modal-accept-approve" onclick="closeModalOnBackdrop(event)" data-od-id="path-27">
-  <div class="modal" data-od-id="path-27-0">
-    <div class="modal-header"><h3 data-od-id="path-27-0-0-0">审批验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-approve')">✕</div></div>
+<div class="modal-overlay" id="modal-accept-approve" onclick="closeModalOnBackdrop(event)" data-od-id="path-26">
+  <div class="modal" data-od-id="path-26-0">
+    <div class="modal-header"><h3 data-od-id="path-26-0-0-0">审批验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-approve')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
         <strong>IC-20260614-0009</strong> · 人事系统 V2.1.0 · 创建人：孙丽
@@ -2930,18 +2747,18 @@ table.data tr:last-child td{border-bottom:none}
           <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="radio" name="approveOpinion" value="disagree" style="width:auto;margin:0" onchange="onApproveChange('disagree')"> 不同意</label>
         </div>
       </div>
-      <div class="form-group"><label>备注 <span class="required" id="approveRemarkReq" style="display:none" data-od-id="path-27-0-1-2-0-0">*</span></label>
-        <textarea id="approveRemark" placeholder="已审查通过" data-od-id="path-27-0-1-2-1">已审查通过</textarea>
+      <div class="form-group"><label>备注 <span class="required" id="approveRemarkReq" style="display:none" data-od-id="path-26-0-1-2-0-0">*</span></label>
+        <textarea id="approveRemark" placeholder="已审查通过" data-od-id="path-26-0-1-2-1">已审查通过</textarea>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-approve')" data-od-id="path-27-0-2-0">取消</button><button class="btn btn-primary" onclick="submitApproval()" data-od-id="path-27-0-2-1">确认审批</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-approve')" data-od-id="path-26-0-2-0">取消</button><button class="btn btn-primary" onclick="submitApproval()" data-od-id="path-26-0-2-1">确认审批</button></div>
   </div>
 </div>
 
 <!-- ===== ADD VERSION MODAL ===== -->
-<div class="modal-overlay" id="modal-add-version" onclick="closeModalOnBackdrop(event)" data-od-id="path-28">
-  <div class="modal" data-od-id="path-28-0">
-    <div class="modal-header"><h3 data-od-id="path-28-0-0-0">添加版本</h3><div class="modal-close" onclick="closeModal('modal-add-version')">✕</div></div>
+<div class="modal-overlay" id="modal-add-version" onclick="closeModalOnBackdrop(event)" data-od-id="path-27">
+  <div class="modal" data-od-id="path-27-0">
+    <div class="modal-header"><h3 data-od-id="path-27-0-0-0">添加版本</h3><div class="modal-close" onclick="closeModal('modal-add-version')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>所属项目</label><input type="text" value="油葱商城" disabled=""></div>
       <div class="form-row">
@@ -2954,14 +2771,14 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>版本说明</label><textarea placeholder="本版本主要内容和目标"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-add-version')" data-od-id="path-28-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-add-version');showToast('success','版本添加成功')" data-od-id="path-28-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-add-version')" data-od-id="path-27-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-add-version');showToast('success','版本添加成功')" data-od-id="path-27-0-2-1">保存</button></div>
   </div>
 </div>
 
 <!-- ===== CLOSE PROJECT REQUEST MODAL ===== -->
-<div class="modal-overlay" id="modal-close-project" onclick="closeModalOnBackdrop(event)" data-od-id="path-29">
-  <div class="modal" data-od-id="path-29-0">
-    <div class="modal-header"><h3 data-od-id="path-29-0-0-0">关闭项目申请</h3><div class="modal-close" onclick="closeModal('modal-close-project')">✕</div></div>
+<div class="modal-overlay" id="modal-close-project" onclick="closeModalOnBackdrop(event)" data-od-id="path-28">
+  <div class="modal" data-od-id="path-28-0">
+    <div class="modal-header"><h3 data-od-id="path-28-0-0-0">关闭项目申请</h3><div class="modal-close" onclick="closeModal('modal-close-project')">✕</div></div>
     <div class="modal-body">
       <div style="padding:12px 16px;background:var(--danger-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#991B1B;border-left:4px solid var(--danger)">
         <strong>注意：</strong>关闭项目后，关联需求将由「已排期」变为「调研中」，需求不会被删除。此操作需中心总经理审批。
@@ -2971,16 +2788,16 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>关闭原因 <span class="required">*</span></label><textarea placeholder="请填写关闭项目的原因"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-close-project')" data-od-id="path-29-0-2-0">取消</button><button class="btn btn-danger" onclick="closeModal('modal-close-project');showToast('info','关闭申请已提交，等待中心总经理审批')" data-od-id="path-29-0-2-1">提交申请</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-close-project')" data-od-id="path-28-0-2-0">取消</button><button class="btn btn-danger" onclick="closeModal('modal-close-project');showToast('info','关闭申请已提交，等待中心总经理审批')" data-od-id="path-28-0-2-1">提交申请</button></div>
   </div>
 </div>
 
 <!-- ===== SYSTEM CREATE MODAL ===== -->
-<div class="modal-overlay" id="modal-system-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-30">
-  <div class="modal" data-od-id="path-30-0">
-    <div class="modal-header"><h3 data-od-id="path-30-0-0-0">添加系统</h3><div class="modal-close" onclick="closeModal('modal-system-create')">✕</div></div>
+<div class="modal-overlay" id="modal-system-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-29">
+  <div class="modal" data-od-id="path-29-0">
+    <div class="modal-header"><h3 data-od-id="path-29-0-0-0">添加系统</h3><div class="modal-close" onclick="closeModal('modal-system-create')">✕</div></div>
     <div class="modal-body">
-      <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" id="system-create-name" placeholder="如：电商中台" onblur="checkSystemDuplicate(this)" data-od-id="path-30-0-1-0-1"></div>
+      <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" id="system-create-name" placeholder="如：电商中台" onblur="checkSystemDuplicate(this)" data-od-id="path-29-0-1-0-1"></div>
       <div class="form-group"><label>系统分端 <span class="required">*</span></label>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" class="system-endpoint" value="PC-电脑" checked="" style="width:auto;margin:0"> PC-电脑</label>
@@ -2993,16 +2810,16 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>自定义分端</label><input type="text" placeholder="多个分端用顿号、分隔"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-system-create')" data-od-id="path-30-0-2-0">取消</button><button class="btn btn-primary" onclick="submitSystemCreate()" data-od-id="path-30-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-system-create')" data-od-id="path-29-0-2-0">取消</button><button class="btn btn-primary" onclick="submitSystemCreate()" data-od-id="path-29-0-2-1">保存</button></div>
   </div>
 </div>
 
 <!-- ===== SYSTEM EDIT MODAL ===== -->
-<div class="modal-overlay" id="modal-system-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-31">
-  <div class="modal" data-od-id="path-31-0">
-    <div class="modal-header"><h3 data-od-id="path-31-0-0-0">编辑系统</h3><div class="modal-close" onclick="closeModal('modal-system-edit')">✕</div></div>
+<div class="modal-overlay" id="modal-system-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-30">
+  <div class="modal" data-od-id="path-30-0">
+    <div class="modal-header"><h3 data-od-id="path-30-0-0-0">编辑系统</h3><div class="modal-close" onclick="closeModal('modal-system-edit')">✕</div></div>
     <div class="modal-body">
-      <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" id="system-edit-name" value="电商中台" data-od-id="path-31-0-1-0-1"></div>
+      <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" id="system-edit-name" value="电商中台" data-od-id="path-30-0-1-0-1"></div>
       <div class="form-group"><label>系统分端 <span class="required">*</span></label>
         <div style="display:flex;flex-wrap:wrap;gap:10px">
           <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" class="system-endpoint-edit" value="PC-电脑" checked="" style="width:auto;margin:0"> PC-电脑</label>
@@ -3015,18 +2832,18 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>自定义分端</label><input type="text" placeholder="多个分端用顿号、分隔"></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-system-edit')" data-od-id="path-31-0-2-0">取消</button><button class="btn btn-primary" onclick="submitSystemEdit()" data-od-id="path-31-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-system-edit')" data-od-id="path-30-0-2-0">取消</button><button class="btn btn-primary" onclick="submitSystemEdit()" data-od-id="path-30-0-2-1">保存</button></div>
   </div>
 </div>
 
 <!-- ===== TEAM MEMBER ADD MODAL ===== -->
-<div class="modal-overlay" id="modal-team-add" onclick="closeModalOnBackdrop(event)" data-od-id="path-32">
-  <div class="modal" data-od-id="path-32-0">
-    <div class="modal-header"><h3 data-od-id="path-32-0-0-0">新增项目成员</h3><div class="modal-close" onclick="closeModal('modal-team-add')">✕</div></div>
+<div class="modal-overlay" id="modal-team-add" onclick="closeModalOnBackdrop(event)" data-od-id="path-31">
+  <div class="modal" data-od-id="path-31-0">
+    <div class="modal-header"><h3 data-od-id="path-31-0-0-0">新增项目成员</h3><div class="modal-close" onclick="closeModal('modal-team-add')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>搜索人员</label><input type="text" placeholder="输入姓名或工号搜索" oninput="filterTeamList(this.value)"></div>
       <div class="form-group"><label>选择成员（可多选）</label>
-        <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="teamAddList" data-od-id="path-32-0-1-1-1">
+        <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="teamAddList" data-od-id="path-31-0-1-1-1">
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" style="width:auto;margin:0"> 赵强 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0256</span></label>
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" style="width:auto;margin:0"> 周宇 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0260</span></label>
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" style="width:auto;margin:0"> 陈磊 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0253</span></label>
@@ -3035,28 +2852,28 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>项目角色</label><select><option>开发人员</option><option>测试人员</option><option>产品经理</option><option>运维</option><option>UI设计</option></select></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-team-add')" data-od-id="path-32-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-team-add');showToast('success','成员已加入项目')" data-od-id="path-32-0-2-1">确认添加</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-team-add')" data-od-id="path-31-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-team-add');showToast('success','成员已加入项目')" data-od-id="path-31-0-2-1">确认添加</button></div>
   </div>
 </div>
 
 <!-- ===== DOCUMENT UPLOAD MODAL ===== -->
-<div class="modal-overlay" id="modal-doc-upload" onclick="closeModalOnBackdrop(event)" data-od-id="path-33">
-  <div class="modal" data-od-id="path-33-0">
-    <div class="modal-header"><h3 data-od-id="path-33-0-0-0">上传文档</h3><div class="modal-close" onclick="closeModal('modal-doc-upload')">✕</div></div>
+<div class="modal-overlay" id="modal-doc-upload" onclick="closeModalOnBackdrop(event)" data-od-id="path-32">
+  <div class="modal" data-od-id="path-32-0">
+    <div class="modal-header"><h3 data-od-id="path-32-0-0-0">上传文档</h3><div class="modal-close" onclick="closeModal('modal-doc-upload')">✕</div></div>
     <div class="modal-body">
       <div class="form-group"><label>文档名称 <span class="required">*</span></label><input type="text" placeholder="请输入文档名称"></div>
       <div class="form-group"><label>文档类型</label><select><option>PRD文档</option><option>原型文档</option><option>操作SOP</option><option>验收SOP</option><option>其他</option></select></div>
       <div class="form-group"><label>选择文件 <span class="required">*</span></label><input type="file"></div>
       <div class="form-group"><label>备注</label><textarea placeholder="可选：填写文档说明"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-doc-upload')" data-od-id="path-33-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-doc-upload');showToast('success','文档上传成功')" data-od-id="path-33-0-2-1">上传</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-doc-upload')" data-od-id="path-32-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-doc-upload');showToast('success','文档上传成功')" data-od-id="path-32-0-2-1">上传</button></div>
   </div>
 </div>
 
 <!-- ===== PROJECT ACTIVATE MODAL ===== -->
-<div class="modal-overlay" id="modal-project-activate" onclick="closeModalOnBackdrop(event)" data-od-id="path-34">
-  <div class="modal" data-od-id="path-34-0">
-    <div class="modal-header"><h3 data-od-id="path-34-0-0-0">激活项目</h3><div class="modal-close" onclick="closeModal('modal-project-activate')">✕</div></div>
+<div class="modal-overlay" id="modal-project-activate" onclick="closeModalOnBackdrop(event)" data-od-id="path-33">
+  <div class="modal" data-od-id="path-33-0">
+    <div class="modal-header"><h3 data-od-id="path-33-0-0-0">激活项目</h3><div class="modal-close" onclick="closeModal('modal-project-activate')">✕</div></div>
     <div class="modal-body">
       <div style="padding:12px 16px;background:var(--warning-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#92400E;border-left:4px solid var(--warning)">
         <strong>注意：</strong>激活项目后，状态为「调研中」的需求将自动变为「已排期」，其余需求请手动处理。
@@ -3066,14 +2883,14 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>激活原因 <span class="required">*</span></label><textarea placeholder="请填写激活项目的原因"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-project-activate')" data-od-id="path-34-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-project-activate');showToast('success','项目已激活')" data-od-id="path-34-0-2-1">确认激活</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-project-activate')" data-od-id="path-33-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-project-activate');showToast('success','项目已激活')" data-od-id="path-33-0-2-1">确认激活</button></div>
   </div>
 </div>
 
 <!-- ===== BATCH ASSIGN TO VERSION MODAL ===== -->
-<div class="modal-overlay" id="modal-batch-assign-version" onclick="closeModalOnBackdrop(event)" data-od-id="path-35">
-  <div class="modal" data-od-id="path-35-0">
-    <div class="modal-header"><h3 data-od-id="path-35-0-0-0">分配到版本需求池</h3><div class="modal-close" onclick="closeModal('modal-batch-assign-version')">✕</div></div>
+<div class="modal-overlay" id="modal-batch-assign-version" onclick="closeModalOnBackdrop(event)" data-od-id="path-34">
+  <div class="modal" data-od-id="path-34-0">
+    <div class="modal-header"><h3 data-od-id="path-34-0-0-0">分配到版本需求池</h3><div class="modal-close" onclick="closeModal('modal-batch-assign-version')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
         已选择 <strong>3</strong> 条需求，将批量分配到指定版本。
@@ -3081,21 +2898,21 @@ table.data tr:last-child td{border-bottom:none}
       <div class="form-group"><label>目标版本 <span class="required">*</span></label><select><option>V4.30.0</option><option>V4.31.0</option></select></div>
       <div class="form-group"><label>功能模块 <span class="required">*</span></label><select><option>用户中心</option><option>交易模块</option><option>营销模块</option><option>供应链</option></select></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-batch-assign-version')" data-od-id="path-35-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-batch-assign-version');showToast('success','需求已分配到版本需求池')" data-od-id="path-35-0-2-1">确认分配</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-batch-assign-version')" data-od-id="path-34-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-batch-assign-version');showToast('success','需求已分配到版本需求池')" data-od-id="path-34-0-2-1">确认分配</button></div>
   </div>
 </div>
 
 <!-- ===== BATCH ASSIGN USER MODAL ===== -->
-<div class="modal-overlay" id="modal-batch-assign-user" onclick="closeModalOnBackdrop(event)" data-od-id="path-36">
-  <div class="modal" data-od-id="path-36-0">
-    <div class="modal-header"><h3 data-od-id="path-36-0-0-0">批量指派负责人</h3><div class="modal-close" onclick="closeModal('modal-batch-assign-user')">✕</div></div>
+<div class="modal-overlay" id="modal-batch-assign-user" onclick="closeModalOnBackdrop(event)" data-od-id="path-35">
+  <div class="modal" data-od-id="path-35-0">
+    <div class="modal-header"><h3 data-od-id="path-35-0-0-0">批量指派负责人</h3><div class="modal-close" onclick="closeModal('modal-batch-assign-user')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
         已选择 <strong>3</strong> 条需求，将批量指派给同一人。
       </div>
       <div class="form-group"><label>搜索人员</label><input type="text" placeholder="输入姓名或工号搜索" oninput="filterBatchAssignUserList(this.value)"></div>
       <div class="form-group"><label>选择指派人 <span class="required">*</span></label>
-        <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="batchAssignUserList" data-od-id="path-36-0-1-2-1">
+        <div style="max-height:200px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="batchAssignUserList" data-od-id="path-35-0-1-2-1">
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="radio" name="batchAssignUser" style="width:auto;margin:0"> 王建国</label>
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="radio" name="batchAssignUser" style="width:auto;margin:0"> 李明</label>
           <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="radio" name="batchAssignUser" style="width:auto;margin:0"> 赵强</label>
@@ -3103,14 +2920,14 @@ table.data tr:last-child td{border-bottom:none}
         </div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-batch-assign-user')" data-od-id="path-36-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-batch-assign-user');showToast('success','批量指派成功')" data-od-id="path-36-0-2-1">确认指派</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-batch-assign-user')" data-od-id="path-35-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-batch-assign-user');showToast('success','批量指派成功')" data-od-id="path-35-0-2-1">确认指派</button></div>
   </div>
 </div>
 
 <!-- ===== NOTIFY ACCEPTANCE MODAL ===== -->
-<div class="modal-overlay" id="modal-notify-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-37">
-  <div class="modal" data-od-id="path-37-0">
-    <div class="modal-header"><h3 data-od-id="path-37-0-0-0">通知验收</h3><div class="modal-close" onclick="closeModal('modal-notify-accept')">✕</div></div>
+<div class="modal-overlay" id="modal-notify-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-36">
+  <div class="modal" data-od-id="path-36-0">
+    <div class="modal-header"><h3 data-od-id="path-36-0-0-0">通知验收</h3><div class="modal-close" onclick="closeModal('modal-notify-accept')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
         将通过飞书发送验收通知给相关部门
@@ -3121,14 +2938,14 @@ table.data tr:last-child td{border-bottom:none}
         </div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-notify-accept')" data-od-id="path-37-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-notify-accept');showToast('success','验收通知已通过飞书发送')" data-od-id="path-37-0-2-1">发送通知</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-notify-accept')" data-od-id="path-36-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-notify-accept');showToast('success','验收通知已通过飞书发送')" data-od-id="path-36-0-2-1">发送通知</button></div>
   </div>
 </div>
 
 <!-- ===== REMIND ACCEPTANCE MODAL ===== -->
-<div class="modal-overlay" id="modal-remind-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-38">
-  <div class="modal" data-od-id="path-38-0">
-    <div class="modal-header"><h3 data-od-id="path-38-0-0-0">催促验收</h3><div class="modal-close" onclick="closeModal('modal-remind-accept')">✕</div></div>
+<div class="modal-overlay" id="modal-remind-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-37">
+  <div class="modal" data-od-id="path-37-0">
+    <div class="modal-header"><h3 data-od-id="path-37-0-0-0">催促验收</h3><div class="modal-close" onclick="closeModal('modal-remind-accept')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--warning-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#92400E">
         将通过飞书发送催促通知
@@ -3139,14 +2956,14 @@ table.data tr:last-child td{border-bottom:none}
         </div>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-remind-accept')" data-od-id="path-38-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-remind-accept');showToast('success','催促通知已通过飞书发送')" data-od-id="path-38-0-2-1">发送催促</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-remind-accept')" data-od-id="path-37-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-remind-accept');showToast('success','催促通知已通过飞书发送')" data-od-id="path-37-0-2-1">发送催促</button></div>
   </div>
 </div>
 
 <!-- ===== COMPLETE ACCEPTANCE MODAL ===== -->
-<div class="modal-overlay" id="modal-complete-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-39">
-  <div class="modal" data-od-id="path-39-0">
-    <div class="modal-header"><h3 data-od-id="path-39-0-0-0">完成验收</h3><div class="modal-close" onclick="closeModal('modal-complete-accept')">✕</div></div>
+<div class="modal-overlay" id="modal-complete-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-38">
+  <div class="modal" data-od-id="path-38-0">
+    <div class="modal-header"><h3 data-od-id="path-38-0-0-0">完成验收</h3><div class="modal-close" onclick="closeModal('modal-complete-accept')">✕</div></div>
     <div class="modal-body">
       <div style="padding:12px 16px;background:#F8FAFC;border-radius:var(--radius);margin-bottom:16px">
         <div style="font-size:.9rem;font-weight:700;margin-bottom:10px">数据完整性校验</div>
@@ -3161,43 +2978,43 @@ table.data tr:last-child td{border-bottom:none}
       </div>
       <div class="form-group"><label>验收总结备注</label><textarea placeholder="填写验收总结，可选"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-complete-accept')" data-od-id="path-39-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-complete-accept');showToast('success','验收已完成，状态已更新为已完成')" data-od-id="path-39-0-2-1">确认完成</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-complete-accept')" data-od-id="path-38-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-complete-accept');showToast('success','验收已完成，状态已更新为已完成')" data-od-id="path-38-0-2-1">确认完成</button></div>
   </div>
 </div>
 
 <!-- ===== ADD/REMOVE REQUIREMENTS FROM ACCEPTANCE ===== -->
-<div class="modal-overlay" id="modal-accept-req-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-40">
-  <div class="modal wide" data-od-id="path-40-0">
-    <div class="modal-header"><h3 data-od-id="path-40-0-0-0">增减验收需求</h3><div class="modal-close" onclick="closeModal('modal-accept-req-edit')">✕</div></div>
+<div class="modal-overlay" id="modal-accept-req-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-39">
+  <div class="modal wide" data-od-id="path-39-0">
+    <div class="modal-header"><h3 data-od-id="path-39-0-0-0">增减验收需求</h3><div class="modal-close" onclick="closeModal('modal-accept-req-edit')">✕</div></div>
     <div class="modal-body">
       <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
         <strong>IC-20260613-0007</strong> · OA系统 V3.2.1 · 当前验收需求 5 条
       </div>
       <div class="form-group"><label>当前验收需求</label>
         <div class="table-wrap"><table class="data"><thead><tr><th style="width:30px"><input type="checkbox" style="width:auto"></th><th>需求ID</th><th>需求标题</th><th>分端</th><th>操作</th></tr></thead><tbody>
-          <tr><td><input type="checkbox" style="width:auto" checked=""></td><td class="mono">DE-C-20260610-0010</td><td>审批流程节点优化</td><td>PC</td><td><a class="action-link" style="color:var(--danger)" data-od-id="path-40-0-1-1-1-0-1-0-4-0">移除</a></td></tr>
-          <tr><td><input type="checkbox" style="width:auto" checked=""></td><td class="mono">DE-C-20260610-0011</td><td>移动端审批入口</td><td>APP</td><td><a class="action-link" style="color:var(--danger)" data-od-id="path-40-0-1-1-1-0-1-1-4-0">移除</a></td></tr>
-          <tr><td><input type="checkbox" style="width:auto" checked=""></td><td class="mono">DE-C-20260610-0012</td><td>批量审批功能</td><td>PC</td><td><a class="action-link" style="color:var(--danger)" data-od-id="path-40-0-1-1-1-0-1-2-4-0">移除</a></td></tr>
+          <tr><td><input type="checkbox" style="width:auto" checked=""></td><td class="mono">DE-C-20260610-0010</td><td>审批流程节点优化</td><td>PC</td><td><a class="action-link" style="color:var(--danger)" data-od-id="path-39-0-1-1-1-0-1-0-4-0">移除</a></td></tr>
+          <tr><td><input type="checkbox" style="width:auto" checked=""></td><td class="mono">DE-C-20260610-0011</td><td>移动端审批入口</td><td>APP</td><td><a class="action-link" style="color:var(--danger)" data-od-id="path-39-0-1-1-1-0-1-1-4-0">移除</a></td></tr>
+          <tr><td><input type="checkbox" style="width:auto" checked=""></td><td class="mono">DE-C-20260610-0012</td><td>批量审批功能</td><td>PC</td><td><a class="action-link" style="color:var(--danger)" data-od-id="path-39-0-1-1-1-0-1-2-4-0">移除</a></td></tr>
         </tbody></table></div>
       </div>
       <div class="form-group"><label>添加需求</label>
         <select><option value="">从版本需求池选择...</option><option>DE-C-20260612-0015 审批模板管理</option><option>DE-C-20260612-0016 审批统计看板</option></select>
       </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-req-edit')" data-od-id="path-40-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-accept-req-edit');showToast('success','验收需求已更新')" data-od-id="path-40-0-2-1">确认修改</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-req-edit')" data-od-id="path-39-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-accept-req-edit');showToast('success','验收需求已更新')" data-od-id="path-39-0-2-1">确认修改</button></div>
   </div>
 </div>
 
 <!-- ===== FEISHU MEETING ROOM RESERVATION ===== -->
-<div class="modal-overlay" id="modal-feishu-meeting" onclick="closeModalOnBackdrop(event)" data-od-id="path-41">
-  <div class="modal wide" style="width:760px" data-od-id="path-41-0">
+<div class="modal-overlay" id="modal-feishu-meeting" onclick="closeModalOnBackdrop(event)" data-od-id="path-40">
+  <div class="modal wide" style="width:760px" data-od-id="path-40-0">
     <div class="modal-header" style="background:linear-gradient(135deg,#3370ff 0%,#2b5ce6 100%);border-radius:var(--radius-lg) var(--radius-lg) 0 0;border-bottom:none;padding:20px 24px">
       <div style="display:flex;align-items:center;gap:10px">
         <div style="width:34px;height:34px;border-radius:8px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
         </div>
         <div>
-          <h3 style="color:#fff;font-size:1.1rem;font-weight:700" data-od-id="path-41-0-0-0-1-0">飞书会议室预约</h3>
+          <h3 style="color:#fff;font-size:1.1rem;font-weight:700" data-od-id="path-40-0-0-0-1-0">飞书会议室预约</h3>
           <div style="color:rgba(255,255,255,.8);font-size:.75rem;margin-top:2px">发起需求评审 · 油葱商城 V4.30.0</div>
         </div>
       </div>
@@ -3338,14 +3155,14 @@ table.data tr:last-child td{border-bottom:none}
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('modal-feishu-meeting')" data-od-id="path-41-0-2-0">取消</button>
-      <button class="btn btn-primary" onclick="closeModal('modal-feishu-meeting');showToast('success','会议室预约成功，飞书邀请已发送')" data-od-id="path-41-0-2-1">确认预约</button>
+      <button class="btn btn-secondary" onclick="closeModal('modal-feishu-meeting')" data-od-id="path-40-0-2-0">取消</button>
+      <button class="btn btn-primary" onclick="closeModal('modal-feishu-meeting');showToast('success','会议室预约成功，飞书邀请已发送')" data-od-id="path-40-0-2-1">确认预约</button>
     </div>
   </div>
 </div>
 
 <!-- Toasts -->
-<div class="toast" id="toast" data-od-id="path-42"></div>
+<div class="toast" id="toast" data-od-id="path-41"></div>
 
 <script>
 /* ===== Login ===== */
@@ -3428,7 +3245,7 @@ function switchView(key, el) {
   const bc = document.getElementById('bc-current');
   if (bc && target) {
     const titles = {
-      'view-home': '控制台', 'view-req-pool': '业务需求池', 'view-issue-pool': '业务问题池',
+      'view-home': '控制台', 'view-req-pool': '业务需求池', 'view-issue-pool': '问题池',
       'view-bugs': '我的BUG', 'view-acceptance': '验收管理', 'view-projects': '项目管理',
       'view-complaints': '投诉/建议处理', 'view-library': '资料库管理',
       'view-notifications': '通知管理', 'view-accounts': '账号管理',
@@ -3797,9 +3614,9 @@ function onDetailProjectChange(sel) {
 /* ===== Project Primary Tabs ===== */
 const PRIMARY_PANES = {
   project: ['overview', 'config', 'systems', 'reqs'],
-  version: ['versionInfo', 'versionReqs', 'issues', 'bugs', 'schedule', 'tasks']
+  version: ['versionReqs', 'bugs', 'schedule', 'tasks']
 };
-const PRIMARY_DEFAULTS = { project: 'overview', version: 'versionInfo' };
+const PRIMARY_DEFAULTS = { project: 'overview', version: 'versionReqs' };
 
 function switchPrimaryTab(group, el) {
   document.querySelectorAll('.proj-primary-tab').forEach(t => t.classList.remove('active'));
@@ -3840,64 +3657,6 @@ function selectModule(el) {
   document.querySelectorAll('.module-item').forEach(i => i.classList.remove('active'));
   if (el) el.classList.add('active');
   showToast('info', '已切换模块筛选');
-}
-
-/* ===== Version Issue Pool ===== */
-let _versionIssueDraft = { reqId: '', reqTitle: '' };
-function openVersionIssueCreate(reqId, reqTitle) {
-  _versionIssueDraft = { reqId: reqId || '', reqTitle: reqTitle || '' };
-  const idEl = document.getElementById('version-issue-req-id');
-  const titleEl = document.getElementById('version-issue-req-title');
-  if (idEl) idEl.textContent = reqId || '—';
-  if (titleEl) titleEl.textContent = reqTitle || '未选择需求';
-  document.getElementById('version-issue-title').value = '';
-  document.getElementById('version-issue-desc').value = '';
-  document.getElementById('version-issue-level').selectedIndex = 1;
-  document.getElementById('version-issue-owner').selectedIndex = 0;
-  openModal('modal-version-issue-create');
-}
-function submitVersionIssueCreate() {
-  const title = document.getElementById('version-issue-title');
-  if (!title || !title.value.trim()) {
-    showToast('error', '请填写问题标题');
-    return;
-  }
-  const levelSel = document.getElementById('version-issue-level');
-  const ownerSel = document.getElementById('version-issue-owner');
-  const desc = document.getElementById('version-issue-desc');
-  const levelText = levelSel ? levelSel.value : '高';
-  const ownerText = ownerSel && ownerSel.value !== '未指派' ? ownerSel.value : '—';
-  const today = new Date();
-  const dateStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
-  const idSuffix = String(Math.floor(Math.random() * 9000) + 1000);
-  const issueId = 'PR-V-' + dateStr.replace(/-/g, '') + '-' + idSuffix;
-  let levelClass = 'badge-primary';
-  if (levelText === '紧急') levelClass = 'badge-danger';
-  else if (levelText === '高') levelClass = 'badge-primary';
-  else if (levelText === '中') levelClass = 'badge-warn';
-  else levelClass = 'badge-gray';
-  const tbody = document.querySelector('#version-issues-table tbody');
-  if (tbody) {
-    const tr = document.createElement('tr');
-    tr.innerHTML = '<td class="mono">' + issueId + ' <span class="action-link" onclick="showToast(\'info\',\'已复制到剪贴板\')">📋</span></td>' +
-      '<td><span class="badge badge-gray">油葱商城</span><span class="badge badge-accent" style="margin-left:4px">V4.30.0</span></td>' +
-      '<td class="mono" style="color:var(--primary)">' + (_versionIssueDraft.reqId || '—') + '</td>' +
-      '<td class="bold" style="cursor:pointer" onclick="showIssueDetail(\'' + issueId + '\')">' + title.value.trim() + '</td>' +
-      '<td><span class="badge ' + levelClass + '">' + levelText + '</span></td>' +
-      '<td><span class="badge badge-warn">待处理</span></td>' +
-      '<td class="mono">' + dateStr + '</td><td>当前用户</td><td>' + ownerText + '</td>' +
-      '<td><div class="actions-cell"><a class="action-link" onclick="showToast(\'success\',\'已认领，状态变为处理中\')">认领</a>' +
-      '<a class="action-link" onclick="openAssignModal(\'指派问题\')">指派</a>' +
-      '<a class="action-link" onclick="openModal(\'modal-issue-handle\')">处理</a></div></td>';
-    tbody.insertBefore(tr, tbody.firstChild);
-  }
-  closeModal('modal-version-issue-create');
-  showToast('success', '问题已创建并流转到版本问题池');
-  const issuesTabBar = document.getElementById('proj-secondary-version');
-  if (issuesTabBar) {
-    const tab = issuesTabBar.querySelector('.proj-secondary-tab:nth-child(2)');
-    if (tab) switchProjectTab('issues', tab);
-  }
 }
 
 /* ===== Close Project ===== */
