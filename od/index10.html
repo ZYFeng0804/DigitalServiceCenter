@@ -73,8 +73,6 @@
   --card:#ffffff;--card-hover:#FAFBFF;
   --text:#0F172A;--text-secondary:#64748B;--text-muted:#94A3B8;
   --border:#E2E8F0;--border-light:#F1F5F9;
-  --bg-subtle:#F8FAFC;--bg-alt:#F8FAFC;--bg-muted:#F5F7FA;--border-soft:#EDF1F5;
-  --surface:#ffffff;--surface-warm:#FFF9F0;--fg:#0F172A;--text-4:#CBD5E1;
   --danger:#EF4444;--danger-light:#FCA5A5;--danger-bg:#FEF2F2;
   --warning:#F59E0B;--warning-light:#FCD34D;--warning-bg:#FFFBEB;
   --success:#10B981;--success-light:#6EE7B7;--success-bg:#ECFDF5;
@@ -424,37 +422,6 @@ table.data tr:last-child td{border-bottom:none}
 .role-card-name{font-size:.9rem;font-weight:700;color:var(--text)}
 .role-card-desc{font-size:.75rem;color:var(--text-secondary);margin-top:2px}
 
-/* Role detail page */
-.role-detail-section{margin-bottom:24px}
-.role-detail-section-title{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-light)}
-.role-detail-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
-.role-detail-info-item{display:flex;flex-direction:column;gap:4px}
-.role-detail-info-label{font-size:.75rem;color:var(--text-secondary);font-family:var(--font-mono)}
-.role-detail-info-value{font-size:.9rem;color:var(--text)}
-.perm-matrix{width:100%;border-collapse:collapse;font-size:.85rem}
-.perm-matrix th,.perm-matrix td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border-light)}
-.perm-matrix th{font-weight:600;color:var(--text-secondary);font-size:.75rem;text-transform:uppercase;letter-spacing:.03em;background:var(--bg-subtle)}
-.perm-matrix td:first-child{font-weight:500;width:160px}
-.perm-check-yes{color:#16a34a;font-weight:600}
-.perm-check-no{color:var(--text-muted)}
-/* Scope tree */
-.scope-tree{display:flex;flex-direction:column;gap:2px}
-.scope-tree-node{display:flex;align-items:center;gap:6px;padding:6px 8px;border-radius:var(--radius-sm);cursor:pointer;transition:var(--transition)}
-.scope-tree-node:hover{background:var(--bg-subtle)}
-.scope-tree-toggle{width:16px;height:16px;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--text-muted);cursor:pointer;flex-shrink:0}
-.scope-tree-toggle:empty{visibility:hidden}
-.scope-tree-children{padding-left:22px}
-.scope-tree-label{font-size:.85rem;color:var(--text);user-select:none}
-.scope-tree-node input[type=checkbox]{accent-color:var(--primary)}
-.scope-tree-node.locked input[type=checkbox]{opacity:.6}
-.scope-tree-node.locked .scope-tree-label{color:var(--text-secondary)}
-/* Role form page */
-.role-form-page .form-section{margin-bottom:24px}
-.role-form-page .form-section-title{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-light)}
-.role-form-page .form-group{margin-bottom:16px}
-.role-form-page .form-group label{display:block;font-size:.8rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
-.role-form-page .form-hint{font-size:.7rem;color:var(--text-muted);margin-top:4px}
-
 /* Profile */
 .profile-layout{display:grid;grid-template-columns:320px 1fr;gap:16px}
 .profile-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px}
@@ -758,77 +725,6 @@ table.data tr:last-child td{border-bottom:none}
   .toolbar-left,.toolbar-right{width:100%}
   .modal{width:100%!important;border-radius:var(--radius) var(--radius) 0 0}
   .modal-overlay{align-items:flex-end;padding:0}
-}
-
-/* ===== Role management additions ===== */
-.badge-purple{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:.75rem;font-weight:500;background:rgba(139,92,246,.12);color:#7c3aed;letter-spacing:.01em}
-.badge-yellow{display:inline-flex;align-items:center;padding:2px 8px;border-radius:99px;font-size:.75rem;font-weight:500;background:rgba(245,158,11,.12);color:#d97706;letter-spacing:.01em}
-.btn-danger-text{color:var(--danger)!important}
-.btn-success-text{color:var(--success)!important}
-.action-cell{display:flex;gap:8px;white-space:nowrap}
-.modal-lg{width:min(740px,94vw)!important;max-height:88vh;display:flex;flex-direction:column}
-.modal-lg .modal-body{overflow-y:auto}
-.modal-sm{width:min(400px,94vw)!important}
-.form-hint{font-size:.75rem;color:var(--text-muted);margin-top:3px;text-align:right}
-.scope-check-group{display:flex;flex-wrap:wrap;gap:8px 16px;padding:10px 12px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius)}
-.scope-check-item{display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer;color:var(--text)}
-.scope-check-item input[type=checkbox]:disabled{opacity:.5;cursor:not-allowed}
-.tab-bar{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:16px;flex-wrap:wrap}
-.tab-btn{padding:10px 16px;font-size:.85rem;color:var(--text-secondary);cursor:pointer;border:none;background:none;border-bottom:2px solid transparent;margin-bottom:-2px;transition:var(--transition);white-space:nowrap;font-weight:500}
-.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:600}
-.tab-bar-sm{gap:4px;border-bottom:1px solid var(--border);margin-bottom:12px;flex-wrap:wrap}
-.tab-bar-sm .tab-btn{padding:6px 12px;font-size:.8rem}
-.perm-tab-panel{padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:0 var(--radius) var(--radius) var(--radius)}
-.perm-ops-grid{display:flex;flex-wrap:wrap;gap:10px 24px}
-.perm-op-item{display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer;color:var(--text);user-select:none}
-.radio-group{display:flex;align-items:center}
-.radio-label{display:flex;align-items:center;cursor:pointer;font-size:.85rem}
-.radio-label input{margin:0}
-.confirm-icon{display:flex;justify-content:center;margin-bottom:12px}
-.confirm-icon svg{stroke:currentColor;fill:none;stroke-width:1.8}
-.confirm-icon-danger svg{color:var(--danger)}
-.confirm-icon-success svg{color:var(--success)}
-.confirm-text{text-align:center;font-size:.95rem;font-weight:600;color:var(--text);margin:0 0 6px}
-.confirm-sub{text-align:center;font-size:.82rem;color:var(--text-secondary);margin:0}
-.link-text{color:var(--primary);cursor:pointer;font-weight:500;text-decoration:none}
-.link-text:hover{text-decoration:underline}
-.text-ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;display:block}
-
-/* ===== Organization management additions ===== */
-.org-layout{display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:start}
-.org-tree-card{padding:12px;max-height:calc(100vh - 220px);overflow-y:auto}
-.org-tree{font-size:.85rem;line-height:1.4}
-.org-tree-node{display:flex;align-items:center;gap:4px;padding:6px 8px;border-radius:var(--radius-sm);cursor:pointer;transition:var(--transition);user-select:none}
-.org-tree-node:hover{background:var(--bg-subtle)}
-.org-tree-node.active{background:rgba(79,70,229,.08);color:var(--primary)}
-.org-tree-node.root{font-weight:600;color:var(--text)}
-.org-tree-toggle{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--text-secondary)}
-.org-tree-toggle svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s ease}
-.org-tree-toggle.expanded svg{transform:rotate(90deg)}
-.org-tree-label{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.org-tree-actions{display:flex;align-items:center;gap:2px;opacity:0;transition:opacity .15s ease}
-.org-tree-node:hover .org-tree-actions{opacity:1}
-.org-tree-action{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-sm);color:var(--text-secondary);cursor:pointer}
-.org-tree-action:hover{background:var(--bg-muted);color:var(--primary)}
-.org-tree-action.danger:hover{background:var(--danger-bg);color:var(--danger)}
-.org-tree-action svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2}
-.org-tree-children{padding-left:18px;display:none}
-.org-tree-children.expanded{display:block}
-.org-tree-level-1{padding-left:0}
-.org-tree-level-2{padding-left:16px}
-.org-tree-level-3{padding-left:16px}
-.org-tree-level-4{padding-left:16px}
-.org-tree-add-hint{display:flex;align-items:center;gap:4px;padding:6px 8px 6px 26px;color:var(--text-muted);font-size:.8rem;cursor:pointer;border-radius:var(--radius-sm)}
-.org-tree-add-hint:hover{color:var(--primary);background:var(--bg-subtle)}
-.org-content{min-width:0}
-.org-path{font-size:.75rem;color:var(--text-muted);letter-spacing:.01em}
-.org-move-tree .org-tree-children.expanded{display:block}
-.org-move-tree .org-tree-node{padding:8px 10px}
-.org-move-tree .org-tree-node:hover{background:var(--bg-subtle)}
-.org-move-tree .org-tree-label{font-size:.85rem}
-@media (max-width:900px){
-  .org-layout{grid-template-columns:1fr}
-  .org-tree-card{max-height:none}
 }
 </style>
 <style data-od-tweaks-bridge-style="">
@@ -1742,42 +1638,34 @@ table.data tr:last-child td{border-bottom:none}
 
       <!-- ===== 组织管理 ===== -->
       <div class="view" id="view-organization" data-od-id="path-3-1-1-10">
-        <div class="tab-bar" data-od-id="path-3-1-1-10-tabs">
-          <button class="tab-btn active" onclick="switchOrgTab('mgmt',this)" data-od-id="path-3-1-1-10-tab-mgmt">管理平台</button>
-          <button class="tab-btn" onclick="switchOrgTab('collab',this)" data-od-id="path-3-1-1-10-tab-collab">协同平台</button>
+        <div class="tabs" data-od-id="path-3-1-1-10-0">
+          <div class="tab active">业务端组织</div>
+          <div class="tab">中心端组织</div>
         </div>
-        <div class="org-layout" data-od-id="path-3-1-1-10-layout">
-          <div class="card org-tree-card" data-od-id="path-3-1-1-10-tree-card">
-            <div class="org-tree" id="org-tree" data-od-id="path-3-1-1-10-tree"></div>
+        <div class="file-layout" data-od-id="path-3-1-1-10-1">
+          <div class="card" style="padding:12px">
+            <div class="tree-section">完美总公司</div>
+            <div class="tree-item active"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg>财务部</div>
+            <div class="tree-item tree-child">采购组</div>
+            <div class="tree-item tree-child">报销组</div>
+            <div class="tree-item"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>人事部</div>
+            <div class="tree-item"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>行政部</div>
+            <div class="tree-item"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>销售部</div>
+            <div class="tree-item"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>数据部</div>
           </div>
-          <div class="org-content" data-od-id="path-3-1-1-10-content">
-            <div class="toolbar" data-od-id="path-3-1-1-10-toolbar">
-              <div class="toolbar-left">
-                <input class="search-input" type="text" id="org-search-input" placeholder="搜索姓名/账号/职位" oninput="filterOrgAccounts(this.value)" data-od-id="path-3-1-1-10-search">
-              </div>
-              <div class="toolbar-right">
-                <button class="btn btn-secondary" onclick="openBatchMoveOrgModal()" data-od-id="path-3-1-1-10-btn-batch">批量调整组织</button>
-              </div>
+          <div>
+            <div class="toolbar">
+              <div class="toolbar-left"><input class="search-input" type="text" placeholder="搜索成员"></div>
+              <div class="toolbar-right"><button class="btn btn-secondary" data-od-id="path-3-1-1-10-1-1-0-1-0">调整组织</button><button class="btn btn-primary" onclick="openModal('modal-org-member')" data-od-id="path-3-1-1-10-1-1-0-1-1"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>添加成员</button></div>
             </div>
-            <div class="card" style="padding:0" data-od-id="path-3-1-1-10-table-card">
-              <div class="table-wrap">
-                <table class="data" id="org-accounts-table">
-                  <thead>
-                    <tr>
-                      <th style="width:32px"><input type="checkbox" id="org-select-all" onchange="toggleOrgSelectAll(this)"></th>
-                      <th>姓名</th>
-                      <th>账号</th>
-                      <th>角色</th>
-                      <th>组织</th>
-                      <th>操作</th>
-                    </tr>
-                  </thead>
-                  <tbody id="org-accounts-tbody"></tbody>
-                </table>
-              </div>
-              <div class="empty-state" id="org-empty-state" style="display:none;padding:48px 24px;text-align:center;color:var(--text-secondary);font-size:.85rem">
-                暂无账号数据
-              </div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>姓名</th><th>账号</th><th>职位</th><th>直属上级</th><th>操作</th></tr></thead>
+                <tbody>
+                  <tr><td class="bold">张伟</td><td class="mono">zhangwei</td><td>财务专员</td><td>李经理</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-10-1-1-1-0-1-0-4-0-0">调整部门</a><a class="action-link" onclick="confirmRemove()" data-od-id="path-3-1-1-10-1-1-1-0-1-0-4-0-1">移除</a></div></td></tr>
+                  <tr><td class="bold">王芳</td><td class="mono">wangfang</td><td>采购专员</td><td>刘经理</td><td><div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-10-1-1-1-0-1-1-4-0-0">调整部门</a><a class="action-link" onclick="confirmRemove()" data-od-id="path-3-1-1-10-1-1-1-0-1-1-4-0-1">移除</a></div></td></tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -1785,292 +1673,36 @@ table.data tr:last-child td{border-bottom:none}
 
       <!-- ===== 角色管理 ===== -->
       <div class="view" id="view-roles" data-od-id="path-3-1-1-11">
-        <!-- Tab页签 -->
-        <div class="tab-bar" data-od-id="path-3-1-1-11-tabs">
-          <button class="tab-btn active" onclick="switchRoleTab('mgmt',this)" data-od-id="path-3-1-1-11-tab-mgmt">管理平台</button>
-          <button class="tab-btn" onclick="switchRoleTab('collab',this)" data-od-id="path-3-1-1-11-tab-collab">协同平台</button>
+        <div class="toolbar" data-od-id="path-3-1-1-11-0">
+          <div class="toolbar-left"><input class="search-input" type="text" placeholder="搜索角色名称"></div>
+          <div class="toolbar-right"><button class="btn btn-primary" onclick="openModal('modal-role-create')" data-od-id="path-3-1-1-11-0-1-0"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>新建角色</button></div>
         </div>
-        <!-- 工具栏 -->
-        <div class="toolbar" style="margin-top:12px" data-od-id="path-3-1-1-11-toolbar">
-          <div class="toolbar-left">
-            <input class="search-input" type="text" placeholder="搜索角色名称" oninput="filterRoles(this.value)" data-od-id="path-3-1-1-11-search">
-          </div>
-          <div class="toolbar-right" style="gap:8px">
-            <button class="btn btn-secondary" onclick="openModal('modal-role-batch-scope')" data-od-id="path-3-1-1-11-btn-batch">
-              <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
-              批量调整数据范围
-            </button>
-            <button class="btn btn-primary" onclick="openRoleFormPage('create')" data-od-id="path-3-1-1-11-btn-create">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              新建角色
-            </button>
-          </div>
-        </div>
-        <!-- 角色列表表格 -->
-        <div class="card" style="margin-top:12px;padding:0" data-od-id="path-3-1-1-11-table-card">
-          <div class="table-wrap">
-            <table class="data" id="role-table">
-              <thead>
-                <tr>
-                  <th style="width:32px"><input type="checkbox" id="role-select-all" onchange="toggleRoleSelectAll(this)"></th>
-                  <th>角色名称</th>
-                  <th>角色描述</th>
-                  <th>平台</th>
-                  <th>状态</th>
-                  <th>创建人</th>
-                  <th>创建时间</th>
-                  <th>数据权限范围</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody id="role-tbody">
-                <!-- 管理平台角色 -->
-                <tr data-role-platform="mgmt" data-role-status="enabled" data-od-id="role-row-1">
-                  <td><input type="checkbox" class="role-row-check"></td>
-                  <td><a class="link-text" onclick="viewRoleDetail(1)">中心管理员</a></td>
-                  <td class="text-ellipsis" style="max-width:30ch" title="拥有管理平台全部功能与数据权限">拥有管理平台全部功能与数据权限</td>
-                  <td><span class="badge badge-purple">管理平台</span></td>
-                  <td><span class="badge badge-green">启用中</span></td>
-                  <td>王建国</td>
-                  <td>2025-03-01 09:00:00</td>
-                  <td>个人、技术中心、产品团队</td>
-                  <td class="action-cell">
-                    <button class="btn-link btn-danger-text" onclick="confirmRoleDisable(1,'中心管理员')">禁用</button>
-                    <button class="btn-link" onclick="openRoleFormPage('edit',1)">编辑</button>
-                  </td>
-                </tr>
-                <tr data-role-platform="mgmt" data-role-status="enabled" data-od-id="role-row-2">
-                  <td><input type="checkbox" class="role-row-check"></td>
-                  <td><a class="link-text" onclick="viewRoleDetail(2)">产品经理</a></td>
-                  <td class="text-ellipsis" style="max-width:30ch" title="负责业务需求池、项目管理相关操作">负责业务需求池、项目管理相关操作</td>
-                  <td><span class="badge badge-purple">管理平台</span></td>
-                  <td><span class="badge badge-green">启用中</span></td>
-                  <td>李晓梅</td>
-                  <td>2025-03-05 10:30:00</td>
-                  <td>个人、产品团队</td>
-                  <td class="action-cell">
-                    <button class="btn-link btn-danger-text" onclick="confirmRoleDisable(2,'产品经理')">禁用</button>
-                    <button class="btn-link" onclick="openRoleFormPage('edit',2)">编辑</button>
-                  </td>
-                </tr>
-                <tr data-role-platform="mgmt" data-role-status="disabled" data-od-id="role-row-3">
-                  <td><input type="checkbox" class="role-row-check"></td>
-                  <td><a class="link-text" onclick="viewRoleDetail(3)">研发工程师</a></td>
-                  <td class="text-ellipsis" style="max-width:30ch" title="负责我的BUG、版本管理相关操作">负责我的BUG、版本管理相关操作</td>
-                  <td><span class="badge badge-purple">管理平台</span></td>
-                  <td><span class="badge badge-red">禁用中</span></td>
-                  <td>张磊</td>
-                  <td>2025-03-10 14:00:00</td>
-                  <td>个人、研发组</td>
-                  <td class="action-cell">
-                    <button class="btn-link btn-success-text" onclick="confirmRoleEnable(3,'研发工程师')">启用</button>
-                    <button class="btn-link" onclick="openRoleFormPage('edit',3)">编辑</button>
-                  </td>
-                </tr>
-                <!-- 协同平台角色 -->
-                <tr data-role-platform="collab" data-role-status="enabled" data-od-id="role-row-4">
-                  <td><input type="checkbox" class="role-row-check"></td>
-                  <td><a class="link-text" onclick="viewRoleDetail(4)">测试工程师</a></td>
-                  <td class="text-ellipsis" style="max-width:30ch" title="负责验收管理、BUG管理相关操作">负责验收管理、BUG管理相关操作</td>
-                  <td><span class="badge badge-yellow">协同平台</span></td>
-                  <td><span class="badge badge-green">启用中</span></td>
-                  <td>赵芳</td>
-                  <td>2025-03-12 11:00:00</td>
-                  <td>个人、测试团队</td>
-                  <td class="action-cell">
-                    <button class="btn-link btn-danger-text" onclick="confirmRoleDisable(4,'测试工程师')">禁用</button>
-                    <button class="btn-link" onclick="openRoleFormPage('edit',4)">编辑</button>
-                  </td>
-                </tr>
-                <tr data-role-platform="collab" data-role-status="enabled" data-od-id="role-row-5">
-                  <td><input type="checkbox" class="role-row-check"></td>
-                  <td><a class="link-text" onclick="viewRoleDetail(5)">业务人员</a></td>
-                  <td class="text-ellipsis" style="max-width:30ch" title="只读查看相关数据，无写权限">只读查看相关数据，无写权限</td>
-                  <td><span class="badge badge-yellow">协同平台</span></td>
-                  <td><span class="badge badge-green">启用中</span></td>
-                  <td>孙志远</td>
-                  <td>2025-03-15 09:30:00</td>
-                  <td>个人</td>
-                  <td class="action-cell">
-                    <button class="btn-link btn-danger-text" onclick="confirmRoleDisable(5,'业务人员')">禁用</button>
-                    <button class="btn-link" onclick="openRoleFormPage('edit',5)">编辑</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- ===== 角色详情 ===== -->
-      <div class="view" id="view-role-detail" data-od-id="path-3-1-1-11-detail">
-        <div style="margin-bottom:16px">
-          <button class="btn-link" onclick="switchView('roles')" data-od-id="role-detail-back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-            返回角色列表
-          </button>
-        </div>
-        <div class="card" style="padding:0" data-od-id="role-detail-card">
-          <div style="padding:20px 24px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-light)">
-            <div style="display:flex;align-items:center;gap:12px">
-              <h3 id="role-detail-name" style="font-size:1.15rem;font-weight:700;margin:0" data-od-id="role-detail-name"></h3>
-              <span id="role-detail-platform-badge" data-od-id="role-detail-platform"></span>
-              <span id="role-detail-status-badge" data-od-id="role-detail-status"></span>
-            </div>
-            <div style="display:flex;gap:8px" id="role-detail-actions" data-od-id="role-detail-actions"></div>
-          </div>
-          <div style="padding:24px">
-            <div class="role-detail-section">
-              <div class="role-detail-section-title">基本信息</div>
-              <div class="role-detail-info-grid">
-                <div class="role-detail-info-item"><div class="role-detail-info-label">角色描述</div><div class="role-detail-info-value" id="role-detail-desc">—</div></div>
-                <div class="role-detail-info-item"><div class="role-detail-info-label">创建人</div><div class="role-detail-info-value" id="role-detail-creator">—</div></div>
-                <div class="role-detail-info-item"><div class="role-detail-info-label">创建时间</div><div class="role-detail-info-value" id="role-detail-time">—</div></div>
-                <div class="role-detail-info-item"><div class="role-detail-info-label">数据权限范围</div><div class="role-detail-info-value" id="role-detail-scope">—</div></div>
-              </div>
-            </div>
-            <div class="role-detail-section">
-              <div class="role-detail-section-title">功能权限</div>
-              <div class="table-wrap">
-                <table class="perm-matrix" id="role-detail-perm-table" data-od-id="role-detail-perm-table">
-                  <thead><tr><th>菜单</th><th>已授权操作</th></tr></thead>
-                  <tbody id="role-detail-perm-body"></tbody>
-                </table>
-              </div>
+        <div class="perm-layout" data-od-id="path-3-1-1-11-1">
+          <div class="card" style="padding:12px">
+            <div class="role-list">
+              <div class="role-card active"><div class="role-card-name">中心管理员</div><div class="role-card-desc">全部功能与数据权限</div></div>
+              <div class="role-card"><div class="role-card-name">产品经理</div><div class="role-card-desc">业务需求池、项目管理</div></div>
+              <div class="role-card"><div class="role-card-name">研发工程师</div><div class="role-card-desc">我的BUG、版本管理</div></div>
+              <div class="role-card"><div class="role-card-name">测试工程师</div><div class="role-card-desc">验收管理、BUG管理</div></div>
+              <div class="role-card"><div class="role-card-name">业务人员</div><div class="role-card-desc">只读查看相关数据</div></div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <!-- ===== 新建/编辑角色 ===== -->
-      <div class="view" id="view-role-form" data-od-id="path-3-1-1-11-form">
-        <div style="margin-bottom:16px">
-          <button class="btn-link" onclick="switchView('roles')" data-od-id="role-form-back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-            返回角色列表
-          </button>
-        </div>
-        <div class="card role-form-page" style="padding:0;max-width:860px" data-od-id="role-form-card">
-          <div style="padding:20px 24px;border-bottom:1px solid var(--border-light)">
-            <h3 id="role-form-page-title" style="font-size:1.15rem;font-weight:700;margin:0" data-od-id="role-form-page-title">新建角色</h3>
-          </div>
-          <div style="padding:24px">
-            <!-- 平台 -->
-            <div class="form-section">
-              <div class="form-group">
-                <label>平台 <span class="required">*</span></label>
-                <div class="radio-group" id="role-form-platform-group">
-                  <label class="radio-label">
-                    <input type="radio" name="role-platform" value="mgmt" checked onchange="onRoleFormPlatformChange()">
-                    <span class="badge badge-purple" style="margin-left:6px">管理平台</span>
-                  </label>
-                  <label class="radio-label" style="margin-left:20px">
-                    <input type="radio" name="role-platform" value="collab" onchange="onRoleFormPlatformChange()">
-                    <span class="badge badge-yellow" style="margin-left:6px">协同平台</span>
-                  </label>
-                </div>
-              </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">权限配置 — 中心管理员</div><button class="btn btn-primary btn-sm" data-od-id="path-3-1-1-11-1-1-0-1">保存权限</button></div>
+            <div class="table-wrap">
+              <table class="data">
+                <thead><tr><th>功能模块</th><th>查看</th><th>新增</th><th>编辑</th><th>删除</th><th>导出</th></tr></thead>
+                <tbody>
+                  <tr><td class="bold">业务需求池</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">业务问题池</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">我的BUG</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">验收管理</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">项目管理</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">通知管理</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                  <tr><td class="bold">账号/组织/角色</td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td><td><input type="checkbox" checked=""></td></tr>
+                </tbody>
+              </table>
             </div>
-            <!-- 角色名称 + 描述 -->
-            <div class="form-section">
-              <div class="form-section-title">基本信息</div>
-              <div class="form-row">
-                <div class="form-group" style="flex:1">
-                  <label>角色名称 <span class="required">*</span></label>
-                  <input type="text" id="role-form-name" maxlength="20" placeholder="请输入角色名称（最多20字）">
-                  <div class="form-hint"><span id="role-name-count">0</span>/20</div>
-                </div>
-                <div class="form-group" style="flex:2">
-                  <label>角色描述</label>
-                  <input type="text" id="role-form-desc" maxlength="50" placeholder="简要说明角色职责（最多50字）">
-                  <div class="form-hint"><span id="role-desc-count">0</span>/50</div>
-                </div>
-              </div>
-            </div>
-            <!-- 数据范围 -->
-            <div class="form-section">
-              <div class="form-section-title">数据范围 <span class="required">*</span></div>
-              <div class="scope-tree" id="role-form-scope-tree">
-                <div class="scope-tree-node locked">
-                  <span class="scope-tree-toggle"></span>
-                  <input type="checkbox" checked disabled id="scope-personal">
-                  <span class="scope-tree-label">个人（默认，不可取消）</span>
-                </div>
-                <div>
-                  <div class="scope-tree-node">
-                    <span class="scope-tree-toggle" onclick="toggleScopeTree(this)">▶</span>
-                    <input type="checkbox" value="数创中心" onchange="toggleScopeChildren(this)">
-                    <span class="scope-tree-label">数创中心</span>
-                  </div>
-                  <div class="scope-tree-children" style="display:none">
-                    <div class="scope-tree-node"><span class="scope-tree-toggle"></span><input type="checkbox" value="产品团队"><span class="scope-tree-label">产品团队</span></div>
-                    <div class="scope-tree-node"><span class="scope-tree-toggle"></span><input type="checkbox" value="项目团队"><span class="scope-tree-label">项目团队</span></div>
-                  </div>
-                </div>
-                <div>
-                  <div class="scope-tree-node">
-                    <span class="scope-tree-toggle" onclick="toggleScopeTree(this)">▶</span>
-                    <input type="checkbox" value="技术中心" onchange="toggleScopeChildren(this)">
-                    <span class="scope-tree-label">技术中心</span>
-                  </div>
-                  <div class="scope-tree-children" style="display:none">
-                    <div class="scope-tree-node"><span class="scope-tree-toggle"></span><input type="checkbox" value="研发组"><span class="scope-tree-label">研发组</span></div>
-                    <div class="scope-tree-node"><span class="scope-tree-toggle"></span><input type="checkbox" value="测试团队"><span class="scope-tree-label">测试团队</span></div>
-                    <div class="scope-tree-node"><span class="scope-tree-toggle"></span><input type="checkbox" value="前端组"><span class="scope-tree-label">前端组</span></div>
-                  </div>
-                </div>
-                <div class="scope-tree-node">
-                  <span class="scope-tree-toggle"></span>
-                  <input type="checkbox" value="业务中心">
-                  <span class="scope-tree-label">业务中心</span>
-                </div>
-              </div>
-            </div>
-            <!-- 功能范围 -->
-            <div class="form-section">
-              <div class="form-section-title">功能范围 <span class="required">*</span></div>
-              <p style="font-size:.75rem;color:var(--text-secondary);margin-bottom:12px">根据所选平台展示对应菜单和操作项</p>
-              <!-- 管理平台菜单 Tab -->
-              <div id="role-perm-mgmt">
-                <div class="tab-bar tab-bar-sm" id="role-perm-tabs-mgmt">
-                  <button class="tab-btn active" onclick="switchPermTab('mgmt-req',this,'mgmt')">业务需求池</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-issue',this,'mgmt')">业务问题池</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-bug',this,'mgmt')">我的BUG</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-accept',this,'mgmt')">验收管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-proj',this,'mgmt')">项目管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-complaints',this,'mgmt')">投诉/建议</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-notify',this,'mgmt')">通知管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('mgmt-org',this,'mgmt')">账号/组织/角色</button>
-                </div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-req"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>新增</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label><label class="perm-op-item"><input type="checkbox"><span>导出</span></label><label class="perm-op-item"><input type="checkbox"><span>审批</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-issue" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>新增</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label><label class="perm-op-item"><input type="checkbox"><span>导出</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-bug" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>新增</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label><label class="perm-op-item"><input type="checkbox"><span>导出</span></label><label class="perm-op-item"><input type="checkbox"><span>指派</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-accept" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>新增</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label><label class="perm-op-item"><input type="checkbox"><span>审批</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-proj" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>新增</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label><label class="perm-op-item"><input type="checkbox"><span>导出</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-complaints" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>处理</span></label><label class="perm-op-item"><input type="checkbox"><span>转派</span></label><label class="perm-op-item"><input type="checkbox"><span>关闭</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-notify" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>发送</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-mgmt-org" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>新增</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label></div></div>
-              </div>
-              <!-- 协同平台菜单 Tab -->
-              <div id="role-perm-collab" style="display:none">
-                <div class="tab-bar tab-bar-sm" id="role-perm-tabs-collab">
-                  <button class="tab-btn active" onclick="switchPermTab('collab-req',this,'collab')">需求管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('collab-issue',this,'collab')">问题管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('collab-bug',this,'collab')">BUG管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('collab-accept',this,'collab')">验收管理</button>
-                  <button class="tab-btn" onclick="switchPermTab('collab-doc',this,'collab')">文档库</button>
-                </div>
-                <div class="perm-tab-panel" id="perm-panel-collab-req"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>提交</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>评论</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-collab-issue" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>提交</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>评论</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-collab-bug" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>提交</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>评论</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-collab-accept" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>提交验收</span></label><label class="perm-op-item"><input type="checkbox"><span>评论</span></label></div></div>
-                <div class="perm-tab-panel" id="perm-panel-collab-doc" style="display:none"><div class="perm-ops-grid"><label class="perm-op-item"><input type="checkbox" checked><span>查看</span></label><label class="perm-op-item"><input type="checkbox"><span>上传</span></label><label class="perm-op-item"><input type="checkbox"><span>编辑</span></label><label class="perm-op-item"><input type="checkbox"><span>删除</span></label></div></div>
-              </div>
-            </div>
-          </div>
-          <div style="padding:16px 24px;border-top:1px solid var(--border-light);display:flex;justify-content:flex-end;gap:8px">
-            <button class="btn btn-secondary" onclick="switchView('roles')">取消</button>
-            <button class="btn btn-primary" onclick="submitRoleFormPage()" data-od-id="role-form-submit">确认</button>
           </div>
         </div>
       </div>
@@ -3250,108 +2882,28 @@ table.data tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- 新建/重命名组织 -->
-<div class="modal-overlay" id="modal-org-form" onclick="closeModalOnBackdrop(event)" data-od-id="path-16">
-  <div class="modal modal-sm" data-od-id="path-16-0">
-    <div class="modal-header"><h3 id="org-form-title" data-od-id="path-16-0-0-0">新建下级组织</h3><div class="modal-close" onclick="closeModal('modal-org-form')">✕</div></div>
+<div class="modal-overlay" id="modal-org-member" onclick="closeModalOnBackdrop(event)" data-od-id="path-16">
+  <div class="modal" data-od-id="path-16-0">
+    <div class="modal-header"><h3 data-od-id="path-16-0-0-0">添加成员到组织</h3><div class="modal-close" onclick="closeModal('modal-org-member')">✕</div></div>
     <div class="modal-body">
-      <div class="form-group"><label>上级组织</label><input type="text" id="org-form-parent-name" value="" disabled=""></div>
-      <div class="form-group">
-        <label>组织名称 <span class="required">*</span></label>
-        <input type="text" id="org-form-name" placeholder="请输入组织名称" maxlength="30">
-        <div class="form-hint">同级组织下名称不可重复</div>
-      </div>
+      <div class="form-group"><label>目标组织</label><input type="text" value="财务部" disabled=""></div>
+      <div class="form-group"><label>选择成员</label><select multiple="" style="height:120px"><option>张伟</option><option>李娜</option><option>赵磊</option></select></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-org-form')" data-od-id="path-16-0-2-0">取消</button><button class="btn btn-primary" onclick="saveOrgForm()" data-od-id="path-16-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-org-member')" data-od-id="path-16-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-org-member');showToast('success','成员已添加')" data-od-id="path-16-0-2-1">确定</button></div>
   </div>
 </div>
 
-<!-- 移除组织确认 -->
-<div class="modal-overlay" id="modal-org-remove" onclick="closeModalOnBackdrop(event)" data-od-id="path-16b">
-  <div class="modal modal-sm" data-od-id="path-16b-0">
-    <div class="modal-header"><h3>移除组织</h3><div class="modal-close" onclick="closeModal('modal-org-remove')">✕</div></div>
+<div class="modal-overlay" id="modal-role-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-17">
+  <div class="modal" data-od-id="path-17-0">
+    <div class="modal-header"><h3 data-od-id="path-17-0-0-0">新建角色</h3><div class="modal-close" onclick="closeModal('modal-role-create')">✕</div></div>
     <div class="modal-body">
-      <div class="confirm-icon confirm-icon-danger"><svg width="48" height="48" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-      <p class="confirm-text">确定移除「<span id="org-remove-name"></span>」？</p>
-      <p class="confirm-sub">该组织下的账号将被移动到上级组织。此操作不可撤销。</p>
+      <div class="form-group"><label>角色名称 <span class="required">*</span></label><input type="text" placeholder="请输入角色名称"></div>
+      <div class="form-group"><label>角色描述</label><input type="text" placeholder="简要说明角色职责"></div>
+      <div class="form-group"><label>数据权限范围</label><select><option>个人</option><option>组</option><option>团队</option><option>中心</option></select></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-org-remove')">取消</button><button class="btn btn-danger" onclick="removeOrg()">确认移除</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-role-create')" data-od-id="path-17-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-role-create');showToast('success','角色创建成功')" data-od-id="path-17-0-2-1">保存</button></div>
   </div>
 </div>
-
-<!-- 调整/批量调整组织 -->
-<div class="modal-overlay" id="modal-org-move" onclick="closeModalOnBackdrop(event)" data-od-id="path-16c">
-  <div class="modal" data-od-id="path-16c-0">
-    <div class="modal-header"><h3 id="org-move-title" data-od-id="path-16c-0-0-0">调整组织</h3><div class="modal-close" onclick="closeModal('modal-org-move')">✕</div></div>
-    <div class="modal-body">
-      <p id="org-move-subtitle" style="color:var(--text-secondary);font-size:.85rem;margin-bottom:12px">请选择目标组织</p>
-      <div class="card org-move-tree" id="org-move-tree" style="padding:8px;max-height:360px;overflow-y:auto"></div>
-    </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-org-move')" data-od-id="path-16c-0-2-0">取消</button><button class="btn btn-primary" id="org-move-confirm-btn" onclick="confirmMoveOrg()" data-od-id="path-16c-0-2-1">确认调整</button></div>
-  </div>
-</div>
-
-<!-- 批量调整数据范围 -->
-<div class="modal-overlay" id="modal-role-batch-scope" onclick="closeModalOnBackdrop(event)" data-od-id="path-17b">
-  <div class="modal" data-od-id="path-17b-0">
-    <div class="modal-header"><h3>批量调整数据范围</h3><div class="modal-close" onclick="closeModal('modal-role-batch-scope')">✕</div></div>
-    <div class="modal-body">
-      <p style="color:var(--text-secondary);font-size:.85rem;margin-bottom:12px">将为所有选中角色统一设置数据范围</p>
-      <div class="form-group">
-        <label>数据范围 <span class="required">*</span></label>
-        <div class="scope-check-group">
-          <label class="scope-check-item"><input type="checkbox" checked disabled><span>个人（默认）</span></label>
-          <label class="scope-check-item"><input type="checkbox"><span>研发组</span></label>
-          <label class="scope-check-item"><input type="checkbox"><span>产品团队</span></label>
-          <label class="scope-check-item"><input type="checkbox"><span>测试团队</span></label>
-          <label class="scope-check-item"><input type="checkbox"><span>技术中心</span></label>
-          <label class="scope-check-item"><input type="checkbox"><span>业务中心</span></label>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('modal-role-batch-scope')">取消</button>
-      <button class="btn btn-primary" onclick="closeModal('modal-role-batch-scope');showToast('success','数据范围已批量更新')">确认</button>
-    </div>
-  </div>
-</div>
-
-<!-- 禁用确认 -->
-<div class="modal-overlay" id="modal-role-disable-confirm" onclick="closeModalOnBackdrop(event)" data-od-id="path-17c">
-  <div class="modal modal-sm" data-od-id="path-17c-0">
-    <div class="modal-header"><h3>禁用角色</h3><div class="modal-close" onclick="closeModal('modal-role-disable-confirm')">✕</div></div>
-    <div class="modal-body">
-      <div class="confirm-icon confirm-icon-danger">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      </div>
-      <p class="confirm-text">确认禁用角色 <strong id="role-disable-name"></strong>？</p>
-      <p class="confirm-sub">禁用后，该角色下的账号 Token 即刻失效，登录时将提示账号被禁用。</p>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('modal-role-disable-confirm')">取消</button>
-      <button class="btn btn-danger" onclick="doRoleDisable()">确认禁用</button>
-    </div>
-  </div>
-</div>
-
-<!-- 启用确认 -->
-<div class="modal-overlay" id="modal-role-enable-confirm" onclick="closeModalOnBackdrop(event)" data-od-id="path-17d">
-  <div class="modal modal-sm" data-od-id="path-17d-0">
-    <div class="modal-header"><h3>启用角色</h3><div class="modal-close" onclick="closeModal('modal-role-enable-confirm')">✕</div></div>
-    <div class="modal-body">
-      <div class="confirm-icon confirm-icon-success">
-        <svg viewBox="0 0 24 24" width="32" height="32"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-      </div>
-      <p class="confirm-text">确认启用角色 <strong id="role-enable-name"></strong>？</p>
-      <p class="confirm-sub">启用后，该角色下的账号可重新正常登录使用。</p>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('modal-role-enable-confirm')">取消</button>
-      <button class="btn btn-primary" onclick="doRoleEnable()">确认启用</button>
-    </div>
-  </div>
-</div>
-
 
 <div class="modal-overlay" id="modal-profile-edit" onclick="closeModalOnBackdrop(event)" data-od-id="path-18">
   <div class="modal" data-od-id="path-18-0">
@@ -4087,8 +3639,6 @@ function switchView(key, el) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   const target = document.getElementById(viewId);
   if (target) target.classList.add('active');
-  if (viewId === 'view-roles') { _applyRoleFilters(_roleCurrentTab, ''); }
-  if (viewId === 'view-organization') { initOrganizationView(); }
 
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   if (el && el.classList) {
@@ -4096,10 +3646,6 @@ function switchView(key, el) {
   } else {
     const nav = document.querySelector('.nav-item[data-view="' + key.replace('view-', '') + '"]');
     if (nav) nav.classList.add('active');
-    else if (viewId === 'view-role-detail' || viewId === 'view-role-form') {
-      var parentNav = document.querySelector('.nav-item[data-view="roles"]');
-      if (parentNav) parentNav.classList.add('active');
-    }
   }
 
   const titleMap = {
@@ -4108,7 +3654,6 @@ function switchView(key, el) {
     'view-complaints': '投诉/建议处理', 'view-library': '资料库管理',
     'view-notifications': '通知管理', 'view-accounts': '账号管理',
     'view-organization': '组织管理', 'view-roles': '角色管理', 'view-profile': '个人中心',
-    'view-role-detail': '角色详情', 'view-role-form': '角色编辑',
     'view-req-detail': '需求详情', 'view-issue-detail': '问题详情',
     'view-bug-detail': 'BUG详情', 'view-accept-detail': '验收单详情',
     'view-project-detail': '项目详情'
@@ -4126,8 +3671,6 @@ function switchView(key, el) {
     'view-accounts': ['运营', '账号管理'],
     'view-organization': ['运营', '组织管理'],
     'view-roles': ['运营', '角色管理'],
-    'view-role-detail': ['运营', '角色管理', '角色详情'],
-    'view-role-form': ['运营', '角色管理', '编辑角色'],
     'view-profile': ['我的', '个人中心'],
     'view-req-detail': ['业务', '业务需求池', '需求详情'],
     'view-issue-detail': ['业务', '业务问题池', '问题详情'],
@@ -4194,678 +3737,6 @@ function showConfirm(title, sub, callback) {
     };
   }
   openModal('modal-confirm');
-}
-
-/* ===== Role management ===== */
-let _roleCurrentTab = 'mgmt';
-let _roleTargetId = null;
-let _roleFormMode = 'create';
-let _roleFormId = null;
-
-const _ROLES_DATA = {
-  1: {name:'中心管理员', desc:'拥有管理平台全部功能与数据权限', platform:'mgmt', status:'enabled', creator:'王建国', createTime:'2025-03-01 09:00:00', dataScope:['个人','技术中心','产品团队'], permissions:{req:['查看','新增','编辑','删除','导出','审批'],issue:['查看','新增','编辑','删除','导出'],bug:['查看','新增','编辑','删除','导出','指派'],accept:['查看','新增','编辑','删除','审批'],proj:['查看','新增','编辑','删除','导出'],complaints:['查看','处理','转派','关闭'],notify:['查看','发送'],org:['查看','新增','编辑','删除']}},
-  2: {name:'产品经理', desc:'负责业务需求池、项目管理相关操作', platform:'mgmt', status:'enabled', creator:'李晓梅', createTime:'2025-03-05 10:30:00', dataScope:['个人','产品团队'], permissions:{req:['查看','新增','编辑','审批'],issue:['查看','新增','编辑'],bug:['查看'],accept:['查看'],proj:['查看','新增','编辑'],complaints:['查看'],notify:['查看'],org:['查看']}},
-  3: {name:'研发工程师', desc:'负责我的BUG、版本管理相关操作', platform:'mgmt', status:'disabled', creator:'张磊', createTime:'2025-03-10 14:00:00', dataScope:['个人','研发组'], permissions:{req:['查看'],issue:['查看'],bug:['查看','新增','编辑'],accept:['查看'],proj:['查看','编辑'],complaints:['查看'],notify:['查看'],org:[]}},
-  4: {name:'测试工程师', desc:'负责验收管理、BUG管理相关操作', platform:'collab', status:'enabled', creator:'赵芳', createTime:'2025-03-12 11:00:00', dataScope:['个人','测试团队'], permissions:{req:['查看','提交','评论'],issue:['查看','提交','评论'],bug:['查看','提交','编辑','评论'],accept:['查看','提交验收','评论'],doc:['查看','上传']}},
-  5: {name:'业务人员', desc:'只读查看相关数据，无写权限', platform:'collab', status:'enabled', creator:'孙志远', createTime:'2025-03-15 09:30:00', dataScope:['个人'], permissions:{req:['查看'],issue:['查看'],bug:['查看'],accept:['查看'],doc:['查看']}}
-};
-
-const _PERM_MENUS_MGMT = [
-  {key:'req', label:'业务需求池'}, {key:'issue', label:'业务问题池'},
-  {key:'bug', label:'我的BUG'}, {key:'accept', label:'验收管理'},
-  {key:'proj', label:'项目管理'}, {key:'complaints', label:'投诉/建议'},
-  {key:'notify', label:'通知管理'}, {key:'org', label:'账号/组织/角色'}
-];
-const _PERM_MENUS_COLLAB = [
-  {key:'req', label:'需求管理'}, {key:'issue', label:'问题管理'},
-  {key:'bug', label:'BUG管理'}, {key:'accept', label:'验收管理'},
-  {key:'doc', label:'文档库'}
-];
-
-function switchRoleTab(platform, btn) {
-  _roleCurrentTab = platform;
-  document.querySelectorAll('[data-od-id="path-3-1-1-11-tabs"] .tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  const searchVal = document.querySelector('[data-od-id="path-3-1-1-11-search"]')?.value || '';
-  _applyRoleFilters(platform, searchVal);
-}
-
-function filterRoles(val) {
-  _applyRoleFilters(_roleCurrentTab, val);
-}
-
-function _applyRoleFilters(platform, search) {
-  const rows = document.querySelectorAll('#role-tbody tr');
-  const kw = search.trim().toLowerCase();
-  rows.forEach(row => {
-    const matchPlat = row.dataset.rolePlatform === platform;
-    const nameCell = row.querySelector('a.link-text');
-    const matchSearch = !kw || (nameCell && nameCell.textContent.toLowerCase().includes(kw));
-    row.style.display = matchPlat && matchSearch ? '' : 'none';
-  });
-}
-
-function toggleRoleSelectAll(cb) {
-  document.querySelectorAll('#role-tbody tr').forEach(function(row) {
-    if (row.style.display !== 'none') {
-      var check = row.querySelector('.role-row-check');
-      if (check) check.checked = cb.checked;
-    }
-  });
-}
-
-function viewRoleDetail(id) {
-  const role = _ROLES_DATA[id];
-  if (!role) return;
-  document.getElementById('role-detail-name').textContent = role.name;
-  document.getElementById('role-detail-platform-badge').className = 'badge ' + (role.platform === 'mgmt' ? 'badge-purple' : 'badge-yellow');
-  document.getElementById('role-detail-platform-badge').textContent = role.platform === 'mgmt' ? '管理平台' : '协同平台';
-  document.getElementById('role-detail-status-badge').className = 'badge ' + (role.status === 'enabled' ? 'badge-green' : 'badge-red');
-  document.getElementById('role-detail-status-badge').textContent = role.status === 'enabled' ? '启用中' : '禁用中';
-  document.getElementById('role-detail-desc').textContent = role.desc || '—';
-  document.getElementById('role-detail-creator').textContent = role.creator;
-  document.getElementById('role-detail-time').textContent = role.createTime;
-  document.getElementById('role-detail-scope').textContent = role.dataScope.join('、');
-  var actHtml = '<button class="btn btn-secondary" onclick="openRoleFormPage(\'edit\',' + id + ')">编辑</button>';
-  if (role.status === 'enabled') {
-    actHtml += ' <button class="btn btn-danger" onclick="confirmRoleDisable(' + id + ',\'' + role.name + '\')">禁用</button>';
-  } else {
-    actHtml += ' <button class="btn btn-primary" onclick="confirmRoleEnable(' + id + ',\'' + role.name + '\')">启用</button>';
-  }
-  document.getElementById('role-detail-actions').innerHTML = actHtml;
-  var menus = role.platform === 'mgmt' ? _PERM_MENUS_MGMT : _PERM_MENUS_COLLAB;
-  var tbody = document.getElementById('role-detail-perm-body');
-  tbody.innerHTML = '';
-  menus.forEach(function(menu) {
-    var ops = role.permissions[menu.key] || [];
-    var tr = document.createElement('tr');
-    var tdL = document.createElement('td');
-    tdL.textContent = menu.label;
-    tr.appendChild(tdL);
-    var tdR = document.createElement('td');
-    if (ops.length > 0) {
-      tdR.innerHTML = ops.map(function(o) { return '<span class="perm-check-yes">✓</span> ' + o; }).join('<span style="margin:0 8px;color:var(--border)">·</span>');
-    } else {
-      tdR.innerHTML = '<span class="perm-check-no">未授权</span>';
-    }
-    tr.appendChild(tdR);
-    tbody.appendChild(tr);
-  });
-  switchView('role-detail');
-}
-
-function openRoleFormPage(mode, id) {
-  _roleFormMode = mode;
-  _roleFormId = id;
-  var titleEl = document.getElementById('role-form-page-title');
-  var nameInput = document.getElementById('role-form-name');
-  var descInput = document.getElementById('role-form-desc');
-  var radios = document.querySelectorAll('#role-form-platform-group input[name="role-platform"]');
-  var platformGroup = document.getElementById('role-form-platform-group');
-  document.getElementById('role-name-count').textContent = '0';
-  document.getElementById('role-desc-count').textContent = '0';
-  nameInput.oninput = function() { document.getElementById('role-name-count').textContent = nameInput.value.length; };
-  descInput.oninput = function() { document.getElementById('role-desc-count').textContent = descInput.value.length; };
-  document.querySelectorAll('#role-form-scope-tree input[type=checkbox]:not(:disabled)').forEach(function(c) { c.checked = false; });
-  if (mode === 'create') {
-    titleEl.textContent = '新建角色';
-    nameInput.value = '';
-    descInput.value = '';
-    radios.forEach(function(r) { r.disabled = false; r.checked = r.value === 'mgmt'; });
-    platformGroup.style.opacity = '1';
-    platformGroup.style.pointerEvents = '';
-  } else {
-    var d = _ROLES_DATA[id] || {name:'', desc:'', platform:'mgmt'};
-    titleEl.textContent = '编辑角色';
-    nameInput.value = d.name;
-    descInput.value = d.desc;
-    document.getElementById('role-name-count').textContent = d.name.length;
-    document.getElementById('role-desc-count').textContent = d.desc.length;
-    radios.forEach(function(r) { r.disabled = true; r.checked = r.value === d.platform; });
-    platformGroup.style.opacity = '0.6';
-    platformGroup.style.pointerEvents = 'none';
-    if (d.dataScope) {
-      d.dataScope.forEach(function(scope) {
-        var cb = document.querySelector('#role-form-scope-tree input[value="' + scope + '"]');
-        if (cb) cb.checked = true;
-      });
-    }
-  }
-  onRoleFormPlatformChange();
-  switchView('role-form');
-}
-
-function onRoleFormPlatformChange() {
-  var platform = document.querySelector('#role-form-platform-group input[name="role-platform"]:checked').value;
-  document.getElementById('role-perm-mgmt').style.display = platform === 'mgmt' ? '' : 'none';
-  document.getElementById('role-perm-collab').style.display = platform === 'collab' ? '' : 'none';
-  _resetFormPermTabs(platform);
-}
-
-function _resetFormPermTabs(platform) {
-  var containerId = 'role-perm-tabs-' + platform;
-  var btns = document.querySelectorAll('#' + containerId + ' .tab-btn');
-  btns.forEach(function(b, i) { b.classList.toggle('active', i === 0); });
-  var prefix = 'perm-panel-' + platform + '-';
-  document.querySelectorAll('[id^="' + prefix + '"]').forEach(function(p, i) { p.style.display = i === 0 ? '' : 'none'; });
-}
-
-function switchPermTab(key, btn, platform) {
-  var containerId = 'role-perm-tabs-' + platform;
-  document.querySelectorAll('#' + containerId + ' .tab-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  var prefix = 'perm-panel-' + platform + '-';
-  document.querySelectorAll('[id^="' + prefix + '"]').forEach(function(p) { p.style.display = 'none'; });
-  var panel = document.getElementById('perm-panel-' + key);
-  if (panel) panel.style.display = '';
-}
-
-function toggleScopeTree(toggle) {
-  var node = toggle.closest('.scope-tree-node');
-  var next = node ? node.nextElementSibling : null;
-  if (!next || !next.classList.contains('scope-tree-children')) return;
-  var isOpen = next.style.display !== 'none';
-  next.style.display = isOpen ? 'none' : '';
-  toggle.textContent = isOpen ? '▶' : '▼';
-}
-
-function toggleScopeChildren(cb) {
-  var node = cb.closest('.scope-tree-node');
-  var next = node ? node.nextElementSibling : null;
-  if (!next || !next.classList.contains('scope-tree-children')) return;
-  next.querySelectorAll('input[type=checkbox]').forEach(function(c) { c.checked = cb.checked; });
-}
-
-function submitRoleFormPage() {
-  var name = document.getElementById('role-form-name').value.trim();
-  if (!name) { showToast('error', '角色名称不能为空'); return; }
-  var isCreate = _roleFormMode === 'create';
-  switchView('roles');
-  showToast('success', isCreate ? '角色创建成功' : '角色修改成功');
-}
-
-function confirmRoleDisable(id, name) {
-  _roleTargetId = id;
-  document.getElementById('role-disable-name').textContent = name;
-  openModal('modal-role-disable-confirm');
-}
-
-function confirmRoleEnable(id, name) {
-  _roleTargetId = id;
-  document.getElementById('role-enable-name').textContent = name;
-  openModal('modal-role-enable-confirm');
-}
-
-function doRoleDisable() {
-  closeModal('modal-role-disable-confirm');
-  var row = document.querySelector('[data-od-id="role-row-' + _roleTargetId + '"]');
-  if (row) {
-    row.dataset.roleStatus = 'disabled';
-    var badge = row.querySelector('.badge-green');
-    if (badge) { badge.className = 'badge badge-red'; badge.textContent = '禁用中'; }
-    var actionCell = row.querySelector('.action-cell');
-    if (actionCell) {
-      var nameTxt = row.querySelector('a.link-text').textContent;
-      actionCell.innerHTML = '<button class="btn-link btn-success-text" onclick="confirmRoleEnable(' + _roleTargetId + ',\'' + nameTxt + '\')">启用</button><button class="btn-link" onclick="openRoleFormPage(\'edit\',' + _roleTargetId + ')">编辑</button>';
-    }
-  }
-  if (_ROLES_DATA[_roleTargetId]) _ROLES_DATA[_roleTargetId].status = 'disabled';
-  if (document.getElementById('view-role-detail').classList.contains('active')) viewRoleDetail(_roleTargetId);
-  showToast('success', '角色已禁用');
-}
-
-function doRoleEnable() {
-  closeModal('modal-role-enable-confirm');
-  var row = document.querySelector('[data-od-id="role-row-' + _roleTargetId + '"]');
-  if (row) {
-    row.dataset.roleStatus = 'enabled';
-    var badge = row.querySelector('.badge-red');
-    if (badge) { badge.className = 'badge badge-green'; badge.textContent = '启用中'; }
-    var actionCell = row.querySelector('.action-cell');
-    if (actionCell) {
-      var nameTxt = row.querySelector('a.link-text').textContent;
-      actionCell.innerHTML = '<button class="btn-link btn-danger-text" onclick="confirmRoleDisable(' + _roleTargetId + ',\'' + nameTxt + '\')">禁用</button><button class="btn-link" onclick="openRoleFormPage(\'edit\',' + _roleTargetId + ')">编辑</button>';
-    }
-  }
-  if (_ROLES_DATA[_roleTargetId]) _ROLES_DATA[_roleTargetId].status = 'enabled';
-  if (document.getElementById('view-role-detail').classList.contains('active')) viewRoleDetail(_roleTargetId);
-  showToast('success', '角色已启用');
-}
-
-/* ===== Organization management ===== */
-var _ORG_TREES = {
-  mgmt: {
-    id: 'mgmt-root',
-    name: '数字化创新中心',
-    level: 1,
-    children: [
-      {
-        id: 'mgmt-de-team', name: '数字化效能团队', level: 2,
-        children: [
-          { id: 'mgmt-de-quality', name: '交付质量管理组', level: 3,
-            children: [
-              { id: 'mgmt-de-quality-front', name: '商城前端小组', level: 4, children: [] }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'mgmt-prod-team', name: '产品规划团队', level: 2,
-        children: [
-          { id: 'mgmt-prod-research', name: '用户研究组', level: 3, children: [] }
-        ]
-      },
-      {
-        id: 'mgmt-tech-team', name: '技术中台团队', level: 2,
-        children: [
-          { id: 'mgmt-tech-backend', name: '后端架构组', level: 3, children: [] }
-        ]
-      }
-    ]
-  },
-  collab: {
-    id: 'collab-root',
-    name: '完美（中国）',
-    level: 1,
-    children: [
-      {
-        id: 'collab-hq', name: '总部', level: 2,
-        children: [
-          {
-            id: 'collab-hq-market', name: '业务市场中心', level: 3,
-            children: [
-              { id: 'collab-hq-market-standard', name: '业务规范部', level: 4, children: [] }
-            ]
-          },
-          {
-            id: 'collab-hq-finance', name: '财务共享中心', level: 3,
-            children: [
-              { id: 'collab-hq-finance-settle', name: '资金结算部', level: 4, children: [] }
-            ]
-          }
-        ]
-      },
-      {
-        id: 'collab-region', name: '区域', level: 2,
-        children: [
-          { id: 'collab-region-east', name: '华东大区', level: 3, children: [] }
-        ]
-      }
-    ]
-  }
-};
-
-var _ORG_ACCOUNTS = [
-  { id: 'oa-1', name: '张伟', account: 'zhangwei', role: '产品经理', position: '产品负责人', platform: 'mgmt', orgPath: '数字化创新中心/数字化效能团队/交付质量管理组', nodeId: 'mgmt-de-quality' },
-  { id: 'oa-2', name: '李娜', account: 'lina', role: '中心管理员', position: '平台管理员', platform: 'mgmt', orgPath: '数字化创新中心/产品规划团队', nodeId: 'mgmt-prod-team' },
-  { id: 'oa-3', name: '赵磊', account: 'zhaolei', role: '研发工程师', position: '后端开发', platform: 'mgmt', orgPath: '数字化创新中心/技术中台团队/后端架构组', nodeId: 'mgmt-tech-backend' },
-  { id: 'oa-4', name: '王芳', account: 'wangfang', role: '业务人员', position: '业务专员', platform: 'collab', orgPath: '完美（中国）/总部/业务市场中心/业务规范部', nodeId: 'collab-hq-market-standard' },
-  { id: 'oa-5', name: '孙丽', account: 'sunli', role: '业务负责人', position: '部门经理', platform: 'collab', orgPath: '完美（中国）/总部/财务共享中心', nodeId: 'collab-hq-finance' },
-  { id: 'oa-6', name: '周宇', account: 'zhouyu', role: '业务人员', position: '市场专员', platform: 'collab', orgPath: '完美（中国）/区域/华东大区', nodeId: 'collab-region-east' }
-];
-
-var _orgCurrentTab = 'mgmt';
-var _orgSelectedNodeId = { mgmt: 'mgmt-root', collab: 'collab-root' };
-var _orgSearchKeyword = '';
-var _orgMoveAccountIds = [];
-var _orgMoveTargetId = '';
-var _orgMoveTargetPath = '';
-var _orgEditNodeId = '';
-var _orgEditParentId = '';
-var _orgNextId = 100;
-
-function initOrganizationView() {
-  _orgCurrentTab = 'mgmt';
-  _orgSearchKeyword = '';
-  var searchInput = document.getElementById('org-search-input');
-  if (searchInput) searchInput.value = '';
-  renderOrgTree();
-  renderOrgAccounts();
-}
-
-function switchOrgTab(platform, btn) {
-  _orgCurrentTab = platform;
-  _orgSearchKeyword = '';
-  var searchInput = document.getElementById('org-search-input');
-  if (searchInput) searchInput.value = '';
-  document.querySelectorAll('#view-organization .tab-btn').forEach(function (b) { b.classList.remove('active'); });
-  if (btn) btn.classList.add('active');
-  renderOrgTree();
-  renderOrgAccounts();
-}
-
-function renderOrgTree() {
-  var container = document.getElementById('org-tree');
-  if (!container) return;
-  var root = _ORG_TREES[_orgCurrentTab];
-  container.innerHTML = buildOrgTreeHTML(root, root.level, [root.name], true);
-}
-
-function buildOrgTreeHTML(node, level, path, isRoot) {
-  var hasChildren = node.children && node.children.length > 0;
-  var canAdd = level < 4;
-  var isSelected = _orgSelectedNodeId[_orgCurrentTab] === node.id;
-  var expanded = isRoot || hasChildren;
-  var toggleHtml = hasChildren
-    ? '<span class="org-tree-toggle ' + (expanded ? 'expanded' : '') + '" onclick="event.stopPropagation();toggleOrgNode(\'' + node.id + '\',this)" data-od-id="org-toggle-' + node.id + '"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>'
-    : '<span class="org-tree-toggle" style="visibility:hidden"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>';
-  var actionsHtml = '';
-  if (!isRoot) {
-    actionsHtml += '<span class="org-tree-action" onclick="event.stopPropagation();openRenameOrgModal(\'' + node.id + '\')" title="重命名" data-od-id="org-rename-' + node.id + '"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span>';
-  }
-  if (canAdd) {
-    actionsHtml += '<span class="org-tree-action" onclick="event.stopPropagation();openCreateOrgModal(\'' + node.id + '\')" title="新建下级组织" data-od-id="org-add-' + node.id + '"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>';
-  }
-  if (!isRoot && isOrgEmpty(node.id)) {
-    actionsHtml += '<span class="org-tree-action danger" onclick="event.stopPropagation();openRemoveOrgModal(\'' + node.id + '\')" title="移除组织" data-od-id="org-remove-' + node.id + '"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></svg></span>';
-  }
-  var nodeHtml = '<div class="org-tree-level-' + level + '">' +
-    '<div class="org-tree-node ' + (isRoot ? 'root' : '') + ' ' + (isSelected ? 'active' : '') + '" onclick="selectOrgNode(\'' + node.id + '\')" data-od-id="org-node-' + node.id + '">' +
-      toggleHtml +
-      '<span class="org-tree-label" title="' + node.name + '">' + node.name + '</span>' +
-      '<span class="org-tree-actions">' + actionsHtml + '</span>' +
-    '</div>';
-  if (hasChildren) {
-    nodeHtml += '<div class="org-tree-children ' + (expanded ? 'expanded' : '') + '" id="org-children-' + node.id + '" data-od-id="org-children-' + node.id + '">';
-    for (var i = 0; i < node.children.length; i++) {
-      var child = node.children[i];
-      nodeHtml += buildOrgTreeHTML(child, child.level, path.concat(child.name), false);
-    }
-    nodeHtml += '</div>';
-  }
-  nodeHtml += '</div>';
-  return nodeHtml;
-}
-
-function toggleOrgNode(nodeId, el) {
-  var children = document.getElementById('org-children-' + nodeId);
-  if (!children) return;
-  children.classList.toggle('expanded');
-  el.classList.toggle('expanded');
-}
-
-function selectOrgNode(nodeId) {
-  _orgSelectedNodeId[_orgCurrentTab] = nodeId;
-  _orgSearchKeyword = '';
-  var searchInput = document.getElementById('org-search-input');
-  if (searchInput) searchInput.value = '';
-  renderOrgTree();
-  renderOrgAccounts();
-}
-
-function filterOrgAccounts(keyword) {
-  _orgSearchKeyword = (keyword || '').trim().toLowerCase();
-  renderOrgAccounts();
-}
-
-function renderOrgAccounts() {
-  var tbody = document.getElementById('org-accounts-tbody');
-  var empty = document.getElementById('org-empty-state');
-  var table = document.getElementById('org-accounts-table');
-  if (!tbody) return;
-  var root = _ORG_TREES[_orgCurrentTab];
-  var selectedId = _orgSelectedNodeId[_orgCurrentTab];
-  var selectedDescendants = getOrgDescendantIds(root, selectedId);
-  var keyword = _orgSearchKeyword;
-  var rows = '';
-  var visibleAccounts = [];
-  for (var i = 0; i < _ORG_ACCOUNTS.length; i++) {
-    var a = _ORG_ACCOUNTS[i];
-    if (a.platform !== _orgCurrentTab) continue;
-    var matchesKeyword = !keyword ||
-      a.name.toLowerCase().indexOf(keyword) !== -1 ||
-      a.account.toLowerCase().indexOf(keyword) !== -1 ||
-      a.position.toLowerCase().indexOf(keyword) !== -1;
-    var matchesOrg = keyword ? true : selectedDescendants.indexOf(a.nodeId) !== -1;
-    if (matchesKeyword && matchesOrg) visibleAccounts.push(a);
-  }
-  for (var j = 0; j < visibleAccounts.length; j++) {
-    var acc = visibleAccounts[j];
-    rows += '<tr data-od-id="org-row-' + acc.id + '">' +
-      '<td><input type="checkbox" class="org-row-check" value="' + acc.id + '" data-od-id="org-check-' + acc.id + '"></td>' +
-      '<td class="bold">' + acc.name + '</td>' +
-      '<td class="mono">' + acc.account + '</td>' +
-      '<td>' + acc.role + '</td>' +
-      '<td class="org-path">' + acc.orgPath + '</td>' +
-      '<td><div class="actions-cell"><a class="action-link" onclick="openMoveOrgModal(\'' + acc.id + '\',\'' + acc.name + '\')" data-od-id="org-move-' + acc.id + '">调整组织</a></div></td>' +
-      '</tr>';
-  }
-  tbody.innerHTML = rows;
-  var hasRows = visibleAccounts.length > 0;
-  if (table) table.style.display = hasRows ? 'table' : 'none';
-  if (empty) empty.style.display = hasRows ? 'none' : 'block';
-  var allCheck = document.getElementById('org-select-all');
-  if (allCheck) allCheck.checked = false;
-}
-
-function getOrgDescendantIds(node, targetId) {
-  if (node.id === targetId) {
-    var ids = [node.id];
-    collectOrgIds(node, ids);
-    return ids;
-  }
-  if (!node.children) return [];
-  for (var i = 0; i < node.children.length; i++) {
-    var res = getOrgDescendantIds(node.children[i], targetId);
-    if (res.length) return res;
-  }
-  return [];
-}
-
-function collectOrgIds(node, ids) {
-  if (!node.children) return;
-  for (var i = 0; i < node.children.length; i++) {
-    ids.push(node.children[i].id);
-    collectOrgIds(node.children[i], ids);
-  }
-}
-
-function toggleOrgSelectAll(checkbox) {
-  var checked = checkbox.checked;
-  var rows = document.querySelectorAll('#org-accounts-tbody .org-row-check');
-  for (var i = 0; i < rows.length; i++) rows[i].checked = checked;
-}
-
-function getSelectedOrgAccountIds() {
-  var ids = [];
-  var checks = document.querySelectorAll('#org-accounts-tbody .org-row-check:checked');
-  for (var i = 0; i < checks.length; i++) ids.push(checks[i].value);
-  return ids;
-}
-
-function openMoveOrgModal(accountId, accountName) {
-  _orgMoveAccountIds = accountId ? [accountId] : [];
-  var title = document.getElementById('org-move-title');
-  var subtitle = document.getElementById('org-move-subtitle');
-  if (title) title.textContent = accountId ? '调整组织' : '批量调整组织';
-  if (subtitle) subtitle.textContent = accountId ? '将「' + accountName + '」调整到目标组织' : '将选中的 ' + _orgMoveAccountIds.length + ' 个账号调整到目标组织';
-  _orgMoveTargetId = '';
-  _orgMoveTargetPath = '';
-  renderOrgMoveTree(_orgCurrentTab, 'org-move-tree');
-  var confirmBtn = document.getElementById('org-move-confirm-btn');
-  if (confirmBtn) confirmBtn.textContent = accountId ? '确认调整' : '确认批量调整';
-  openModal('modal-org-move');
-}
-
-function openBatchMoveOrgModal() {
-  var ids = getSelectedOrgAccountIds();
-  if (!ids.length) { showToast('error', '请至少选择一个账号'); return; }
-  _orgMoveAccountIds = ids;
-  var title = document.getElementById('org-move-title');
-  var subtitle = document.getElementById('org-move-subtitle');
-  if (title) title.textContent = '批量调整组织';
-  if (subtitle) subtitle.textContent = '将选中的 ' + ids.length + ' 个账号调整到目标组织';
-  _orgMoveTargetId = '';
-  _orgMoveTargetPath = '';
-  renderOrgMoveTree(_orgCurrentTab, 'org-move-tree');
-  var confirmBtn = document.getElementById('org-move-confirm-btn');
-  if (confirmBtn) confirmBtn.textContent = '确认批量调整';
-  openModal('modal-org-move');
-}
-
-function renderOrgMoveTree(platform, containerId) {
-  var container = document.getElementById(containerId);
-  if (!container) return;
-  var root = _ORG_TREES[platform];
-  container.innerHTML = buildOrgMoveTreeHTML(root, [root.name]);
-}
-
-function buildOrgMoveTreeHTML(node, path) {
-  var hasChildren = node.children && node.children.length > 0;
-  var isSelected = _orgMoveTargetId === node.id;
-  var html = '<div class="org-tree-level-' + node.level + '">' +
-    '<div class="org-tree-node ' + (isSelected ? 'active' : '') + '" onclick="selectOrgMoveTarget(\'' + node.id + '\',\'' + path.join('/') + '\')" data-od-id="org-move-node-' + node.id + '">' +
-      '<span class="org-tree-toggle" style="visibility:' + (hasChildren ? 'visible' : 'hidden') + '"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></span>' +
-      '<span class="org-tree-label">' + node.name + '</span>' +
-    '</div>';
-  if (hasChildren) {
-    html += '<div class="org-tree-children expanded">';
-    for (var i = 0; i < node.children.length; i++) {
-      html += buildOrgMoveTreeHTML(node.children[i], path.concat(node.children[i].name));
-    }
-    html += '</div>';
-  }
-  html += '</div>';
-  return html;
-}
-
-function selectOrgMoveTarget(nodeId, path) {
-  _orgMoveTargetId = nodeId;
-  _orgMoveTargetPath = path;
-  renderOrgMoveTree(_orgCurrentTab, 'org-move-tree');
-}
-
-function confirmMoveOrg() {
-  if (!_orgMoveTargetId) { showToast('error', '请选择目标组织'); return; }
-  for (var i = 0; i < _orgMoveAccountIds.length; i++) {
-    var acc = _ORG_ACCOUNTS.find(function (a) { return a.id === _orgMoveAccountIds[i]; });
-    if (acc) {
-      acc.nodeId = _orgMoveTargetId;
-      acc.orgPath = _orgMoveTargetPath;
-    }
-  }
-  closeModal('modal-org-move');
-  renderOrgAccounts();
-  showToast('success', _orgMoveAccountIds.length > 1 ? '已批量调整组织' : '组织调整成功');
-}
-
-function openCreateOrgModal(parentId) {
-  _orgEditParentId = parentId;
-  _orgEditNodeId = '';
-  var input = document.getElementById('org-form-name');
-  var title = document.getElementById('org-form-title');
-  if (input) input.value = '';
-  if (title) title.textContent = '新建下级组织';
-  var parent = findOrgNode(_ORG_TREES[_orgCurrentTab], parentId);
-  var parentNameEl = document.getElementById('org-form-parent-name');
-  if (parentNameEl) parentNameEl.textContent = parent ? parent.name : '';
-  openModal('modal-org-form');
-}
-
-function openRenameOrgModal(nodeId) {
-  var node = findOrgNode(_ORG_TREES[_orgCurrentTab], nodeId);
-  if (!node) return;
-  _orgEditNodeId = nodeId;
-  _orgEditParentId = '';
-  var input = document.getElementById('org-form-name');
-  var title = document.getElementById('org-form-title');
-  var parentNameEl = document.getElementById('org-form-parent-name');
-  if (input) input.value = node.name;
-  if (title) title.textContent = '重命名组织';
-  if (parentNameEl) parentNameEl.textContent = '当前组织';
-  openModal('modal-org-form');
-}
-
-function saveOrgForm() {
-  var input = document.getElementById('org-form-name');
-  var name = input ? input.value.trim() : '';
-  if (!name) { showToast('error', '组织名称不能为空'); return; }
-  if (_orgEditNodeId) {
-    var node = findOrgNode(_ORG_TREES[_orgCurrentTab], _orgEditNodeId);
-    if (node) node.name = name;
-  } else if (_orgEditParentId) {
-    var parent = findOrgNode(_ORG_TREES[_orgCurrentTab], _orgEditParentId);
-    if (parent) {
-      var siblingNames = parent.children ? parent.children.map(function (c) { return c.name; }) : [];
-      if (siblingNames.indexOf(name) !== -1) { showToast('error', '同级组织下名称不能重复'); return; }
-      if (!parent.children) parent.children = [];
-      parent.children.push({ id: 'org-' + _orgNextId++, name: name, level: parent.level + 1, children: [] });
-    }
-  }
-  closeModal('modal-org-form');
-  renderOrgTree();
-  renderOrgAccounts();
-  showToast('success', _orgEditNodeId ? '组织名称已更新' : '下级组织创建成功');
-}
-
-function openRemoveOrgModal(nodeId) {
-  var node = findOrgNode(_ORG_TREES[_orgCurrentTab], nodeId);
-  if (!node) return;
-  _orgEditNodeId = nodeId;
-  var nameEl = document.getElementById('org-remove-name');
-  if (nameEl) nameEl.textContent = node.name;
-  openModal('modal-org-remove');
-}
-
-function removeOrg() {
-  var nodeId = _orgEditNodeId;
-  var root = _ORG_TREES[_orgCurrentTab];
-  var parent = findOrgParent(root, nodeId);
-  if (parent && parent.children) {
-    parent.children = parent.children.filter(function (c) { return c.id !== nodeId; });
-  }
-  for (var i = _ORG_ACCOUNTS.length - 1; i >= 0; i--) {
-    if (_ORG_ACCOUNTS[i].nodeId === nodeId) {
-      _ORG_ACCOUNTS[i].nodeId = parent ? parent.id : root.id;
-      _ORG_ACCOUNTS[i].orgPath = parent ? getOrgPath(root, parent.id) : root.name;
-    }
-  }
-  if (_orgSelectedNodeId[_orgCurrentTab] === nodeId) {
-    _orgSelectedNodeId[_orgCurrentTab] = parent ? parent.id : root.id;
-  }
-  closeModal('modal-org-remove');
-  renderOrgTree();
-  renderOrgAccounts();
-  showToast('success', '组织已移除');
-}
-
-function findOrgNode(node, targetId) {
-  if (node.id === targetId) return node;
-  if (!node.children) return null;
-  for (var i = 0; i < node.children.length; i++) {
-    var found = findOrgNode(node.children[i], targetId);
-    if (found) return found;
-  }
-  return null;
-}
-
-function findOrgParent(node, targetId) {
-  if (!node.children) return null;
-  for (var i = 0; i < node.children.length; i++) {
-    var child = node.children[i];
-    if (child.id === targetId) return node;
-    var found = findOrgParent(child, targetId);
-    if (found) return found;
-  }
-  return null;
-}
-
-function getOrgPath(node, targetId) {
-  if (node.id === targetId) return node.name;
-  if (!node.children) return '';
-  for (var i = 0; i < node.children.length; i++) {
-    var child = node.children[i];
-    var childPath = getOrgPath(child, targetId);
-    if (childPath) return node.name + '/' + childPath;
-  }
-  return '';
-}
-
-function isOrgEmpty(nodeId) {
-  for (var i = 0; i < _ORG_ACCOUNTS.length; i++) {
-    if (_ORG_ACCOUNTS[i].nodeId === nodeId) return false;
-  }
-  return true;
 }
 
 /* ===== Toasts ===== */
