@@ -898,32 +898,6 @@ table.data tr:last-child td{border-bottom:none}
 .mi-meta-value{color:var(--fg);line-height:1.5}
 .btn-danger{background:var(--danger);color:#fff;border:none;padding:6px 14px;border-radius:6px;font-size:13px;cursor:pointer;font-weight:500}
 .btn-danger:hover{opacity:.9}
-/* 验收进度条 in table cell */
-.accept-progress-cell{display:flex;align-items:center;gap:8px;min-width:120px}
-.accept-progress-cell .progress-bar{flex:1;height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden}
-.accept-progress-cell .progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:3px}
-.accept-progress-cell .progress-text{font-family:var(--font-mono);font-size:.78rem;color:var(--text-secondary);min-width:32px;text-align:right}
-/* 7-node stepper */
-.accept-stepper-7{display:flex;justify-content:space-between;align-items:flex-start;margin:20px 0;position:relative;padding:0 8px}
-.accept-stepper-7::before{content:'';position:absolute;top:14px;left:28px;right:28px;height:2px;background:var(--border-light);z-index:0}
-.accept-stepper-7 .accept-step{position:relative;text-align:center;z-index:1;flex:1;min-width:0}
-.accept-stepper-7 .accept-step-dot{width:28px;height:28px;border-radius:50%;background:var(--border-light);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;margin-bottom:6px;border:3px solid var(--bg)}
-.accept-stepper-7 .accept-step-label{font-size:.72rem;color:var(--text-secondary);white-space:nowrap}
-.accept-stepper-7 .accept-step.done .accept-step-dot{background:var(--success)}
-.accept-stepper-7 .accept-step.pending .accept-step-dot{background:#7C3AED}
-.accept-stepper-7 .accept-step.future .accept-step-dot{background:var(--border-light)}
-.accept-stepper-7 .accept-step.current .accept-step-dot{background:var(--primary);box-shadow:0 0 0 4px rgba(79,70,229,.15)}
-/* tab-bar-sm (smaller variant for detail sub-tabs) */
-.tab-bar-sm{display:flex;gap:4px;flex-wrap:wrap}
-.tab-btn-sm{padding:6px 12px;border:none;background:none;color:var(--text-secondary);font-size:.8rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
-.tab-btn-sm:hover{color:var(--primary)}
-.tab-btn-sm.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:500}
-/* tab-count badge */
-.tab-bar .tab-count{display:inline-block;margin-left:4px;padding:1px 6px;background:var(--bg-muted);color:var(--text-secondary);border-radius:10px;font-size:.7rem;font-family:var(--font-mono)}
-.tab-bar .tab-btn.active .tab-count{background:var(--primary);color:#fff}
-/* fullscreen mode for acceptance list */
-.accept-list-fullscreen{position:fixed!important;top:0;left:0;right:0;bottom:0;z-index:9999;background:var(--bg);margin:0!important;border-radius:0!important;padding:24px!important;overflow-y:auto}
-.accept-list-fullscreen .table-wrap{max-height:none!important}
 </style>
 <style data-od-tweaks-bridge-style="">
 [data-od-tweaks-hidden] .tw-panel {
@@ -1820,40 +1794,41 @@ table.data tr:last-child td{border-bottom:none}
       <div class="view" id="view-acceptance" data-od-id="path-3-1-1-4">
         <div class="toolbar" data-od-id="path-3-1-1-4-0">
           <div class="toolbar-left">
-            <input class="search-input" type="text" id="accept-search-input" placeholder="搜索项目-系统名称 / 版本号 / 验收单ID" oninput="filterAcceptList()">
+            <input class="search-input" type="text" placeholder="搜索项目-系统 / 版本号 / 验收单ID">
+            <select class="filter-select"><option>全部项目</option><option>油葱商城</option><option>OA系统</option><option>人事系统</option></select>
           </div>
           <div class="toolbar-right">
-            <button class="btn btn-secondary" onclick="showToast('success','已导出选中验收单详情PDF')" data-od-id="path-3-1-1-4-0-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>导出</button>
-            <button class="btn btn-primary" onclick="openAcceptCreate()" data-od-id="path-3-1-1-4-0-1-1"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建验收单</button>
+            <button class="btn btn-secondary" data-od-id="path-3-1-1-4-0-1-0"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>导出</button>
+            <button class="btn btn-primary" onclick="openModal('modal-accept-create')" data-od-id="path-3-1-1-4-0-1-1"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建验收单</button>
           </div>
         </div>
-        <div class="stat-grid" style="grid-template-columns:repeat(4,1fr)" data-od-id="path-3-1-1-4-1">
-          <div class="stat-card card"><div class="stat-num" id="accept-stat-total">6</div><div class="stat-label">验收单总数</div></div>
-          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#0891B2,var(--accent));-webkit-background-clip:text" id="accept-stat-pending">1</div><div class="stat-label">待验收总数</div></div>
-          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#4F46E5,var(--primary-light));-webkit-background-clip:text" id="accept-stat-progress">1</div><div class="stat-label">验收中总数</div></div>
-          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#059669,var(--success));-webkit-background-clip:text" id="accept-stat-done">2</div><div class="stat-label">已完成总数</div></div>
+        <div class="stat-grid" style="grid-template-columns:repeat(5,1fr)" data-od-id="path-3-1-1-4-1">
+          <div class="stat-card card"><div class="stat-num">34</div><div class="stat-label">验收单总数</div></div>
+          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#D97706,var(--warning));-webkit-background-clip:text">6</div><div class="stat-label">待审批总数</div></div>
+          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#0891B2,var(--accent));-webkit-background-clip:text">8</div><div class="stat-label">待验收总数</div></div>
+          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#4F46E5,var(--primary-light));-webkit-background-clip:text">10</div><div class="stat-label">验收中总数</div></div>
+          <div class="stat-card card"><div class="stat-num" style="background:linear-gradient(135deg,#059669,var(--success));-webkit-background-clip:text">10</div><div class="stat-label">已完成总数</div></div>
         </div>
-        <div class="tab-bar" data-od-id="path-3-1-1-4-2" id="accept-tab-bar">
-          <button class="tab-btn active" onclick="switchAcceptTab('all',this)">全部 <span class="tab-count" id="accept-cnt-all">6</span></button>
-          <button class="tab-btn" onclick="switchAcceptTab('draft',this)">草稿 <span class="tab-count" id="accept-cnt-draft">1</span></button>
-          <button class="tab-btn" onclick="switchAcceptTab('pending',this)">待验收 <span class="tab-count" id="accept-cnt-pending">1</span></button>
-          <button class="tab-btn" onclick="switchAcceptTab('progress',this)">验收中 <span class="tab-count" id="accept-cnt-progress">1</span></button>
-          <button class="tab-btn" onclick="switchAcceptTab('done',this)">已完成 <span class="tab-count" id="accept-cnt-done">2</span></button>
-          <button class="tab-btn" onclick="switchAcceptTab('closed',this)">已关闭 <span class="tab-count" id="accept-cnt-closed">1</span></button>
+        <div class="tabs" data-od-id="path-3-1-1-4-2">
+          <div class="tab active">全部</div>
+          <div class="tab">草稿</div>
+          <div class="tab">待审批</div>
+          <div class="tab">待验收</div>
+          <div class="tab">验收中</div>
+          <div class="tab">已完成</div>
+          <div class="tab">已关闭</div>
         </div>
         <div class="table-wrap" data-od-id="path-3-1-1-4-3">
-          <table class="data" id="accept-table">
-            <thead><tr>
-              <th>验收单ID</th>
-              <th>项目版本</th>
-              <th>状态</th>
-              <th>验收进度</th>
-              <th>创建人</th>
-              <th>创建时间</th>
-              <th>验收截止时间</th>
-              <th>操作</th>
-            </tr></thead>
-            <tbody id="accept-tbody"></tbody>
+          <table class="data">
+            <thead><tr><th>验收单ID</th><th>项目-系统名称</th><th>项目版本号</th><th>状态</th><th>创建人</th><th>创建时间</th><th>审批人</th><th>验收结点</th><th>操作</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">IC-20260615-0001 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold">油葱商城</td><td class="mono">V4.30.0</td><td><span class="badge badge-gray">草稿</span></td><td>王建国</td><td class="mono">2026-06-15 09:30</td><td>张总</td><td class="mono">2026-06-20 18:00</td><td><div class="actions-cell"><a class="action-link" onclick="showAcceptDetail('IC-20260615-0001')" data-od-id="path-3-1-1-4-3-0-1-0-8-0-0">详情</a><a class="action-link" onclick="openModal('modal-accept-create')" data-od-id="path-3-1-1-4-3-0-1-0-8-0-1">编辑</a><a class="action-link" onclick="openModal('modal-accept-approve')" data-od-id="path-3-1-1-4-3-0-1-0-8-0-2">提交审批</a><a class="action-link" onclick="confirmDelete()" data-od-id="path-3-1-1-4-3-0-1-0-8-0-3">删除</a></div></td></tr>
+              <tr><td class="mono">IC-20260614-0009 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold">人事系统</td><td class="mono">V2.1.0</td><td><span class="badge badge-warn">待审批</span></td><td>孙丽</td><td class="mono">2026-06-14 14:20</td><td>王总</td><td class="mono">2026-06-18 18:00</td><td><div class="actions-cell"><a class="action-link" onclick="showAcceptDetail('IC-20260614-0009')" data-od-id="path-3-1-1-4-3-0-1-1-8-0-0">详情</a><a class="action-link" onclick="openModal('modal-accept-approve')" data-od-id="path-3-1-1-4-3-0-1-1-8-0-1">审批</a></div></td></tr>
+              <tr><td class="mono">IC-20260613-0007 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold">OA系统</td><td class="mono">V3.2.1</td><td><span class="badge badge-accent">待验收</span></td><td>赵强</td><td class="mono">2026-06-13 11:00</td><td>张总</td><td class="mono">2026-06-16 18:00</td><td><div class="actions-cell"><a class="action-link" onclick="showAcceptDetail('IC-20260613-0007')" data-od-id="path-3-1-1-4-3-0-1-2-8-0-0">详情</a><a class="action-link" onclick="openModal('modal-accept-req-edit')" data-od-id="path-3-1-1-4-3-0-1-2-8-0-1">增减需求</a><a class="action-link" onclick="openModal('modal-notify-accept')" data-od-id="path-3-1-1-4-3-0-1-2-8-0-2">通知验收</a><a class="action-link" onclick="openModal('modal-remind-accept')" data-od-id="path-3-1-1-4-3-0-1-2-8-0-3">催促验收</a></div></td></tr>
+              <tr><td class="mono">IC-20260612-0005 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold">财务系统</td><td class="mono">V4.0.1</td><td><span class="badge badge-primary">验收中</span></td><td>陈磊</td><td class="mono">2026-06-12 10:00</td><td>王总</td><td class="mono" style="color:var(--danger);font-weight:700">2026-06-14 18:00 <span class="badge badge-danger">！已超时</span></td><td><div class="actions-cell"><a class="action-link" onclick="showAcceptDetail('IC-20260612-0005')" data-od-id="path-3-1-1-4-3-0-1-3-8-0-0">详情</a><a class="action-link" onclick="openModal('modal-accept-req-edit')" data-od-id="path-3-1-1-4-3-0-1-3-8-0-1">增减需求</a><a class="action-link" onclick="openModal('modal-remind-accept')" data-od-id="path-3-1-1-4-3-0-1-3-8-0-2">催促验收</a><a class="action-link" onclick="openModal('modal-complete-accept')" data-od-id="path-3-1-1-4-3-0-1-3-8-0-3">完成验收</a></div></td></tr>
+              <tr><td class="mono">IC-20260610-0003 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold">供应链</td><td class="mono">V1.5.3</td><td><span class="badge badge-success">已完成</span></td><td>李明</td><td class="mono">2026-06-10 09:00</td><td>张总</td><td class="mono">2026-06-12 18:00</td><td><div class="actions-cell"><a class="action-link" onclick="showAcceptDetail('IC-20260610-0003')" data-od-id="path-3-1-1-4-3-0-1-4-8-0-0">详情</a></div></td></tr>
+              <tr><td class="mono">IC-20260608-0002 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold">CRM</td><td class="mono">V2.8.0</td><td><span class="badge badge-gray">已关闭</span></td><td>周宇</td><td class="mono">2026-06-08 16:00</td><td>—</td><td class="mono">2026-06-10 18:00</td><td><div class="actions-cell"><a class="action-link" onclick="showAcceptDetail('IC-20260608-0002')" data-od-id="path-3-1-1-4-3-0-1-5-8-0-0">详情</a></div></td></tr>
+            </tbody>
           </table>
         </div>
       </div>
@@ -2753,95 +2728,49 @@ table.data tr:last-child td{border-bottom:none}
       <div class="view" id="view-accept-detail" data-od-id="path-3-1-1-16">
         <div class="detail-back" onclick="switchView('acceptance')" data-od-id="path-3-1-1-16-0"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="m15 18-6-6 6-6"></path></svg> 返回验收管理</div>
         <div class="detail-head" data-od-id="path-3-1-1-16-1">
-          <div><span class="mono" id="accept-detail-id" style="color:var(--accent);font-weight:600" data-od-id="path-3-1-1-16-1-0-0">IC-20260615-0001</span><h2 style="margin:6px 0 0" id="accept-detail-title" data-od-id="path-3-1-1-16-1-0-1">油葱商城 V4.30.0 验收</h2></div>
-          <div style="display:flex;gap:8px" id="accept-detail-actions"></div>
-        </div>
-
-        <!-- 7节点横向进度 -->
-        <div class="accept-stepper accept-stepper-7" id="accept-detail-stepper" data-od-id="path-3-1-1-16-2"></div>
-
-        <!-- 顶部区域：验收资料 + 发版信息 -->
-        <div class="accept-top-area" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
-          <div class="card" data-od-id="path-3-1-1-16-3a">
-            <div class="card-header"><div class="card-title">验收资料</div></div>
-            <div class="accept-doc-list" style="padding:12px 16px;display:flex;flex-direction:column;gap:8px">
-              <div style="display:flex;align-items:center;gap:8px;font-size:.85rem"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><a href="#" style="color:var(--accent)">PRD文件.pdf</a></div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:.85rem"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><a href="#" style="color:var(--accent)">原型文件.fig</a></div>
-              <div style="display:flex;align-items:center;gap:8px;font-size:.85rem"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:var(--accent);fill:none;stroke-width:2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><a href="#" style="color:var(--accent)">验收指导SOP.docx</a></div>
-            </div>
-          </div>
-          <div class="card" data-od-id="path-3-1-1-16-3b">
-            <div class="card-header"><div class="card-title">发版信息</div><span class="badge badge-gray" id="accept-release-status">待填写</span></div>
-            <div style="padding:12px 16px;font-size:.85rem;display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <div><div style="color:var(--text-secondary);font-size:.78rem">发版时间</div><div class="mono">2026-06-16 18:00</div></div>
-              <div><div style="color:var(--text-secondary);font-size:.78rem">发版人</div><div>李明</div></div>
-              <div><div style="color:var(--text-secondary);font-size:.78rem">APP应用市场</div><div>苹果、华为</div></div>
-              <div><div style="color:var(--text-secondary);font-size:.78rem">MP应用市场</div><div>—</div></div>
-              <div style="grid-column:span 2"><div style="color:var(--text-secondary);font-size:.78rem">发版说明</div><div>V4.30.0 发版，含首页改版、购物车优化等功能</div></div>
-            </div>
+          <div><span class="mono" id="accept-detail-id" style="color:var(--accent);font-weight:600" data-od-id="path-3-1-1-16-1-0-0">IC-20260615-0001</span><h2 style="margin:6px 0 0" data-od-id="path-3-1-1-16-1-0-1">油葱商城 V4.30.0 验收</h2></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-secondary btn-sm" onclick="openModal('modal-notify-accept')" data-od-id="path-3-1-1-16-1-1-0">通知验收</button>
+            <button class="btn btn-secondary btn-sm" onclick="openModal('modal-remind-accept')" data-od-id="path-3-1-1-16-1-1-1">催促验收</button>
+            <button class="btn btn-primary btn-sm" onclick="openModal('modal-complete-accept')" data-od-id="path-3-1-1-16-1-1-2">完成验收</button>
           </div>
         </div>
-
-        <!-- 基本信息 -->
-        <div class="detail-meta" style="margin-top:16px" data-od-id="path-3-1-1-16-3">
-          <div class="info-item"><div class="info-label">项目名称</div><div class="info-value" id="accept-detail-project">油葱商城</div></div>
-          <div class="info-item"><div class="info-label">版本信息</div><div class="info-value mono" id="accept-detail-version">V4.30.0</div></div>
-          <div class="info-item"><div class="info-label">状态</div><div class="info-value" id="accept-detail-status"><span class="badge badge-accent">待验收</span></div></div>
-          <div class="info-item"><div class="info-label">验收截止时间</div><div class="info-value mono" id="accept-detail-deadline">2026-06-20 18:00</div></div>
-          <div class="info-item"><div class="info-label">验收进度</div><div class="info-value" id="accept-detail-progress">
-            <div style="display:flex;align-items:center;gap:8px"><div class="progress-bar" style="width:120px"><div class="progress-fill" style="width:33%"></div></div><span class="mono" style="font-size:.82rem">33%</span></div>
-          </div></div>
-          <div class="info-item"><div class="info-label">创建人</div><div class="info-value" id="accept-detail-creator">王建国</div></div>
-          <div class="info-item"><div class="info-label">创建时间</div><div class="info-value mono" id="accept-detail-ctime">2026-06-15 09:30</div></div>
+        <div class="accept-stepper" style="margin:20px 0" data-od-id="path-3-1-1-16-2">
+          <div class="accept-step done"><div class="accept-step-dot">✓</div><div class="accept-step-label">草稿</div></div>
+          <div class="accept-step-line done"></div>
+          <div class="accept-step done"><div class="accept-step-dot">✓</div><div class="accept-step-label">待审批</div></div>
+          <div class="accept-step-line done"></div>
+          <div class="accept-step active"><div class="accept-step-dot">3</div><div class="accept-step-label">待验收</div></div>
+          <div class="accept-step-line"></div>
+          <div class="accept-step"><div class="accept-step-dot">4</div><div class="accept-step-label">验收中</div></div>
+          <div class="accept-step-line"></div>
+          <div class="accept-step"><div class="accept-step-dot">5</div><div class="accept-step-label">已完成</div></div>
         </div>
-
-        <!-- 验收列表 -->
-        <div class="card" style="margin-top:16px" id="accept-detail-list-card" data-od-id="path-3-1-1-16-4">
-          <div class="card-header">
-            <div class="card-title">验收列表 <span style="font-weight:400;font-size:.78rem;color:var(--text-secondary)" id="accept-detail-list-count">· 6条</span></div>
-            <div style="display:flex;gap:8px;align-items:center">
-              <button class="btn btn-secondary btn-sm" onclick="toggleAcceptListFullscreen()" title="点我全屏展示更全面的验收列表"><svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2"><path d="M8 3H5a2 2 0 0 0-2 2v3"></path><path d="M21 8V5a2 2 0 0 0-2-2h-3"></path><path d="M3 16v3a2 2 0 0 0 2 2h3"></path><path d="M16 21h3a2 2 0 0 0 2-2v-3"></path></svg>全屏</button>
-              <button class="btn btn-secondary btn-sm" onclick="openModal('modal-accept-req-edit')" data-od-id="path-3-1-1-16-4-0-1">增减需求</button>
-            </div>
-          </div>
-          <div class="tab-bar-sm" id="accept-detail-list-tabs" style="padding:0 16px;border-bottom:1px solid var(--border-light)">
-            <button class="tab-btn-sm active" onclick="switchAcceptListTab('all',this)">全部</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('pending',this)">待验收</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('passed',this)">已通过</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('failed',this)">不通过</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('no-test',this)">无测试条件</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('adjust',this)">有调整可上线</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('iter',this)">做迭代可上线</button>
-            <button class="tab-btn-sm" onclick="switchAcceptListTab('other',this)">其他</button>
-          </div>
-          <div class="table-wrap" id="accept-detail-list-wrap">
-            <table class="data" id="accept-detail-table" style="font-size:.82rem">
-              <thead><tr>
-                <th style="width:40px">序号</th>
-                <th>需求ID</th>
-                <th>系统</th>
-                <th>分端</th>
-                <th>需求描述</th>
-                <th>PRD地址</th>
-                <th>验收标准</th>
-                <th>产品负责人</th>
-                <th>测试负责人</th>
-                <th>验收部门</th>
-                <th>验收人员</th>
-                <th>结果备注</th>
-                <th>验收备注</th>
-                <th>问题回复</th>
-                <th>问题备注</th>
-              </tr></thead>
-              <tbody id="accept-detail-tbody"></tbody>
-            </table>
+        <div class="detail-meta" data-od-id="path-3-1-1-16-3">
+          <div class="info-item"><div class="info-label">所属项目</div><div class="info-value">油葱商城</div></div>
+          <div class="info-item"><div class="info-label">版本号</div><div class="info-value mono">V4.30.0</div></div>
+          <div class="info-item"><div class="info-label">创建人</div><div class="info-value">王建国</div></div>
+          <div class="info-item"><div class="info-label">审批人</div><div class="info-value">张总</div></div>
+          <div class="info-item"><div class="info-label">创建时间</div><div class="info-value mono">2026-06-15 09:30</div></div>
+          <div class="info-item"><div class="info-label">验收结点</div><div class="info-value mono">2026-06-20 18:00</div></div>
+        </div>
+        <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-16-4">
+          <div class="card-header"><div class="card-title">验收需求列表</div><button class="btn btn-secondary btn-sm" onclick="openModal('modal-accept-req-edit')" data-od-id="path-3-1-1-16-4-0-1">增减需求</button></div>
+          <div class="table-wrap">
+            <table class="data"><thead><tr><th>需求ID</th><th>需求标题</th><th>分端</th><th>验收状态</th><th>验收人</th></tr></thead><tbody>
+              <tr><td class="mono">DE-C-20260615-0010</td><td>首页改版</td><td>用户端</td><td><span class="badge badge-warn">待验收</span></td><td>—</td></tr>
+              <tr><td class="mono">DE-C-20260615-0011</td><td>购物车优化</td><td>APP</td><td><span class="badge badge-warn">待验收</span></td><td>—</td></tr>
+              <tr><td class="mono">DE-C-20260615-0012</td><td>订单导出功能</td><td>管理端</td><td><span class="badge badge-warn">待验收</span></td><td>—</td></tr>
+            </tbody></table>
           </div>
         </div>
-
-        <!-- 审批记录 / 操作日志 -->
         <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-16-5">
-          <div class="card-header"><div class="card-title">操作日志</div></div>
-          <div class="op-log" id="accept-detail-oplog"></div>
+          <div class="card-header"><div class="card-title">审批记录</div></div>
+          <div class="op-log">
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--success)"></div><div><div style="font-size:.85rem;font-weight:500">张总 审批通过 — "已审查通过"</div><div class="op-log-time">2026-06-15 14:00</div></div></div>
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--info)"></div><div><div style="font-size:.85rem;font-weight:500">王建国 提交审批</div><div class="op-log-time">2026-06-15 09:35</div></div></div>
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--text-muted)"></div><div><div style="font-size:.85rem;font-weight:500">王建国 创建验收单</div><div class="op-log-time">2026-06-15 09:30</div></div></div>
+          </div>
         </div>
       </div>
 
@@ -3778,53 +3707,19 @@ table.data tr:last-child td{border-bottom:none}
 
 <div class="modal-overlay" id="modal-accept-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-11">
   <div class="modal wide" data-od-id="path-11-0">
-    <div class="modal-header"><h3 id="accept-create-title" data-od-id="path-11-0-0-0">创建验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-create')">✕</div></div>
+    <div class="modal-header"><h3 data-od-id="path-11-0-0-0">创建验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-create')">✕</div></div>
     <div class="modal-body">
       <div class="form-row">
-        <div class="form-group"><label>所属项目 <span class="required">*</span></label>
-          <select id="accept-create-project" onchange="onAcceptCreateProjectChange()">
-            <option value="">请选择项目</option>
-            <option value="油葱商城">油葱商城</option>
-            <option value="OA办公系统升级">OA办公系统升级</option>
-            <option value="人事系统V2">人事系统V2</option>
-            <option value="财务管理系统V4">财务管理系统V4</option>
-            <option value="移动端统一入口">移动端统一入口</option>
-          </select>
-        </div>
-        <div class="form-group"><label>所属版本 <span class="required">*</span></label>
-          <select id="accept-create-version"><option value="">请先选择项目</option></select>
-        </div>
+        <div class="form-group"><label>验收单名称 <span class="required">*</span></label><input type="text" placeholder="请输入验收单名称"></div>
+        <div class="form-group"><label>所属项目-版本</label><select><option>油葱商城 V4.30.0</option><option>人事系统 V2.2.0</option></select></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>验收截止日期 <span class="required">*</span></label><input type="datetime-local" id="accept-create-deadline"></div>
-        <div class="form-group"><label>验收资料</label>
-          <select id="accept-create-docs" multiple style="min-height:38px">
-            <option>PRD文件.pdf</option>
-            <option>原型文件.fig</option>
-            <option>验收指导SOP.docx</option>
-            <option>测试用例.xlsx</option>
-          </select>
-          <div style="font-size:.75rem;color:var(--text-secondary);margin-top:2px">从资料库选择，默认带入项目配置的默认文件</div>
-        </div>
+        <div class="form-group"><label>审批人</label><select><option>张总</option><option>李总</option></select></div>
+        <div class="form-group"><label>计划验收日期</label><input type="date"></div>
       </div>
-      <div class="form-group"><label>添加需求</label>
-        <select id="accept-create-req-pick" onchange="addAcceptCreateReq(this.value)">
-          <option value="">从版本需求池选择...</option>
-          <option value="DE-C-20260615-0010|首页改版|用户端|用户端">DE-C-20260615-0010 首页改版</option>
-          <option value="DE-C-20260615-0011|购物车优化|APP|APP">DE-C-20260615-0011 购物车优化</option>
-          <option value="DE-C-20260615-0012|订单导出功能|管理端|管理端">DE-C-20260615-0012 订单导出功能</option>
-          <option value="DE-C-20260615-0013|支付流程优化|用户端|用户端">DE-C-20260615-0013 支付流程优化</option>
-        </select>
-      </div>
-      <div class="form-group"><label>验收列表 <span class="required">*</span></label>
-        <div class="table-wrap"><table class="data" id="accept-create-req-table"><thead><tr><th style="width:40px">序号</th><th>需求ID</th><th>需求标题</th><th>系统</th><th>分端</th><th style="width:60px">操作</th></tr></thead><tbody id="accept-create-req-tbody"><tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:20px">请从上方"添加需求"选择需求</td></tr></tbody></table></div>
-      </div>
+      <div class="form-group"><label>验收需求</label><div class="table-wrap"><table class="data"><thead><tr><th>需求ID</th><th>需求标题</th><th>分端</th><th>操作</th></tr></thead><tbody><tr><td class="mono">DE-C-20260615-0010</td><td>首页改版</td><td>用户端</td><td><a class="action-link" data-od-id="path-11-0-1-2-1-0-1-0-3-0">移除</a></td></tr></tbody></table></div></div>
     </div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="closeModal('modal-accept-create')" data-od-id="path-11-0-2-0">取消</button>
-      <button class="btn btn-secondary" onclick="saveAcceptDraft()" data-od-id="path-11-0-2-1">保存草稿</button>
-      <button class="btn btn-primary" onclick="createAccept()" data-od-id="path-11-0-2-2">创建</button>
-    </div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-create')" data-od-id="path-11-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-accept-create');showToast('success','验收单已创建')" data-od-id="path-11-0-2-1">保存草稿</button><button class="btn btn-primary" onclick="closeModal('modal-accept-create');showToast('success','验收单已提交审批')" data-od-id="path-11-0-2-2">提交审批</button></div>
   </div>
 </div>
 
@@ -4364,6 +4259,28 @@ table.data tr:last-child td{border-bottom:none}
   </div>
 </div>
 
+<!-- ===== ACCEPTANCE APPROVAL MODAL ===== -->
+<div class="modal-overlay" id="modal-accept-approve" onclick="closeModalOnBackdrop(event)" data-od-id="path-27">
+  <div class="modal" data-od-id="path-27-0">
+    <div class="modal-header"><h3 data-od-id="path-27-0-0-0">审批验收单</h3><div class="modal-close" onclick="closeModal('modal-accept-approve')">✕</div></div>
+    <div class="modal-body">
+      <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
+        <strong>IC-20260614-0009</strong> · 人事系统 V2.1.0 · 创建人：孙丽
+      </div>
+      <div class="form-group"><label>审核意见 <span class="required">*</span></label>
+        <div style="display:flex;gap:16px;margin-top:4px">
+          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="radio" name="approveOpinion" value="agree" checked="" style="width:auto;margin:0" onchange="onApproveChange('agree')"> 同意</label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="radio" name="approveOpinion" value="disagree" style="width:auto;margin:0" onchange="onApproveChange('disagree')"> 不同意</label>
+        </div>
+      </div>
+      <div class="form-group"><label>备注 <span class="required" id="approveRemarkReq" style="display:none" data-od-id="path-27-0-1-2-0-0">*</span></label>
+        <textarea id="approveRemark" placeholder="已审查通过" data-od-id="path-27-0-1-2-1">已审查通过</textarea>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-accept-approve')" data-od-id="path-27-0-2-0">取消</button><button class="btn btn-primary" onclick="submitAcceptApprove()" data-od-id="path-27-0-2-1">确认审批</button></div>
+  </div>
+</div>
+
 <!-- ===== ADD VERSION MODAL ===== -->
 <div class="modal-overlay" id="modal-add-version" onclick="closeModalOnBackdrop(event)" data-od-id="path-28">
   <div class="modal" data-od-id="path-28-0">
@@ -4533,66 +4450,39 @@ table.data tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- ===== NOTIFY ACCEPTANCE MODAL (merged: 通知 + 催促) ===== -->
+<!-- ===== NOTIFY ACCEPTANCE MODAL ===== -->
 <div class="modal-overlay" id="modal-notify-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-37">
-  <div class="modal wide" data-od-id="path-37-0">
+  <div class="modal" data-od-id="path-37-0">
     <div class="modal-header"><h3 data-od-id="path-37-0-0-0">通知验收</h3><div class="modal-close" onclick="closeModal('modal-notify-accept')">✕</div></div>
     <div class="modal-body">
-      <div class="form-group"><label>通知类型 <span class="required">*</span></label>
-        <div style="display:flex;gap:20px;margin-top:4px">
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="radio" name="notifyType" value="notice" checked style="width:auto;margin:0" onchange="onNotifyTypeChange()"> 验收通知</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="radio" name="notifyType" value="remind" style="width:auto;margin:0" onchange="onNotifyTypeChange()"> 催促验收</label>
+      <div style="padding:10px 14px;background:var(--info-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#1E40AF">
+        将通过飞书发送验收通知给相关部门
+      </div>
+      <div class="form-group"><label>通知内容预览</label>
+        <div style="padding:14px;background:#F8FAFC;border-radius:var(--radius);font-size:.85rem;line-height:1.7;color:var(--text)">
+          各位领导同事现在好，<strong>油葱商城 V4.30.0</strong> 版本系统功能UAT环境已完成发版，请相关部门在UAT环境进行验收，验收单：<span style="color:var(--primary)">IC-20260613-0007</span>，期望于 <strong>2026-06-16 18:00</strong> 前完成测试，若有系统功能问题，请及时反馈至清单表中产品/测试负责人跟进处理，谢谢！
         </div>
       </div>
-      <div class="form-group"><label>通知内容 <span class="required">*</span></label>
-        <textarea id="notify-content" rows="5" style="font-size:.85rem;line-height:1.7"></textarea>
-      </div>
-      <div class="form-group"><label>通知给 <span class="required">*</span></label>
-        <select id="notify-target"><option value="">请选择飞书群/个人</option><option>油葱项目组飞书群</option><option>OA项目组飞书群</option><option>人事项目组飞书群</option><option>张总</option><option>李总</option><option>王建国</option><option>孙丽</option></select>
-      </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-notify-accept')" data-od-id="path-37-0-2-0">取消</button><button class="btn btn-primary" onclick="sendNotifyAccept()" data-od-id="path-37-0-2-1">发送通知</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-notify-accept')" data-od-id="path-37-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-notify-accept');showToast('success','验收通知已通过飞书发送')" data-od-id="path-37-0-2-1">发送通知</button></div>
   </div>
 </div>
 
-<!-- ===== PUBLISH NOTICE MODAL (已发布通知) ===== -->
-<div class="modal-overlay" id="modal-publish-notice" onclick="closeModalOnBackdrop(event)" data-od-id="path-37b">
-  <div class="modal wide" data-od-id="path-37b-0">
-    <div class="modal-header"><h3>已发布通知</h3><div class="modal-close" onclick="closeModal('modal-publish-notice')">✕</div></div>
+<!-- ===== REMIND ACCEPTANCE MODAL ===== -->
+<div class="modal-overlay" id="modal-remind-accept" onclick="closeModalOnBackdrop(event)" data-od-id="path-38">
+  <div class="modal" data-od-id="path-38-0">
+    <div class="modal-header"><h3 data-od-id="path-38-0-0-0">催促验收</h3><div class="modal-close" onclick="closeModal('modal-remind-accept')">✕</div></div>
     <div class="modal-body">
-      <div class="form-group"><label>通知内容 <span class="required">*</span></label>
-        <textarea id="publish-notice-content" rows="5" style="font-size:.85rem;line-height:1.7"></textarea>
+      <div style="padding:10px 14px;background:var(--warning-bg);border-radius:var(--radius);margin-bottom:16px;font-size:.82rem;color:#92400E">
+        将通过飞书发送催促通知
       </div>
-      <div class="form-group"><label>通知给 <span class="required">*</span></label>
-        <select id="publish-notice-target"><option value="">请选择飞书群/个人</option><option>油葱项目组飞书群</option><option>OA项目组飞书群</option><option>张总</option><option>李总</option></select>
-      </div>
-    </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-publish-notice')">取消</button><button class="btn btn-primary" onclick="sendPublishNotice()">发送通知</button></div>
-  </div>
-</div>
-
-<!-- ===== APP REVIEW NOTICE MODAL (应用审核通知) ===== -->
-<div class="modal-overlay" id="modal-app-review-notice" onclick="closeModalOnBackdrop(event)" data-od-id="path-37c">
-  <div class="modal wide" data-od-id="path-37c-0">
-    <div class="modal-header"><h3>应用审核通知</h3><div class="modal-close" onclick="closeModal('modal-app-review-notice')">✕</div></div>
-    <div class="modal-body">
-      <div class="form-group"><label>应用市场 <span class="required">*</span></label>
-        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:4px">
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" value="苹果应用市场" style="width:auto;margin:0" onchange="onAppMarketChange()"> 苹果应用市场</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" value="华为应用市场" style="width:auto;margin:0" onchange="onAppMarketChange()"> 华为应用市场</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" value="鸿蒙应用市场" style="width:auto;margin:0" onchange="onAppMarketChange()"> 鸿蒙应用市场</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" value="VIVO应用市场" style="width:auto;margin:0" onchange="onAppMarketChange()"> VIVO应用市场</label>
-          <label style="display:flex;align-items:center;gap:6px;font-size:.85rem;cursor:pointer"><input type="checkbox" value="OPPO应用市场" style="width:auto;margin:0" onchange="onAppMarketChange()"> OPPO应用市场</label>
+      <div class="form-group"><label>催促内容预览</label>
+        <div style="padding:14px;background:#F8FAFC;border-radius:var(--radius);font-size:.85rem;line-height:1.7;color:var(--text)">
+          您有一张 <strong>油葱商城 V4.30.0</strong> 的验收单：<span style="color:var(--primary)">IC-20260613-0007</span>，需在 <strong>2026-06-16 18:00</strong> 前完成验收，感谢您的支持，若有系统功能问题，请及时反馈至清单表中产品/测试负责人跟进处理，谢谢！
         </div>
       </div>
-      <div class="form-group"><label>生成内容 <span class="required">*</span></label>
-        <textarea id="app-review-content" rows="5" style="font-size:.85rem;line-height:1.7" placeholder="请先勾选应用市场，将自动生成通知内容"></textarea>
-      </div>
-      <div class="form-group"><label>通知给 <span class="required">*</span></label>
-        <select id="app-review-target"><option value="">请选择飞书群/个人</option><option>油葱项目组飞书群</option><option>张总</option><option>李总</option></select>
-      </div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-app-review-notice')">取消</button><button class="btn btn-primary" onclick="sendAppReviewNotice()">发送通知</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-remind-accept')" data-od-id="path-38-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-remind-accept');showToast('success','催促通知已通过飞书发送')" data-od-id="path-38-0-2-1">发送催促</button></div>
   </div>
 </div>
 
@@ -4603,21 +4493,18 @@ table.data tr:last-child td{border-bottom:none}
     <div class="modal-body">
       <div style="padding:12px 16px;background:#F8FAFC;border-radius:var(--radius);margin-bottom:16px">
         <div style="font-size:.9rem;font-weight:700;margin-bottom:10px">数据完整性校验</div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:.85rem;padding:6px 10px;background:#fff;border-radius:6px;border:1px solid var(--border-soft)">
-            <span>发版信息已填写完整：业务已填写完整的信息内容</span>
-            <span class="badge badge-success">通过</span>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:8px;font-size:.85rem">
+            <span style="color:var(--success);font-size:1.1rem">✓</span> 发版信息已填写完整
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:.85rem;padding:6px 10px;background:#fff;border-radius:6px;border:1px solid var(--border-soft)">
-            <span>所有验收需求标记有效（通过/无测试条件/有调整可上线/做迭代可上线）</span>
-            <span class="badge badge-danger" id="complete-check-valid">不通过</span>
+          <div style="display:flex;align-items:center;gap:8px;font-size:.85rem">
+            <span style="color:var(--success);font-size:1.1rem">✓</span> 所有验收需求状态已标记
           </div>
         </div>
-        <div style="margin-top:8px;font-size:.78rem;color:var(--text-secondary)">注：确认完成不受校验结果影响，验收单状态将变为已完成-1</div>
       </div>
-      <div class="form-group"><label>验收总结</label><textarea id="complete-summary" placeholder="输入本次验收的总结（选填）"></textarea></div>
+      <div class="form-group"><label>验收总结备注</label><textarea placeholder="填写验收总结，可选"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-complete-accept')" data-od-id="path-39-0-2-0">取消</button><button class="btn btn-primary" onclick="confirmCompleteAccept()" data-od-id="path-39-0-2-1">确认完成</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-complete-accept')" data-od-id="path-39-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-complete-accept');showToast('success','验收已完成，状态已更新为已完成')" data-od-id="path-39-0-2-1">确认完成</button></div>
   </div>
 </div>
 
@@ -7359,564 +7246,33 @@ function onConvertProjectChange() {
     : '<option value="">请先选择项目</option>';
 }
 
-/* ===== Acceptance Management ===== */
-const _ACCEPT_STEPS = [
-  {key:'research', label:'需求调研'},
-  {key:'review', label:'需求评审'},
-  {key:'dev', label:'需求研发'},
-  {key:'qc', label:'需求质检'},
-  {key:'uat', label:'UAT部署'},
-  {key:'pre-accept', label:'预期验收'},
-  {key:'release', label:'正式发布'}
-];
-
-const _ACCEPT_DATA = [
-  {id:'IC-20260615-0001', project:'油葱商城', version:'V4.30.0', status:'draft', creator:'王建国', ctime:'2026-06-15 09:30:00', deadline:'2026-06-20 18:00:00', progress:{valid:2, total:6}, reqCount:6},
-  {id:'IC-20260613-0007', project:'OA办公系统升级', version:'V2.1.0', status:'pending', creator:'赵强', ctime:'2026-06-13 11:00:00', deadline:'2026-06-16 18:00:00', progress:{valid:3, total:5}, reqCount:5},
-  {id:'IC-20260612-0005', project:'财务管理系统V4', version:'V4.0.1', status:'progress', creator:'陈磊', ctime:'2026-06-12 10:00:00', deadline:'2026-06-14 18:00:00', progress:{valid:4, total:4}, reqCount:4, timeout:true},
-  {id:'IC-20260610-0003', project:'人事系统V2', version:'V2.2.0', status:'done-1', creator:'李明', ctime:'2026-06-10 09:00:00', deadline:'2026-06-12 18:00:00', progress:{valid:5, total:5}, reqCount:5, hasApp:true},
-  {id:'IC-20260609-0008', project:'移动端统一入口', version:'V1.0.0', status:'done-2', creator:'孙丽', ctime:'2026-06-09 14:00:00', deadline:'2026-06-11 18:00:00', progress:{valid:4, total:4}, reqCount:4, hasApp:true},
-  {id:'IC-20260608-0002', project:'供应链系统', version:'V1.5.3', status:'closed', creator:'周宇', ctime:'2026-06-08 16:00:00', deadline:'2026-06-10 18:00:00', progress:{valid:0, total:3}, reqCount:3}
-];
-
-const _ACCEPT_REQ_DATA = [
-  {sn:1, id:'DE-C-20260615-0010', system:'交易系统', side:'用户端', desc:'首页改版，优化首屏加载与商品推荐位布局', prd:'PRD-v4.30-0010', standard:'首屏加载<1.5s；推荐位CTR提升20%', pm:'李晓明', tester:'孙丽', dept:'产品中心', tester2:'王芳', result:'passed', remark:'验收通过，符合预期', acceptNote:'测试用例全部通过', issueReply:'', issueNote:''},
-  {sn:2, id:'DE-C-20260615-0011', system:'交易系统', side:'APP', desc:'购物车优化，支持批量操作与滑动删除', prd:'PRD-v4.30-0011', standard:'批量操作响应<500ms', pm:'李晓明', tester:'孙丽', dept:'产品中心', tester2:'陈东', result:'adjust', remark:'有调整可上线，滑动删除体验待优化', acceptNote:'已记录待下版迭代', issueReply:'', issueNote:'滑动删除回弹动画不够顺滑'},
-  {sn:3, id:'DE-C-20260615-0012', system:'管理后台', side:'管理端', desc:'订单导出功能，支持多筛选条件批量导出', prd:'PRD-v4.30-0012', standard:'万级订单导出<10s', pm:'张伟', tester:'周婷', dept:'运营中心', tester2:'林芳', result:'no-test', remark:'无测试条件，依赖生产数据', acceptNote:'上线后观察', issueReply:'', issueNote:''},
-  {sn:4, id:'DE-C-20260615-0013', system:'支付系统', side:'用户端', desc:'支付流程优化，简化支付步骤', prd:'PRD-v4.30-0013', standard:'支付转化率提升10%', pm:'张伟', tester:'周婷', dept:'产品中心', tester2:'陈东', result:'failed', remark:'不通过，支付失败率未达标', acceptNote:'需修复后重新验收', issueReply:'支付通道超时问题已定位，预计下版修复', issueNote:'超时场景需补充测试用例'},
-  {sn:5, id:'DE-C-20260615-0014', system:'会员系统', side:'APP', desc:'会员等级展示优化', prd:'PRD-v4.30-0014', standard:'等级标识清晰可见', pm:'李晓明', tester:'孙丽', dept:'运营中心', tester2:'王芳', result:'iter', remark:'做迭代可上线，UI细节待优化', acceptNote:'已排入下版迭代', issueReply:'', issueNote:'会员等级图标配色需统一'},
-  {sn:6, id:'DE-C-20260615-0015', system:'交易系统', side:'PC', desc:'订单详情页改版', prd:'PRD-v4.30-0015', standard:'详情信息完整可读', pm:'张伟', tester:'周婷', dept:'产品中心', tester2:'林芳', result:'other', remark:'其他：依赖外部接口未就绪', acceptNote:'等待外部接口上线后复验', issueReply:'外部接口预计下周提供', issueNote:'需补充接口联调测试'}
-];
-
-const _ACCEPT_RESULT_LABELS = {
-  'pending': {label:'待验收', cls:'badge-warn'},
-  'passed': {label:'已通过', cls:'badge-success'},
-  'failed': {label:'不通过', cls:'badge-danger'},
-  'no-test': {label:'无测试条件', cls:'badge-gray'},
-  'adjust': {label:'有调整可上线', cls:'badge-accent'},
-  'iter': {label:'做迭代可上线', cls:'badge-primary'},
-  'other': {label:'其他', cls:'badge-gray'}
-};
-
-const _ACCEPT_STATUS_LABELS = {
-  'draft': {label:'草稿', cls:'badge-gray'},
-  'pending': {label:'待验收', cls:'badge-accent'},
-  'progress': {label:'验收中', cls:'badge-primary'},
-  'done-1': {label:'已完成-1', cls:'badge-success'},
-  'done-2': {label:'已完成-2', cls:'badge-success'},
-  'closed': {label:'已关闭', cls:'badge-gray'}
-};
-
-let _acceptCurrentTab = 'all';
-let _acceptCurrentDetail = null;
-let _acceptListCurrentTab = 'all';
-let _acceptListFullscreen = false;
-let _acceptCreateReqs = [];
-
-function _acceptIsTimeout(deadline) {
-  const now = new Date('2026-06-16T12:00:00');
-  const dl = new Date(deadline.replace(' ', 'T'));
-  const diff = (dl - now) / 3600000;
-  return diff < 0;
-}
-
-function _acceptDeadlineHTML(deadline, status) {
-  if (status === 'closed' || status === 'done-1' || status === 'done-2') {
-    return '<span class="mono">' + deadline.slice(0,16) + '</span>';
-  }
-  if (_acceptIsTimeout(deadline)) {
-    return '<span class="mono" style="color:var(--danger);font-weight:700">' + deadline.slice(0,16) + ' <span class="badge badge-danger">！已超时</span></span>';
-  }
-  return '<span class="mono">' + deadline.slice(0,16) + '</span>';
-}
-
-function _acceptActionsHTML(row) {
-  const detail = '<a class="action-link" onclick="showAcceptDetail(\'' + row.id + '\')">详情</a>';
-  switch (row.status) {
-    case 'draft':
-      return detail + '<a class="action-link" style="color:var(--danger)" onclick="deleteAccept(\'' + row.id + '\')">删除</a>';
-    case 'pending':
-    case 'progress':
-      return detail + '<a class="action-link" onclick="openNotifyAccept(\'' + row.id + '\')">通知验收</a><a class="action-link" style="color:var(--danger)" onclick="closeAcceptance(\'' + row.id + '\')">关闭</a>';
-    case 'done-1':
-      return detail + '<a class="action-link" onclick="openPublishNotice(\'' + row.id + '\')">已发布通知</a>';
-    case 'done-2':
-      return detail + '<a class="action-link" onclick="openAppReviewNotice(\'' + row.id + '\')">应用审核通知</a>';
-    case 'closed':
-      return detail;
-    default:
-      return detail;
+/* ===== Approval Opinion ===== */
+function onApproveChange(opinion) {
+  const req = document.getElementById('approveRemarkReq');
+  const remark = document.getElementById('approveRemark');
+  if (req) req.style.display = opinion === 'disagree' ? 'inline' : 'none';
+  if (remark) {
+    remark.placeholder = opinion === 'agree' ? '已审查通过' : '请填写不同意原因（必填）';
+    if (opinion === 'agree' && remark.value === '') remark.value = '已审查通过';
+    if (opinion === 'disagree' && remark.value === '已审查通过') remark.value = '';
   }
 }
 
-function renderAcceptList() {
-  const tbody = document.getElementById('accept-tbody');
-  if (!tbody) return;
-  const search = (document.getElementById('accept-search-input') || {}).value || '';
-  const s = search.trim().toLowerCase();
-  const rows = _ACCEPT_DATA.filter(r => {
-    if (_acceptCurrentTab !== 'all') {
-      if (_acceptCurrentTab === 'done') {
-        if (r.status !== 'done-1' && r.status !== 'done-2') return false;
-      } else if (r.status !== _acceptCurrentTab) return false;
-    }
-    if (s) {
-      const hay = (r.project + ' ' + r.version + ' ' + r.id).toLowerCase();
-      if (!hay.includes(s)) return false;
-    }
-    return true;
-  });
-  if (rows.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">暂无符合条件的验收单</td></tr>';
-  } else {
-    tbody.innerHTML = rows.map(r => {
-      const st = _ACCEPT_STATUS_LABELS[r.status];
-      const pct = r.progress.total > 0 ? Math.round(r.progress.valid / r.progress.total * 100) : 0;
-      return '<tr>' +
-        '<td><div style="display:flex;align-items:center;gap:4px"><span class="mono">' + r.id + '</span><span class="action-link" onclick="copyAcceptId(\'' + r.id + '\')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></div></td>' +
-        '<td><div class="bold">' + r.project + '</div><div class="mono" style="font-size:.78rem;color:var(--text-secondary)">' + r.version + '</div></td>' +
-        '<td><span class="badge ' + st.cls + '">' + st.label + '</span></td>' +
-        '<td><div class="accept-progress-cell"><div class="progress-bar"><div class="progress-fill" style="width:' + pct + '%"></div></div><span class="progress-text">' + r.progress.valid + '/' + r.progress.total + '</span></div></td>' +
-        '<td>' + r.creator + '</td>' +
-        '<td class="mono">' + r.ctime.slice(0,16) + '</td>' +
-        '<td>' + _acceptDeadlineHTML(r.deadline, r.status) + '</td>' +
-        '<td><div class="actions-cell">' + _acceptActionsHTML(r) + '</div></td>' +
-        '</tr>';
-    }).join('');
-  }
-  updateAcceptStats();
-}
-
-function updateAcceptStats() {
-  const total = _ACCEPT_DATA.length;
-  const pending = _ACCEPT_DATA.filter(r => r.status === 'pending').length;
-  const progress = _ACCEPT_DATA.filter(r => r.status === 'progress').length;
-  const done = _ACCEPT_DATA.filter(r => r.status === 'done-1' || r.status === 'done-2').length;
-  const draft = _ACCEPT_DATA.filter(r => r.status === 'draft').length;
-  const closed = _ACCEPT_DATA.filter(r => r.status === 'closed').length;
-  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-  set('accept-stat-total', total);
-  set('accept-stat-pending', pending);
-  set('accept-stat-progress', progress);
-  set('accept-stat-done', done);
-  set('accept-cnt-all', total);
-  set('accept-cnt-draft', draft);
-  set('accept-cnt-pending', pending);
-  set('accept-cnt-progress', progress);
-  set('accept-cnt-done', done);
-  set('accept-cnt-closed', closed);
-}
-
-function switchAcceptTab(tab, btn) {
-  _acceptCurrentTab = tab;
-  document.querySelectorAll('#accept-tab-bar .tab-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  renderAcceptList();
-}
-
-function filterAcceptList() { renderAcceptList(); }
-
-function copyAcceptId(id) {
-  const t = document.createElement('textarea');
-  t.value = id; document.body.appendChild(t); t.select();
-  try { document.execCommand('copy'); showToast('info', '已复制到剪贴板：' + id); } catch(e) {}
-  document.body.removeChild(t);
-}
-
-function showAcceptDetail(id) {
-  const row = _ACCEPT_DATA.find(r => r.id === id);
-  if (!row) return;
-  _acceptCurrentDetail = id;
-  switchView('accept-detail');
-  const set = (elId, v) => { const el = document.getElementById(elId); if (el) el.innerHTML = v; };
-  set('accept-detail-id', id);
-  set('accept-detail-title', row.project + ' ' + row.version + ' 验收');
-  set('accept-detail-project', row.project);
-  set('accept-detail-version', row.version);
-  const st = _ACCEPT_STATUS_LABELS[row.status];
-  set('accept-detail-status', '<span class="badge ' + st.cls + '">' + st.label + '</span>');
-  const dlEl = document.getElementById('accept-detail-deadline');
-  if (dlEl) dlEl.innerHTML = _acceptDeadlineHTML(row.deadline, row.status).replace(/<[^>]+>/g, m => m.startsWith('<span') ? m : '');
-  const pct = row.progress.total > 0 ? Math.round(row.progress.valid / row.progress.total * 100) : 0;
-  set('accept-detail-progress', '<div style="display:flex;align-items:center;gap:8px"><div class="progress-bar" style="width:120px"><div class="progress-fill" style="width:' + pct + '%"></div></div><span class="mono" style="font-size:.82rem">' + row.progress.valid + '/' + row.progress.total + ' · ' + pct + '%</span></div>');
-  set('accept-detail-creator', row.creator);
-  set('accept-detail-ctime', row.ctime.slice(0,16));
-  renderAcceptDetailActions(row);
-  renderAcceptStepper(row);
-  renderAcceptListTab();
-  renderAcceptOpLog(row);
-}
-
-function renderAcceptDetailActions(row) {
-  const el = document.getElementById('accept-detail-actions');
-  if (!el) return;
-  let html = '';
-  const editBtn = '<button class="btn btn-secondary btn-sm" onclick="openModal(\'modal-accept-req-edit\')">编辑</button>';
-  const notifyBtn = '<button class="btn btn-secondary btn-sm" onclick="openNotifyAccept(\'' + row.id + '\')">通知验收</button>';
-  const completeBtn = '<button class="btn btn-primary btn-sm" onclick="openModal(\'modal-complete-accept\')">完成验收</button>';
-  const closeBtn = '<button class="btn btn-secondary btn-sm" style="color:var(--danger)" onclick="closeAcceptance(\'' + row.id + '\')">关闭</button>';
-  const publishBtn = '<button class="btn btn-primary btn-sm" onclick="openPublishNotice(\'' + row.id + '\')">已发布通知</button>';
-  const appReviewBtn = '<button class="btn btn-primary btn-sm" onclick="openAppReviewNotice(\'' + row.id + '\')">应用审核通知</button>';
-  switch (row.status) {
-    case 'draft': html = editBtn + '<button class="btn btn-secondary btn-sm" style="color:var(--danger)" onclick="deleteAccept(\'' + row.id + '\')">删除</button>'; break;
-    case 'pending': html = editBtn + notifyBtn + closeBtn; break;
-    case 'progress': html = editBtn + notifyBtn + completeBtn + closeBtn; break;
-    case 'done-1': html = publishBtn; break;
-    case 'done-2': html = appReviewBtn; break;
-    case 'closed': html = ''; break;
-  }
-  el.innerHTML = html;
-}
-
-function renderAcceptStepper(row) {
-  const el = document.getElementById('accept-detail-stepper');
-  if (!el) return;
-  let doneCount = 0;
-  let pendingIdx = -1;
-  switch (row.status) {
-    case 'draft': doneCount = 0; break;
-    case 'pending': case 'progress': doneCount = 5; pendingIdx = 5; break;
-    case 'done-1': doneCount = 6; break;
-    case 'done-2': doneCount = 7; break;
-    case 'closed': doneCount = 0; el.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-secondary);font-size:.85rem">已关闭 — 不展示进度节点</div>'; return;
-  }
-  el.innerHTML = _ACCEPT_STEPS.map((s, i) => {
-    let cls = 'future';
-    let dot = '';
-    if (i < doneCount) { cls = 'done'; dot = '✓'; }
-    else if (i === pendingIdx) { cls = 'pending'; dot = (i+1); }
-    else if (row.status === 'done-1' && i === 5) { cls = 'done'; dot = '✓'; }
-    else if (row.status === 'done-2') { cls = 'done'; dot = '✓'; }
-    else { dot = (i+1); }
-    return '<div class="accept-step ' + cls + '"><div class="accept-step-dot">' + dot + '</div><div class="accept-step-label">' + s.label + '</div></div>';
-  }).join('');
-}
-
-function renderAcceptListTab() {
-  const tbody = document.getElementById('accept-detail-tbody');
-  if (!tbody) return;
-  const tabMap = {
-    'all': null,
-    'pending': 'pending',
-    'passed': 'passed',
-    'failed': 'failed',
-    'no-test': 'no-test',
-    'adjust': 'adjust',
-    'iter': 'iter',
-    'other': 'other'
-  };
-  const filter = tabMap[_acceptListCurrentTab];
-  const rows = filter ? _ACCEPT_REQ_DATA.filter(r => r.result === filter) : _ACCEPT_REQ_DATA;
-  const cntEl = document.getElementById('accept-detail-list-count');
-  if (cntEl) cntEl.textContent = '· ' + rows.length + '条';
-  if (rows.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="15" class="empty-state">暂无符合条件的需求</td></tr>';
+function submitAcceptApprove() {
+  const radios = document.querySelectorAll('input[name="approveOpinion"]');
+  let opinion = 'agree';
+  radios.forEach(r => { if (r.checked) opinion = r.value; });
+  const remark = document.getElementById('approveRemark');
+  if (opinion === 'disagree' && remark && !remark.value.trim()) {
+    showToast('error', '请填写不同意原因');
     return;
   }
-  tbody.innerHTML = rows.map(r => {
-    const res = _ACCEPT_RESULT_LABELS[r.result];
-    const showIssueReply = (r.result === 'failed' || r.result === 'other');
-    return '<tr>' +
-      '<td>' + r.sn + '</td>' +
-      '<td class="mono">' + r.id + '</td>' +
-      '<td>' + r.system + '</td>' +
-      '<td>' + r.side + '</td>' +
-      '<td class="text-ellipsis" style="max-width:24ch" title="' + r.desc + '">' + r.desc + '</td>' +
-      '<td><a href="#" style="color:var(--accent)">' + r.prd + '</a></td>' +
-      '<td class="text-ellipsis" style="max-width:20ch" title="' + r.standard + '">' + r.standard + '</td>' +
-      '<td>' + r.pm + '</td>' +
-      '<td>' + r.tester + '</td>' +
-      '<td>' + r.dept + '</td>' +
-      '<td>' + r.tester2 + '</td>' +
-      '<td><span class="badge ' + res.cls + '">' + res.label + '</span>' + (r.remark ? '<div style="font-size:.75rem;color:var(--text-secondary);margin-top:2px">' + r.remark + '</div>' : '') + '</td>' +
-      '<td>' + (r.acceptNote || '—') + '</td>' +
-      '<td>' + (showIssueReply ? '<input type="text" value="' + (r.issueReply||'') + '" placeholder="输入问题回复" style="width:100%;padding:3px 6px;font-size:.78rem;border:1px solid var(--border-light);border-radius:4px">' : '—') + '</td>' +
-      '<td><input type="text" value="' + (r.issueNote||'') + '" placeholder="输入问题备注" style="width:100%;padding:3px 6px;font-size:.78rem;border:1px solid var(--border-light);border-radius:4px"></td>' +
-      '</tr>';
-  }).join('');
-}
-
-function switchAcceptListTab(tab, btn) {
-  _acceptListCurrentTab = tab;
-  document.querySelectorAll('#accept-detail-list-tabs .tab-btn-sm').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  renderAcceptListTab();
-}
-
-function toggleAcceptListFullscreen() {
-  const card = document.getElementById('accept-detail-list-card');
-  if (!card) return;
-  _acceptListFullscreen = !_acceptListFullscreen;
-  card.classList.toggle('accept-list-fullscreen', _acceptListFullscreen);
-}
-
-function renderAcceptOpLog(row) {
-  const el = document.getElementById('accept-detail-oplog');
-  if (!el) return;
-  const logs = [
-    {dot:'var(--text-muted)', text: row.creator + ' 创建验收单', time: row.ctime}
-  ];
-  if (row.status === 'pending' || row.status === 'progress' || row.status === 'done-1' || row.status === 'done-2') {
-    logs.unshift({dot:'var(--accent)', text: row.creator + ' 发送验收通知', time: row.ctime.slice(0,10) + ' 15:00:00'});
-  }
-  if (row.status === 'progress') {
-    logs.unshift({dot:'var(--info)', text: '王芳 标记验收结果（4/5 通过）', time: row.ctime.slice(0,10) + ' 17:30:00'});
-  }
-  if (row.status === 'done-1' || row.status === 'done-2') {
-    logs.unshift({dot:'var(--success)', text: row.creator + ' 完成验收', time: row.ctime.slice(0,10) + ' 18:00:00'});
-  }
-  if (row.status === 'done-2') {
-    logs.unshift({dot:'var(--success)', text: row.creator + ' 发送已发布通知', time: row.ctime.slice(0,10) + ' 19:00:00'});
-    logs.unshift({dot:'var(--success)', text: row.creator + ' 发送应用审核通知', time: row.ctime.slice(0,10) + ' 20:00:00'});
-  }
-  el.innerHTML = logs.map(l => '<div class="op-log-item"><div class="op-log-dot" style="background:' + l.dot + '"></div><div><div style="font-size:.85rem;font-weight:500">' + l.text + '</div><div class="op-log-time">' + l.time + '</div></div></div>').join('');
-}
-
-/* ===== Notify Acceptance Modal ===== */
-let _notifyTargetId = null;
-function openNotifyAccept(id) {
-  _notifyTargetId = id;
-  const row = _ACCEPT_DATA.find(r => r.id === id);
-  if (!row) return;
-  document.querySelector('input[name="notifyType"][value="notice"]').checked = true;
-  onNotifyTypeChange();
-  const targetEl = document.getElementById('notify-target');
-  if (targetEl) targetEl.value = '';
-  openModal('modal-notify-accept');
-}
-
-function onNotifyTypeChange() {
-  const type = document.querySelector('input[name="notifyType"]:checked');
-  if (!type) return;
-  const row = _ACCEPT_DATA.find(r => r.id === _notifyTargetId) || _ACCEPT_DATA[1];
-  const el = document.getElementById('notify-content');
-  if (!el) return;
-  if (type.value === 'notice') {
-    el.value = '各位领导同事现在好，' + row.project + row.version + '版本系统功能已完成UAT环境发版，请相关部门/同事进行验收，验收单：' + row.id + '，期望于 ' + row.deadline.slice(0,16) + ' 前完成测试，若有系统功能问题，请及时反馈，谢谢！';
+  closeModal('modal-accept-approve');
+  if (opinion === 'agree') {
+    showToast('success', '审批通过，验收单状态已更新为待验收');
   } else {
-    const pending = row.progress.total - row.progress.valid;
-    el.value = row.project + row.version + '还有' + pending + '项未做验收，请相关部门/同事进行验收，验收单：' + row.id + '，期望于 ' + row.deadline.slice(0,16) + ' 前完成测试，若有系统功能问题，请及时反馈，谢谢！';
+    showToast('info', '审批已驳回，验收单已退回');
   }
-}
-
-function sendNotifyAccept() {
-  const content = document.getElementById('notify-content').value.trim();
-  const target = document.getElementById('notify-target').value;
-  if (!content) { showToast('error', '请填写通知内容'); return; }
-  if (!target) { showToast('error', '请选择通知对象'); return; }
-  closeModal('modal-notify-accept');
-  showToast('success', '验收通知已通过飞书发送至：' + target);
-}
-
-/* ===== Publish Notice Modal ===== */
-let _publishTargetId = null;
-function openPublishNotice(id) {
-  _publishTargetId = id;
-  const row = _ACCEPT_DATA.find(r => r.id === id);
-  if (!row) return;
-  const el = document.getElementById('publish-notice-content');
-  if (el) el.value = '各位领导同事现在好，' + row.project + row.version + '版本系统功能已发布至线上（APP应用市场审核结果另作通知[如有]），若有系统功能问题，请及时反馈，谢谢！';
-  const t = document.getElementById('publish-notice-target');
-  if (t) t.value = '';
-  openModal('modal-publish-notice');
-}
-
-function sendPublishNotice() {
-  const content = document.getElementById('publish-notice-content').value.trim();
-  const target = document.getElementById('publish-notice-target').value;
-  if (!content) { showToast('error', '请填写通知内容'); return; }
-  if (!target) { showToast('error', '请选择通知对象'); return; }
-  closeModal('modal-publish-notice');
-  const row = _ACCEPT_DATA.find(r => r.id === _publishTargetId);
-  if (row && row.hasApp) {
-    row.status = 'done-2';
-    showToast('success', '已发布通知已发送，验收单进入已完成-2阶段');
-    renderAcceptList();
-  } else {
-    showToast('success', '已发布通知已通过飞书发送至：' + target);
-  }
-}
-
-/* ===== App Review Notice Modal ===== */
-let _appReviewTargetId = null;
-function openAppReviewNotice(id) {
-  _appReviewTargetId = id;
-  document.querySelectorAll('#modal-app-review-notice input[type="checkbox"]').forEach(c => c.checked = false);
-  const el = document.getElementById('app-review-content');
-  if (el) el.value = '';
-  const t = document.getElementById('app-review-target');
-  if (t) t.value = '';
-  openModal('modal-app-review-notice');
-}
-
-function onAppMarketChange() {
-  const checked = Array.from(document.querySelectorAll('#modal-app-review-notice input[type="checkbox"]:checked')).map(c => c.value);
-  const row = _ACCEPT_DATA.find(r => r.id === _appReviewTargetId) || _ACCEPT_DATA[0];
-  const el = document.getElementById('app-review-content');
-  if (!el) return;
-  if (checked.length === 0) {
-    el.value = '';
-    el.placeholder = '请先勾选应用市场，将自动生成通知内容';
-  } else {
-    el.value = '各位领导同事现在好，' + row.project + 'APP应用市场审核通过列表：' + checked.join('、') + '，若有系统功能问题，请及时反馈，谢谢！';
-    el.placeholder = '';
-  }
-}
-
-function sendAppReviewNotice() {
-  const content = document.getElementById('app-review-content').value.trim();
-  const target = document.getElementById('app-review-target').value;
-  if (!content) { showToast('error', '请生成或填写通知内容'); return; }
-  if (!target) { showToast('error', '请选择通知对象'); return; }
-  closeModal('modal-app-review-notice');
-  showToast('success', '应用审核通知已通过飞书发送至：' + target);
-}
-
-/* ===== Complete Acceptance Modal ===== */
-function confirmCompleteAccept() {
-  const summary = (document.getElementById('complete-summary') || {}).value || '';
-  closeModal('modal-complete-accept');
-  if (_acceptCurrentDetail) {
-    const row = _ACCEPT_DATA.find(r => r.id === _acceptCurrentDetail);
-    if (row) {
-      row.status = 'done-1';
-      const validEl = document.getElementById('complete-check-valid');
-      if (validEl) validEl.className = 'badge badge-success';
-      if (validEl) validEl.textContent = '通过';
-      showToast('success', '验收已完成，状态已更新为已完成-1');
-      showAcceptDetail(_acceptCurrentDetail);
-      renderAcceptList();
-    }
-  } else {
-    showToast('success', '验收已完成');
-  }
-}
-
-/* ===== Close / Delete Acceptance ===== */
-function closeAcceptance(id) {
-  if (!confirm('确认关闭验收单 ' + id + '？\n关闭后将无法继续验收操作。')) return;
-  const row = _ACCEPT_DATA.find(r => r.id === id);
-  if (row) {
-    row.status = 'closed';
-    showToast('info', '验收单已关闭');
-    renderAcceptList();
-    if (_acceptCurrentDetail === id) showAcceptDetail(id);
-  }
-}
-
-function deleteAccept(id) {
-  if (!confirm('确认删除验收单 ' + id + '？\n删除后无法恢复。')) return;
-  const idx = _ACCEPT_DATA.findIndex(r => r.id === id);
-  if (idx >= 0) {
-    _ACCEPT_DATA.splice(idx, 1);
-    showToast('info', '验收单已删除');
-    if (_acceptCurrentDetail === id) {
-      _acceptCurrentDetail = null;
-      switchView('acceptance');
-    }
-    renderAcceptList();
-  }
-}
-
-/* ===== Create Acceptance ===== */
-function openAcceptCreate() {
-  _acceptCreateReqs = [];
-  const p = document.getElementById('accept-create-project');
-  if (p) p.value = '';
-  const v = document.getElementById('accept-create-version');
-  if (v) v.innerHTML = '<option value="">请先选择项目</option>';
-  const dl = document.getElementById('accept-create-deadline');
-  if (dl) dl.value = '';
-  const pick = document.getElementById('accept-create-req-pick');
-  if (pick) pick.value = '';
-  renderAcceptCreateReqs();
-  openModal('modal-accept-create');
-}
-
-function onAcceptCreateProjectChange() {
-  const p = document.getElementById('accept-create-project');
-  const v = document.getElementById('accept-create-version');
-  if (!p || !v) return;
-  const versions = {
-    '油葱商城': ['V4.30.0', 'V4.29.5', 'V4.31.0'],
-    'OA办公系统升级': ['V2.1.0'],
-    '人事系统V2': ['V2.2.0', 'V2.1.0', 'V2.3.0'],
-    '财务管理系统V4': ['V4.0.1'],
-    '移动端统一入口': ['V1.0.0']
-  };
-  const list = versions[p.value] || [];
-  v.innerHTML = list.length ? '<option value="">请选择版本</option>' + list.map(x => '<option>' + x + '</option>').join('') : '<option value="">请先选择项目</option>';
-}
-
-function addAcceptCreateReq(value) {
-  if (!value) return;
-  const parts = value.split('|');
-  if (parts.length < 4) return;
-  const [id, title, system, side] = parts;
-  if (_acceptCreateReqs.some(r => r.id === id)) {
-    showToast('error', '该需求已在验收列表中');
-    const pick = document.getElementById('accept-create-req-pick');
-    if (pick) pick.value = '';
-    return;
-  }
-  _acceptCreateReqs.push({id, title, system, side});
-  const pick = document.getElementById('accept-create-req-pick');
-  if (pick) pick.value = '';
-  renderAcceptCreateReqs();
-}
-
-function removeAcceptCreateReq(id) {
-  _acceptCreateReqs = _acceptCreateReqs.filter(r => r.id !== id);
-  renderAcceptCreateReqs();
-}
-
-function renderAcceptCreateReqs() {
-  const tbody = document.getElementById('accept-create-req-tbody');
-  if (!tbody) return;
-  if (_acceptCreateReqs.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--text-muted);padding:20px">请从上方"添加需求"选择需求</td></tr>';
-    return;
-  }
-  tbody.innerHTML = _acceptCreateReqs.map((r, i) => '<tr><td>' + (i+1) + '</td><td class="mono">' + r.id + '</td><td>' + r.title + '</td><td>' + r.system + '</td><td>' + r.side + '</td><td><a class="action-link" style="color:var(--danger)" onclick="removeAcceptCreateReq(\'' + r.id + '\')">移除</a></td></tr>').join('');
-}
-
-function saveAcceptDraft() {
-  const project = document.getElementById('accept-create-project').value;
-  const version = document.getElementById('accept-create-version').value;
-  if (!project || !version) { showToast('error', '请填写所属项目和版本'); return; }
-  closeModal('modal-accept-create');
-  const today = new Date('2026-07-20T00:00:00');
-  const dateStr = today.getFullYear() + String(today.getMonth()+1).padStart(2,'0') + String(today.getDate()).padStart(2,'0');
-  const newId = 'IC-' + dateStr + '-' + String(_ACCEPT_DATA.length+1).padStart(4,'0');
-  _ACCEPT_DATA.unshift({
-    id: newId, project, version, status: 'draft', creator: '当前用户',
-    ctime: dateStr.slice(0,4) + '-' + dateStr.slice(4,6) + '-' + dateStr.slice(6,8) + ' 10:00:00',
-    deadline: (document.getElementById('accept-create-deadline') || {}).value || '2026-07-27 18:00:00',
-    progress: {valid: 0, total: _acceptCreateReqs.length}, reqCount: _acceptCreateReqs.length
-  });
-  showToast('success', '验收单已保存为草稿：' + newId);
-  renderAcceptList();
-}
-
-function createAccept() {
-  const project = document.getElementById('accept-create-project').value;
-  const version = document.getElementById('accept-create-version').value;
-  const deadline = (document.getElementById('accept-create-deadline') || {}).value;
-  if (!project || !version) { showToast('error', '请填写所属项目和版本'); return; }
-  if (!deadline) { showToast('error', '请填写验收截止日期'); return; }
-  if (_acceptCreateReqs.length === 0) { showToast('error', '请至少添加一条验收需求'); return; }
-  closeModal('modal-accept-create');
-  const today = new Date('2026-07-20T00:00:00');
-  const dateStr = today.getFullYear() + String(today.getMonth()+1).padStart(2,'0') + String(today.getDate()).padStart(2,'0');
-  const newId = 'IC-' + dateStr + '-' + String(_ACCEPT_DATA.length+1).padStart(4,'0');
-  _ACCEPT_DATA.unshift({
-    id: newId, project, version, status: 'pending', creator: '当前用户',
-    ctime: dateStr.slice(0,4) + '-' + dateStr.slice(4,6) + '-' + dateStr.slice(6,8) + ' 10:00:00',
-    deadline: deadline.replace('T',' ') + ':00',
-    progress: {valid: 0, total: _acceptCreateReqs.length}, reqCount: _acceptCreateReqs.length
-  });
-  showToast('success', '验收单已创建，状态：待验收（' + newId + '）');
-  renderAcceptList();
 }
 
 /* ===== Detail Views ===== */
@@ -7937,6 +7293,12 @@ function showIssueDetail(id) {
 function showBugDetail(id) {
   switchView('bug-detail');
   const idEl = document.getElementById('bug-detail-id');
+  if (idEl) idEl.textContent = id;
+}
+
+function showAcceptDetail(id) {
+  switchView('accept-detail');
+  const idEl = document.getElementById('accept-detail-id');
   if (idEl) idEl.textContent = id;
 }
 
@@ -8374,7 +7736,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMessages();
   renderMyIssues();
   initApprovals();
-  renderAcceptList();
 });
 </script>
 
