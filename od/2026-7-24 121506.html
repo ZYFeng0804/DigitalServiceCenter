@@ -274,9 +274,6 @@ table.data tr:last-child td{border-bottom:none}
 .actions-cell{display:flex;align-items:center;gap:10px}
 .action-link{color:var(--primary);font-size:.78rem;cursor:pointer;font-weight:500}
 .action-link:hover{text-decoration:underline}
-.btn-showcase{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);transition:all .15s ease}
-.btn-showcase:hover{border-color:var(--primary);color:var(--primary)}
-.btn-showcase.active{background:rgba(79,70,229,.08);border-color:var(--primary);color:var(--primary)}
 
 /* Badges */
 .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:.72rem;font-weight:600;font-family:var(--font-mono);white-space:nowrap}
@@ -714,39 +711,14 @@ table.data tr:last-child td{border-bottom:none}
 .batch-info{font-size:.8rem;color:var(--text-secondary)}
 .batch-actions{display:flex;gap:8px}
 
-.pool-layout{display:grid;grid-template-columns:260px 1fr;gap:16px}
-.module-sidebar{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;height:fit-content;max-height:calc(100vh - 200px);overflow-y:auto}
+.pool-layout{display:grid;grid-template-columns:200px 1fr;gap:16px}
+.module-sidebar{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;height:fit-content}
 .module-sidebar-title{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-light)}
 .module-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:var(--radius);font-size:.82rem;color:var(--text-secondary);cursor:pointer;transition:var(--transition);margin-bottom:2px}
 .module-item:hover{background:#F8FAFC;color:var(--primary)}
 .module-item.active{background:rgba(79,70,229,.08);color:var(--primary);font-weight:600}
 .module-count{font-size:.7rem;font-family:var(--font-mono);background:var(--border-light);padding:1px 6px;border-radius:var(--radius-sm)}
 .module-item.active .module-count{background:rgba(79,70,229,.12)}
-/* Module tree */
-.mtree-node{margin-bottom:1px}
-.mtree-item{display:flex;align-items:center;gap:4px;padding:6px 8px;border-radius:var(--radius);font-size:.8rem;color:var(--text-secondary);cursor:pointer;transition:var(--transition)}
-.mtree-item:hover{background:#F8FAFC;color:var(--primary)}
-.mtree-item.active{background:rgba(79,70,229,.08);color:var(--primary);font-weight:600}
-.mtree-l1{font-weight:600;color:var(--text);font-size:.82rem;padding-left:6px}
-.mtree-l1 .mtree-label{flex:1}
-.mtree-l2{padding-left:22px;font-size:.79rem}
-.mtree-l2 .mtree-label{flex:1}
-.mtree-l3{padding-left:40px;font-size:.79rem}
-.mtree-l3 .mtree-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.mtree-toggle{font-size:.6rem;color:var(--text-muted);transition:transform .15s;width:12px;flex-shrink:0;user-select:none}
-.mtree-node.expanded>.mtree-item .mtree-toggle{transform:rotate(90deg)}
-.mtree-label{flex:1;min-width:0}
-.mtree-sync{font-size:.6rem;color:var(--primary);background:rgba(79,70,229,.08);padding:1px 5px;border-radius:3px;flex-shrink:0;font-weight:500}
-.mtree-count{font-size:.65rem;font-family:var(--font-mono);background:var(--border-light);padding:1px 5px;border-radius:3px;flex-shrink:0}
-.mtree-item.active .mtree-count{background:rgba(79,70,229,.12)}
-.mtree-ops{display:flex;gap:2px;flex-shrink:0;opacity:0;transition:opacity .15s}
-.mtree-item:hover .mtree-ops{opacity:1}
-.mtree-op-btn{background:none;border:none;cursor:pointer;font-size:.72rem;color:var(--text-muted);padding:2px 4px;border-radius:3px;line-height:1}
-.mtree-op-btn:hover{background:var(--border-light);color:var(--primary)}
-.mtree-op-del:hover{color:var(--danger);background:rgba(220,38,38,.06)}
-.mtree-add{padding:4px 8px 4px 40px;font-size:.72rem;color:var(--primary);cursor:pointer;border-radius:var(--radius);transition:var(--transition);opacity:.7}
-.mtree-add:hover{opacity:1;background:rgba(79,70,229,.04)}
-.mtree-empty{padding:4px 8px 4px 40px;font-size:.72rem;color:var(--text-muted);font-style:italic}
 
 .system-list{display:flex;flex-direction:column;gap:10px}
 .system-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;transition:var(--transition)}
@@ -2196,11 +2168,11 @@ table.data tr:last-child td{border-bottom:none}
           </div>
           <div class="table-wrap">
             <table class="data">
-              <thead><tr><th style="width:32px"><input type="checkbox"></th><th>文件ID</th><th>文件名</th><th>文件类型</th><th>分类</th><th>文件大小</th><th>更新人</th><th>更新日期</th><th style="width:100px">对外展示</th><th>操作</th></tr></thead>
+              <thead><tr><th style="width:32px"><input type="checkbox"></th><th>文件ID</th><th>文件名</th><th>文件类型</th><th>分类</th><th>文件大小</th><th>更新人</th><th>更新日期</th><th>操作</th></tr></thead>
               <tbody>
-                <tr><td><input type="checkbox"></td><td class="mono">DOC-20260614-0001 <span class="action-link" onclick="copyText('DOC-20260614-0001')" title="复制"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="cursor:pointer" onclick="showToast('info','预览功能：支持PDF在线预览')">油葱商城V4.30需求规格说明书.pdf</span></div></td><td><span class="badge badge-danger">PDF</span></td><td>PRD文档</td><td class="mono">2.4 MB</td><td>王建国</td><td class="mono">2026-06-14 10:30:00</td><td><button class="btn-showcase" id="showcase-btn-1" onclick="toggleDocShowcase(1,'油葱商城V4.30需求规格说明书.pdf')">对外展示</button></td><td><div class="actions-cell"><a class="action-link" onclick="showToast('info','预览功能：支持PDF在线预览')">预览</a><a class="action-link" onclick="showToast('success','开始下载')">下载</a><a class="action-link" onclick="openModal('modal-doc-edit')">编辑</a><a class="action-link" onclick="confirmDeleteDoc('油葱商城V4.30需求规格说明书.pdf')">删除</a></div></td></tr>
-                <tr><td><input type="checkbox"></td><td class="mono">DOC-20260612-0003 <span class="action-link" onclick="copyText('DOC-20260612-0003')" title="复制"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f6feb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="cursor:pointer" onclick="showToast('info','预览功能：Word转换为在线预览')">移动端改造需求说明.docx</span></div></td><td><span class="badge badge-primary">Word</span></td><td>PRD文档</td><td class="mono">956 KB</td><td>黄燕</td><td class="mono">2026-06-12 15:20:00</td><td><button class="btn-showcase" id="showcase-btn-2" onclick="toggleDocShowcase(2,'移动端改造需求说明.docx')">对外展示</button></td><td><div class="actions-cell"><a class="action-link" onclick="showToast('info','预览功能：Word转换为在线预览')">预览</a><a class="action-link" onclick="showToast('success','开始下载')">下载</a><a class="action-link" onclick="openModal('modal-doc-edit')">编辑</a><a class="action-link" onclick="confirmDeleteDoc('移动端改造需求说明.docx')">删除</a></div></td></tr>
-                <tr><td><input type="checkbox"></td><td class="mono">DOC-20260610-0002 <span class="action-link" onclick="copyText('DOC-20260610-0002')" title="复制"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="cursor:pointer" onclick="showToast('info','该格式不支持在线预览，请下载查看')">油葱商城产品原型Axure.rp</span></div></td><td><span class="badge badge-gray">其他</span></td><td>原型文档</td><td class="mono">8.1 MB</td><td>林晓明</td><td class="mono">2026-06-10 09:15:00</td><td><button class="btn-showcase" id="showcase-btn-3" onclick="toggleDocShowcase(3,'油葱商城产品原型Axure.rp')">对外展示</button></td><td><div class="actions-cell"><a class="action-link" onclick="showToast('info','该格式不支持在线预览，请下载查看')">预览</a><a class="action-link" onclick="showToast('success','开始下载')">下载</a><a class="action-link" onclick="openModal('modal-doc-edit')">编辑</a><a class="action-link" onclick="confirmDeleteDoc('油葱商城产品原型Axure.rp')">删除</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DOC-20260614-0001 <span class="action-link" onclick="copyText('DOC-20260614-0001')" title="复制"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="cursor:pointer" onclick="showToast('info','预览功能：支持PDF在线预览')">油葱商城V4.30需求规格说明书.pdf</span></div></td><td><span class="badge badge-danger">PDF</span></td><td>PRD文档</td><td class="mono">2.4 MB</td><td>王建国</td><td class="mono">2026-06-14 10:30:00</td><td><div class="actions-cell"><a class="action-link" onclick="showToast('info','预览功能：支持PDF在线预览')">预览</a><a class="action-link" onclick="showToast('success','开始下载')">下载</a><a class="action-link" onclick="openModal('modal-doc-edit')">编辑</a><a class="action-link" onclick="confirmDeleteDoc('油葱商城V4.30需求规格说明书.pdf')">删除</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DOC-20260612-0003 <span class="action-link" onclick="copyText('DOC-20260612-0003')" title="复制"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f6feb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="cursor:pointer" onclick="showToast('info','预览功能：Word转换为在线预览')">移动端改造需求说明.docx</span></div></td><td><span class="badge badge-primary">Word</span></td><td>PRD文档</td><td class="mono">956 KB</td><td>黄燕</td><td class="mono">2026-06-12 15:20:00</td><td><div class="actions-cell"><a class="action-link" onclick="showToast('info','预览功能：Word转换为在线预览')">预览</a><a class="action-link" onclick="showToast('success','开始下载')">下载</a><a class="action-link" onclick="openModal('modal-doc-edit')">编辑</a><a class="action-link" onclick="confirmDeleteDoc('移动端改造需求说明.docx')">删除</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DOC-20260610-0002 <span class="action-link" onclick="copyText('DOC-20260610-0002')" title="复制"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div style="display:flex;align-items:center;gap:8px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><span style="cursor:pointer" onclick="showToast('info','该格式不支持在线预览，请下载查看')">油葱商城产品原型Axure.rp</span></div></td><td><span class="badge badge-gray">其他</span></td><td>原型文档</td><td class="mono">8.1 MB</td><td>林晓明</td><td class="mono">2026-06-10 09:15:00</td><td><div class="actions-cell"><a class="action-link" onclick="showToast('info','该格式不支持在线预览，请下载查看')">预览</a><a class="action-link" onclick="showToast('success','开始下载')">下载</a><a class="action-link" onclick="openModal('modal-doc-edit')">编辑</a><a class="action-link" onclick="confirmDeleteDoc('油葱商城产品原型Axure.rp')">删除</a></div></td></tr>
               </tbody>
             </table>
           </div>
@@ -3054,26 +3026,22 @@ table.data tr:last-child td{border-bottom:none}
               </div>
             </div>
             <div class="overview-card">
-              <div style="display:flex;flex-direction:column;gap:16px">
-                <div>
-                  <div class="overview-card-title">版本概览</div>
-                  <div class="overview-stat-row" style="flex-wrap:wrap;gap:12px">
-                    <div class="overview-stat"><div class="num">4</div><div class="lbl">总版本</div></div>
-                    <div class="overview-stat"><div class="num" style="color:var(--text-muted)">1</div><div class="lbl">评审中</div></div>
-                    <div class="overview-stat"><div class="num" style="color:#C2410C">1</div><div class="lbl">研发中</div></div>
-                    <div class="overview-stat"><div class="num" style="color:#9333EA">0</div><div class="lbl">质检中</div></div>
-                    <div class="overview-stat"><div class="num" style="color:var(--warning)">1</div><div class="lbl">验收中</div></div>
-                    <div class="overview-stat"><div class="num" style="color:var(--success)">2</div><div class="lbl">已发版</div></div>
-                  </div>
-                </div>
-                <div style="border-top:1px solid var(--border);padding-top:16px">
-                  <div class="overview-card-title">需求概览</div>
-                  <div class="overview-stat-row">
-                    <div class="overview-stat" style="cursor:pointer" onclick="switchProjectTab('reqs',document.querySelector('[onclick*=\'reqs\']'))" title="点击查看项目需求池"><div class="num">45</div><div class="lbl">待分配需求</div></div>
-                    <div class="overview-stat"><div class="num" style="color:var(--primary)">27</div><div class="lbl">已规划需求</div></div>
-                    <div class="overview-stat"><div class="num" style="color:var(--success)">18</div><div class="lbl">已上线需求</div></div>
-                  </div>
-                </div>
+              <div class="overview-card-title">版本概览</div>
+              <div class="overview-stat-row" style="flex-wrap:wrap;gap:12px">
+                <div class="overview-stat"><div class="num">4</div><div class="lbl">总版本</div></div>
+                <div class="overview-stat"><div class="num" style="color:var(--text-muted)">1</div><div class="lbl">评审中</div></div>
+                <div class="overview-stat"><div class="num" style="color:#C2410C">1</div><div class="lbl">研发中</div></div>
+                <div class="overview-stat"><div class="num" style="color:#9333EA">0</div><div class="lbl">质检中</div></div>
+                <div class="overview-stat"><div class="num" style="color:var(--warning)">1</div><div class="lbl">验收中</div></div>
+                <div class="overview-stat"><div class="num" style="color:var(--success)">2</div><div class="lbl">已发版</div></div>
+              </div>
+            </div>
+            <div class="overview-card">
+              <div class="overview-card-title">需求概览</div>
+              <div class="overview-stat-row">
+                <div class="overview-stat" style="cursor:pointer" onclick="switchProjectTab('reqs',document.querySelector('[onclick*=\'reqs\']'))" title="点击查看项目需求池"><div class="num">45</div><div class="lbl">待分配需求</div></div>
+                <div class="overview-stat"><div class="num" style="color:var(--primary)">27</div><div class="lbl">已规划需求</div></div>
+                <div class="overview-stat"><div class="num" style="color:var(--success)">18</div><div class="lbl">已上线需求</div></div>
               </div>
             </div>
           </div>
@@ -3341,17 +3309,14 @@ table.data tr:last-child td{border-bottom:none}
             <div class="doc-list" data-od-id="path-3-1-1-17-9-3-1">
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>V4.30.0 版本需求规格说明书.pdf</div><div class="doc-meta">PRD文档 · 1.8 MB · 李晓明 · 2026-07-08</div></div></div>
-                <button class="btn-showcase" onclick="toggleShowcase(this,'V4.30.0 版本需求规格说明书.pdf')">对外展示</button>
                 <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-9-3-1-0-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-9-3-1-0-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-9-3-1-0-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('V4.30.0 版本需求规格说明书.pdf')" data-od-id="path-3-1-1-17-9-3-1-0-1-3">删除</a></div>
               </div>
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>V4.30.0 测试用例集.xlsx</div><div class="doc-meta">测试文档 · 620 KB · 孙丽 · 2026-07-10</div></div></div>
-                <button class="btn-showcase" onclick="toggleShowcase(this,'V4.30.0 测试用例集.xlsx')">对外展示</button>
                 <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-9-3-1-1-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-9-3-1-1-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-9-3-1-1-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('V4.30.0 测试用例集.xlsx')" data-od-id="path-3-1-1-17-9-3-1-1-1-3">删除</a></div>
               </div>
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f6feb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>V4.30.0 发版CheckList.docx</div><div class="doc-meta">发版清单 · 340 KB · 王建国 · 2026-07-12</div></div></div>
-                <button class="btn-showcase" onclick="toggleShowcase(this,'V4.30.0 发版CheckList.docx')">对外展示</button>
                 <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-9-3-1-2-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-9-3-1-2-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-9-3-1-2-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('V4.30.0 发版CheckList.docx')" data-od-id="path-3-1-1-17-9-3-1-2-1-3">删除</a></div>
               </div>
             </div>
@@ -3385,157 +3350,13 @@ table.data tr:last-child td{border-bottom:none}
             </div>
           </div>
           <div class="pool-layout" style="margin-top:12px" data-od-id="path-3-1-1-17-10-1">
-            <div class="module-sidebar" style="width:260px">
-              <div class="module-sidebar-title" style="display:flex;align-items:center;justify-content:space-between">
-                功能模块
-                <span style="font-size:.7rem;font-weight:400;color:var(--text-muted)">一/二级来自系统配置</span>
-              </div>
-              <div class="mtree-item mtree-l1 active" onclick="selectModule(this)" data-level="all">
-                <span class="mtree-label">全部</span>
-                <span class="module-count">15</span>
-              </div>
-
-              <!-- 一级：电商中台（同步自系统配置） -->
-              <div class="mtree-node">
-                <div class="mtree-item mtree-l1" onclick="toggleMTree(this)">
-                  <span class="mtree-toggle">▶</span>
-                  <span class="mtree-label">电商中台</span>
-                  <span class="mtree-sync">同步</span>
-                </div>
-                <div class="mtree-children" style="display:none">
-                  <!-- 二级：PC-电脑（同步自分端） -->
-                  <div class="mtree-node">
-                    <div class="mtree-item mtree-l2" onclick="toggleMTree(this)">
-                      <span class="mtree-toggle">▶</span>
-                      <span class="mtree-label">PC-电脑</span>
-                      <span class="mtree-sync">同步</span>
-                    </div>
-                    <div class="mtree-children" style="display:none">
-                      <div class="mtree-item mtree-l3" onclick="selectModule(this)" data-level="3">
-                        <span class="mtree-label">用户中心</span>
-                        <span class="mtree-count">4</span>
-                        <span class="mtree-ops">
-                          <button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,'用户中心')">✎</button>
-                          <button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,'用户中心')">✕</button>
-                        </span>
-                      </div>
-                      <div class="mtree-item mtree-l3" onclick="selectModule(this)" data-level="3">
-                        <span class="mtree-label">交易模块</span>
-                        <span class="mtree-count">3</span>
-                        <span class="mtree-ops">
-                          <button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,'交易模块')">✎</button>
-                          <button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,'交易模块')">✕</button>
-                        </span>
-                      </div>
-                      <div class="mtree-add" onclick="event.stopPropagation();addModuleL3(this)">+ 新建三级模块</div>
-                    </div>
-                  </div>
-                  <!-- 二级：APP-移动 -->
-                  <div class="mtree-node">
-                    <div class="mtree-item mtree-l2" onclick="toggleMTree(this)">
-                      <span class="mtree-toggle">▶</span>
-                      <span class="mtree-label">APP-移动</span>
-                      <span class="mtree-sync">同步</span>
-                    </div>
-                    <div class="mtree-children" style="display:none">
-                      <div class="mtree-item mtree-l3" onclick="selectModule(this)" data-level="3">
-                        <span class="mtree-label">营销模块</span>
-                        <span class="mtree-count">2</span>
-                        <span class="mtree-ops">
-                          <button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,'营销模块')">✎</button>
-                          <button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,'营销模块')">✕</button>
-                        </span>
-                      </div>
-                      <div class="mtree-add" onclick="event.stopPropagation();addModuleL3(this)">+ 新建三级模块</div>
-                    </div>
-                  </div>
-                  <!-- 二级：MP-小程序 -->
-                  <div class="mtree-node">
-                    <div class="mtree-item mtree-l2" onclick="toggleMTree(this)">
-                      <span class="mtree-toggle">▶</span>
-                      <span class="mtree-label">MP-小程序</span>
-                      <span class="mtree-sync">同步</span>
-                    </div>
-                    <div class="mtree-children" style="display:none">
-                      <div class="mtree-item mtree-l3" onclick="selectModule(this)" data-level="3">
-                        <span class="mtree-label">首页改版</span>
-                        <span class="mtree-count">1</span>
-                        <span class="mtree-ops">
-                          <button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,'首页改版')">✎</button>
-                          <button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,'首页改版')">✕</button>
-                        </span>
-                      </div>
-                      <div class="mtree-add" onclick="event.stopPropagation();addModuleL3(this)">+ 新建三级模块</div>
-                    </div>
-                  </div>
-                  <!-- 二级：H5-网页 -->
-                  <div class="mtree-node">
-                    <div class="mtree-item mtree-l2" onclick="toggleMTree(this)">
-                      <span class="mtree-toggle">▶</span>
-                      <span class="mtree-label">H5-网页</span>
-                      <span class="mtree-sync">同步</span>
-                    </div>
-                    <div class="mtree-children" style="display:none">
-                      <div class="mtree-empty">暂无三级模块</div>
-                      <div class="mtree-add" onclick="event.stopPropagation();addModuleL3(this)">+ 新建三级模块</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 一级：供应链系统（同步自系统配置） -->
-              <div class="mtree-node">
-                <div class="mtree-item mtree-l1" onclick="toggleMTree(this)">
-                  <span class="mtree-toggle">▶</span>
-                  <span class="mtree-label">供应链系统</span>
-                  <span class="mtree-sync">同步</span>
-                </div>
-                <div class="mtree-children" style="display:none">
-                  <!-- 二级：PC-电脑 -->
-                  <div class="mtree-node">
-                    <div class="mtree-item mtree-l2" onclick="toggleMTree(this)">
-                      <span class="mtree-toggle">▶</span>
-                      <span class="mtree-label">PC-电脑</span>
-                      <span class="mtree-sync">同步</span>
-                    </div>
-                    <div class="mtree-children" style="display:none">
-                      <div class="mtree-item mtree-l3" onclick="selectModule(this)" data-level="3">
-                        <span class="mtree-label">供应链基础</span>
-                        <span class="mtree-count">2</span>
-                        <span class="mtree-ops">
-                          <button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,'供应链基础')">✎</button>
-                          <button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,'供应链基础')">✕</button>
-                        </span>
-                      </div>
-                      <div class="mtree-add" onclick="event.stopPropagation();addModuleL3(this)">+ 新建三级模块</div>
-                    </div>
-                  </div>
-                  <!-- 二级：WX-微信 -->
-                  <div class="mtree-node">
-                    <div class="mtree-item mtree-l2" onclick="toggleMTree(this)">
-                      <span class="mtree-toggle">▶</span>
-                      <span class="mtree-label">WX-微信</span>
-                      <span class="mtree-sync">同步</span>
-                    </div>
-                    <div class="mtree-children" style="display:none">
-                      <div class="mtree-item mtree-l3" onclick="selectModule(this)" data-level="3">
-                        <span class="mtree-label">采购管理</span>
-                        <span class="mtree-count">1</span>
-                        <span class="mtree-ops">
-                          <button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,'采购管理')">✎</button>
-                          <button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,'采购管理')">✕</button>
-                        </span>
-                      </div>
-                      <div class="mtree-add" onclick="event.stopPropagation();addModuleL3(this)">+ 新建三级模块</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border-light);font-size:.72rem;color:var(--text-muted);line-height:1.5">
-                <span class="mtree-sync" style="font-size:.65rem">同步</span> = 来自系统配置，不可编辑<br>
-                三级模块可在二级下新建、编辑、删除
-              </div>
+            <div class="module-sidebar">
+              <div class="module-sidebar-title">功能模块</div>
+              <div class="module-item active" onclick="selectModule(this)">全部 <span class="module-count">15</span></div>
+              <div class="module-item" onclick="selectModule(this)">用户中心 <span class="module-count">4</span></div>
+              <div class="module-item" onclick="selectModule(this)">交易模块 <span class="module-count">6</span></div>
+              <div class="module-item" onclick="selectModule(this)">营销模块 <span class="module-count">3</span></div>
+              <div class="module-item" onclick="selectModule(this)">供应链 <span class="module-count">2</span></div>
             </div>
             <div class="table-wrap">
               <table class="data">
@@ -3904,17 +3725,14 @@ table.data tr:last-child td{border-bottom:none}
             <div class="doc-list" data-od-id="path-3-1-1-17-15-3-1">
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>油葱商城V4.30需求规格说明书.pdf</div><div class="doc-meta">PRD文档 · 2.4 MB · 王建国 · 2026-06-14</div></div></div>
-                <button class="btn-showcase" onclick="toggleShowcase(this,'油葱商城V4.30需求规格说明书.pdf')">对外展示</button>
                 <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-15-3-1-0-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-15-3-1-0-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-15-3-1-0-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('油葱商城V4.30需求规格说明书.pdf')" data-od-id="path-3-1-1-17-15-3-1-0-1-3">删除</a></div>
               </div>
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>油葱商城产品原型Axure.rp</div><div class="doc-meta">原型文档 · 8.1 MB · 林晓明 · 2026-06-10</div></div></div>
-                <button class="btn-showcase" onclick="toggleShowcase(this,'油葱商城产品原型Axure.rp')">对外展示</button>
                 <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-15-3-1-1-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-15-3-1-1-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-15-3-1-1-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('油葱商城产品原型Axure.rp')" data-od-id="path-3-1-1-17-15-3-1-1-1-3">删除</a></div>
               </div>
               <div class="doc-item">
                 <div class="doc-info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f6feb" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg><div><div>UAT验收操作指引.docx</div><div class="doc-meta">验收SOP · 956 KB · 黄燕 · 2026-06-08</div></div></div>
-                <button class="btn-showcase" onclick="toggleShowcase(this,'UAT验收操作指引.docx')">对外展示</button>
                 <div class="actions-cell"><a class="action-link" data-od-id="path-3-1-1-17-15-3-1-2-1-0">预览</a><a class="action-link" data-od-id="path-3-1-1-17-15-3-1-2-1-1">下载</a><a class="action-link" onclick="openModal('modal-doc-upload')" data-od-id="path-3-1-1-17-15-3-1-2-1-2">编辑</a><a class="action-link" style="color:var(--danger)" onclick="confirmDeleteDoc('UAT验收操作指引.docx')" data-od-id="path-3-1-1-17-15-3-1-2-1-3">删除</a></div>
               </div>
             </div>
@@ -5477,222 +5295,80 @@ table.data tr:last-child td{border-bottom:none}
 
 <!-- Modal: 创建任务 -->
 <div class="modal-overlay" id="modal-create-task" onclick="closeModalOnBackdrop(event)">
-  <div class="modal" style="width:740px;max-width:95vw;max-height:90vh;display:flex;flex-direction:column" onclick="event.stopPropagation()">
+  <div class="modal" style="width:640px;max-width:95vw" onclick="event.stopPropagation()">
     <div class="modal-header"><h3>创建任务</h3><div class="modal-close" onclick="closeModal('modal-create-task')">✕</div></div>
-    <div class="modal-body" style="display:flex;flex-direction:column;gap:0;overflow-y:auto;flex:1">
-      <!-- 区域1：选择阶段 -->
-      <div style="padding:0 0 16px">
-        <label class="form-label" style="margin-bottom:10px">选择阶段 <span style="color:var(--danger)">*</span> <span style="font-size:.76rem;color:var(--text-secondary);font-weight:400">（根据当前账号职业标签自动选中）</span></label>
-        <div id="ctStageCards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-          <div class="ct-stage-card active" data-value="需求" onclick="selectCtStage(this)" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--primary);border-radius:10px;background:#EFF6FF;cursor:pointer;transition:all .15s">
-            <span style="width:32px;height:32px;border-radius:8px;background:#DBEAFE;display:flex;align-items:center;justify-content:center;font-size:.9rem">📋</span>
-            <div><div style="font-size:.88rem;font-weight:600;color:var(--text)">需求</div><div style="font-size:.72rem;color:var(--text-secondary)">产品梳理与评审</div></div>
-          </div>
-          <div class="ct-stage-card" data-value="研发" onclick="selectCtStage(this)" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;transition:all .15s">
-            <span style="width:32px;height:32px;border-radius:8px;background:#F0FDF4;display:flex;align-items:center;justify-content:center;font-size:.9rem">💻</span>
-            <div><div style="font-size:.88rem;font-weight:600;color:var(--text)">研发</div><div style="font-size:.72rem;color:var(--text-secondary)">编码实现</div></div>
-          </div>
-          <div class="ct-stage-card" data-value="质检" onclick="selectCtStage(this)" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;transition:all .15s">
-            <span style="width:32px;height:32px;border-radius:8px;background:#FFF7ED;display:flex;align-items:center;justify-content:center;font-size:.9rem">🔍</span>
-            <div><div style="font-size:.88rem;font-weight:600;color:var(--text)">质检</div><div style="font-size:.72rem;color:var(--text-secondary)">测试验证</div></div>
-          </div>
-          <div class="ct-stage-card" data-value="运维" onclick="selectCtStage(this)" style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);cursor:pointer;transition:all .15s">
-            <span style="width:32px;height:32px;border-radius:8px;background:#FDF2F8;display:flex;align-items:center;justify-content:center;font-size:.9rem">🚀</span>
-            <div><div style="font-size:.88rem;font-weight:600;color:var(--text)">运维</div><div style="font-size:.72rem;color:var(--text-secondary)">发布上线</div></div>
-          </div>
+    <div class="modal-body" style="display:flex;flex-direction:column;gap:16px">
+      <div class="form-group">
+        <label class="form-label">选择阶段 <span style="color:var(--danger)">*</span></label>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem"><input type="radio" name="taskStage" value="需求" checked> 需求</label>
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem"><input type="radio" name="taskStage" value="研发"> 研发</label>
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem"><input type="radio" name="taskStage" value="质检"> 质检</label>
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.88rem"><input type="radio" name="taskStage" value="运维"> 运维</label>
         </div>
       </div>
-      <div style="height:1px;background:var(--border);margin:0 0 16px"></div>
-      <!-- 区域2：任务承接人 -->
-      <div style="padding:0 0 16px">
-        <label class="form-label" style="margin-bottom:8px">任务承接人 <span style="color:var(--danger)">*</span> <span style="font-size:.76rem;color:var(--text-secondary);font-weight:400">（默认选中当前创建者）</span></label>
-        <div style="display:flex;align-items:center;gap:10px">
-          <div id="ctAssigneeAvatar" style="width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:600;flex-shrink:0">王</div>
-          <select id="ctAssignee" class="filter-select" style="flex:1;font-size:.88rem" onchange="updateCtAssigneeAvatar()">
-            <option value="王建国" data-role="产品">王建国 — 产品</option>
-            <option value="赵强" data-role="研发">赵强 — 研发</option>
-            <option value="孙丽" data-role="研发">孙丽 — 研发</option>
-            <option value="周宇" data-role="运维">周宇 — 运维</option>
-            <option value="陈磊" data-role="质检">陈磊 — 质检</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <label class="form-label">任务承接人 <span style="color:var(--danger)">*</span></label>
+        <select id="ctAssignee" class="filter-select" style="width:100%">
+          <option value="王建国">王建国</option><option value="赵强">赵强</option><option value="孙丽">孙丽</option><option value="周宇">周宇</option><option value="陈磊">陈磊</option>
+        </select>
       </div>
-      <div style="height:1px;background:var(--border);margin:0 0 16px"></div>
-      <!-- 区域3：关联需求 -->
-      <div>
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-          <label class="form-label" style="margin:0">关联需求 <span style="color:var(--danger)">*</span> <span style="font-size:.76rem;color:var(--text-secondary);font-weight:400">（每个需求独立设置日期）</span></label>
-          <div style="display:flex;align-items:center;gap:12px">
-            <span id="ctReqCount" style="font-size:.78rem;color:var(--text-secondary)">已选 <b style="color:var(--primary)">0</b> / 5 项</span>
-            <a onclick="toggleAllCtReqs(true)" style="font-size:.78rem;color:var(--primary);cursor:pointer">全选</a>
-            <a onclick="toggleAllCtReqs(false)" style="font-size:.78rem;color:var(--text-secondary);cursor:pointer">取消全选</a>
-          </div>
-        </div>
-        <div id="ctReqList" style="border:1px solid var(--border);border-radius:10px;max-height:340px;overflow-y:auto">
-          <!-- 需求项1 -->
-          <div class="ct-req-item" style="border-bottom:1px solid var(--border)">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
-              <input type="checkbox" class="ct-req-cb" value="首页改版" data-id="DE-B-20260615-001" data-status="调研中" onchange="toggleCtReqSub(this)">
-              <div style="flex:1;min-width:0">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:.76rem;color:var(--text-secondary);font-family:var(--font-mono)">DE-B-20260615-001</span>
-                  <span style="font-size:.88rem;font-weight:500;color:var(--text)">首页改版</span>
-                </div>
-              </div>
-              <span class="badge badge-blue" style="font-size:.7rem">调研中</span>
+      <div class="form-group">
+        <label class="form-label">关联需求 <span style="color:var(--danger)">*</span> <span style="font-size:.76rem;color:var(--text-secondary);font-weight:400">（下拉多选，每个需求独立设置日期）</span></label>
+        <div id="ctReqList" style="border:1px solid var(--border);border-radius:8px;padding:12px;max-height:320px;overflow-y:auto">
+          <div style="display:flex;flex-direction:column;gap:8px" id="ctReqOptions">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;padding:6px 8px;border-radius:6px;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
+              <input type="checkbox" class="ct-req-cb" value="首页改版" onchange="toggleCtReqSub(this)"> 首页改版
             </label>
-            <div class="ct-req-sub" style="display:none;padding:0 14px 14px 42px">
-              <div style="background:#F8FAFC;border-radius:8px;padding:14px;border:1px solid #EEF2F6">
-                <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end">
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务开始日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-start" value="2026-06-23" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务结束日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-end" value="2026-06-30" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div style="min-width:80px;text-align:center">
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">预估天数</label>
-                    <div class="ct-est-days" style="font-size:1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono);padding:6px 0">8 天</div>
-                  </div>
-                </div>
+            <div class="ct-req-sub" style="display:none;margin-left:28px;padding:10px 12px;background:#F8FAFC;border-radius:8px;border:1px solid var(--border-light,#EEF2F6)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务开始日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-start" value="2026-06-23" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务结束日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-end" value="2026-06-30" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
               </div>
             </div>
-          </div>
-          <!-- 需求项2 -->
-          <div class="ct-req-item" style="border-bottom:1px solid var(--border)">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
-              <input type="checkbox" class="ct-req-cb" value="优惠券叠加规则" data-id="DE-B-20260615-002" data-status="已排期" onchange="toggleCtReqSub(this)">
-              <div style="flex:1;min-width:0">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:.76rem;color:var(--text-secondary);font-family:var(--font-mono)">DE-B-20260615-002</span>
-                  <span style="font-size:.88rem;font-weight:500;color:var(--text)">优惠券叠加规则</span>
-                </div>
-              </div>
-              <span class="badge badge-green" style="font-size:.7rem">已排期</span>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;padding:6px 8px;border-radius:6px;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
+              <input type="checkbox" class="ct-req-cb" value="优惠券叠加规则" onchange="toggleCtReqSub(this)"> 优惠券叠加规则
             </label>
-            <div class="ct-req-sub" style="display:none;padding:0 14px 14px 42px">
-              <div style="background:#F8FAFC;border-radius:8px;padding:14px;border:1px solid #EEF2F6">
-                <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end">
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务开始日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-start" value="2026-06-23" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务结束日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-end" value="2026-06-30" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div style="min-width:80px;text-align:center">
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">预估天数</label>
-                    <div class="ct-est-days" style="font-size:1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono);padding:6px 0">8 天</div>
-                  </div>
-                </div>
+            <div class="ct-req-sub" style="display:none;margin-left:28px;padding:10px 12px;background:#F8FAFC;border-radius:8px;border:1px solid var(--border-light,#EEF2F6)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务开始日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-start" value="2026-06-23" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务结束日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-end" value="2026-06-30" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
               </div>
             </div>
-          </div>
-          <!-- 需求项3 -->
-          <div class="ct-req-item" style="border-bottom:1px solid var(--border)">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
-              <input type="checkbox" class="ct-req-cb" value="订单拆分逻辑优化" data-id="DE-B-20260615-003" data-status="待评估" onchange="toggleCtReqSub(this)">
-              <div style="flex:1;min-width:0">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:.76rem;color:var(--text-secondary);font-family:var(--font-mono)">DE-B-20260615-003</span>
-                  <span style="font-size:.88rem;font-weight:500;color:var(--text)">订单拆分逻辑优化</span>
-                </div>
-              </div>
-              <span class="badge badge-gray" style="font-size:.7rem">待评估</span>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;padding:6px 8px;border-radius:6px;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
+              <input type="checkbox" class="ct-req-cb" value="订单拆分逻辑优化" onchange="toggleCtReqSub(this)"> 订单拆分逻辑优化
             </label>
-            <div class="ct-req-sub" style="display:none;padding:0 14px 14px 42px">
-              <div style="background:#F8FAFC;border-radius:8px;padding:14px;border:1px solid #EEF2F6">
-                <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end">
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务开始日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-start" value="2026-06-23" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务结束日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-end" value="2026-06-30" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div style="min-width:80px;text-align:center">
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">预估天数</label>
-                    <div class="ct-est-days" style="font-size:1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono);padding:6px 0">8 天</div>
-                  </div>
-                </div>
+            <div class="ct-req-sub" style="display:none;margin-left:28px;padding:10px 12px;background:#F8FAFC;border-radius:8px;border:1px solid var(--border-light,#EEF2F6)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务开始日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-start" value="2026-06-23" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务结束日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-end" value="2026-06-30" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
               </div>
             </div>
-          </div>
-          <!-- 需求项4 -->
-          <div class="ct-req-item" style="border-bottom:1px solid var(--border)">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
-              <input type="checkbox" class="ct-req-cb" value="支付链路重构" data-id="DE-B-20260615-004" data-status="已排期" onchange="toggleCtReqSub(this)">
-              <div style="flex:1;min-width:0">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:.76rem;color:var(--text-secondary);font-family:var(--font-mono)">DE-B-20260615-004</span>
-                  <span style="font-size:.88rem;font-weight:500;color:var(--text)">支付链路重构</span>
-                </div>
-              </div>
-              <span class="badge badge-green" style="font-size:.7rem">已排期</span>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;padding:6px 8px;border-radius:6px;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
+              <input type="checkbox" class="ct-req-cb" value="支付链路重构" onchange="toggleCtReqSub(this)"> 支付链路重构
             </label>
-            <div class="ct-req-sub" style="display:none;padding:0 14px 14px 42px">
-              <div style="background:#F8FAFC;border-radius:8px;padding:14px;border:1px solid #EEF2F6">
-                <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end">
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务开始日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-start" value="2026-06-23" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务结束日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-end" value="2026-06-30" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div style="min-width:80px;text-align:center">
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">预估天数</label>
-                    <div class="ct-est-days" style="font-size:1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono);padding:6px 0">8 天</div>
-                  </div>
-                </div>
+            <div class="ct-req-sub" style="display:none;margin-left:28px;padding:10px 12px;background:#F8FAFC;border-radius:8px;border:1px solid var(--border-light,#EEF2F6)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务开始日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-start" value="2026-06-23" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务结束日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-end" value="2026-06-30" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
               </div>
             </div>
-          </div>
-          <!-- 需求项5 -->
-          <div class="ct-req-item">
-            <label style="display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
-              <input type="checkbox" class="ct-req-cb" value="会员等级体系上线" data-id="DE-B-20260615-005" data-status="调研中" onchange="toggleCtReqSub(this)">
-              <div style="flex:1;min-width:0">
-                <div style="display:flex;align-items:center;gap:8px">
-                  <span style="font-size:.76rem;color:var(--text-secondary);font-family:var(--font-mono)">DE-B-20260615-005</span>
-                  <span style="font-size:.88rem;font-weight:500;color:var(--text)">会员等级体系上线</span>
-                </div>
-              </div>
-              <span class="badge badge-blue" style="font-size:.7rem">调研中</span>
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;padding:6px 8px;border-radius:6px;transition:background .15s" onmouseover="this.style.background='#F8FAFC'" onmouseout="this.style.background='transparent'">
+              <input type="checkbox" class="ct-req-cb" value="会员等级体系上线" onchange="toggleCtReqSub(this)"> 会员等级体系上线
             </label>
-            <div class="ct-req-sub" style="display:none;padding:0 14px 14px 42px">
-              <div style="background:#F8FAFC;border-radius:8px;padding:14px;border:1px solid #EEF2F6">
-                <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end">
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务开始日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-start" value="2026-06-23" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div>
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">任务结束日期 <span style="color:var(--danger)">*</span></label>
-                    <input type="date" class="ct-sub-end" value="2026-06-30" onchange="calcCtEstDays(this)" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:.82rem;font-family:var(--font-mono)">
-                  </div>
-                  <div style="min-width:80px;text-align:center">
-                    <label style="font-size:.76rem;color:var(--text-secondary);display:block;margin-bottom:4px">预估天数</label>
-                    <div class="ct-est-days" style="font-size:1rem;font-weight:700;color:var(--primary);font-family:var(--font-mono);padding:6px 0">8 天</div>
-                  </div>
-                </div>
+            <div class="ct-req-sub" style="display:none;margin-left:28px;padding:10px 12px;background:#F8FAFC;border-radius:8px;border:1px solid var(--border-light,#EEF2F6)">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务开始日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-start" value="2026-06-23" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
+                <div><label style="font-size:.76rem;color:var(--text-secondary)">任务结束日期 <span style="color:var(--danger)">*</span></label><input type="date" class="ct-sub-end" value="2026-06-30" style="width:100%;border:1px solid var(--border);border-radius:6px;padding:5px 8px;font-size:.82rem;font-family:var(--font-mono)"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal-footer" style="display:flex;align-items:center;justify-content:space-between">
-      <span id="ctSubmitHint" style="font-size:.78rem;color:var(--text-secondary)">请至少选择一个关联需求</span>
-      <div style="display:flex;gap:10px">
-        <button class="btn btn-secondary" onclick="closeModal('modal-create-task')">取消</button>
-        <button class="btn btn-primary" onclick="submitCreateTask()">创建</button>
-      </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modal-create-task')">取消</button>
+      <button class="btn btn-primary" onclick="submitCreateTask()">创建</button>
     </div>
   </div>
 </div>
@@ -8833,128 +8509,11 @@ function switchVConfigTab(tab, el) {
   if (pane) pane.classList.add('active');
 }
 
-/* ===== Version Requirement Pool Module Tree ===== */
-function toggleMTree(el) {
-  const node = el.closest('.mtree-node');
-  if (!node) return;
-  const children = node.querySelector(':scope > .mtree-children');
-  if (!children) return;
-  const isOpen = children.style.display !== 'none';
-  children.style.display = isOpen ? 'none' : 'block';
-  node.classList.toggle('expanded', !isOpen);
-}
-
+/* ===== Version Requirement Pool Module Filter ===== */
 function selectModule(el) {
-  document.querySelectorAll('.mtree-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.module-item').forEach(i => i.classList.remove('active'));
   if (el) el.classList.add('active');
-  const label = el.querySelector('.mtree-label');
-  const name = label ? label.textContent.trim() : '全部';
-  showToast('info', '已筛选：' + name);
-}
-
-function addModuleL3(addBtn) {
-  const container = addBtn.parentElement;
-  const input = document.createElement('div');
-  input.className = 'mtree-item mtree-l3';
-  input.style.padding = '4px 8px 4px 40px';
-  input.innerHTML = '<input type="text" class="mtree-l3-input" placeholder="输入模块名称" maxlength="20" style="flex:1;font-size:.79rem;padding:3px 6px;border:1px solid var(--primary);border-radius:var(--radius);outline:none;background:#fff">' +
-    '<button class="mtree-op-btn" style="opacity:1;color:var(--primary);font-size:.75rem" onclick="event.stopPropagation();_confirmAddL3(this)">✓</button>' +
-    '<button class="mtree-op-btn mtree-op-del" style="opacity:1;font-size:.75rem" onclick="event.stopPropagation();_cancelAddL3(this)">✕</button>';
-  addBtn.before(input);
-  addBtn.style.display = 'none';
-  const inp = input.querySelector('input');
-  inp.focus();
-  inp.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') _confirmAddL3(input.querySelector('.mtree-op-btn'));
-    if (e.key === 'Escape') _cancelAddL3(input.querySelector('.mtree-op-del'));
-  });
-}
-
-function _confirmAddL3(btn) {
-  const row = btn.closest('.mtree-item');
-  const inp = row.querySelector('input');
-  const name = (inp.value || '').trim();
-  if (!name) { inp.style.borderColor = 'var(--danger)'; return; }
-  const addBtn = row.parentElement.querySelector('.mtree-add');
-  const newItem = document.createElement('div');
-  newItem.className = 'mtree-item mtree-l3';
-  newItem.setAttribute('onclick', 'selectModule(this)');
-  newItem.setAttribute('data-level', '3');
-  newItem.innerHTML = '<span class="mtree-label">' + name + '</span>' +
-    '<span class="mtree-count">0</span>' +
-    '<span class="mtree-ops">' +
-    '<button class="mtree-op-btn" title="编辑" onclick="event.stopPropagation();editModuleL3(this,\'' + name + '\')">✎</button>' +
-    '<button class="mtree-op-btn mtree-op-del" title="删除" onclick="event.stopPropagation();deleteModuleL3(this,\'' + name + '\')">✕</button>' +
-    '</span>';
-  const emptyEl = row.parentElement.querySelector('.mtree-empty');
-  if (emptyEl) emptyEl.remove();
-  row.replaceWith(newItem);
-  if (addBtn) addBtn.style.display = '';
-  showToast('success', '已新建三级模块：' + name);
-}
-
-function _cancelAddL3(btn) {
-  const row = btn.closest('.mtree-item');
-  const addBtn = row.parentElement.querySelector('.mtree-add');
-  row.remove();
-  if (addBtn) addBtn.style.display = '';
-}
-
-function editModuleL3(btn, oldName) {
-  const row = btn.closest('.mtree-item');
-  const labelEl = row.querySelector('.mtree-label');
-  const opsEl = row.querySelector('.mtree-ops');
-  const oldHtml = row.innerHTML;
-  labelEl.outerHTML = '<input type="text" class="mtree-l3-input" value="' + oldName + '" maxlength="20" style="flex:1;font-size:.79rem;padding:3px 6px;border:1px solid var(--primary);border-radius:var(--radius);outline:none;background:#fff">';
-  if (opsEl) opsEl.style.display = 'none';
-  const inp = row.querySelector('input');
-  inp.focus();
-  inp.select();
-  const confirmBtn = document.createElement('button');
-  confirmBtn.className = 'mtree-op-btn';
-  confirmBtn.style.cssText = 'opacity:1;color:var(--primary);font-size:.75rem';
-  confirmBtn.textContent = '✓';
-  confirmBtn.onclick = function(e) {
-    e.stopPropagation();
-    const newName = (inp.value || '').trim();
-    if (!newName) { inp.style.borderColor = 'var(--danger)'; return; }
-    inp.outerHTML = '<span class="mtree-label">' + newName + '</span>';
-    if (opsEl) { opsEl.style.display = ''; }
-    confirmBtn.remove();
-    cancelBtn.remove();
-    showToast('success', '已重命名：' + oldName + ' → ' + newName);
-  };
-  const cancelBtn = document.createElement('button');
-  cancelBtn.className = 'mtree-op-btn mtree-op-del';
-  cancelBtn.style.cssText = 'opacity:1;font-size:.75rem';
-  cancelBtn.textContent = '✕';
-  cancelBtn.onclick = function(e) {
-    e.stopPropagation();
-    row.innerHTML = oldHtml;
-  };
-  inp.after(confirmBtn);
-  confirmBtn.after(cancelBtn);
-  inp.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') confirmBtn.click();
-    if (e.key === 'Escape') cancelBtn.click();
-  });
-}
-
-function deleteModuleL3(btn, name) {
-  if (!confirm('确定删除三级模块"' + name + '"？\n删除后该模块下的需求将变为"未分配模块"。')) return;
-  const row = btn.closest('.mtree-item');
-  const container = row.parentElement;
-  row.remove();
-  if (!container.querySelector('.mtree-l3')) {
-    const addBtn = container.querySelector('.mtree-add');
-    if (addBtn) {
-      const emptyEl = document.createElement('div');
-      emptyEl.className = 'mtree-empty';
-      emptyEl.textContent = '暂无三级模块';
-      addBtn.before(emptyEl);
-    }
-  }
-  showToast('success', '已删除模块：' + name);
+  showToast('info', '已切换模块筛选');
 }
 
 /* ===== Version Issue Pool ===== */
@@ -9158,40 +8717,6 @@ function confirmDeleteDoc(name) {
   showConfirm('删除文档', '确定删除文档「' + name + '」吗？删除后不可恢复。', function() {
     showToast('success', '文档已删除');
   });
-}
-function toggleDocShowcase(idx, fileName) {
-  var btn = document.getElementById('showcase-btn-' + idx);
-  if (!btn) return;
-  var isActive = btn.classList.contains('active');
-  if (isActive) {
-    showConfirm('撤回展示', '撤回后，协同平台系统资料库中将不再展示该文件「' + fileName + '」。确定撤回吗？', function() {
-      btn.classList.remove('active');
-      btn.textContent = '对外展示';
-      showToast('success', '已撤回展示，协同平台资料库中不再展示该文件');
-    });
-  } else {
-    showConfirm('对外展示', '确认对外展示后，该文件「' + fileName + '」将同步到协同平台系统资料库中展示。确定吗？', function() {
-      btn.classList.add('active');
-      btn.textContent = '撤回展示';
-      showToast('success', '文件已同步到协同平台系统资料库');
-    });
-  }
-}
-function toggleShowcase(btn, fileName) {
-  var isActive = btn.classList.contains('active');
-  if (isActive) {
-    showConfirm('撤回展示', '撤回后，协同平台系统资料库中将不再展示该文件「' + fileName + '」。确定撤回吗？', function() {
-      btn.classList.remove('active');
-      btn.textContent = '对外展示';
-      showToast('success', '已撤回展示，协同平台资料库中不再展示该文件');
-    });
-  } else {
-    showConfirm('对外展示', '确认对外展示后，该文件「' + fileName + '」将同步到协同平台系统资料库中展示。确定吗？', function() {
-      btn.classList.add('active');
-      btn.textContent = '撤回展示';
-      showToast('success', '文件已同步到协同平台系统资料库');
-    });
-  }
 }
 
 /* ===== Version Requirement Pool Batch/Remove ===== */
@@ -9612,109 +9137,41 @@ function confirmDeleteTask(link) {
   });
 }
 
-var CT_ROLE_MAP = {'产品':'需求','研发':'研发','质检':'质检','运维':'运维'};
-
-function selectCtStage(card) {
-  document.querySelectorAll('.ct-stage-card').forEach(function(c) {
-    c.classList.remove('active');
-    c.style.borderColor = 'var(--border)';
-    c.style.background = 'var(--bg)';
-  });
-  card.classList.add('active');
-  card.style.borderColor = 'var(--primary)';
-  card.style.background = '#EFF6FF';
-}
-
-function updateCtAssigneeAvatar() {
-  var sel = document.getElementById('ctAssignee');
-  var name = sel.value;
-  var avatar = document.getElementById('ctAssigneeAvatar');
-  avatar.textContent = name.charAt(0);
-  var role = sel.options[sel.selectedIndex].getAttribute('data-role');
-  if (role && CT_ROLE_MAP[role]) {
-    var target = CT_ROLE_MAP[role];
-    var card = document.querySelector('.ct-stage-card[data-value="' + target + '"]');
-    if (card) selectCtStage(card);
-  }
-}
-
-function calcCtEstDays(el) {
-  var container = el.closest('.ct-req-sub');
-  if (!container) return;
-  var startInput = container.querySelector('.ct-sub-start');
-  var endInput = container.querySelector('.ct-sub-end');
-  var daysEl = container.querySelector('.ct-est-days');
-  if (!startInput || !endInput || !daysEl) return;
-  if (startInput.value && endInput.value) {
-    var s = new Date(startInput.value), e = new Date(endInput.value);
-    var days = Math.max(1, Math.round((e - s) / 86400000) + 1);
-    daysEl.textContent = days + ' 天';
-    if (e < s) { daysEl.style.color = 'var(--danger)'; daysEl.textContent += ' (日期倒置)'; }
-    else { daysEl.style.color = 'var(--primary)'; }
-  } else {
-    daysEl.textContent = '—';
-    daysEl.style.color = 'var(--text-secondary)';
-  }
-}
-
-function updateCtReqCount() {
-  var cbs = document.querySelectorAll('.ct-req-cb');
-  var total = cbs.length, checked = 0;
-  cbs.forEach(function(cb) { if (cb.checked) checked++; });
-  var el = document.getElementById('ctReqCount');
-  if (el) el.innerHTML = '已选 <b style="color:var(--primary)">' + checked + '</b> / ' + total + ' 项';
-  var hint = document.getElementById('ctSubmitHint');
-  if (hint) hint.textContent = checked > 0 ? '已选 ' + checked + ' 项需求，将创建 ' + checked + ' 条任务' : '请至少选择一个关联需求';
-}
-
-function toggleAllCtReqs(selectAll) {
-  var cbs = document.querySelectorAll('.ct-req-cb');
-  cbs.forEach(function(cb) {
-    cb.checked = selectAll;
-    toggleCtReqSub(cb);
-  });
-}
-
 function openCreateTaskModal() {
   var cbs = document.querySelectorAll('.ct-req-cb');
   cbs.forEach(function(cb){ cb.checked = false; });
   var subs = document.querySelectorAll('.ct-req-sub');
   subs.forEach(function(s){ s.style.display = 'none'; });
-  var sel = document.getElementById('ctAssignee');
-  sel.selectedIndex = 0;
-  updateCtAssigneeAvatar();
-  var defaultCard = document.querySelector('.ct-stage-card[data-value="需求"]');
-  if (defaultCard) selectCtStage(defaultCard);
-  updateCtReqCount();
+  document.getElementById('ctAssignee').selectedIndex = 0;
+  var radios = document.querySelectorAll('input[name="taskStage"]');
+  radios.forEach(function(r){ r.checked = r.value === '需求'; });
   openModal('modal-create-task');
 }
 
 function toggleCtReqSub(cb) {
-  var item = cb.closest('.ct-req-item');
-  if (!item) return;
-  var sub = item.querySelector('.ct-req-sub');
-  if (sub) sub.style.display = cb.checked ? 'block' : 'none';
-  updateCtReqCount();
+  var sub = cb.closest('label').nextElementSibling;
+  if(sub && sub.classList.contains('ct-req-sub')){
+    sub.style.display = cb.checked ? 'block' : 'none';
+  }
 }
 
 function submitCreateTask() {
-  var activeCard = document.querySelector('.ct-stage-card.active');
-  var stage = activeCard ? activeCard.getAttribute('data-value') : '需求';
+  var stage = '';
+  document.querySelectorAll('input[name="taskStage"]').forEach(function(r){ if(r.checked) stage = r.value; });
   var assignee = document.getElementById('ctAssignee').value;
   var checkedReqs = [];
-  var cbs = document.querySelectorAll('.ct-req-cb');
-  cbs.forEach(function(cb){
-    if (cb.checked) {
-      var item = cb.closest('.ct-req-item');
-      var sub = item ? item.querySelector('.ct-req-sub') : null;
+  var labels = document.querySelectorAll('.ct-req-cb');
+  var subs = document.querySelectorAll('.ct-req-sub');
+  labels.forEach(function(cb, i){
+    if(cb.checked){
+      var sub = subs[i];
       var startDate = sub ? sub.querySelector('.ct-sub-start').value : '';
       var endDate = sub ? sub.querySelector('.ct-sub-end').value : '';
-      var reqId = cb.getAttribute('data-id') || '';
-      if (!startDate || !endDate) { showToast('error','请为「' + cb.value + '」设置开始和结束日期'); return; }
-      checkedReqs.push({name: cb.value, id: reqId, start: startDate, end: endDate});
+      if(!startDate || !endDate){ showToast('error','请为「' + cb.value + '」设置开始和结束日期'); return; }
+      checkedReqs.push({name: cb.value, start: startDate, end: endDate});
     }
   });
-  if (!checkedReqs.length) { showToast('error','请至少选择一个关联需求'); return; }
+  if(!checkedReqs.length){ showToast('error','请至少选择一个关联需求'); return; }
   var stageBadgeClass = {'需求':'stage-review','研发':'stage-dev','质检':'stage-test','运维':'stage-live'}[stage] || 'stage-review';
   var tbody = document.getElementById('taskTableBody');
   checkedReqs.forEach(function(req){
@@ -9724,7 +9181,7 @@ function submitCreateTask() {
     tr.setAttribute('data-status', '待开始');
     tr.setAttribute('data-stage', stage);
     tr.setAttribute('data-person', assignee);
-    tr.innerHTML = '<td><span style="cursor:pointer;color:var(--primary);font-weight:500" onclick="showToast(\'info\',\'跳转到版本需求池详情\')">' + req.name + '</span><div style="font-size:.7rem;color:var(--text-secondary);font-family:var(--font-mono)">' + req.id + '</div></td>'
+    tr.innerHTML = '<td><span style="cursor:pointer;color:var(--primary);font-weight:500" onclick="showToast(\'info\',\'跳转到版本需求池详情\')">' + req.name + '</span></td>'
       + '<td><span class="stage-badge ' + stageBadgeClass + '">' + stage + '</span></td>'
       + '<td>' + assignee + '</td>'
       + '<td class="mono">' + req.start + '</td>'
