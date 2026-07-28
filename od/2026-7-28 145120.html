@@ -293,24 +293,6 @@ table.data tr:last-child td{border-bottom:none}
 .btn-showcase:hover{border-color:var(--primary);color:var(--primary)}
 .btn-showcase.active{background:rgba(79,70,229,.08);border-color:var(--primary);color:var(--primary)}
 
-/* CheckList rows */
-.checklist-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-bottom:1px solid var(--border);transition:background .15s}
-.checklist-row:last-child{border-bottom:none}
-.checklist-row:hover{background:var(--bg-muted)}
-.checklist-row.checked{background:rgba(22,163,74,.04)}
-.checklist-row-main{flex:1;min-width:0}
-.checklist-row-time{font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:2px}
-.checklist-row-content{font-size:.82rem;color:var(--text-secondary);line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.checklist-row-actions{display:flex;gap:6px;flex-shrink:0}
-.btn-checklist-pass,.btn-checklist-fail{padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:500;cursor:pointer;border:1px solid;transition:all .15s}
-.btn-checklist-pass{border-color:var(--border);background:var(--surface);color:var(--text-secondary)}
-.btn-checklist-pass:hover{border-color:#16a34a;color:#16a34a;background:rgba(22,163,74,.06)}
-.btn-checklist-fail{border-color:var(--border);background:var(--surface);color:var(--text-secondary)}
-.btn-checklist-fail:hover{border-color:var(--danger);color:var(--danger);background:rgba(220,38,38,.06)}
-.btn-checklist-pass.done{border-color:#16a34a;background:#16a34a;color:#fff;cursor:default;pointer-events:none}
-.checklist-exception-area{margin-top:6px;padding:8px 10px;background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.15);border-radius:6px;font-size:.78rem;color:var(--danger)}
-.checklist-exception-area strong{color:#b91c1c}
-
 /* Badges */
 .badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:999px;font-size:.72rem;font-weight:600;font-family:var(--font-mono);white-space:nowrap}
 .badge-primary{background:rgba(79,70,229,.1);color:var(--primary)}
@@ -1527,7 +1509,7 @@ table.data tr:last-child td{border-bottom:none}
         <div class="toolbar" data-od-id="path-3-1-1-1-0">
           <div class="toolbar-left">
             <input class="search-input" type="text" placeholder="搜索需求标题 / ID">
-            <select class="filter-select"><option>全部项目</option><option>油葱商城</option><option>OA系统</option><option>人事系统</option><option>财务系统</option><option>供应链</option></select>
+            <select class="filter-select"><option>全部项目-系统</option><option>油葱商城</option><option>OA系统</option><option>人事系统</option><option>财务系统</option><option>供应链</option></select>
             <select class="filter-select"><option>全部优先级</option><option>紧急</option><option>高</option><option>中</option><option>低</option></select>
           </div>
           <div class="toolbar-right">
@@ -1546,7 +1528,7 @@ table.data tr:last-child td{border-bottom:none}
         </div>
         <div class="table-wrap" data-od-id="path-3-1-1-1-2">
           <table class="data">
-            <thead><tr><th>需求编号</th><th>标题</th><th>优先级</th><th>状态</th><th>所属项目</th><th>提交人/部门</th><th>提交日期</th><th>负责人</th><th>操作</th></tr></thead>
+            <thead><tr><th>需求编号</th><th>标题</th><th>优先级</th><th>状态</th><th>所属项目-系统</th><th>提交人/部门</th><th>提交日期</th><th>负责人</th><th>操作</th></tr></thead>
             <tbody>
               <tr><td class="mono">DE-B-20260615-1234 <span class="action-link" title="复制" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260615-1234')">OA系统报销流程优化</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-warn">待评估</span></td><td><span class="badge badge-gray">OA系统</span></td><td>李明 / 财务部</td><td class="mono">2026-06-15</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派需求')" data-od-id="path-3-1-1-1-2-0-1-0-8-0-0">指派</a><a class="action-link" onclick="openModal('modal-req-convert')" data-od-id="path-3-1-1-1-2-0-1-0-8-0-1">需求转化</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-0-8-0-2">关闭</a></div></td></tr>
               <tr><td class="mono">DE-B-20260614-0098 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260614-0098')">移动端审批流程改造</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-warn">待评估</span></td><td><span class="badge badge-gray">油葱商城</span></td><td>王华 / 行政部</td><td class="mono">2026-06-14</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派需求')" data-od-id="path-3-1-1-1-2-0-1-1-8-0-0">指派</a><a class="action-link" onclick="openModal('modal-req-convert')" data-od-id="path-3-1-1-1-2-0-1-1-8-0-1">需求转化</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-1-8-0-2">关闭</a></div></td></tr>
@@ -2282,9 +2264,9 @@ table.data tr:last-child td{border-bottom:none}
           <table class="data">
             <thead><tr><th>工单ID</th><th>工单类型</th><th>工单标题</th><th>状态</th><th>提交人</th><th>提交日期</th><th>处理人</th><th>操作</th></tr></thead>
             <tbody>
-              <tr><td class="mono">FB-20260615-0001 <button class="btn-text" style="font-size:11px;padding:2px 4px;vertical-align:middle" onclick="copyText('FB-20260615-0001')" title="复制"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></td><td><span class="badge badge-danger">投诉</span></td><td class="bold" style="cursor:pointer;max-width:200px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap" onclick="showComplaintDetail('FB-20260615-0001')" title="OA审批流程操作繁琐">OA审批流程操作繁琐</td><td><span class="badge badge-warn">待处理</span></td><td>张伟</td><td class="mono">2026-06-15 09:20:00</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派工单')">指派</a><a class="action-link" onclick="openModal('modal-complaint-handle')">处理</a></div></td></tr>
-              <tr><td class="mono">FB-20260614-0008 <button class="btn-text" style="font-size:11px;padding:2px 4px;vertical-align:middle" onclick="copyText('FB-20260614-0008')" title="复制"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></td><td><span class="badge badge-primary">建议</span></td><td class="bold" style="cursor:pointer;max-width:200px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap" onclick="showComplaintDetail('FB-20260614-0008')" title="建议增加移动端审批功能">建议增加移动端审批功能</td><td><span class="badge badge-warn">待处理</span></td><td>李娜</td><td class="mono">2026-06-14 15:30:00</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派工单')">指派</a><a class="action-link" onclick="openModal('modal-complaint-handle')">处理</a></div></td></tr>
-              <tr><td class="mono">FB-20260613-0005 <button class="btn-text" style="font-size:11px;padding:2px 4px;vertical-align:middle" onclick="copyText('FB-20260613-0005')" title="复制"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></td><td><span class="badge badge-danger">投诉</span></td><td class="bold" style="cursor:pointer;max-width:200px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap" onclick="showComplaintDetail('FB-20260613-0005')" title="财务系统报表导出经常失败">财务系统报表导出经常失败</td><td><span class="badge badge-success">已处理</span></td><td>赵磊</td><td class="mono">2026-06-13 11:10:00</td><td>陈磊</td><td><div class="actions-cell"><a class="action-link" onclick="showComplaintDetail('FB-20260613-0005')">详情</a></div></td></tr>
+              <tr><td class="mono">FB-20260615-0001 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td><span class="badge badge-danger">投诉</span></td><td class="bold" style="cursor:pointer" onclick="showComplaintDetail('FB-20260615-0001')">OA审批流程操作繁琐</td><td><span class="badge badge-warn">待处理</span></td><td>张伟</td><td class="mono">2026-06-15 09:20:00</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派工单')" data-od-id="path-3-1-1-6-1-0-1-0-7-0-0">指派</a><a class="action-link" onclick="openModal('modal-complaint-handle')" data-od-id="path-3-1-1-6-1-0-1-0-7-0-1">处理</a></div></td></tr>
+              <tr><td class="mono">FB-20260614-0008 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td><span class="badge badge-primary">建议</span></td><td class="bold" style="cursor:pointer" onclick="showComplaintDetail('FB-20260614-0008')">建议增加移动端审批功能</td><td><span class="badge badge-warn">待处理</span></td><td>李娜</td><td class="mono">2026-06-14 15:30:00</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派工单')" data-od-id="path-3-1-1-6-1-0-1-1-7-0-0">指派</a><a class="action-link" onclick="openModal('modal-complaint-handle')" data-od-id="path-3-1-1-6-1-0-1-1-7-0-1">处理</a></div></td></tr>
+              <tr><td class="mono">FB-20260613-0005 <span class="action-link" onclick="showToast('info','已复制到剪贴板')">📋</span></td><td><span class="badge badge-danger">投诉</span></td><td class="bold" style="cursor:pointer" onclick="showComplaintDetail('FB-20260613-0005')">财务系统报表导出经常失败</td><td><span class="badge badge-success">已处理</span></td><td>赵磊</td><td class="mono">2026-06-13 11:10:00</td><td>陈磊</td><td><div class="actions-cell"><a class="action-link" onclick="showComplaintDetail('FB-20260613-0005')" data-od-id="path-3-1-1-6-1-0-1-2-7-0-0">详情</a></div></td></tr>
             </tbody>
           </table>
         </div>
@@ -2295,49 +2277,35 @@ table.data tr:last-child td{border-bottom:none}
       <div class="view" id="view-complaint-detail" data-od-id="path-3-1-1-6-detail">
         <div class="detail-back" onclick="switchView('complaints')" data-od-id="path-3-1-1-6-detail-0"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="m15 18-6-6 6-6"></path></svg> 返回投诉/建议处理</div>
         <div class="detail-head" data-od-id="path-3-1-1-6-detail-1">
-          <div><span class="mono" id="complaint-detail-id" style="color:var(--primary);font-weight:600">FB-20260615-0001</span> <button class="btn-text" style="font-size:11px;padding:2px 6px;vertical-align:middle" onclick="copyText(document.getElementById('complaint-detail-id').textContent)" title="复制工单ID"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><h2 style="margin:6px 0 0" id="complaint-detail-title">OA审批流程操作繁琐</h2></div>
+          <div><span class="mono" id="complaint-detail-id" style="color:var(--primary);font-weight:600">FB-20260615-0001</span> <button class="btn-text" style="font-size:11px;padding:2px 6px;vertical-align:middle" onclick="showToast('info','已复制到剪贴板')" title="复制工单ID"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><h2 style="margin:6px 0 0" id="complaint-detail-title">OA审批流程操作繁琐</h2></div>
+          <div style="display:flex;gap:8px" id="complaint-detail-actions">
+            <button class="btn btn-secondary btn-sm" onclick="openAssignModal('指派工单')">指派</button>
+            <button class="btn btn-primary btn-sm" onclick="openModal('modal-complaint-handle')">处理</button>
+          </div>
         </div>
         <div class="detail-meta" data-od-id="path-3-1-1-6-detail-2">
-          <div class="info-item"><div class="info-label">工单ID</div><div class="info-value mono" style="color:var(--primary);font-weight:600" id="cd-field-id">FB-20260615-0001</div></div>
-          <div class="info-item"><div class="info-label">工单标题</div><div class="info-value" id="cd-field-title">OA审批流程操作繁琐</div></div>
-          <div class="info-item"><div class="info-label">工单类型</div><div class="info-value" id="cd-field-type"><span class="badge badge-danger">投诉</span></div></div>
-          <div class="info-item"><div class="info-label">提交人</div><div class="info-value" id="cd-field-submitter">张伟</div></div>
-          <div class="info-item"><div class="info-label">提交日期</div><div class="info-value mono" id="cd-field-submit-date">2026-06-15 09:20:00</div></div>
-          <div class="info-item"><div class="info-label">处理人</div><div class="info-value" id="cd-field-handler">—</div></div>
-          <div class="info-item"><div class="info-label">状态</div><div class="info-value" id="cd-field-status"><span class="badge badge-warn">待处理</span></div></div>
+          <div class="info-item"><div class="info-label">工单类型</div><div class="info-value"><span class="badge badge-danger">投诉</span></div></div>
+          <div class="info-item"><div class="info-label">状态</div><div class="info-value"><span class="badge badge-warn">待处理</span></div></div>
+          <div class="info-item"><div class="info-label">提交人</div><div class="info-value">张伟</div></div>
+          <div class="info-item"><div class="info-label">提交日期</div><div class="info-value mono">2026-06-15 09:20:00</div></div>
+          <div class="info-item"><div class="info-label">处理人</div><div class="info-value">未指派</div></div>
         </div>
-        <!-- 工单描述 -->
         <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-6-detail-3">
           <div class="card-header"><div class="card-title">工单描述</div></div>
-          <div style="padding:16px;font-size:.88rem;line-height:1.8;color:var(--text)" id="cd-field-desc">
+          <div style="padding:16px;font-size:.88rem;line-height:1.8;color:var(--text)">
             <p>OA系统审批流程操作步骤过多，一个简单的请假审批需要经过5个节点，操作非常繁琐，建议优化审批流程，减少不必要的审批环节。</p>
           </div>
         </div>
-        <!-- 处理备注区（仅已处理时展示） -->
-        <div class="card" style="margin-top:16px;display:none" id="cd-handle-note-card" data-od-id="path-3-1-1-6-detail-handle-note">
-          <div class="card-header"><div class="card-title">处理备注</div></div>
+        <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-6-detail-4">
+          <div class="card-header"><div class="card-title">附件</div></div>
           <div style="padding:16px">
-            <div style="font-size:.88rem;line-height:1.8;color:var(--text);margin-bottom:12px" id="cd-handle-note-content">已对OA审批流程进行优化分析，梳理出3个可精简的审批节点，已提交优化方案至产品组评审。</div>
-            <div style="display:flex;gap:24px;font-size:.82rem;color:var(--text-muted);border-top:1px solid var(--border);padding-top:10px">
-              <span>处理人：<strong style="color:var(--fg)" id="cd-handle-note-person">陈磊</strong></span>
-              <span>处理时间：<span class="mono" id="cd-handle-note-time">2026-06-14 16:45:00</span></span>
-            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:.85rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>审批流程截图.pdf <a class="action-link" style="margin-left:8px">下载</a></div>
           </div>
         </div>
-        <!-- 处理记录 -->
-        <div class="card" style="margin-top:16px;margin-bottom:60px" data-od-id="path-3-1-1-6-detail-5">
+        <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-6-detail-5">
           <div class="card-header"><div class="card-title">处理记录</div></div>
-          <div class="op-log" id="cd-timeline">
-            <div class="op-log-item"><div class="op-log-dot" style="background:var(--danger)"></div><div><div style="font-size:.85rem;font-weight:500">张伟 提交投诉 2026-06-15 09:20:00</div></div></div>
-          </div>
-        </div>
-        <!-- 底部悬浮操作栏 -->
-        <div id="complaint-detail-ops" style="position:fixed;bottom:0;left:var(--sidebar-width,220px);right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 24px;display:flex;gap:10px;align-items:center;z-index:100">
-          <span style="font-size:.82rem;color:var(--text-muted)">当前状态</span>
-          <span class="badge badge-warn" id="complaint-detail-ops-status">待处理</span>
-          <div style="margin-left:auto;display:flex;gap:10px" id="complaint-detail-ops-btns">
-            <button class="btn btn-secondary btn-sm" onclick="openAssignModal('指派工单')">指派</button>
-            <button class="btn btn-primary btn-sm" onclick="openModal('modal-complaint-handle')">处理</button>
+          <div class="op-log">
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--danger)"></div><div><div style="font-size:.85rem;font-weight:500">张伟 提交投诉</div><div class="op-log-time">2026-06-15 09:20:00</div></div></div>
           </div>
         </div>
       </div>
@@ -3009,82 +2977,85 @@ table.data tr:last-child td{border-bottom:none}
       <div class="view" id="view-req-detail" data-od-id="path-3-1-1-13">
         <div class="detail-back" onclick="switchView('req-pool')" data-od-id="path-3-1-1-13-0"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="m15 18-6-6 6-6"></path></svg> 返回需求池</div>
 
-        <!-- 需求信息区 -->
+        <!-- 需求内容区 -->
         <div class="detail-head" data-od-id="path-3-1-1-13-1">
           <div>
             <div style="display:flex;align-items:center;gap:6px">
-              <span class="mono" id="req-detail-id" style="color:var(--primary);font-weight:600" data-od-id="path-3-1-1-13-1-0-0">DE-B-20260615-1234</span>
-              <button class="btn btn-ghost" style="padding:2px 6px;font-size:.75rem" onclick="copyText(document.getElementById('req-detail-id').textContent)" title="复制编号">复制</button>
+              <span class="mono" id="req-detail-id" style="color:var(--primary);font-weight:600" data-od-id="path-3-1-1-13-1-0-0">DE-C-20260615-0010</span>
+              <button class="btn btn-ghost" style="padding:2px 6px;font-size:.75rem" onclick="showToast('info','需求编号已复制到剪贴板')" title="复制编号">复制</button>
             </div>
-            <h2 id="req-detail-title" style="margin:6px 0 0" data-od-id="path-3-1-1-13-1-0-1">OA系统报销流程优化</h2>
+            <h2 id="req-detail-title" style="margin:6px 0 0" data-od-id="path-3-1-1-13-1-0-1">首页改版</h2>
           </div>
         </div>
         <div class="detail-meta" data-od-id="path-3-1-1-13-2">
-          <div class="info-item"><div class="info-label">优先级</div><div class="info-value" id="req-detail-priority"><span class="badge badge-danger">高</span></div></div>
-          <div class="info-item"><div class="info-label">状态</div><div class="info-value" id="req-detail-status"><span class="badge badge-warn">待评估</span></div></div>
-          <div class="info-item"><div class="info-label">提交人/部门</div><div class="info-value" id="req-detail-submitter">李明 / 财务部</div></div>
-          <div class="info-item"><div class="info-label">提交日期</div><div class="info-value mono" id="req-detail-submit-date">2026-06-15</div></div>
-          <div class="info-item"><div class="info-label">负责人</div><div class="info-value" id="req-detail-owner">—</div></div>
+          <div class="info-item"><div class="info-label">业务原需求链接</div><div class="info-value"><a href="#" class="action-link" onclick="showToast('info','跳转至业务需求详情')">DE-B-20260615-1234</a></div></div>
+          <div class="info-item"><div class="info-label">优先级</div><div class="info-value"><span class="badge badge-danger">高</span></div></div>
+          <div class="info-item"><div class="info-label">状态</div><div class="info-value"><span class="badge badge-success">正常</span></div></div>
+          <div class="info-item"><div class="info-label">指派给</div><div class="info-value">李明</div></div>
+          <div class="info-item"><div class="info-label">创建人</div><div class="info-value">王建国</div></div>
+          <div class="info-item"><div class="info-label">创建日期</div><div class="info-value mono">2026-06-15 09:30:00</div></div>
+          <div class="info-item"><div class="info-label">验收部门</div><div class="info-value">数创中心</div></div>
+          <div class="info-item"><div class="info-label">验收人</div><div class="info-value">王建国</div></div>
+          <div class="info-item"><div class="info-label">PRD链接</div><div class="info-value"><a href="#" class="action-link" onclick="showToast('info','PRD链接已复制')">https://docs.example.com/prd/home-revamp</a></div></div>
+          <div class="info-item" id="req-close-reason-row" style="display:none"><div class="info-label">关闭原因</div><div class="info-value" id="req-close-reason-val" style="color:#991B1B">—</div></div>
+          <div class="info-item" id="req-close-time-row" style="display:none"><div class="info-label">关闭时间</div><div class="info-value mono" id="req-close-time-val">—</div></div>
+          <div class="info-item" id="req-close-person-row" style="display:none"><div class="info-label">关闭人</div><div class="info-value" id="req-close-person-val">—</div></div>
         </div>
 
-        <!-- 需求关闭区（仅已关闭状态展示） -->
-        <div id="req-close-section" style="display:none;margin-top:12px" data-od-id="path-3-1-1-13-close">
-          <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:12px 16px;margin-bottom:12px">
-            <div style="display:flex;align-items:flex-start;gap:8px">
-              <span style="color:#DC2626;font-size:15px;line-height:1">⚠</span>
-              <div style="flex:1">
-                <div style="font-size:.85rem;font-weight:600;color:#991B1B;margin-bottom:4px">该需求已关闭</div>
-                <div style="font-size:.82rem;color:#7F1D1D;line-height:1.6">关闭原因：<span id="req-close-banner-reason">—</span></div>
-              </div>
+        <!-- 关闭原因提示条（已关闭状态时显示） -->
+        <div id="req-close-banner" style="display:none;margin-top:12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:8px;padding:12px 16px">
+          <div style="display:flex;align-items:flex-start;gap:8px">
+            <span style="color:#DC2626;font-size:15px;line-height:1">⚠</span>
+            <div style="flex:1">
+              <div style="font-size:.85rem;font-weight:600;color:#991B1B;margin-bottom:4px">该需求已关闭</div>
+              <div style="font-size:.82rem;color:#7F1D1D;line-height:1.6">关闭原因：<span id="req-close-banner-reason">—</span></div>
             </div>
           </div>
-          <div class="detail-meta">
-            <div class="info-item"><div class="info-label">关闭原因</div><div class="info-value" id="req-close-reason-val" style="color:#991B1B">—</div></div>
-            <div class="info-item"><div class="info-label">关闭时间</div><div class="info-value mono" id="req-close-time-val">—</div></div>
-            <div class="info-item"><div class="info-label">操作人员</div><div class="info-value" id="req-close-person-val">—</div></div>
-          </div>
         </div>
 
-        <!-- 需求内容区 -->
         <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-13-3">
-          <div class="card-header"><div class="card-title">需求内容</div></div>
-          <div class="detail-meta" style="border-bottom:1px solid var(--border)">
-            <div class="info-item"><div class="info-label">所属项目</div><div class="info-value" id="req-detail-project">OA系统</div></div>
-            <div class="info-item"><div class="info-label">所属系统</div><div class="info-value" id="req-detail-system">管理后台</div></div>
-            <div class="info-item"><div class="info-label">功能模块</div><div class="info-value" id="req-detail-module">报销管理</div></div>
-          </div>
+          <div class="card-header"><div class="card-title">需求详情</div></div>
           <div style="padding:16px;font-size:.88rem;line-height:1.8;color:var(--text)">
-            <div style="font-size:.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:8px">需求描述</div>
-            <div id="req-detail-desc" style="margin:0">
-              <p>当前OA系统报销流程繁琐，员工提交报销单需手动填写多项信息并线下传递纸质票据，审批周期长、易出错。</p>
-              <p style="margin-top:10px"><strong>需求背景：</strong>公司现有报销流程依赖线下传递和人工审核，平均报销周期为15个工作日，员工满意度持续下降。</p>
-              <p style="margin-top:10px"><strong>需求目标：</strong>实现报销流程线上化，支持电子发票自动识别、智能审批流转，将报销周期缩短至5个工作日以内。</p>
-              <p style="margin-top:10px"><strong>验收标准：</strong>1. 支持拍照识别发票信息（准确率≥95%）；2. 审批流程支持自定义配置；3. 报销状态实时可查；4. 适配PC端和移动端。</p>
-              <p style="margin-top:10px"><strong>影响范围：</strong>影响全公司约200名员工的日常报销流程，涉及财务部门审核岗位6人。</p>
-            </div>
+            <div style="margin-bottom:12px"><strong style="color:var(--text-secondary);font-size:.82rem">需求背景</strong><p style="margin:4px 0 0">当前首页信息架构老旧，用户反馈找不到常用功能入口，转化率持续下降。</p></div>
+            <div style="margin-bottom:12px"><strong style="color:var(--text-secondary);font-size:.82rem">需求目标</strong><p style="margin:4px 0 0">重新设计首页布局，突出核心功能入口，提升用户操作效率和转化率。</p></div>
+            <div style="margin-bottom:12px"><strong style="color:var(--text-secondary);font-size:.82rem">验收标准</strong><p style="margin:4px 0 0">1. 首页加载时间≤2s；2. 核心功能入口点击率提升20%；3. 适配PC和移动端。</p></div>
+            <div><strong style="color:var(--text-secondary);font-size:.82rem">影响范围描述</strong><p style="margin:4px 0 0">影响油葱商城用户端首页，涉及PC端和移动端H5页面，约50万日活用户。</p></div>
           </div>
         </div>
 
-        <!-- 需求操作区（固定底部悬浮栏） -->
-        <div id="req-detail-action-bar" style="position:fixed;bottom:0;left:var(--sidebar-width,220px);right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 24px;display:flex;gap:10px;align-items:center;z-index:100" data-od-id="path-3-1-1-13-ops">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span style="font-size:.85rem;color:var(--text-secondary)">当前状态</span>
-            <span id="req-detail-status-bar" class="badge badge-warn">待评估</span>
+        <!-- 需求调整记录区 -->
+        <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-13-adj">
+          <div class="card-header"><div class="card-title">需求调整记录</div></div>
+          <div style="padding:0">
+            <table class="data">
+              <thead><tr><th style="width:120px">调整人</th><th style="width:160px">调整时间</th><th>调整内容</th><th style="width:140px">通知人员</th></tr></thead>
+              <tbody>
+                <tr><td>王建国 LG0245</td><td class="mono">2026-06-17 14:20:00</td><td>调整验收标准：增加"核心功能入口点击率提升20%"指标</td><td>李明、赵强</td></tr>
+                <tr><td>李明 LG0231</td><td class="mono">2026-06-16 10:05:00</td><td>补充影响范围描述：增加移动端H5页面影响说明</td><td>王建国</td></tr>
+              </tbody>
+            </table>
           </div>
-          <div id="req-detail-actions" style="display:flex;gap:8px;margin-left:auto">
-            <button class="btn btn-secondary btn-sm" onclick="openAssignModal('指派需求')">指派</button>
-            <button class="btn btn-primary btn-sm" onclick="openModal('modal-req-convert')">需求转化</button>
-            <button class="btn btn-danger btn-sm" onclick="openCloseReqModal()">关闭</button>
-          </div>
+          <div style="padding:8px 16px;font-size:.75rem;color:var(--text-muted);text-align:right">按调整时间降序展示</div>
         </div>
-        <div style="height:60px"></div>
 
-        <!-- 需求动态区 -->
+        <!-- 需求操作区 -->
+        <div style="margin-top:16px;display:flex;gap:8px;align-items:center" data-od-id="path-3-1-1-13-ops">
+          <button class="btn btn-secondary btn-sm" onclick="openModal('modal-batch-assign-version')">分配</button>
+          <button class="btn btn-secondary btn-sm" onclick="openModal('modal-assign')">指派</button>
+          <button class="btn btn-secondary btn-sm" onclick="showToast('success','已复制需求内容')">复制</button>
+          <button class="btn btn-secondary btn-sm" onclick="openModal('modal-req-edit')">编辑</button>
+          <button class="btn btn-danger btn-sm" onclick="openCloseReqModal()">关闭</button>
+        </div>
+
+        <!-- 操作日志区 -->
         <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-13-4">
-          <div class="card-header"><div class="card-title">需求动态</div></div>
-          <div class="op-log" id="req-detail-log">
-            <div class="op-log-item"><div class="op-log-dot" style="background:var(--info)"></div><div><div style="font-size:.85rem"><strong>曹操LG0246</strong> 转化需求 <span class="mono" style="color:var(--primary)">DE-C-20260615-0010</span> <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-15 11:30:00</span></div></div></div>
-            <div class="op-log-item"><div class="op-log-dot" style="background:var(--accent)"></div><div><div style="font-size:.85rem"><strong>曹操LG0245</strong> 指派需求给 <strong>李明</strong> <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-15 10:15:22</span></div></div></div>
+          <div class="card-header"><div class="card-title">操作日志</div></div>
+          <div class="op-log">
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--info)"></div><div><div style="font-size:.85rem"><strong>王建国LG0245</strong> 编辑需求 <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-17 14:20:00</span></div></div></div>
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--accent)"></div><div><div style="font-size:.85rem"><strong>王建国LG0245</strong> 调整需求并通知 <strong>李明、赵强</strong> <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-17 14:20:00</span></div></div></div>
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--info)"></div><div><div style="font-size:.85rem"><strong>李明LG0231</strong> 调整需求并通知 <strong>王建国</strong> <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-16 10:05:00</span></div></div></div>
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--primary)"></div><div><div style="font-size:.85rem"><strong>曹操LG0246</strong> 分配需求至 V4.30.0 <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-15 11:00:00</span></div></div></div>
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--info)"></div><div><div style="font-size:.85rem"><strong>曹操LG0245</strong> 指派需求给 <strong>李明</strong> <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-15 10:15:22</span></div></div></div>
             <div class="op-log-item"><div class="op-log-dot" style="background:var(--success)"></div><div><div style="font-size:.85rem"><strong>刘备LG0245</strong> 创建需求 <span class="mono" style="font-size:.8rem;color:var(--text-muted)">2026-06-15 09:30:00</span></div></div></div>
           </div>
         </div>
@@ -3093,81 +3064,35 @@ table.data tr:last-child td{border-bottom:none}
       <!-- ===== 问题详情 ===== -->
       <div class="view" id="view-issue-detail" data-od-id="path-3-1-1-14">
         <div class="detail-back" onclick="switchView('issue-pool')" data-od-id="path-3-1-1-14-0"><svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2"><path d="m15 18-6-6 6-6"></path></svg> 返回业务问题池</div>
-
-        <!-- 问题信息区 -->
         <div class="detail-head" data-od-id="path-3-1-1-14-1">
-          <div>
-            <div style="display:flex;align-items:center;gap:6px">
-              <span class="mono" id="issue-detail-id" style="color:var(--primary);font-weight:600">PR-B-20260615-0001</span>
-              <span class="action-link" onclick="copyText(document.getElementById('issue-detail-id').textContent)" title="复制问题ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
-            </div>
-            <h2 style="margin:6px 0 0" id="issue-detail-title">财务查询超时（&gt;30s）</h2>
+          <div><span class="mono" id="issue-detail-id" style="color:var(--primary);font-weight:600" data-od-id="path-3-1-1-14-1-0-0">PR-B-20260615-0001</span> <button class="btn-text" style="font-size:11px;padding:2px 6px;vertical-align:middle" onclick="showToast('info','已复制到剪贴板')" title="复制问题ID"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button><h2 style="margin:6px 0 0" data-od-id="path-3-1-1-14-1-0-1">财务查询超时（&gt;30s）</h2></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-secondary btn-sm" onclick="showToast('success','已认领，状态变为处理中')" data-od-id="path-3-1-1-14-1-1-0">认领</button>
+            <button class="btn btn-secondary btn-sm" onclick="openAssignModal('指派问题')" data-od-id="path-3-1-1-14-1-1-1">指派</button>
+            <button class="btn btn-primary btn-sm" onclick="openModal('modal-issue-handle')" data-od-id="path-3-1-1-14-1-1-2">处理</button>
           </div>
         </div>
         <div class="detail-meta" data-od-id="path-3-1-1-14-2">
-          <div class="info-item"><div class="info-label">状态</div><div class="info-value" id="issue-detail-status"><span class="badge badge-warn">待处理</span></div></div>
-          <div class="info-item"><div class="info-label">反馈日期</div><div class="info-value mono" id="issue-detail-feedback-date">2026-06-15 14:20:00</div></div>
-          <div class="info-item"><div class="info-label">反馈人</div><div class="info-value" id="issue-detail-feedback-person">张芳</div></div>
+          <div class="info-item"><div class="info-label">问题级别</div><div class="info-value"><span class="badge badge-danger">紧急</span></div></div>
+          <div class="info-item"><div class="info-label">状态</div><div class="info-value"><span class="badge badge-warn">待处理</span></div></div>
+          <div class="info-item"><div class="info-label">所属项目-系统</div><div class="info-value">财务系统 - 报表中心</div></div>
+          <div class="info-item"><div class="info-label">反馈人</div><div class="info-value">张芳</div></div>
+          <div class="info-item"><div class="info-label">反馈日期</div><div class="info-value mono">2026-06-15</div></div>
+          <div class="info-item"><div class="info-label">跟进人</div><div class="info-value">未指派</div></div>
+          <div class="info-item"><div class="info-label">解决方案</div><div class="info-value" style="color:var(--text-muted)">暂无（待处理中）</div></div>
         </div>
-
-        <!-- 问题描述区 -->
         <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-14-3">
           <div class="card-header"><div class="card-title">问题描述</div></div>
-          <div class="detail-meta" style="padding:16px 16px 0;margin:0;border:none">
-            <div class="info-item"><div class="info-label">所属项目</div><div class="info-value" id="issue-detail-project">财务系统</div></div>
-            <div class="info-item"><div class="info-label">所属系统</div><div class="info-value" id="issue-detail-system">报表中心</div></div>
-            <div class="info-item"><div class="info-label">功能模块</div><div class="info-value" id="issue-detail-module">报表查询</div></div>
-          </div>
-          <div style="padding:16px;font-size:.88rem;line-height:1.8;color:var(--text)" id="issue-detail-desc">
+          <div style="padding:16px;font-size:.88rem;line-height:1.8;color:var(--text)">
             <p>财务系统报表查询接口在数据量超过10万条时响应时间超过30秒，严重影响用户体验。</p>
             <p style="margin-top:8px"><strong>复现步骤：</strong>1. 进入财务查询页面；2. 选择时间范围为近一年；3. 点击查询；4. 等待超过30秒后返回结果。</p>
             <p style="margin-top:8px"><strong>影响范围：</strong>财务部门所有人员，约30人日常使用受影响。</p>
           </div>
-          <!-- 问题补充区 -->
-          <div style="padding:0 16px 16px;border-top:1px solid var(--border);margin-top:0" id="issue-detail-supplements">
-            <div style="font-size:.82rem;font-weight:500;color:var(--text-secondary);margin:12px 0 8px">问题补充</div>
-            <div id="issue-supplement-list">
-              <div style="padding:8px 0;border-bottom:1px dashed var(--border);font-size:.88rem;line-height:1.7">
-                <div style="color:var(--text)">补充说明：该问题在月初月末高峰期尤为严重，查询耗时可达60秒以上。</div>
-                <div style="color:var(--text-muted);font-size:.78rem;margin-top:4px">张芳LG0235 · 2026-06-16 09:15:32</div>
-              </div>
-              <div style="padding:8px 0;font-size:.88rem;line-height:1.7">
-                <div style="color:var(--text)">已确认数据库索引缺失是主要原因，已提交DBA优化申请。</div>
-                <div style="color:var(--text-muted);font-size:.78rem;margin-top:4px">王建国LG0101 · 2026-06-17 11:40:18</div>
-              </div>
-            </div>
-          </div>
         </div>
-
-        <!-- 问题解决区 -->
         <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-14-4">
-          <div class="card-header"><div class="card-title">问题解决</div></div>
-          <div class="detail-meta" style="padding:16px;margin:0;border:none">
-            <div class="info-item"><div class="info-label">跟进人</div><div class="info-value" id="issue-detail-follower">—</div></div>
-            <div class="info-item"><div class="info-label">解决时间</div><div class="info-value mono" id="issue-detail-resolve-time">—</div></div>
-            <div class="info-item" style="flex-basis:100%"><div class="info-label">解决方案</div><div class="info-value" id="issue-detail-solution" style="color:var(--text-muted)">—</div></div>
-          </div>
-        </div>
-
-        <!-- 问题操作区 -->
-        <div id="issue-detail-action-bar" style="position:fixed;bottom:0;left:var(--sidebar-width,220px);right:0;background:var(--surface);border-top:1px solid var(--border);padding:12px 24px;display:flex;gap:10px;align-items:center;z-index:100">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span style="font-size:.85rem;color:var(--text-secondary)">当前状态</span>
-            <span id="issue-detail-status-bar" class="badge badge-warn">待处理</span>
-          </div>
-          <div id="issue-detail-actions" style="display:flex;gap:8px;margin-left:auto">
-            <button class="btn btn-secondary btn-sm" onclick="showToast('success','已认领，状态变为处理中')">认领</button>
-            <button class="btn btn-secondary btn-sm" onclick="openAssignModal('指派问题')">指派</button>
-            <button class="btn btn-primary btn-sm" onclick="openModal('modal-issue-handle')">处理</button>
-          </div>
-        </div>
-
-        <!-- 问题动态区 -->
-        <div class="card" style="margin-top:16px;margin-bottom:60px" data-od-id="path-3-1-1-14-5">
-          <div class="card-header"><div class="card-title">问题动态</div></div>
-          <div class="op-log" id="issue-detail-timeline">
-            <div class="op-log-item"><div class="op-log-dot" style="background:var(--danger)"></div><div><div style="font-size:.85rem;font-weight:500">张芳LG0235 创建问题</div><div class="op-log-time">2026-06-15 14:20:00</div></div></div>
-            <div class="op-log-item"><div class="op-log-dot" style="background:var(--primary)"></div><div><div style="font-size:.85rem;font-weight:500">张芳LG0235 指派问题给 王建国</div><div class="op-log-time">2026-06-15 14:25:00</div><div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">备注：请协助排查数据库性能问题</div></div></div>
+          <div class="card-header"><div class="card-title">操作日志</div></div>
+          <div class="op-log">
+            <div class="op-log-item"><div class="op-log-dot" style="background:var(--danger)"></div><div><div style="font-size:.85rem;font-weight:500">张芳 创建了问题</div><div class="op-log-time">2026-06-15 14:20</div></div></div>
           </div>
         </div>
       </div>
@@ -4234,25 +4159,20 @@ table.data tr:last-child td{border-bottom:none}
 
         <!-- 发版信息表 -->
         <div class="proj-detail-pane" id="proj-pane-releaseInfo" style="display:none" data-od-id="path-3-1-1-17-16">
-          <!-- CheckList区 -->
+          <!-- SQL检查区 -->
           <div class="card" style="margin-top:16px" data-od-id="path-3-1-1-17-16-0">
-            <div class="card-header"><div class="card-title">CheckList区</div></div>
+            <div class="card-header"><div class="card-title">SQL检查</div></div>
             <div style="padding:16px">
-              <div style="display:flex;justify-content:flex-start;margin-bottom:12px"><button class="btn btn-primary btn-sm" onclick="openModal('modal-checklist-input')">录入检查项</button></div>
-              <div style="font-size:.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:8px">检查清单</div>
-              <div id="release-checklist-log" style="max-height:240px;overflow-y:auto">
-                <div class="checklist-row" data-checked="false">
-                  <div class="checklist-row-main"><div class="checklist-row-time">2026-06-14 16:20:00</div><div class="checklist-row-content"><strong>赵强</strong> 检查：数据库订单状态字段更新SQL，涉及orders/users/payments三张表</div></div>
-                  <div class="checklist-row-actions"><button class="btn-checklist-pass" onclick="checklistPass(this)">检查完毕</button><button class="btn-checklist-fail" onclick="checklistFail(this)">检查异常</button></div>
-                </div>
-                <div class="checklist-row" data-checked="false">
-                  <div class="checklist-row-main"><div class="checklist-row-time">2026-06-12 10:05:00</div><div class="checklist-row-content"><strong>李明</strong> 检查：用户表新增level字段DDL语句，影响行数预估1240行</div></div>
-                  <div class="checklist-row-actions"><button class="btn-checklist-pass" onclick="checklistPass(this)">检查完毕</button><button class="btn-checklist-fail" onclick="checklistFail(this)">检查异常</button></div>
-                </div>
-                <div class="checklist-row" data-checked="false">
-                  <div class="checklist-row-main"><div class="checklist-row-time">2026-06-10 09:30:00</div><div class="checklist-row-content"><strong>王建国</strong> 检查：支付回调接口参数校验逻辑，涉及payment_callback表</div></div>
-                  <div class="checklist-row-actions"><button class="btn-checklist-pass" onclick="checklistPass(this)">检查完毕</button><button class="btn-checklist-fail" onclick="checklistFail(this)">检查异常</button></div>
-                </div>
+              <div class="form-group"><label>SQL内容</label><textarea id="release-sql-input" placeholder="请输入需要检查的SQL语句" style="min-height:80px;font-family:var(--font-mono);font-size:.82rem"></textarea></div>
+              <div style="display:flex;justify-content:flex-end;gap:8px;margin-bottom:12px"><button class="btn btn-primary btn-sm" onclick="submitSqlCheck()">提交检查</button></div>
+              <div id="release-sql-result" style="display:none;padding:12px;background:var(--bg-muted);border-radius:var(--radius);font-family:var(--font-mono);font-size:.82rem;margin-bottom:12px">
+                <div style="color:var(--success);font-weight:600;margin-bottom:4px">✅ 检查结果：通过</div>
+                <div style="color:var(--text-secondary)">无语法错误，涉及表：orders, users, payments。影响行数预估：1,240行。</div>
+              </div>
+              <div style="font-size:.82rem;font-weight:600;color:var(--text-secondary);margin-bottom:8px">变更日志</div>
+              <div class="dynamic-list" style="max-height:120px;overflow-y:auto">
+                <div class="dynamic-item"><div class="dynamic-time">2026-06-14 16:20:00</div><div class="dynamic-content"><strong>赵强</strong> 检查SQL：UPDATE orders SET status='paid' WHERE...</div></div>
+                <div class="dynamic-item"><div class="dynamic-time">2026-06-12 10:05:00</div><div class="dynamic-content"><strong>李明</strong> 检查SQL：ALTER TABLE users ADD COLUMN level INT...</div></div>
               </div>
             </div>
           </div>
@@ -4389,20 +4309,6 @@ table.data tr:last-child td{border-bottom:none}
 <!-- /appShell -->
 
 <!-- ===== MODALS ===== -->
-
-<!-- 录入检查项弹窗 -->
-<div class="modal-overlay" id="modal-checklist-input" onclick="closeModalOnBackdrop(event)">
-  <div class="modal" style="width:520px">
-    <div class="modal-header"><h3>录入检查项</h3><div class="modal-close" onclick="closeModal('modal-checklist-input')">✕</div></div>
-    <div class="modal-body">
-      <div class="form-group"><label>检查内容 <span style="color:var(--danger)">*</span></label><textarea id="release-checklist-input" placeholder="请输入需要检查的内容" style="min-height:120px;font-family:var(--font-mono);font-size:.82rem"></textarea></div>
-    </div>
-    <div class="modal-footer" style="display:flex;justify-content:flex-end;gap:8px">
-      <button class="btn btn-ghost" onclick="closeModal('modal-checklist-input')">取消</button>
-      <button class="btn btn-primary" onclick="submitChecklist()">提交</button>
-    </div>
-  </div>
-</div>
 
 <!-- 调整需求弹窗 -->
 <div class="modal-overlay" id="modal-adjust-req" onclick="closeModalOnBackdrop(event)">
@@ -6515,10 +6421,6 @@ function clearLoginFieldError(fieldId) {
   const errEl = input.parentElement.querySelector('.field-err');
   if (errEl) errEl.textContent = '';
 }
-function clearLoginErrors() {
-  clearLoginFieldError('loginUser');
-  clearLoginFieldError('loginPass');
-}
 
 function doLogin() {
   const userInput = document.getElementById('loginUser');
@@ -6652,7 +6554,6 @@ function cancelFeishuBind() {
   const feishu = document.getElementById('modal-feishu-bind');
   if (feishu) feishu.style.display = 'none';
   loginBg.style.display = 'flex';
-  initLoginRemember();
 }
 
 function confirmLogout() {
@@ -6670,14 +6571,6 @@ function logout() {
   if (btn) { btn.disabled = false; btn.textContent = '登 录'; }
   stopFeishuQrWatch();
   switchLoginMode('account');
-  clearLoginErrors();
-  const userInput = document.getElementById('loginUser');
-  const passInput = document.getElementById('loginPass');
-  const remember = document.getElementById('rememberMe');
-  if (userInput) userInput.value = '';
-  if (passInput) passInput.value = '';
-  if (remember) remember.checked = false;
-  initLoginRemember();
 }
 
 function togglePw() {
@@ -6954,8 +6847,10 @@ function submitCloseReq() {
   if (tv) tv.textContent = timeStr;
   if (pv) pv.textContent = '王建国';
   if (bv) bv.textContent = reason;
-  var closeSec = document.getElementById('req-close-section');
-  if (closeSec) closeSec.style.display = '';
+  document.getElementById('req-close-reason-row').style.display = '';
+  document.getElementById('req-close-time-row').style.display = '';
+  document.getElementById('req-close-person-row').style.display = '';
+  document.getElementById('req-close-banner').style.display = '';
   var opsBar = document.querySelector('#view-req-detail > div[data-od-id$="ops"]');
   if (opsBar) opsBar.style.display = 'none';
   showToast('success', '需求已关闭');
@@ -9820,49 +9715,37 @@ function createAccept() {
 /* ===== Detail Views ===== */
 function showReqDetail(id) {
   switchView('req-detail');
-  var reqMap = {
-    'DE-B-20260615-1234': { title:'OA系统报销流程优化', priority:'高', priorityCls:'badge-danger', status:'待评估', statusCls:'badge-warn', submitter:'李明 / 财务部', submitDate:'2026-06-15', owner:'—', project:'OA系统', system:'管理后台', module:'报销管理', desc:'<p>当前OA系统报销流程繁琐，员工提交报销单需手动填写多项信息并线下传递纸质票据，审批周期长、易出错。</p><p style="margin-top:10px"><strong>需求背景：</strong>公司现有报销流程依赖线下传递和人工审核，平均报销周期为15个工作日。</p><p style="margin-top:10px"><strong>需求目标：</strong>实现报销流程线上化，支持电子发票自动识别、智能审批流转。</p><p style="margin-top:10px"><strong>验收标准：</strong>1. 支持拍照识别发票信息（准确率≥95%）；2. 审批流程支持自定义配置；3. 适配PC和移动端。</p><p style="margin-top:10px"><strong>影响范围：</strong>影响全公司约200名员工的日常报销流程。</p>', logs:[{who:'刘备LG0245',action:'创建需求',time:'2026-06-15 09:30:00',color:'var(--success)'}] },
-    'DE-B-20260614-0098': { title:'移动端审批流程改造', priority:'中', priorityCls:'badge-primary', status:'待评估', statusCls:'badge-warn', submitter:'王华 / 行政部', submitDate:'2026-06-14', owner:'—', project:'油葱商城', system:'用户端', module:'审批中心', desc:'<p>现有移动端审批体验差，需重构审批流程界面，支持移动端快捷审批和消息推送。</p>', logs:[{who:'王华LG0250',action:'创建需求',time:'2026-06-14 14:00:00',color:'var(--success)'}] },
-    'DE-B-20260614-0095': { title:'数据导出功能增强', priority:'中', priorityCls:'badge-primary', status:'调研中', statusCls:'badge-accent', submitter:'赵强 / 数据部', submitDate:'2026-06-14', owner:'王建国', project:'人事系统', system:'管理后台', module:'报表导出', desc:'<p>现有数据导出仅支持CSV格式，需增加Excel、PDF格式导出，支持自定义字段选择。</p>', logs:[{who:'曹操LG0246',action:'转化需求 <span class="mono" style="color:var(--primary)">DE-C-20260615-0012</span>',time:'2026-06-14 16:00:00',color:'var(--info)'},{who:'曹操LG0245',action:'指派需求给 <strong>王建国</strong>',time:'2026-06-14 15:30:00',color:'var(--accent)'},{who:'赵强LG0233',action:'创建需求',time:'2026-06-14 10:20:00',color:'var(--success)'}] },
-    'DE-B-20260613-0088': { title:'财务月报自动生成', priority:'高', priorityCls:'badge-danger', status:'已排期', statusCls:'badge-info', submitter:'陈磊 / 财务部', submitDate:'2026-06-13', owner:'王建国', project:'财务系统', system:'报表中心', module:'月报模块', desc:'<p>财务月报目前手工汇总，需实现自动化生成，减少人工操作错误。</p>', logs:[{who:'曹操LG0246',action:'转化需求 <span class="mono" style="color:var(--primary)">DE-C-20260608-0005</span>',time:'2026-06-13 15:00:00',color:'var(--info)'},{who:'陈磊LG0240',action:'创建需求',time:'2026-06-13 09:00:00',color:'var(--success)'}] },
-    'DE-B-20260612-0076': { title:'库存预警功能', priority:'中', priorityCls:'badge-primary', status:'验收中', statusCls:'badge-success', submitter:'刘梅 / 采购部', submitDate:'2026-06-12', owner:'孙丽', project:'供应链', system:'采购管理', module:'库存管理', desc:'<p>库存低于安全阈值时自动预警通知，支持邮件和飞书双通道推送。</p>', logs:[{who:'曹操LG0246',action:'转化需求 <span class="mono" style="color:var(--primary)">DE-C-20260612-0008</span>',time:'2026-06-12 14:00:00',color:'var(--info)'},{who:'刘梅LG0260',action:'创建需求',time:'2026-06-12 08:30:00',color:'var(--success)'}] },
-    'DE-B-20260610-0065': { title:'考勤打卡体验优化', priority:'低', priorityCls:'badge-gray', status:'已上线', statusCls:'badge-success', submitter:'黄燕 / 行政部', submitDate:'2026-06-10', owner:'李明', project:'人事系统', system:'管理后台', module:'考勤管理', desc:'<p>优化打卡界面交互，增加GPS定位校验和WiFi自动打卡功能。</p>', logs:[{who:'曹操LG0246',action:'转化需求 <span class="mono" style="color:var(--primary)">DE-C-20260601-0002</span>',time:'2026-06-10 11:00:00',color:'var(--info)'},{who:'黄燕LG0270',action:'创建需求',time:'2026-06-10 09:00:00',color:'var(--success)'}] },
-    'DE-B-20260609-0054': { title:'合同电子签章', priority:'高', priorityCls:'badge-danger', status:'已关闭', statusCls:'badge-gray', submitter:'周宇 / 法务部', submitDate:'2026-06-09', owner:'—', project:'OA系统', system:'管理后台', module:'合同管理', desc:'<p>实现合同电子签章功能，支持在线签署和存档管理。</p>', closed:true, closeReason:'经与法务部确认，该需求涉及的法律合规要求已通过现有OA系统流程满足，无需单独开发，故关闭处理。', closeTime:'2026-06-18 16:42:30', closePerson:'王建国', logs:[{who:'关羽LG0247',action:'关闭需求 原因：经与法务部确认，该需求涉及的法律合规要求已通过现有OA系统流程满足，无需单独开发，故关闭处理。',time:'2026-06-18 16:42:30',color:'var(--danger)'},{who:'曹操LG0245',action:'指派需求给 <strong>王建国</strong>',time:'2026-06-09 14:00:00',color:'var(--accent)'},{who:'周宇LG0280',action:'创建需求',time:'2026-06-09 10:00:00',color:'var(--success)'}] },
-    'DE-C-20260615-0010': { title:'首页改版', priority:'高', priorityCls:'badge-danger', status:'调研中', statusCls:'badge-accent', submitter:'王建国 / 数创中心', submitDate:'2026-06-15', owner:'李明', project:'油葱商城', system:'用户端', module:'首页', desc:'<p>重新设计首页布局，突出核心功能入口，提升用户操作效率和转化率。</p>', logs:[{who:'曹操LG0246',action:'转化需求 <span class="mono" style="color:var(--primary)">DE-C-20260615-0010</span>',time:'2026-06-15 11:30:00',color:'var(--info)'},{who:'曹操LG0245',action:'指派需求给 <strong>李明</strong>',time:'2026-06-15 10:15:22',color:'var(--accent)'},{who:'刘备LG0245',action:'创建需求',time:'2026-06-15 09:30:00',color:'var(--success)'}] },
-    'DE-C-20260615-0011': { title:'购物车优化', priority:'中', priorityCls:'badge-primary', status:'调研中', statusCls:'badge-accent', submitter:'张伟 / 数创中心', submitDate:'2026-06-14', owner:'—', project:'油葱商城', system:'用户端', module:'购物车', desc:'<p>优化购物车交互体验，支持批量操作和收藏功能。</p>', logs:[{who:'张伟LG0232',action:'创建需求',time:'2026-06-14 09:00:00',color:'var(--success)'}] },
-    'DE-C-20260615-0012': { title:'订单导出功能', priority:'中', priorityCls:'badge-primary', status:'关闭', statusCls:'badge-gray', submitter:'李娜 / 数创中心', submitDate:'2026-06-12', owner:'赵强', project:'油葱商城', system:'管理后台', module:'订单管理', desc:'<p>支持订单数据批量导出为Excel格式。</p>', logs:[{who:'李娜LG0235',action:'创建需求',time:'2026-06-12 10:00:00',color:'var(--success)'}] },
-    'DE-C-20260615-0013': { title:'优惠券叠加规则', priority:'高', priorityCls:'badge-danger', status:'研发', statusCls:'badge-info', submitter:'王建国 / 数创中心', submitDate:'2026-06-13', owner:'赵强', project:'油葱商城', system:'用户端', module:'营销模块', desc:'<p>实现多种优惠券叠加使用规则引擎。</p>', logs:[{who:'王建国LG0245',action:'创建需求',time:'2026-06-13 14:00:00',color:'var(--success)'}] },
-    'DE-C-20260612-0008': { title:'订单拆分逻辑优化', priority:'中', priorityCls:'badge-primary', status:'质检', statusCls:'badge-warn', submitter:'张伟 / 数创中心', submitDate:'2026-06-12', owner:'孙丽', project:'油葱商城', system:'管理后台', module:'订单管理', desc:'<p>优化订单拆分算法，支持按仓库和物流渠道智能拆分。</p>', logs:[{who:'张伟LG0232',action:'创建需求',time:'2026-06-12 09:00:00',color:'var(--success)'}] },
-    'DE-C-20260608-0005': { title:'商品搜索筛选重构', priority:'中', priorityCls:'badge-primary', status:'验收', statusCls:'badge-success', submitter:'王建国 / 数创中心', submitDate:'2026-06-08', owner:'李明', project:'油葱商城', system:'用户端', module:'搜索模块', desc:'<p>重构商品搜索筛选功能，支持多维度组合筛选和智能推荐。</p>', logs:[{who:'王建国LG0245',action:'创建需求',time:'2026-06-08 10:00:00',color:'var(--success)'}] },
-    'DE-C-20260601-0002': { title:'会员等级体系上线', priority:'高', priorityCls:'badge-danger', status:'已上线', statusCls:'badge-success', submitter:'李娜 / 数创中心', submitDate:'2026-06-01', owner:'周宇', project:'油葱商城', system:'用户端', module:'会员中心', desc:'<p>上线会员等级体系，支持积分累计和等级权益兑换。</p>', logs:[{who:'李娜LG0235',action:'创建需求',time:'2026-06-01 09:00:00',color:'var(--success)'}] }
-  };
-  var info = reqMap[id];
-  if (!info) { switchView('req-pool'); return; }
-  var idEl = document.getElementById('req-detail-id');
   var titleEl = document.getElementById('req-detail-title');
-  if (idEl) idEl.textContent = id;
+  var idEl = document.getElementById('req-detail-id');
+  var reqMap = {
+    'DE-C-20260615-0010': { title: '首页改版', biz: 'DE-B-20260615-1234' },
+    'DE-C-20260615-0011': { title: '购物车优化', biz: '-' },
+    'DE-C-20260615-0012': { title: '订单导出功能', biz: 'DE-B-20260614-0095' },
+    'DE-C-20260615-0013': { title: '优惠券叠加规则', biz: 'DE-B-20260614-0098' },
+    'DE-C-20260612-0008': { title: '订单拆分逻辑优化', biz: '-' },
+    'DE-C-20260608-0005': { title: '商品搜索筛选重构', biz: 'DE-B-20260613-0088' },
+    'DE-C-20260601-0002': { title: '会员等级体系上线', biz: '-' },
+    'DE-B-20260609-0054': { title: '合同电子签章', biz: '-', closed: true, closeReason: '经与法务部确认，该需求涉及的法律合规要求已通过现有OA系统流程满足，无需单独开发，故关闭处理。', closeTime: '2026-06-18 16:42:30', closePerson: '王建国' },
+    'DE-B-20260615-1234': { title: 'OA系统报销流程优化', biz: '-' },
+    'DE-B-20260614-0098': { title: '移动端审批流程改造', biz: '-' },
+    'DE-B-20260614-0095': { title: '数据导出功能增强', biz: '-' },
+    'DE-B-20260613-0088': { title: '财务月报自动生成', biz: '-' },
+    'DE-B-20260612-0076': { title: '库存预警功能', biz: '-' },
+    'DE-B-20260610-0065': { title: '考勤打卡体验优化', biz: '-' }
+  };
+  var info = reqMap[id] || { title: '需求详情', biz: '-' };
   if (titleEl) titleEl.textContent = info.title;
-  var prEl = document.getElementById('req-detail-priority');
-  if (prEl) prEl.innerHTML = '<span class="badge ' + info.priorityCls + '">' + info.priority + '</span>';
-  var stEl = document.getElementById('req-detail-status');
-  if (stEl) stEl.innerHTML = '<span class="badge ' + info.statusCls + '">' + info.status + '</span>';
-  var suEl = document.getElementById('req-detail-submitter');
-  if (suEl) suEl.textContent = info.submitter;
-  var sdEl = document.getElementById('req-detail-submit-date');
-  if (sdEl) sdEl.textContent = info.submitDate;
-  var owEl = document.getElementById('req-detail-owner');
-  if (owEl) owEl.textContent = info.owner;
-  var pjEl = document.getElementById('req-detail-project');
-  if (pjEl) pjEl.textContent = info.project;
-  var syEl = document.getElementById('req-detail-system');
-  if (syEl) syEl.textContent = info.system;
-  var moEl = document.getElementById('req-detail-module');
-  if (moEl) moEl.textContent = info.module;
-  var descEl = document.getElementById('req-detail-desc');
-  if (descEl) descEl.innerHTML = info.desc;
-  var closeSec = document.getElementById('req-close-section');
-  if (closeSec) closeSec.style.display = info.closed ? '' : 'none';
-  if (info.closed) {
+  if (idEl) idEl.textContent = id;
+  var isClosed = info.closed === true;
+  var reasonRow = document.getElementById('req-close-reason-row');
+  var timeRow = document.getElementById('req-close-time-row');
+  var personRow = document.getElementById('req-close-person-row');
+  var banner = document.getElementById('req-close-banner');
+  if (reasonRow) reasonRow.style.display = isClosed ? '' : 'none';
+  if (timeRow) timeRow.style.display = isClosed ? '' : 'none';
+  if (personRow) personRow.style.display = isClosed ? '' : 'none';
+  if (banner) banner.style.display = isClosed ? '' : 'none';
+  if (isClosed) {
     var rv = document.getElementById('req-close-reason-val');
     var tv = document.getElementById('req-close-time-val');
     var pv = document.getElementById('req-close-person-val');
@@ -9872,177 +9755,12 @@ function showReqDetail(id) {
     if (pv) pv.textContent = info.closePerson || '—';
     if (bv) bv.textContent = info.closeReason || '—';
   }
-  var opsBar = document.getElementById('req-detail-action-bar');
-  if (opsBar) {
-    var opsHtml = '';
-    switch (info.status) {
-      case '待评估':
-        opsHtml = '<button class="btn btn-secondary btn-sm" onclick="openAssignModal(\'指派需求\')">指派</button><button class="btn btn-primary btn-sm" onclick="openModal(\'modal-req-convert\')">需求转化</button><button class="btn btn-danger btn-sm" onclick="openCloseReqModal()">关闭</button>';
-        break;
-      case '调研中':
-      case '已排期':
-        opsHtml = '<button class="btn btn-danger btn-sm" onclick="openCloseReqModal()">关闭</button>';
-        break;
-      case '验收中':
-      case '已上线':
-      case '已关闭':
-        opsHtml = '';
-        break;
-    }
-    var actionsDiv = document.getElementById('req-detail-actions');
-    if (actionsDiv) actionsDiv.innerHTML = opsHtml;
-    opsBar.style.display = opsHtml ? 'flex' : 'none';
-  }
-  var statusBar = document.getElementById('req-detail-status-bar');
-  if (statusBar) {
-    statusBar.className = 'badge ' + info.statusCls;
-    statusBar.textContent = info.status;
-  }
-  var logEl = document.getElementById('req-detail-log');
-  if (logEl) {
-    var logHtml = '';
-    (info.logs || []).forEach(function(l) {
-      logHtml += '<div class="op-log-item"><div class="op-log-dot" style="background:' + l.color + '"></div><div><div style="font-size:.85rem"><strong>' + l.who + '</strong> ' + l.action + ' <span class="mono" style="font-size:.8rem;color:var(--text-muted)">' + l.time + '</span></div></div></div>';
-    });
-    logEl.innerHTML = logHtml;
-  }
 }
 
-var ISSUE_DETAIL_MAP = {
-  'PR-B-20260615-0001': {
-    title: '财务查询超时（>30s）', status: '待处理', statusClass: 'badge-warn',
-    feedbackDate: '2026-06-15 14:20:00', feedbackPerson: '张芳',
-    project: '财务系统', system: '报表中心', module: '报表查询',
-    desc: '<p>财务系统报表查询接口在数据量超过10万条时响应时间超过30秒，严重影响用户体验。</p><p style="margin-top:8px"><strong>复现步骤：</strong>1. 进入财务查询页面；2. 选择时间范围为近一年；3. 点击查询；4. 等待超过30秒后返回结果。</p><p style="margin-top:8px"><strong>影响范围：</strong>财务部门所有人员，约30人日常使用受影响。</p>',
-    supplements: [
-      { text: '补充说明：该问题在月初月末高峰期尤为严重，查询耗时可达60秒以上', person: '张芳LG0235', time: '2026-06-16 09:15:32' },
-      { text: '已确认数据库索引缺失是主要原因，已提交DBA优化申请', person: '王建国LG0101', time: '2026-06-17 11:40:18' }
-    ],
-    follower: '—', resolveTime: '—', solution: '—',
-    timeline: [
-      { type: 'create', text: '张芳LG0235 创建问题', time: '2026-06-15 14:20:00', color: 'var(--danger)' },
-      { type: 'assign', text: '张芳LG0235 指派问题给 王建国', time: '2026-06-15 14:25:00', color: 'var(--primary)', note: '请协助排查数据库性能问题' }
-    ]
-  },
-  'PR-C-20260615-0002': {
-    title: '导出Excel格式错误', status: '处理中', statusClass: 'badge-info',
-    feedbackDate: '2026-06-15 10:05:30', feedbackPerson: '李明',
-    project: '人事系统', system: '管理后台', module: '报表导出',
-    desc: '<p>人事系统导出Excel文件时，表头合并单元格格式丢失，且日期列显示为数字序列号而非日期格式。</p><p style="margin-top:8px"><strong>复现步骤：</strong>1. 进入人事管理 → 员工花名册；2. 勾选全部人员；3. 点击"导出Excel"；4. 打开下载的文件发现格式异常。</p><p style="margin-top:8px"><strong>影响范围：</strong>人事部门日常报表输出，约10人受影响。</p>',
-    supplements: [
-      { text: '补充：该问题在Chrome浏览器下必现，Firefox下正常', person: '李明LG0102', time: '2026-06-15 15:30:00' }
-    ],
-    follower: '王建国', resolveTime: '—', solution: '—',
-    timeline: [
-      { type: 'create', text: '李明LG0102 创建问题', time: '2026-06-15 10:05:30', color: 'var(--danger)' },
-      { type: 'assign', text: '赵强LG0104 指派问题给 王建国', time: '2026-06-15 10:30:00', color: 'var(--primary)', note: '前端导出模块负责人' },
-      { type: 'claim', text: '王建国LG0101 认领问题', time: '2026-06-15 11:00:00', color: 'var(--accent)' }
-    ]
-  },
-  'PR-C-20260614-0012': {
-    title: '移动端登录异常', status: '处理中', statusClass: 'badge-info',
-    feedbackDate: '2026-06-14 16:45:00', feedbackPerson: '黄燕',
-    project: '油葱商城', system: '用户端', module: '登录注册',
-    desc: '<p>移动端H5页面使用短信验证码登录时，输入正确验证码后提示"验证码已过期"，无法完成登录。</p><p style="margin-top:8px"><strong>复现步骤：</strong>1. 打开油葱商城H5页面；2. 选择短信验证码登录；3. 输入手机号获取验证码；4. 在60秒内输入正确验证码；5. 点击登录提示"验证码已过期"。</p><p style="margin-top:8px"><strong>影响范围：</strong>所有移动端用户，影响约5000+日活用户。</p>',
-    supplements: [],
-    follower: '孙丽', resolveTime: '—', solution: '—',
-    timeline: [
-      { type: 'create', text: '黄燕LG0238 创建问题', time: '2026-06-14 16:45:00', color: 'var(--danger)' },
-      { type: 'assign', text: '黄燕LG0238 指派问题给 孙丽', time: '2026-06-14 17:00:00', color: 'var(--primary)', note: '移动端登录模块负责人' },
-      { type: 'claim', text: '孙丽LG0105 认领问题', time: '2026-06-14 17:15:00', color: 'var(--accent)' },
-      { type: 'process', text: '孙丽LG0105 处理问题，方式[转BUG]', time: '2026-06-15 09:30:00', color: 'var(--success)', note: '已转为BUG跟踪，BUG编号BUG-20260615-0003' }
-    ]
-  },
-  'PR-B-20260613-0008': {
-    title: '审批流程卡在特定节点', status: '已处理', statusClass: 'badge-success',
-    feedbackDate: '2026-06-13 09:10:00', feedbackPerson: '陈磊',
-    project: 'OA系统', system: '管理后台', module: '审批流程',
-    desc: '<p>OA系统中"部门年度预算审批"流程在"财务主管审核"节点卡住，无法流转到下一节点。</p><p style="margin-top:8px"><strong>复现步骤：</strong>1. 发起部门年度预算审批；2. 部门经理审核通过；3. 流转到财务主管审核节点；4. 财务主管点击"同意"后流程无响应。</p><p style="margin-top:8px"><strong>影响范围：</strong>3个部门的年度预算审批被阻塞。</p>',
-    supplements: [
-      { text: '经排查是流程引擎中该节点配置了并行会签，但实际只需要单人审批', person: '李明LG0102', time: '2026-06-14 10:20:00' }
-    ],
-    follower: '李明', resolveTime: '2026-06-14 14:30:00', solution: '正常业务 — 流程配置已修正，将并行会签改为单人审批，已通知发起人重新提交',
-    timeline: [
-      { type: 'create', text: '陈磊LG0233 创建问题', time: '2026-06-13 09:10:00', color: 'var(--danger)' },
-      { type: 'assign', text: '陈磊LG0233 指派问题给 李明', time: '2026-06-13 09:30:00', color: 'var(--primary)', note: 'OA流程管理员' },
-      { type: 'claim', text: '李明LG0102 认领问题', time: '2026-06-13 10:00:00', color: 'var(--accent)' },
-      { type: 'process', text: '李明LG0102 处理问题，方式[正常业务]', time: '2026-06-14 14:30:00', color: 'var(--success)', note: '流程配置已修正，将并行会签改为单人审批，已通知发起人重新提交' }
-    ]
-  },
-  'PR-B-20260612-0005': {
-    title: '无法打印采购单', status: '待处理', statusClass: 'badge-warn',
-    feedbackDate: '2026-06-12 11:30:00', feedbackPerson: '王华',
-    project: '供应链', system: '采购管理', module: '采购单管理',
-    desc: '<p>供应链系统点击"打印采购单"后，浏览器弹出打印预览窗口但内容为空白。</p><p style="margin-top:8px"><strong>复现步骤：</strong>1. 进入采购管理 → 采购单列表；2. 选择任意一张已审批采购单；3. 点击"打印"按钮；4. 打印预览窗口显示空白页。</p><p style="margin-top:8px"><strong>影响范围：</strong>采购部门日常打印需求，约15人受影响。</p>',
-    supplements: [],
-    follower: '—', resolveTime: '—', solution: '—',
-    timeline: [
-      { type: 'create', text: '王华LG0240 创建问题', time: '2026-06-12 11:30:00', color: 'var(--danger)' }
-    ]
-  }
-};
-
 function showIssueDetail(id) {
-  var d = ISSUE_DETAIL_MAP[id];
-  if (!d) { switchView('issue-detail'); var idEl = document.getElementById('issue-detail-id'); if (idEl) idEl.textContent = id; return; }
   switchView('issue-detail');
-  document.getElementById('issue-detail-id').textContent = id;
-  document.getElementById('issue-detail-title').textContent = d.title;
-  document.getElementById('issue-detail-status').innerHTML = '<span class="badge ' + d.statusClass + '">' + d.status + '</span>';
-  document.getElementById('issue-detail-feedback-date').textContent = d.feedbackDate;
-  document.getElementById('issue-detail-feedback-person').textContent = d.feedbackPerson;
-  document.getElementById('issue-detail-project').textContent = d.project;
-  document.getElementById('issue-detail-system').textContent = d.system;
-  document.getElementById('issue-detail-module').textContent = d.module;
-  document.getElementById('issue-detail-desc').innerHTML = d.desc;
-  document.getElementById('issue-detail-follower').textContent = d.follower;
-  document.getElementById('issue-detail-resolve-time').textContent = d.resolveTime;
-  var solEl = document.getElementById('issue-detail-solution');
-  solEl.textContent = d.solution;
-  solEl.style.color = d.solution === '—' ? 'var(--text-muted)' : 'var(--text)';
-  // supplements
-  var supList = document.getElementById('issue-supplement-list');
-  if (d.supplements.length === 0) {
-    supList.innerHTML = '<div style="padding:8px 0;color:var(--text-muted);font-size:.85rem">暂无补充</div>';
-  } else {
-    supList.innerHTML = d.supplements.map(function(s, i) {
-      var isLast = i === d.supplements.length - 1;
-      return '<div style="padding:8px 0;' + (isLast ? '' : 'border-bottom:1px dashed var(--border);') + 'font-size:.88rem;line-height:1.7">' +
-        '<div style="color:var(--text)">' + s.text + '</div>' +
-        '<div style="color:var(--text-muted);font-size:.78rem;margin-top:4px">' + s.person + ' · ' + s.time + '</div></div>';
-    }).join('');
-  }
-  // action bar by status
-  var statusBar = document.getElementById('issue-detail-status-bar');
-  if (statusBar) {
-    statusBar.className = 'badge ' + d.statusClass;
-    statusBar.textContent = d.status;
-  }
-  var actDiv = document.getElementById('issue-detail-actions');
-  var actionBar = document.getElementById('issue-detail-action-bar');
-  if (d.status === '待处理') {
-    actDiv.innerHTML = '<button class="btn btn-secondary btn-sm" onclick="showToast(\'success\',\'已认领，状态变为处理中\')">认领</button>' +
-      '<button class="btn btn-secondary btn-sm" onclick="openAssignModal(\'指派问题\')">指派</button>' +
-      '<button class="btn btn-primary btn-sm" onclick="openModal(\'modal-issue-handle\')">处理</button>';
-    if (actionBar) actionBar.style.display = 'flex';
-  } else if (d.status === '处理中') {
-    actDiv.innerHTML = '<button class="btn btn-secondary btn-sm" onclick="openAssignModal(\'指派问题\')">指派</button>' +
-      '<button class="btn btn-primary btn-sm" onclick="openModal(\'modal-issue-handle\')">处理</button>';
-    if (actionBar) actionBar.style.display = 'flex';
-  } else {
-    actDiv.innerHTML = '';
-    if (actionBar) actionBar.style.display = 'none';
-  }
-  // timeline
-  var tlDiv = document.getElementById('issue-detail-timeline');
-  tlDiv.innerHTML = d.timeline.map(function(t) {
-    var html = '<div class="op-log-item"><div class="op-log-dot" style="background:' + t.color + '"></div><div>' +
-      '<div style="font-size:.85rem;font-weight:500">' + t.text + '</div>' +
-      '<div class="op-log-time">' + t.time + '</div>';
-    if (t.note) html += '<div style="font-size:.78rem;color:var(--text-muted);margin-top:2px">备注：' + t.note + '</div>';
-    html += '</div></div>';
-    return html;
-  }).join('');
+  const idEl = document.getElementById('issue-detail-id');
+  if (idEl) idEl.textContent = id;
 }
 
 var ISSUE_POOL_SYSTEMS = {
@@ -10071,102 +9789,10 @@ function showBugDetail(id) {
   if (idEl) idEl.textContent = id;
 }
 
-const COMPLAINT_DETAIL_MAP = {
-  'FB-20260615-0001': {
-    id:'FB-20260615-0001', title:'OA审批流程操作繁琐', type:'投诉', typeBadge:'badge-danger',
-    submitter:'张伟', submitDate:'2026-06-15 09:20:00', handler:'—', status:'待处理', statusBadge:'badge-warn',
-    desc:'<p>OA系统审批流程操作步骤过多，一个简单的请假审批需要经过5个节点，操作非常繁琐，建议优化审批流程，减少不必要的审批环节。</p>',
-    handleNote:null,
-    timeline:[
-      {color:'var(--danger)', text:'张伟 提交投诉 2026-06-15 09:20:00'}
-    ]
-  },
-  'FB-20260614-0008': {
-    id:'FB-20260614-0008', title:'建议增加移动端审批功能', type:'建议', typeBadge:'badge-primary',
-    submitter:'李娜', submitDate:'2026-06-14 15:30:00', handler:'王建国', status:'待处理', statusBadge:'badge-warn',
-    desc:'<p>目前系统移动端功能较少，很多审批操作需要在PC端完成，建议在移动端增加更多审批功能，方便领导随时随地处理审批事务。</p>',
-    handleNote:null,
-    timeline:[
-      {color:'var(--primary)', text:'李娜 提交建议 2026-06-14 15:30:00'},
-      {color:'var(--info)', text:'赵强 指派给 王建国 2026-06-14 16:00:00'}
-    ]
-  },
-  'FB-20260613-0005': {
-    id:'FB-20260613-0005', title:'财务系统报表导出经常失败', type:'投诉', typeBadge:'badge-danger',
-    submitter:'赵磊', submitDate:'2026-06-13 11:10:00', handler:'陈磊', status:'已处理', statusBadge:'badge-success',
-    desc:'<p>财务系统V4的报表导出功能不稳定，经常出现导出失败或文件损坏的情况，严重影响月末结算效率，请尽快排查修复。</p>',
-    handleNote:{
-      content:'经排查，导出失败原因为大数据量场景下内存溢出。已优化导出逻辑，采用流式写入方式，同时增加导出进度提示。修复版本V4.5.1已发布，请验证。',
-      person:'陈磊', time:'2026-06-14 16:45:00'
-    },
-    timeline:[
-      {color:'var(--danger)', text:'赵磊 提交投诉 2026-06-13 11:10:00'},
-      {color:'var(--info)', text:'王建国 指派给 陈磊 2026-06-13 14:00:00'},
-      {color:'var(--success)', text:'陈磊 处理工单 2026-06-14 16:45:00', note:'经排查，导出失败原因为大数据量场景下内存溢出。已优化导出逻辑，采用流式写入方式。'}
-    ]
-  }
-};
-
 function showComplaintDetail(id) {
-  var d = COMPLAINT_DETAIL_MAP[id];
-  if (!d) { switchView('complaint-detail'); return; }
   switchView('complaint-detail');
-  var setText = function(elId, val) { var el = document.getElementById(elId); if (el) el.textContent = val; };
-  var setHTML = function(elId, val) { var el = document.getElementById(elId); if (el) el.innerHTML = val; };
-
-  setText('complaint-detail-id', d.id);
-  setText('complaint-detail-title', d.title);
-  setText('cd-field-id', d.id);
-  setText('cd-field-title', d.title);
-  setHTML('cd-field-type', '<span class="badge ' + d.typeBadge + '">' + d.type + '</span>');
-  setText('cd-field-submitter', d.submitter);
-  setText('cd-field-submit-date', d.submitDate);
-  setText('cd-field-handler', d.handler);
-  setHTML('cd-field-status', '<span class="badge ' + d.statusBadge + '">' + d.status + '</span>');
-  setHTML('cd-field-desc', d.desc);
-
-  // 处理备注区
-  var noteCard = document.getElementById('cd-handle-note-card');
-  if (noteCard) {
-    if (d.handleNote) {
-      noteCard.style.display = '';
-      setText('cd-handle-note-content', d.handleNote.content);
-      setText('cd-handle-note-person', d.handleNote.person);
-      setText('cd-handle-note-time', d.handleNote.time);
-    } else {
-      noteCard.style.display = 'none';
-    }
-  }
-
-  // 处理记录时间线
-  var tl = document.getElementById('cd-timeline');
-  if (tl) {
-    var html = '';
-    d.timeline.forEach(function(item) {
-      html += '<div class="op-log-item"><div class="op-log-dot" style="background:' + item.color + '"></div><div>';
-      html += '<div style="font-size:.85rem;font-weight:500">' + item.text + '</div>';
-      if (item.note) html += '<div style="font-size:.82rem;color:var(--text-muted);margin-top:4px;padding:8px;background:var(--bg-muted);border-radius:6px">' + item.note + '</div>';
-      html += '</div></div>';
-    });
-    tl.innerHTML = html;
-  }
-
-  // 底部操作栏
-  var opsBar = document.getElementById('complaint-detail-ops');
-  var opsStatus = document.getElementById('complaint-detail-ops-status');
-  var opsBtns = document.getElementById('complaint-detail-ops-btns');
-  if (opsStatus) {
-    opsStatus.className = 'badge ' + d.statusBadge;
-    opsStatus.textContent = d.status;
-  }
-  if (opsBtns) {
-    if (d.status === '待处理') {
-      opsBtns.innerHTML = '<button class="btn btn-secondary btn-sm" onclick="openAssignModal(\'指派工单\')">指派</button><button class="btn btn-primary btn-sm" onclick="openModal(\'modal-complaint-handle\')">处理</button>';
-      if (opsBar) opsBar.style.display = '';
-    } else {
-      if (opsBar) opsBar.style.display = 'none';
-    }
-  }
+  const idEl = document.getElementById('complaint-detail-id');
+  if (idEl) idEl.textContent = id;
 }
 
 const PROJECT_META = {
@@ -11449,60 +11075,9 @@ function onReleaseTypeChange() {
   }
 }
 
-/* ===== CheckList ===== */
-function submitChecklist() {
-  var input = document.getElementById('release-checklist-input');
-  var content = (input.value || '').trim();
-  if (!content) { showToast('warn', '请输入检查内容'); input.focus(); return; }
-  var now = new Date();
-  var ts = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
-  var summary = content.length > 40 ? content.substring(0, 40) + '…' : content;
-  var logDiv = document.getElementById('release-checklist-log');
-  var item = document.createElement('div');
-  item.className = 'checklist-row';
-  item.setAttribute('data-checked', 'false');
-  item.innerHTML = '<div class="checklist-row-main"><div class="checklist-row-time">' + ts + '</div><div class="checklist-row-content"><strong>王建国</strong> 检查：' + summary.replace(/</g,'&lt;') + '</div></div><div class="checklist-row-actions"><button class="btn-checklist-pass" onclick="checklistPass(this)">检查完毕</button><button class="btn-checklist-fail" onclick="checklistFail(this)">检查异常</button></div>';
-  logDiv.insertBefore(item, logDiv.firstChild);
-  input.value = '';
-  closeModal('modal-checklist-input');
-  showToast('success', '已提交到检查清单');
-}
-
-function checklistPass(btn) {
-  var row = btn.closest('.checklist-row');
-  if (row.getAttribute('data-checked') === 'pass') return;
-  row.setAttribute('data-checked', 'pass');
-  row.classList.add('checked');
-  btn.className = 'btn-checklist-pass done';
-  btn.innerHTML = '✓ 已检查';
-  var failBtn = row.querySelector('.btn-checklist-fail');
-  if (failBtn) failBtn.style.display = 'none';
-  var excArea = row.querySelector('.checklist-exception-area');
-  if (excArea) excArea.remove();
-  showToast('success', '该项已标记为检查完毕');
-}
-
-function checklistFail(btn) {
-  var row = btn.closest('.checklist-row');
-  if (row.getAttribute('data-checked') === 'pass') return;
-  var existing = row.querySelector('.checklist-exception-area');
-  if (existing) { existing.remove(); return; }
-  var area = document.createElement('div');
-  area.className = 'checklist-exception-area';
-  area.innerHTML = '<div style="margin-bottom:6px;font-weight:600">异常结果 <span style="color:var(--danger)">*</span></div><textarea class="checklist-exception-input" placeholder="请输入检查异常的具体内容" style="width:100%;min-height:60px;padding:6px 8px;border:1px solid rgba(220,38,38,.3);border-radius:4px;font-size:.8rem;resize:vertical;font-family:inherit"></textarea><div style="display:flex;justify-content:flex-end;gap:6px;margin-top:6px"><button class="btn-checklist-fail" style="font-size:.72rem;padding:3px 10px" onclick="this.closest(\'.checklist-exception-area\').remove()">取消</button><button class="btn-checklist-pass" style="font-size:.72rem;padding:3px 10px;border-color:var(--danger);color:var(--danger)" onclick="submitChecklistException(this)">提交异常</button></div>';
-  row.querySelector('.checklist-row-main').appendChild(area);
-  area.querySelector('textarea').focus();
-}
-
-function submitChecklistException(btn) {
-  var area = btn.closest('.checklist-exception-area');
-  var ta = area.querySelector('.checklist-exception-input');
-  var val = (ta.value || '').trim();
-  if (!val) { ta.style.borderColor = '#dc2626'; ta.focus(); showToast('warn', '请填写异常结果'); return; }
-  var now = new Date();
-  var ts = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0') + ':' + String(now.getSeconds()).padStart(2,'0');
-  area.innerHTML = '<strong>异常结果</strong>（' + ts + ' 王建国）<div style="margin-top:4px;color:var(--text-secondary)">' + val.replace(/</g,'&lt;') + '</div>';
-  showToast('warn', '异常结果已记录');
+/* ===== SQL Check ===== */
+function submitSqlCheck() {
+  showToast('success', 'SQL检查通过，未发现异常');
 }
 
 /* ===== UAT/PROD Entry Table ===== */
