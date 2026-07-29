@@ -109,9 +109,6 @@ a:hover{color:var(--primary-dark)}
 @keyframes flowDown{0%{top:-5%;opacity:0;transform:rotate(-2deg)}5%{opacity:.6}15%{opacity:1}85%{opacity:.7}100%{top:105%;opacity:0;transform:rotate(2deg)}}
 .auth-page{background:rgba(255,255,255,.06);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-xl);padding:clamp(28px,4vw,44px);width:clamp(340px,90vw,420px);color:#fff;position:relative;z-index:2;box-shadow:0 24px 64px rgba(0,0,0,.3)}
 .auth-page::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary-light),var(--accent-light),transparent)}
-.auth-page .pin-btn{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);border:1px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(220,38,38,.45);transition:var(--transition);cursor:pointer}
-.auth-page .pin-btn:hover{transform:scale(1.15);box-shadow:0 3px 9px rgba(220,38,38,.6)}
-.auth-page .pin-btn svg{width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .auth-page h1{font-size:clamp(1.3rem,3vw,1.6rem);text-align:center;margin-bottom:6px;font-weight:700;background:linear-gradient(135deg,#fff,#C7D2FE);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .auth-page .subtitle{text-align:center;color:rgba(255,255,255,.5);margin-bottom:28px;letter-spacing:1px;font-size:.85rem}
 .auth-page .field{margin-bottom:18px}
@@ -160,11 +157,7 @@ a:hover{color:var(--primary-dark)}
 .brand-logo{width:36px;height:36px;border-radius:10px;background:var(--primary-gradient);display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 12px rgba(79,70,229,.3)}
 .brand-text{font-size:1rem;font-weight:700;letter-spacing:.3px}
 .brand-text small{display:block;font-size:.6rem;color:rgba(255,255,255,.35);font-weight:400;margin-top:2px;letter-spacing:.5px}
-.sidebar-nav{flex:1;padding:8px 10px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent}
-.sidebar-nav::-webkit-scrollbar{width:6px;height:6px}
-.sidebar-nav::-webkit-scrollbar-track{background:transparent}
-.sidebar-nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:3px;transition:var(--transition)}
-.sidebar-nav:hover::-webkit-scrollbar-thumb{background:rgba(255,255,255,.32)}
+.sidebar-nav{flex:1;padding:8px 10px;overflow-y:hidden}
 .nav-group{padding:8px 14px 4px;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase;font-family:var(--font-mono)}
 .nav-item{display:flex;align-items:center;padding:7px 14px;color:rgba(255,255,255,.55);font-size:.88rem;transition:var(--transition);cursor:pointer;gap:12px;border-radius:var(--radius);margin-bottom:1px;position:relative}
 .nav-item:hover{background:var(--sidebar-hover);color:#fff}
@@ -198,15 +191,6 @@ a:hover{color:var(--primary-dark)}
 .header-icon-btn{width:36px;height:36px;border-radius:var(--radius);border:1.5px solid var(--border);background:var(--card);color:var(--text-secondary);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:var(--transition);position:relative}
 .header-icon-btn:hover{border-color:var(--primary);color:var(--primary);background:rgba(79,70,229,.06)}
 .header-icon-btn .badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;padding:0 4px;background:var(--danger);color:#fff;border-radius:50%;font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg)}
-.header-pin-btn{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);border:1px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(220,38,38,.45);cursor:pointer;transition:var(--transition)}
-.header-pin-btn:hover{transform:scale(1.15);box-shadow:0 3px 9px rgba(220,38,38,.6)}
-.header-pin-btn svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.sidebar-pin-btn{width:20px;height:20px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);border:1px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(220,38,38,.45);cursor:pointer;transition:var(--transition)}
-.sidebar-pin-btn:hover{transform:scale(1.15);box-shadow:0 3px 9px rgba(220,38,38,.6)}
-.sidebar-pin-btn svg{width:10px;height:10px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.nav-pin{position:absolute;top:50%;right:8px;transform:translateY(-50%);width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);border:1px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(220,38,38,.45);cursor:pointer;transition:var(--transition);z-index:2;flex:none}
-.nav-pin:hover{transform:translateY(-50%) scale(1.15);box-shadow:0 3px 9px rgba(220,38,38,.6)}
-.nav-pin svg{width:9px;height:9px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .main-content{padding:24px 28px}
 .view{display:none}
 .view.active{display:block}
@@ -1145,9 +1129,6 @@ table.data tr:last-child td{border-bottom:none}
   <div class="particle" style="width:60px;height:60px;top:75%;left:25%;animation-delay:1s" data-od-id="path-1-4"></div>
   <div class="particle" style="width:40px;height:40px;top:25%;left:85%;animation-delay:3s" data-od-id="path-1-5"></div>
   <div class="auth-page" data-od-id="path-1-6">
-    <a class="pin-btn" href="https://ecnnal94c5qg.feishu.cn/sync/WWF4djJ8YsKECYbjQ53cmFphniy" target="_blank" title="打开协同平台同步页" data-od-id="path-1-6-pin">
-      <svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
-    </a>
     <h1 data-od-id="path-1-6-0">数字化效能管理平台</h1>
     <div class="subtitle">Digital Efficiency Management Platform</div>
     <div class="login-tabs">
@@ -1260,53 +1241,53 @@ table.data tr:last-child td{border-bottom:none}
     <nav class="sidebar-nav" data-od-id="path-3-0-1">
       <div class="nav-group" data-od-id="path-3-0-1-0">概览</div>
       <div class="nav-item active" data-view="home" onclick="switchView('home')" data-od-id="path-3-0-1-1">
-        <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>首页<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/HsPndLNsfs88g3bqqVScBTfGnvg')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>首页
       </div>
       <div class="nav-group" data-od-id="path-3-0-1-2">业务管理</div>
       <div class="nav-item" data-view="req-pool" onclick="switchView('req-pool')" data-od-id="path-3-0-1-3">
-        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>业务需求池<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/B2KzdplgPsH9RBbhCX4cpERlnPb')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>业务需求池
       </div>
       <div class="nav-item" data-view="issue-pool" onclick="switchView('issue-pool')" data-od-id="path-3-0-1-4">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>业务问题池<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/F7BodwZbCsgj88b6D96cyapHnoh')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>业务问题池
       </div>
       <div class="nav-item" data-view="complaints" onclick="switchView('complaints')" data-od-id="path-3-0-1-8">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>投诉/建议处理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/XB0Td1xlNsYF1sbUzyMcSfTwnrh')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>投诉/建议处理
       </div>
       <div class="nav-group" data-od-id="path-3-0-1-pm">项目管理</div>
       <div class="nav-item" data-view="projects" onclick="switchView('projects')" data-od-id="path-3-0-1-7">
-        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>项目管理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/Lhd7dLLugseNQebhtMucM3Ffnmf')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>项目管理
       </div>
       <div class="nav-item" data-view="acceptance" onclick="switchView('acceptance')" data-od-id="path-3-0-1-6">
-        <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"></rect><path d="M5 6h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path><path d="m9 12 2 2 4-4"></path></svg>验收管理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/N3IxdzMwvsJqf9bcJYqcOYmCnye')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="4" rx="1"></rect><path d="M5 6h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"></path><path d="m9 12 2 2 4-4"></path></svg>验收管理
       </div>
       <div class="nav-item" data-view="my-issues" onclick="switchView('my-issues')" data-od-id="path-3-0-1-6b">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>我的问题<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/UsLgdzQg7snm9MbXrcRcdpP2nDg')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>我的问题
       </div>
       <div class="nav-item" data-view="bugs" onclick="switchView('bugs')" data-od-id="path-3-0-1-5">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>我的BUG<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/KehpdCV3Fsv9ijbml4tcRUgan3d')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>我的BUG
       </div>
       <div class="nav-item" data-view="library" onclick="switchView('library')" data-od-id="path-3-0-1-9">
-        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>资料库管理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/Ua3Ud4oKqs4vscbh7QacPgyDncd')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>资料库管理
       </div>
       <div class="nav-group" data-od-id="path-3-0-1-10">运营管理</div>
       <div class="nav-item" data-view="accounts" onclick="switchView('accounts')" data-od-id="path-3-0-1-12">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>账号管理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/SKKYdQqwvs7mITb7zaxcirCun8f')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>账号管理
       </div>
       <div class="nav-item" data-view="organization" onclick="switchView('organization')" data-od-id="path-3-0-1-13">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg>组织管理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/Gmo2db1LfseVjyboluycgbqvnxb')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="3" width="7" height="7" rx="1"></rect><rect x="14" y="14" width="7" height="7" rx="1"></rect><rect x="3" y="14" width="7" height="7" rx="1"></rect></svg>组织管理
       </div>
       <div class="nav-item" data-view="roles" onclick="switchView('roles')" data-od-id="path-3-0-1-14">
-        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>角色管理<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/QefOdXMFesowNzbKtdYcWKLXn9e')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>角色管理
       </div>
       <div class="nav-item" data-view="approval" onclick="switchView('approval')" data-od-id="path-3-0-1-14b">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>我的审批<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/CZ3Fdz2bcsZQzabJWGEcoFpyneb')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>我的审批
       </div>
       <div class="nav-group" data-od-id="path-3-0-1-15">设置</div>
       <div class="nav-item" data-view="profile" onclick="switchView('profile')" data-od-id="path-3-0-1-16">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>个人中心<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/EcAkd0fkms70fDbn2nyc5a4xnve')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>个人中心
       </div>
       <div class="nav-item" data-view="messages" onclick="switchView('messages')" data-od-id="path-3-0-1-17">
-        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>消息中心<span class="nav-pin" onclick="openPinDoc(event,'https://ecnnal94c5qg.feishu.cn/sync/MoSLd1dpLspLllbY4HBcWtG4nVf')" title="打开协同平台同步页"><svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg></span>
+        <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>消息中心
       </div>
     </nav>
     <div class="sidebar-footer" data-od-id="path-3-0-2">
@@ -1315,9 +1296,6 @@ table.data tr:last-child td{border-bottom:none}
           <div class="avatar">王</div>
           <div style="min-width:0"><div class="uname">王建国</div><div class="urole">数创中心 - 产品组</div></div>
         </div>
-        <a class="sidebar-pin-btn" href="https://ecnnal94c5qg.feishu.cn/sync/G3iBdQiQJsSrmOb8P4wcJnfUnzh" target="_blank" title="打开协同平台同步页" data-od-id="path-3-0-2-pin">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
-        </a>
         <button class="btn-logout" onclick="confirmLogout()" data-od-id="path-3-0-2-1" title="退出登录">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
         </button>
@@ -1332,9 +1310,6 @@ table.data tr:last-child td{border-bottom:none}
         <div class="breadcrumb" id="headerBreadcrumb" data-od-id="path-3-1-0-0-1"></div>
       </div>
       <div class="header-actions" data-od-id="path-3-1-0-1">
-        <a class="header-pin-btn" id="headerPinBtn" href="https://ecnnal94c5qg.feishu.cn/sync/HsPndLNsfs88g3bqqVScBTfGnvg" target="_blank" title="打开协同平台同步页" data-od-id="path-3-1-0-1-pin">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
-        </a>
         <div class="header-search" style="position:relative">
           <input class="search-input" type="text" placeholder="输入精准ID" id="globalSearchInput" oninput="onGlobalSearch(this.value)" onfocus="onGlobalSearch(this.value)" onblur="setTimeout(()=>closeSearchDropdown(),200)" style="border-radius:var(--radius) 0 0 var(--radius)" data-od-id="path-3-1-0-1-0-0">
           <button class="search-btn" data-od-id="path-3-1-0-1-0-1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
@@ -6932,44 +6907,6 @@ function switchView(key, el) {
 
   const main = document.querySelector('.main');
   if (main) main.scrollTop = 0;
-
-  const pinUrlMap = {
-    'view-home': 'https://ecnnal94c5qg.feishu.cn/sync/HsPndLNsfs88g3bqqVScBTfGnvg',
-    'view-req-pool': 'https://ecnnal94c5qg.feishu.cn/sync/B2KzdplgPsH9RBbhCX4cpERlnPb',
-    'view-issue-pool': 'https://ecnnal94c5qg.feishu.cn/sync/F7BodwZbCsgj88b6D96cyapHnoh',
-    'view-complaints': 'https://ecnnal94c5qg.feishu.cn/sync/XB0Td1xlNsYF1sbUzyMcSfTwnrh',
-    'view-complaint-detail': 'https://ecnnal94c5qg.feishu.cn/sync/XB0Td1xlNsYF1sbUzyMcSfTwnrh',
-    'view-projects': 'https://ecnnal94c5qg.feishu.cn/sync/Lhd7dLLugseNQebhtMucM3Ffnmf',
-    'view-project-detail': 'https://ecnnal94c5qg.feishu.cn/sync/Lhd7dLLugseNQebhtMucM3Ffnmf',
-    'view-acceptance': 'https://ecnnal94c5qg.feishu.cn/sync/N3IxdzMwvsJqf9bcJYqcOYmCnye',
-    'view-accept-detail': 'https://ecnnal94c5qg.feishu.cn/sync/N3IxdzMwvsJqf9bcJYqcOYmCnye',
-    'view-my-issues': 'https://ecnnal94c5qg.feishu.cn/sync/UsLgdzQg7snm9MbXrcRcdpP2nDg',
-    'view-my-issue-form': 'https://ecnnal94c5qg.feishu.cn/sync/UsLgdzQg7snm9MbXrcRcdpP2nDg',
-    'view-my-issue-detail': 'https://ecnnal94c5qg.feishu.cn/sync/UsLgdzQg7snm9MbXrcRcdpP2nDg',
-    'view-bugs': 'https://ecnnal94c5qg.feishu.cn/sync/KehpdCV3Fsv9ijbml4tcRUgan3d',
-    'view-bug-detail': 'https://ecnnal94c5qg.feishu.cn/sync/KehpdCV3Fsv9ijbml4tcRUgan3d',
-    'view-library': 'https://ecnnal94c5qg.feishu.cn/sync/Ua3Ud4oKqs4vscbh7QacPgyDncd',
-    'view-accounts': 'https://ecnnal94c5qg.feishu.cn/sync/SKKYdQqwvs7mITb7zaxcirCun8f',
-    'view-organization': 'https://ecnnal94c5qg.feishu.cn/sync/Gmo2db1LfseVjyboluycgbqvnxb',
-    'view-roles': 'https://ecnnal94c5qg.feishu.cn/sync/QefOdXMFesowNzbKtdYcWKLXn9e',
-    'view-role-detail': 'https://ecnnal94c5qg.feishu.cn/sync/QefOdXMFesowNzbKtdYcWKLXn9e',
-    'view-role-form': 'https://ecnnal94c5qg.feishu.cn/sync/QefOdXMFesowNzbKtdYcWKLXn9e',
-    'view-approval': 'https://ecnnal94c5qg.feishu.cn/sync/CZ3Fdz2bcsZQzabJWGEcoFpyneb',
-    'view-profile': 'https://ecnnal94c5qg.feishu.cn/sync/EcAkd0fkms70fDbn2nyc5a4xnve',
-    'view-messages': 'https://ecnnal94c5qg.feishu.cn/sync/MoSLd1dpLspLllbY4HBcWtG4nVf',
-    'view-req-detail': 'https://ecnnal94c5qg.feishu.cn/sync/B2KzdplgPsH9RBbhCX4cpERlnPb',
-    'view-issue-detail': 'https://ecnnal94c5qg.feishu.cn/sync/F7BodwZbCsgj88b6D96cyapHnoh'
-  };
-  const headerPin = document.getElementById('headerPinBtn');
-  if (headerPin) {
-    headerPin.href = pinUrlMap[viewId] || 'https://ecnnal94c5qg.feishu.cn/sync/HsPndLNsfs88g3bqqVScBTfGnvg';
-  }
-}
-
-function openPinDoc(e, url) {
-  e.stopPropagation();
-  e.preventDefault();
-  window.open(url, '_blank', 'noopener');
 }
 
 /* ===== Modals ===== */
