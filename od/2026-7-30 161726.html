@@ -107,22 +107,18 @@ a:hover{color:var(--primary-dark)}
 #loginBg .flow-text{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
 #loginBg .flow-item{position:absolute;color:rgba(255,255,255,.08);white-space:nowrap;animation:flowDown linear infinite;will-change:transform,opacity;letter-spacing:2px;pointer-events:none}
 @keyframes flowDown{0%{top:-5%;opacity:0;transform:rotate(-2deg)}5%{opacity:.6}15%{opacity:1}85%{opacity:.7}100%{top:105%;opacity:0;transform:rotate(2deg)}}
-.auth-page{background:rgba(255,255,255,.06);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-xl);padding:clamp(28px,4vw,44px);width:clamp(340px,90vw,440px);max-width:92vw;color:#fff;position:relative;z-index:2;box-shadow:0 24px 64px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.1)}
-.auth-page::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary-light),var(--accent-light),transparent);border-radius:var(--radius-xl) var(--radius-xl) 0 0}
+.auth-page{background:rgba(255,255,255,.06);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-xl);padding:clamp(28px,4vw,44px);width:clamp(340px,90vw,420px);color:#fff;position:relative;z-index:2;box-shadow:0 24px 64px rgba(0,0,0,.3)}
+.auth-page::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--primary-light),var(--accent-light),transparent)}
 .auth-page .pin-btn{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);border:1px solid rgba(255,255,255,.3);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(220,38,38,.45);transition:var(--transition);cursor:pointer}
 .auth-page .pin-btn:hover{transform:scale(1.15);box-shadow:0 3px 9px rgba(220,38,38,.6)}
 .auth-page .pin-btn svg{width:11px;height:11px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.auth-page h1{font-size:clamp(1.3rem,3vw,1.6rem);text-align:center;margin-bottom:6px;font-weight:700;letter-spacing:-.5px;background:linear-gradient(135deg,#fff,#C7D2FE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.auth-page .subtitle{font-size:.85rem;text-align:center;color:rgba(255,255,255,.5);margin-bottom:28px;letter-spacing:1px}
+.auth-page h1{font-size:clamp(1.3rem,3vw,1.6rem);text-align:center;margin-bottom:6px;font-weight:700;background:linear-gradient(135deg,#fff,#C7D2FE);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.auth-page .subtitle{text-align:center;color:rgba(255,255,255,.5);margin-bottom:28px;letter-spacing:1px;font-size:.85rem}
 .auth-page .field{margin-bottom:18px}
 .auth-page .field label{display:block;font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:6px;font-weight:500}
-.auth-page .field input{width:100%;padding:11px 16px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-size:.9rem;transition:var(--transition)}
+.auth-page .field input{width:100%;padding:12px 16px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-size:.9rem;transition:var(--transition)}
 .auth-page .field input:focus{border-color:var(--primary-light);box-shadow:0 0 0 3px rgba(129,140,248,.25);background:rgba(255,255,255,.08)}
 .auth-page .field input::placeholder{color:rgba(255,255,255,.3)}
-.auth-page .field .error-msg{color:var(--danger-light);font-size:.75rem;margin-top:6px;display:none;align-items:center;gap:4px}
-.auth-page .field .error-msg.show{display:flex}
-.auth-page .field input.invalid{border-color:var(--danger-light);background:rgba(239,68,68,.08)}
-.auth-page .field input.invalid:focus{box-shadow:0 0 0 3px rgba(239,68,68,.25)}
 .pw-wrap{position:relative}
 .pw-wrap input{padding-right:44px}
 .pw-toggle{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;color:rgba(255,255,255,.35);padding:6px;display:flex;align-items:center;justify-content:center;transition:var(--transition);border-radius:6px}
@@ -131,15 +127,11 @@ a:hover{color:var(--primary-dark)}
 .caps-bubble::after{content:'';position:absolute;top:100%;left:16px;border:6px solid transparent;border-top-color:#FEF3C7}
 .caps-bubble.show{display:flex}
 .caps-bubble svg{width:14px;height:14px;stroke:#D97706;fill:none;stroke-width:2;flex-shrink:0}
-.btn-login{width:100%;padding:13px;border-radius:var(--radius);background:linear-gradient(135deg,var(--primary) 0%,#7C3AED 100%);color:#fff;font-size:.95rem;font-weight:600;transition:var(--transition);margin-top:8px;box-shadow:0 8px 20px rgba(79,70,229,.3);letter-spacing:1px}
-.btn-login:not(:disabled):hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(79,70,229,.4)}
-.btn-login:not(:disabled):active{transform:translateY(0)}
-.btn-login:disabled{background:rgba(100,116,139,.4);cursor:not-allowed;box-shadow:none;opacity:.7}
-.auth-page .links{display:flex;justify-content:space-between;margin-top:16px;font-size:.8rem}
-.auth-page .links a{color:rgba(255,255,255,.5);transition:var(--transition)}
-.auth-page .links a:hover{color:#fff;text-decoration:underline}
-.login-tabs{display:flex;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:4px;margin-bottom:24px}
-.login-tab{flex:1;padding:9px 0;text-align:center;font-size:.85rem;font-weight:600;color:rgba(255,255,255,.5);border-radius:8px;cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center;gap:6px;user-select:none}
+.btn-login{width:100%;padding:13px;border-radius:var(--radius);background:var(--primary-gradient);color:#fff;font-size:.95rem;font-weight:600;transition:var(--transition);margin-top:8px;box-shadow:0 8px 20px rgba(79,70,229,.3)}
+.btn-login:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(79,70,229,.4)}
+.login-links{display:flex;justify-content:space-between;margin-top:16px;font-size:.8rem;color:rgba(255,255,255,.5)}
+.login-tabs{display:flex;gap:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:4px;margin-bottom:24px}
+.login-tab{flex:1;padding:9px 0;text-align:center;font-size:.85rem;font-weight:500;color:rgba(255,255,255,.5);border-radius:7px;cursor:pointer;transition:var(--transition);display:flex;align-items:center;justify-content:center;gap:6px}
 .login-tab:hover{color:rgba(255,255,255,.8)}
 .login-tab.active{background:rgba(255,255,255,.12);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .login-tab svg{width:16px;height:16px}
@@ -317,12 +309,6 @@ table.data tr:last-child td{border-bottom:none}
 .actions-cell{display:flex;align-items:center;gap:10px}
 .action-link{color:var(--primary);font-size:.78rem;cursor:pointer;font-weight:500}
 .action-link:hover{text-decoration:underline}
-.th-tooltip{position:relative;display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;background:var(--border);color:var(--muted);font-size:9px;cursor:help;vertical-align:middle;margin-left:2px;line-height:1;overflow:visible}
-.th-tooltip:hover{background:var(--primary);color:#fff}
-.th-tooltip-text{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1e1e2e;color:#e8e8ec;font-size:12px;font-weight:400;line-height:1.6;padding:8px 12px;border-radius:8px;white-space:nowrap;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,.2);pointer-events:none}
-.th-tooltip-text::after{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:#1e1e2e}
-.th-tooltip:hover .th-tooltip-text{display:block}
-th:has(.th-tooltip){overflow:visible!important}
 .btn-showcase{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);transition:all .15s ease}
 .btn-showcase:hover{border-color:var(--primary);color:var(--primary)}
 .btn-showcase.active{background:rgba(79,70,229,.08);border-color:var(--primary);color:var(--primary)}
@@ -1205,7 +1191,7 @@ th:has(.th-tooltip){overflow:visible!important}
         <div>admin — 已绑定飞书，登录后直接进入首页</div>
         <div>liming — 未绑定飞书，登录后弹出绑定弹窗</div>
       </div>
-      <div class="links" data-od-id="path-1-6-3-4"></div>
+      <div class="login-links" data-od-id="path-1-6-3-4"></div>
     </div>
     <!-- 飞书扫码登录 -->
     <div class="login-pane" id="pane-feishu" data-od-id="path-1-6-4">
@@ -1596,15 +1582,15 @@ th:has(.th-tooltip){overflow:visible!important}
         </div>
         <div class="table-wrap" data-od-id="path-3-1-1-1-2">
           <table class="data">
-            <thead><tr><th>需求ID</th><th>标题</th><th>优先级</th><th>状态</th><th>所属项目</th><th>提交人/部门</th><th>提交日期</th><th>负责人</th><th style="width:130px">转化数量 <span class="th-tooltip" onclick="event.stopPropagation()">ⓘ<span class="th-tooltip-text">需求细化后的总数和状态分布数量，<br>（调研中/验收中/已上线/已关闭）</span></span></th><th>操作</th></tr></thead>
+            <thead><tr><th>需求ID</th><th>标题</th><th>优先级</th><th>状态</th><th>所属项目</th><th>提交人/部门</th><th>提交日期</th><th>负责人</th><th>操作</th></tr></thead>
             <tbody>
-              <tr><td class="mono">DE-B-20260615-1234 <span class="action-link" onclick="copyText('DE-B-20260615-1234')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260615-1234')">OA系统报销流程优化</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-warn">待评估</span></td><td><span class="badge badge-gray">OA系统</span></td><td>李明 / 财务部</td><td class="mono">2026-06-15</td><td>—</td><td style="white-space:nowrap"><strong>3</strong> <span style="color:var(--muted);font-size:.75rem">(1/1/1/0)</span></td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派需求')" data-od-id="path-3-1-1-1-2-0-1-0-8-0-0">指派</a><a class="action-link" onclick="openModal('modal-req-convert')" data-od-id="path-3-1-1-1-2-0-1-0-8-0-1">需求转化</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-0-8-0-2">关闭</a></div></td></tr>
-              <tr><td class="mono">DE-B-20260614-0098 <span class="action-link" onclick="copyText('DE-B-20260614-0098')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260614-0098')">移动端审批流程改造</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-warn">待评估</span></td><td><span class="badge badge-gray">油葱商城</span></td><td>王华 / 行政部</td><td class="mono">2026-06-14</td><td>—</td><td><span style="color:var(--muted)">0</span></td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派需求')" data-od-id="path-3-1-1-1-2-0-1-1-8-0-0">指派</a><a class="action-link" onclick="openModal('modal-req-convert')" data-od-id="path-3-1-1-1-2-0-1-1-8-0-1">需求转化</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-1-8-0-2">关闭</a></div></td></tr>
-              <tr><td class="mono">DE-B-20260614-0095 <span class="action-link" onclick="copyText('DE-B-20260614-0095')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260614-0095')">数据导出功能增强</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-accent">调研中</span></td><td><span class="badge badge-gray">人事系统</span></td><td>赵强 / 数据部</td><td class="mono">2026-06-14</td><td>王建国</td><td style="white-space:nowrap"><strong>5</strong> <span style="color:var(--muted);font-size:.75rem">(1/2/1/1)</span></td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260614-0095')" data-od-id="path-3-1-1-1-2-0-1-2-8-0-0">详情</a></div></td></tr>
-              <tr><td class="mono">DE-B-20260613-0088 <span class="action-link" onclick="copyText('DE-B-20260613-0088')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260613-0088')">财务月报自动生成</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-info">已排期</span></td><td><span class="badge badge-gray">财务系统</span></td><td>陈磊 / 财务部</td><td class="mono">2026-06-13</td><td>王建国</td><td style="white-space:nowrap"><strong>2</strong> <span style="color:var(--muted);font-size:.75rem">(1/1/0/0)</span></td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260613-0088')" data-od-id="path-3-1-1-1-2-0-1-3-8-0-0">详情</a></div></td></tr>
-              <tr><td class="mono">DE-B-20260612-0076 <span class="action-link" onclick="copyText('DE-B-20260612-0076')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260612-0076')">库存预警功能</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-success">验收中</span></td><td><span class="badge badge-gray">供应链</span></td><td>刘梅 / 采购部</td><td class="mono">2026-06-12</td><td>孙丽</td><td><span style="color:var(--muted)">0</span></td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260612-0076')" data-od-id="path-3-1-1-1-2-0-1-4-8-0-0">详情</a></div></td></tr>
-              <tr><td class="mono">DE-B-20260610-0065 <span class="action-link" onclick="copyText('DE-B-20260610-0065')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260610-0065')">考勤打卡体验优化</td><td><span class="badge badge-gray">低</span></td><td><span class="badge badge-success">已上线</span></td><td><span class="badge badge-gray">人事系统</span></td><td>黄燕 / 行政部</td><td class="mono">2026-06-10</td><td>李明</td><td style="white-space:nowrap"><strong>4</strong> <span style="color:var(--muted);font-size:.75rem">(2/1/1/0)</span></td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260610-0065')" data-od-id="path-3-1-1-1-2-0-1-5-8-0-0">详情</a></div></td></tr>
-              <tr><td class="mono">DE-B-20260609-0054 <span class="action-link" onclick="copyText('DE-B-20260609-0054')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260609-0054')">合同电子签章</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-gray">已关闭</span></td><td><span class="badge badge-gray">OA系统</span></td><td>周宇 / 法务部</td><td class="mono">2026-06-09</td><td>—</td><td><span style="color:var(--muted)">0</span></td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260609-0054')" data-od-id="path-3-1-1-1-2-0-1-6-8-0-0">详情</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260615-1234 <span class="action-link" onclick="copyText('DE-B-20260615-1234')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260615-1234')">OA系统报销流程优化</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-warn">待评估</span></td><td><span class="badge badge-gray">OA系统</span></td><td>李明 / 财务部</td><td class="mono">2026-06-15</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派需求')" data-od-id="path-3-1-1-1-2-0-1-0-8-0-0">指派</a><a class="action-link" onclick="openModal('modal-req-convert')" data-od-id="path-3-1-1-1-2-0-1-0-8-0-1">需求转化</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-0-8-0-2">关闭</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260614-0098 <span class="action-link" onclick="copyText('DE-B-20260614-0098')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260614-0098')">移动端审批流程改造</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-warn">待评估</span></td><td><span class="badge badge-gray">油葱商城</span></td><td>王华 / 行政部</td><td class="mono">2026-06-14</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="openAssignModal('指派需求')" data-od-id="path-3-1-1-1-2-0-1-1-8-0-0">指派</a><a class="action-link" onclick="openModal('modal-req-convert')" data-od-id="path-3-1-1-1-2-0-1-1-8-0-1">需求转化</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-1-8-0-2">关闭</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260614-0095 <span class="action-link" onclick="copyText('DE-B-20260614-0095')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260614-0095')">数据导出功能增强</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-accent">调研中</span></td><td><span class="badge badge-gray">人事系统</span></td><td>赵强 / 数据部</td><td class="mono">2026-06-14</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260614-0095')" data-od-id="path-3-1-1-1-2-0-1-2-8-0-0">详情</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-2-8-0-1">关闭</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260613-0088 <span class="action-link" onclick="copyText('DE-B-20260613-0088')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260613-0088')">财务月报自动生成</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-info">已排期</span></td><td><span class="badge badge-gray">财务系统</span></td><td>陈磊 / 财务部</td><td class="mono">2026-06-13</td><td>王建国</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260613-0088')" data-od-id="path-3-1-1-1-2-0-1-3-8-0-0">详情</a><a class="action-link" onclick="confirmClose()" data-od-id="path-3-1-1-1-2-0-1-3-8-0-1">关闭</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260612-0076 <span class="action-link" onclick="copyText('DE-B-20260612-0076')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260612-0076')">库存预警功能</td><td><span class="badge badge-primary">中</span></td><td><span class="badge badge-success">验收中</span></td><td><span class="badge badge-gray">供应链</span></td><td>刘梅 / 采购部</td><td class="mono">2026-06-12</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260612-0076')" data-od-id="path-3-1-1-1-2-0-1-4-8-0-0">详情</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260610-0065 <span class="action-link" onclick="copyText('DE-B-20260610-0065')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260610-0065')">考勤打卡体验优化</td><td><span class="badge badge-gray">低</span></td><td><span class="badge badge-success">已上线</span></td><td><span class="badge badge-gray">人事系统</span></td><td>黄燕 / 行政部</td><td class="mono">2026-06-10</td><td>李明</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260610-0065')" data-od-id="path-3-1-1-1-2-0-1-5-8-0-0">详情</a></div></td></tr>
+              <tr><td class="mono">DE-B-20260609-0054 <span class="action-link" onclick="copyText('DE-B-20260609-0054')" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td class="bold" style="cursor:pointer" onclick="showReqDetail('DE-B-20260609-0054')">合同电子签章</td><td><span class="badge badge-danger">高</span></td><td><span class="badge badge-gray">已关闭</span></td><td><span class="badge badge-gray">OA系统</span></td><td>周宇 / 法务部</td><td class="mono">2026-06-09</td><td>—</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-B-20260609-0054')" data-od-id="path-3-1-1-1-2-0-1-6-8-0-0">详情</a></div></td></tr>
             </tbody>
           </table>
         </div>
@@ -2142,7 +2128,7 @@ th:has(.th-tooltip){overflow:visible!important}
             <input class="search-input" type="text" placeholder="搜索项目名称 / ID">
           </div>
           <div class="toolbar-right">
-            <button class="btn btn-primary" onclick="openProjectCreateModal()" data-od-id="path-3-1-1-5-0-1-0"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建项目</button>
+            <button class="btn btn-primary" onclick="openModal('modal-project-create')" data-od-id="path-3-1-1-5-0-1-0"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>创建项目</button>
           </div>
         </div>
         <div class="tabs" data-od-id="path-3-1-1-5-1">
@@ -3073,7 +3059,6 @@ th:has(.th-tooltip){overflow:visible!important}
           <div class="info-item"><div class="info-label">提交人/部门</div><div class="info-value" id="req-detail-submitter">李明 / 财务部</div></div>
           <div class="info-item"><div class="info-label">提交日期</div><div class="info-value mono" id="req-detail-submit-date">2026-06-15</div></div>
           <div class="info-item"><div class="info-label">负责人</div><div class="info-value" id="req-detail-owner">—</div></div>
-          <div class="info-item"><div class="info-label" style="display:inline-flex;align-items:center;gap:4px">转化数量 <span class="th-tooltip" onclick="event.stopPropagation()">ⓘ<span class="th-tooltip-text">需求细化后的总数和状态分布数量，<br>（调研中/验收中/已上线/已关闭）</span></span></div><div class="info-value" id="req-detail-convert-count" style="white-space:nowrap"><span style="color:var(--muted)">0</span></div></div>
         </div>
 
         <!-- 需求关闭区（仅已关闭状态展示） -->
@@ -3560,8 +3545,8 @@ th:has(.th-tooltip){overflow:visible!important}
             <table class="data">
               <thead><tr><th><input type="checkbox"></th><th>需求ID</th><th>复制</th><th>状态</th><th>需求标题</th><th>优先级</th><th>创建人</th><th>指派给</th><th>创建日期</th><th>操作</th></tr></thead>
               <tbody>
-                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')">首页改版</td><td><span class="badge badge-danger">高</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-15</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')">复制</a><a class="action-link" style="color:var(--danger)" onclick="openCloseReqModal('DE-C-20260615-0010')">关闭</a></div></td></tr>
-                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0011</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0011')">购物车优化</td><td><span class="badge badge-primary">中</span></td><td>张伟</td><td>—</td><td class="mono">2026-06-14</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-2">复制</a><a class="action-link" style="color:var(--danger)" onclick="openCloseReqModal('DE-C-20260615-0011')">关闭</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')">首页改版</td><td><span class="badge badge-danger">高</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-15</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-2">复制</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0011</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0011')">购物车优化</td><td><span class="badge badge-primary">中</span></td><td>张伟</td><td>—</td><td class="mono">2026-06-14</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-2">复制</a></div></td></tr>
                 <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0012</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-gray">关闭</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0012')">订单导出功能</td><td><span class="badge badge-primary">中</span></td><td>李娜</td><td>赵强</td><td class="mono">2026-06-12</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-C-20260615-0012')" data-od-id="path-3-1-1-17-7-1-0-1-2-8-0-0">详情</a></div></td></tr>
               </tbody>
             </table>
@@ -4787,73 +4772,15 @@ th:has(.th-tooltip){overflow:visible!important}
 </div>
 
 <div class="modal-overlay" id="modal-project-create" onclick="closeModalOnBackdrop(event)" data-od-id="path-12">
-  <div class="modal" style="width:640px" data-od-id="path-12-0">
+  <div class="modal" data-od-id="path-12-0">
     <div class="modal-header"><h3 data-od-id="path-12-0-0-0">创建项目</h3><div class="modal-close" onclick="closeModal('modal-project-create')">✕</div></div>
-    <div class="modal-body" style="max-height:70vh;overflow-y:auto">
-      <div class="form-group"><label>项目图标</label>
-        <div style="display:flex;align-items:center;gap:16px">
-          <div id="projCreateIconPreview" style="width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:700;cursor:pointer;overflow:hidden;position:relative" onclick="document.getElementById('projCreateIconInput').click()" title="点击上传图标">
-            <span id="projCreateIconText">项</span>
-            <img id="projCreateIconImg" style="display:none;width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0">
-          </div>
-          <div>
-            <input type="file" id="projCreateIconInput" accept="image/*" style="display:none" onchange="previewProjCreateIcon(this)">
-            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('projCreateIconInput').click()">上传图标</button>
-            <div style="font-size:12px;color:var(--text-muted);margin-top:4px">支持 JPG/PNG，建议 128×128px；未上传时使用默认图标</div>
-            <button type="button" class="btn-text" style="font-size:12px;margin-top:2px" onclick="resetProjCreateIcon()">恢复默认图标</button>
-          </div>
-        </div>
-      </div>
-      <div class="form-group"><label>项目名称 <span class="required">*</span></label><input type="text" id="projCreateName" placeholder="请输入项目名称"></div>
-      <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" id="projCreateSystem" placeholder="如：油葱商城"></div>
-      <div class="form-group"><label>项目负责人 <span class="required">*</span></label>
-        <div style="max-height:140px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="projCreateProjectOwners">
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-project" value="王建国" style="width:auto;margin:0"> 王建国 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0231</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-project" value="李明" style="width:auto;margin:0"> 李明 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0245</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-project" value="赵强" style="width:auto;margin:0"> 赵强 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0256</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-project" value="陈磊" style="width:auto;margin:0"> 陈磊 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0253</span></label>
-        </div>
-        <div id="projCreateProjectError" style="color:#e53e3e;font-size:.75rem;margin-top:4px;display:none">请选择项目负责人</div>
-      </div>
-      <div class="form-group"><label>产品负责人 <span class="required">*</span></label>
-        <div style="max-height:140px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="projCreateProductOwners">
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-product" value="王建国" style="width:auto;margin:0"> 王建国 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0231</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-product" value="李明" style="width:auto;margin:0"> 李明 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0245</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-product" value="孙丽" style="width:auto;margin:0"> 孙丽 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0248</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-product" value="黄燕" style="width:auto;margin:0"> 黄燕 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0265</span></label>
-        </div>
-        <div id="projCreateProductError" style="color:#e53e3e;font-size:.75rem;margin-top:4px;display:none">请选择产品负责人</div>
-      </div>
-      <div class="form-group"><label>研发负责人 <span class="required">*</span></label>
-        <div style="max-height:140px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="projCreateDevOwners">
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-dev" value="李明" style="width:auto;margin:0"> 李明 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0245</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-dev" value="赵强" style="width:auto;margin:0"> 赵强 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0256</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-dev" value="陈磊" style="width:auto;margin:0"> 陈磊 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0253</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-dev" value="周宇" style="width:auto;margin:0"> 周宇 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0260</span></label>
-        </div>
-        <div id="projCreateDevError" style="color:#e53e3e;font-size:.75rem;margin-top:4px;display:none">请选择研发负责人</div>
-      </div>
-      <div class="form-group"><label>质检负责人 <span class="required">*</span></label>
-        <div style="max-height:140px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="projCreateQaOwners">
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-qa" value="孙丽" style="width:auto;margin:0"> 孙丽 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0248</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-qa" value="陈磊" style="width:auto;margin:0"> 陈磊 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0253</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-qa" value="周宇" style="width:auto;margin:0"> 周宇 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0260</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-qa" value="黄燕" style="width:auto;margin:0"> 黄燕 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0265</span></label>
-        </div>
-        <div id="projCreateQaError" style="color:#e53e3e;font-size:.75rem;margin-top:4px;display:none">请选择质检负责人</div>
-      </div>
-      <div class="form-group"><label>运维负责人 <span class="required">*</span></label>
-        <div style="max-height:140px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);padding:8px" id="projCreateOpsOwners">
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-ops" value="赵强" style="width:auto;margin:0"> 赵强 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0256</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-ops" value="王建国" style="width:auto;margin:0"> 王建国 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0231</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-ops" value="李明" style="width:auto;margin:0"> 李明 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0245</span></label>
-          <label style="display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer;border-radius:var(--radius-sm);font-size:.85rem"><input type="checkbox" class="proj-create-ops" value="陈磊" style="width:auto;margin:0"> 陈磊 <span style="color:var(--text-muted);font-family:var(--font-mono);font-size:.75rem;margin-left:auto">LG0253</span></label>
-        </div>
-        <div id="projCreateOpsError" style="color:#e53e3e;font-size:.75rem;margin-top:4px;display:none">请选择运维负责人</div>
-      </div>
+    <div class="modal-body">
+      <div class="form-group"><label>项目名称 <span class="required">*</span></label><input type="text" placeholder="请输入项目名称"></div>
+      <div class="form-group"><label>系统名称 <span class="required">*</span></label><input type="text" placeholder="如：油葱商城"></div>
+      <div class="form-group"><label>项目负责人</label><select><option>王建国</option></select></div>
       <div class="form-group"><label>项目描述</label><textarea placeholder="简述项目背景与目标"></textarea></div>
     </div>
-    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-project-create')" data-od-id="path-12-0-2-0">取消</button><button class="btn btn-primary" onclick="submitProjectCreate()" data-od-id="path-12-0-2-1">保存</button></div>
+    <div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-project-create')" data-od-id="path-12-0-2-0">取消</button><button class="btn btn-primary" onclick="closeModal('modal-project-create');showToast('success','项目创建成功')" data-od-id="path-12-0-2-1">保存</button></div>
   </div>
 </div>
 
@@ -7117,9 +7044,7 @@ function closeModalOnBackdrop(e) {
   if (e.target === e.currentTarget) closeModal(e.currentTarget.id);
 }
 
-var _closeReqTargetId = null;
-function openCloseReqModal(reqId) {
-  _closeReqTargetId = reqId || null;
+function openCloseReqModal() {
   var ta = document.getElementById('closeReqReason');
   if (ta) { ta.value = ''; }
   var cc = document.getElementById('closeReqCharCount');
@@ -7154,28 +7079,6 @@ function submitCloseReq() {
   var opsBar = document.querySelector('#view-req-detail > div[data-od-id$="ops"]');
   if (opsBar) opsBar.style.display = 'none';
   showToast('success', '需求已关闭');
-  if (_closeReqTargetId) {
-    var rows = document.querySelectorAll('#proj-pane-reqs table.data tbody tr');
-    for (var i = 0; i < rows.length; i++) {
-      var cellId = rows[i].querySelector('.mono');
-      if (cellId && cellId.textContent.trim() === _closeReqTargetId) {
-        var badges = rows[i].querySelectorAll('.badge');
-        for (var j = 0; j < badges.length; j++) {
-          if (badges[j].textContent === '正常') {
-            badges[j].className = 'badge badge-gray';
-            badges[j].textContent = '关闭';
-            break;
-          }
-        }
-        var acts = rows[i].querySelector('.actions-cell');
-        if (acts) {
-          acts.innerHTML = '<a class="action-link" onclick="showReqDetail(\'' + _closeReqTargetId + '\')">详情</a>';
-        }
-        break;
-      }
-    }
-    _closeReqTargetId = null;
-  }
 }
 function confirmClose() { openCloseReqModal(); }
 function confirmDelete() { openConfirm('删除', '删除后不可恢复，是否继续？'); }
@@ -10045,23 +9948,6 @@ function createAccept() {
 }
 
 /* ===== Detail Views ===== */
-var reqConvertMap = {
-  'DE-B-20260615-1234': { total:3, research:1, accept:1, online:1, closed:0 },
-  'DE-B-20260614-0098': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-B-20260614-0095': { total:5, research:1, accept:2, online:1, closed:1 },
-  'DE-B-20260613-0088': { total:2, research:1, accept:1, online:0, closed:0 },
-  'DE-B-20260612-0076': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-B-20260610-0065': { total:4, research:2, accept:1, online:1, closed:0 },
-  'DE-B-20260609-0054': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260615-0010': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260615-0011': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260615-0012': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260615-0013': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260612-0008': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260608-0005': { total:0, research:0, accept:0, online:0, closed:0 },
-  'DE-C-20260601-0002': { total:0, research:0, accept:0, online:0, closed:0 }
-};
-
 function showReqDetail(id) {
   switchView('req-detail');
   var reqMap = {
@@ -10102,11 +9988,6 @@ function showReqDetail(id) {
   if (syEl) syEl.textContent = info.system;
   var moEl = document.getElementById('req-detail-module');
   if (moEl) moEl.textContent = info.module;
-  var ccEl = document.getElementById('req-detail-convert-count');
-  if (ccEl) {
-    var c = reqConvertMap[id] || {total:0,research:0,accept:0,online:0,closed:0};
-    ccEl.innerHTML = c.total > 0 ? '<strong>' + c.total + '</strong> <span style="color:var(--muted);font-size:.75rem">(' + c.research + '/' + c.accept + '/' + c.online + '/' + c.closed + ')</span>' : '<span style="color:var(--muted)">0</span>';
-  }
   var descEl = document.getElementById('req-detail-desc');
   if (descEl) descEl.innerHTML = info.desc;
   var closeSec = document.getElementById('req-close-section');
@@ -10130,6 +10011,8 @@ function showReqDetail(id) {
         break;
       case '调研中':
       case '已排期':
+        opsHtml = '<button class="btn btn-danger btn-sm" onclick="openCloseReqModal()">关闭</button>';
+        break;
       case '验收中':
       case '已上线':
       case '已关闭':
@@ -10763,65 +10646,6 @@ function _resetSystemPersonErrors(prefix) {
     var errEl = document.getElementById('sys' + prefix + role + 'Error');
     if (errEl) errEl.style.display = 'none';
   });
-}
-function openProjectCreateModal() {
-  document.getElementById('projCreateName').value = '';
-  document.getElementById('projCreateSystem').value = '';
-  resetProjCreateIcon();
-  ['proj-create-project','proj-create-product','proj-create-dev','proj-create-qa','proj-create-ops'].forEach(function(cls) {
-    document.querySelectorAll('.' + cls).forEach(function(cb) { cb.checked = false; });
-  });
-  ['projCreateProjectError','projCreateProductError','projCreateDevError','projCreateQaError','projCreateOpsError'].forEach(function(id) {
-    document.getElementById(id).style.display = 'none';
-  });
-  var ta = document.querySelector('#modal-project-create textarea');
-  if (ta) ta.value = '';
-  openModal('modal-project-create');
-}
-function previewProjCreateIcon(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var img = document.getElementById('projCreateIconImg');
-      img.src = e.target.result;
-      img.style.display = 'block';
-      document.getElementById('projCreateIconText').style.display = 'none';
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-function resetProjCreateIcon() {
-  document.getElementById('projCreateIconImg').style.display = 'none';
-  document.getElementById('projCreateIconImg').src = '';
-  document.getElementById('projCreateIconText').style.display = '';
-  document.getElementById('projCreateIconInput').value = '';
-}
-function submitProjectCreate() {
-  var name = document.getElementById('projCreateName').value.trim();
-  var sys = document.getElementById('projCreateSystem').value.trim();
-  if (!name) { showToast('error','请输入项目名称'); return; }
-  if (!sys) { showToast('error','请输入系统名称'); return; }
-  var roles = [
-    {cls:'proj-create-project', errId:'projCreateProjectError', label:'项目负责人'},
-    {cls:'proj-create-product', errId:'projCreateProductError', label:'产品负责人'},
-    {cls:'proj-create-dev', errId:'projCreateDevError', label:'研发负责人'},
-    {cls:'proj-create-qa', errId:'projCreateQaError', label:'质检负责人'},
-    {cls:'proj-create-ops', errId:'projCreateOpsError', label:'运维负责人'}
-  ];
-  var valid = true;
-  roles.forEach(function(r) {
-    var checked = document.querySelectorAll('.' + r.cls + ':checked');
-    var errEl = document.getElementById(r.errId);
-    if (checked.length === 0) {
-      errEl.style.display = 'block';
-      valid = false;
-    } else {
-      errEl.style.display = 'none';
-    }
-  });
-  if (!valid) { showToast('error','请填写所有必选项'); return; }
-  closeModal('modal-project-create');
-  showToast('success','项目创建成功');
 }
 function submitSystemCreate() {
   const name = document.getElementById('system-create-name');
