@@ -319,12 +319,6 @@ table.data tr:last-child td{border-bottom:none}
 .checklist-row:hover{background:var(--bg-muted)}
 .checklist-row.checked{background:rgba(22,163,74,.04)}
 .checklist-row-main{flex:1;min-width:0}
-.client-tag{display:inline-flex;align-items:center;gap:6px;font-size:.83rem;cursor:pointer;padding:5px 12px;border:1px solid var(--border);border-radius:6px;user-select:none;background:#fff;color:var(--text-secondary);transition:all .15s}
-.client-tag:hover{border-color:var(--primary);color:var(--primary)}
-.client-tag.selected-client{background:rgba(37,99,235,.06);border-color:var(--primary);color:var(--primary);font-weight:500}
-.client-tag .client-check{width:14px;height:14px;border:1.5px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
-.client-tag.selected-client .client-check{background:var(--primary);border-color:var(--primary)}
-.client-tag.selected-client .client-check::after{content:'';display:block;width:8px;height:8px;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l3 3 5-5' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
 .checklist-row-time{font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono);margin-bottom:2px}
 .checklist-row-content{font-size:.82rem;color:var(--text-secondary);line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .checklist-row-actions{display:flex;gap:6px;flex-shrink:0}
@@ -465,7 +459,6 @@ table.data tr:last-child td{border-bottom:none}
 
 /* Layouts */
 .two-col{display:grid;grid-template-columns:1fr 360px;gap:16px}
-.chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .split-view{display:grid;grid-template-columns:1fr clamp(300px,24vw,420px);gap:20px}
 
@@ -493,12 +486,13 @@ table.data tr:last-child td{border-bottom:none}
 .project-stat-lbl{font-size:.7rem;color:var(--text-secondary)}
 
 /* Todo */
-.todo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.todo-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:var(--transition);display:flex;flex-direction:column;gap:8px;min-height:0}
-.todo-card:hover{border-color:var(--primary);box-shadow:0 2px 8px rgba(79,70,229,.1);transform:translateY(-1px)}
-.todo-card-head{display:flex;align-items:center;justify-content:space-between;gap:6px}
-.todo-card-title{font-size:.82rem;font-weight:500;color:var(--fg);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-all}
-.todo-card-meta{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono);margin-top:auto}
+.todo-list{display:flex;flex-direction:column;max-height:460px;overflow-y:auto}
+.todo-item{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border-light);cursor:pointer;transition:var(--transition)}
+.todo-item:last-child{border-bottom:none}
+.todo-item:hover{padding-left:4px}
+.todo-content{flex:1;min-width:0}
+.todo-title{font-size:.85rem;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.todo-meta{font-size:.75rem;color:var(--text-secondary);margin-top:2px;display:flex;align-items:center;gap:8px}
 
 /* Timeline */
 .timeline{display:flex;flex-direction:column;gap:0}
@@ -871,7 +865,7 @@ table.data tr:last-child td{border-bottom:none}
 .overview-stat .lbl{font-size:.75rem;color:var(--text-muted);margin-top:4px}
 
 @media(max-width:1366px){
-  .two-col,.chart-row,.split-view,.profile-layout{grid-template-columns:1fr}
+  .two-col,.split-view,.profile-layout{grid-template-columns:1fr}
   .three-col{grid-template-columns:repeat(2,1fr)}
   .project-grid{grid-template-columns:repeat(2,1fr)}
   .stat-grid{grid-template-columns:repeat(2,1fr)}
@@ -1413,6 +1407,109 @@ table.data tr:last-child td{border-bottom:none}
             <div class="stat-note">本月上线 3</div>
           </div>
         </div>
+        <div class="two-col" data-od-id="path-3-1-1-0-3">
+          <div>
+            <div class="card">
+              <div class="card-header"><span class="card-title">需求趋势 — 近6月</span><select class="filter-select" style="min-width:90px"><option>近1月</option><option>近3月</option><option selected="">近6月</option><option>近12月</option></select></div>
+              <div class="chart-area">
+                <svg width="100%" height="170" viewBox="0 0 520 170">
+                  <text x="0" y="14" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">80</text>
+                  <text x="0" y="54" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">60</text>
+                  <text x="0" y="94" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">40</text>
+                  <text x="0" y="134" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">20</text>
+                  <line x1="28" y1="10" x2="520" y2="10" stroke="#e2e8f0" stroke-width="1"></line>
+                  <line x1="28" y1="50" x2="520" y2="50" stroke="#e2e8f0" stroke-width="1"></line>
+                  <line x1="28" y1="90" x2="520" y2="90" stroke="#e2e8f0" stroke-width="1"></line>
+                  <line x1="28" y1="130" x2="520" y2="130" stroke="#e2e8f0" stroke-width="1"></line>
+                  <rect x="50" y="90" width="50" height="50" rx="4" fill="url(#grad1)" opacity="0.8"></rect>
+                  <rect x="130" y="57" width="50" height="83" rx="4" fill="url(#grad1)" opacity="0.8"></rect>
+                  <rect x="210" y="72" width="50" height="68" rx="4" fill="url(#grad1)" opacity="0.8"></rect>
+                  <rect x="290" y="38" width="50" height="102" rx="4" fill="url(#grad1)"></rect>
+                  <rect x="370" y="44" width="50" height="96" rx="4" fill="url(#grad1)"></rect>
+                  <rect x="450" y="10" width="50" height="130" rx="4" fill="url(#grad1)"></rect>
+                  <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%" data-od-id="path-3-1-1-0-3-0-0-1-0-14-0"><stop offset="0%" stop-color="#4F46E5"></stop><stop offset="100%" stop-color="#06B6D4"></stop></linearGradient></defs>
+                  <text x="68" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">1月</text>
+                  <text x="148" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">2月</text>
+                  <text x="228" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">3月</text>
+                  <text x="308" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">4月</text>
+                  <text x="388" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">5月</text>
+                  <text x="468" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">6月</text>
+                  <text x="68" y="86" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">32</text>
+                  <text x="148" y="53" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">45</text>
+                  <text x="228" y="68" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">38</text>
+                  <text x="308" y="34" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">52</text>
+                  <text x="388" y="40" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">48</text>
+                  <text x="468" y="6" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">63</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card" style="margin-top:16px">
+              <div class="card-header"><span class="card-title">问题分布</span><select class="filter-select" style="min-width:90px"><option>近1月</option><option>近3月</option><option selected="">近6月</option><option>近12月</option></select></div>
+              <div class="donut-wrap">
+                <svg width="120" height="120" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#e2e8f0" stroke-width="20"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#4F46E5" stroke-width="20" stroke-dasharray="101 188" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#F59E0B" stroke-width="20" stroke-dasharray="81 208" stroke-dashoffset="-101" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#10B981" stroke-width="20" stroke-dasharray="63 226" stroke-dashoffset="-182" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#94a3b8" stroke-width="20" stroke-dasharray="44 245" stroke-dashoffset="-245" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="36" fill="white"></circle>
+                  <text x="60" y="56" text-anchor="middle" font-size="14" font-weight="700" font-family="var(--font-mono)" fill="#0F172A">186</text>
+                  <text x="60" y="70" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="var(--font-mono)">总计</text>
+                </svg>
+                <div class="donut-legend">
+                  <div class="legend-row"><span class="legend-dot" style="background:#4F46E5"></span><span>功能异常</span><span>35%</span></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#F59E0B"></span><span>操作疑问</span><span>28%</span></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#10B981"></span><span>性能问题</span><span>22%</span></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#94a3b8"></span><span>其他</span><span>15%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="card">
+              <div class="card-header"><span class="card-title">BUG 分布</span><select class="filter-select" style="min-width:90px"><option>近1月</option><option>近3月</option><option selected="">近6月</option><option>近12月</option></select></div>
+              <div class="donut-wrap">
+                <svg width="120" height="120" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#e2e8f0" stroke-width="20"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#EF4444" stroke-width="20" stroke-dasharray="87 202" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#F59E0B" stroke-width="20" stroke-dasharray="72 217" stroke-dashoffset="-87" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#06B6D4" stroke-width="20" stroke-dasharray="81 208" stroke-dashoffset="-159" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="46" fill="none" stroke="#94a3b8" stroke-width="20" stroke-dasharray="49 240" stroke-dashoffset="-240" transform="rotate(-90 60 60)"></circle>
+                  <circle cx="60" cy="60" r="36" fill="white"></circle>
+                  <text x="60" y="56" text-anchor="middle" font-size="14" font-weight="700" font-family="var(--font-mono)" fill="#0F172A">124</text>
+                  <text x="60" y="70" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="var(--font-mono)">总计</text>
+                </svg>
+                <div class="donut-legend">
+                  <div class="legend-row"><span class="legend-dot" style="background:#EF4444"></span><span>前端缺陷</span><span>30%</span></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#F59E0B"></span><span>后端缺陷</span><span>25%</span></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#06B6D4"></span><span>数据异常</span><span>28%</span></div>
+                  <div class="legend-row"><span class="legend-dot" style="background:#94a3b8"></span><span>兼容问题</span><span>17%</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="margin-top:16px">
+              <div class="card-header"><span class="card-title">待处理事项</span><span class="badge badge-danger">10</span><span style="margin-left:auto;font-size:.75rem;color:var(--text-muted);font-family:var(--font-mono)">总数 42</span></div>
+              <div class="todo-list" id="homeTodoList">
+                <div class="todo-item"><span class="badge badge-primary">需求</span><div class="todo-content"><div class="todo-title">DE-B-20260615-1234 报销流程优化</div><div class="todo-meta"><span>待评估</span><span>·</span><span>2026-06-15 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-warn">问题</span><div class="todo-content"><div class="todo-title">PR-B-20260615-0001 财务查询超时</div><div class="todo-meta"><span>待处理</span><span>·</span><span>2026-06-15 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-danger">BUG</span><div class="todo-content"><div class="todo-title">BUG-20260615-0021 订单金额计算精度丢失</div><div class="todo-meta"><span>激活中</span><span>·</span><span>2026-06-15 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-success">验收</span><div class="todo-content"><div class="todo-title">IC-20260615-0001 人事系统V2.1验收</div><div class="todo-meta"><span>待审批</span><span>·</span><span>2026-06-15 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-primary">需求</span><div class="todo-content"><div class="todo-title">DE-B-20260614-0098 移动端审批流程</div><div class="todo-meta"><span>待评估</span><span>·</span><span>2026-06-14 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-danger">BUG</span><div class="todo-content"><div class="todo-title">BUG-20260614-0018 登录页验证码刷新失败</div><div class="todo-meta"><span>激活中</span><span>·</span><span>2026-06-14 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-warn">投诉</span><div class="todo-content"><div class="todo-title">CS-20260614-008 系统响应速度</div><div class="todo-meta"><span>待处理</span><span>·</span><span>2026-06-14 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-primary">需求</span><div class="todo-content"><div class="todo-title">DE-B-20260614-0095 数据导出功能</div><div class="todo-meta"><span>待评估</span><span>·</span><span>2026-06-14 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-warn">问题</span><div class="todo-content"><div class="todo-title">PR-C-20260614-0012 移动端登录异常</div><div class="todo-meta"><span>待处理</span><span>·</span><span>2026-06-14 指派</span></div></div></div>
+                <div class="todo-item"><span class="badge badge-success">验收</span><div class="todo-content"><div class="todo-title">IC-20260613-0009 供应链系统验收</div><div class="todo-meta"><span>待审批</span><span>·</span><span>2026-06-13 指派</span></div></div></div>
+              </div>
+              <div style="text-align:center;padding:10px 0 2px;border-top:1px dashed var(--border-light);margin-top:6px">
+                <button class="btn btn-secondary" id="homeTodoLoadMore" onclick="loadMoreHomeTodo()" style="padding:6px 18px;font-size:.78rem">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  加载更多
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="cal-board" data-od-id="path-3-1-1-0-4">
           <div class="cal-head">
             <div style="display:flex;align-items:center;gap:12px">
@@ -1458,104 +1555,6 @@ table.data tr:last-child td{border-bottom:none}
             <div class="legend-row"><span class="legend-dot" style="background:var(--danger);border-radius:2px"></span><span>今日</span></div>
           </div>
         </div>
-        <div class="card" data-od-id="path-3-1-1-0-3">
-              <div class="card-header"><span class="card-title">需求趋势 — 近6月</span><select class="filter-select" style="min-width:90px"><option>近1月</option><option>近3月</option><option selected="">近6月</option><option>近12月</option></select></div>
-              <div class="chart-area">
-                <svg width="100%" height="170" viewBox="0 0 520 170">
-                  <text x="0" y="14" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">80</text>
-                  <text x="0" y="54" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">60</text>
-                  <text x="0" y="94" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">40</text>
-                  <text x="0" y="134" font-size="10" fill="#94a3b8" font-family="var(--font-mono)">20</text>
-                  <line x1="28" y1="10" x2="520" y2="10" stroke="#e2e8f0" stroke-width="1"></line>
-                  <line x1="28" y1="50" x2="520" y2="50" stroke="#e2e8f0" stroke-width="1"></line>
-                  <line x1="28" y1="90" x2="520" y2="90" stroke="#e2e8f0" stroke-width="1"></line>
-                  <line x1="28" y1="130" x2="520" y2="130" stroke="#e2e8f0" stroke-width="1"></line>
-                  <rect x="50" y="90" width="50" height="50" rx="4" fill="url(#grad1)" opacity="0.8"></rect>
-                  <rect x="130" y="57" width="50" height="83" rx="4" fill="url(#grad1)" opacity="0.8"></rect>
-                  <rect x="210" y="72" width="50" height="68" rx="4" fill="url(#grad1)" opacity="0.8"></rect>
-                  <rect x="290" y="38" width="50" height="102" rx="4" fill="url(#grad1)"></rect>
-                  <rect x="370" y="44" width="50" height="96" rx="4" fill="url(#grad1)"></rect>
-                  <rect x="450" y="10" width="50" height="130" rx="4" fill="url(#grad1)"></rect>
-                  <defs><linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%" data-od-id="path-3-1-1-0-3-0-0-1-0-14-0"><stop offset="0%" stop-color="#4F46E5"></stop><stop offset="100%" stop-color="#06B6D4"></stop></linearGradient></defs>
-                  <text x="68" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">1月</text>
-                  <text x="148" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">2月</text>
-                  <text x="228" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">3月</text>
-                  <text x="308" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">4月</text>
-                  <text x="388" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">5月</text>
-                  <text x="468" y="152" font-size="10" fill="#64748b" font-family="var(--font-mono)" text-anchor="middle">6月</text>
-                  <text x="68" y="86" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">32</text>
-                  <text x="148" y="53" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">45</text>
-                  <text x="228" y="68" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">38</text>
-                  <text x="308" y="34" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">52</text>
-                  <text x="388" y="40" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">48</text>
-                  <text x="468" y="6" font-size="10" fill="#4F46E5" font-family="var(--font-mono)" text-anchor="middle">63</text>
-                </svg>
-              </div>
-            </div>
-        <div class="chart-row" data-od-id="path-3-1-1-0-3-charts">
-          <div class="card">
-              <div class="card-header"><span class="card-title">问题分布</span><select class="filter-select" style="min-width:90px"><option>近1月</option><option>近3月</option><option selected="">近6月</option><option>近12月</option></select></div>
-              <div class="donut-wrap">
-                <svg width="120" height="120" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#e2e8f0" stroke-width="20"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#4F46E5" stroke-width="20" stroke-dasharray="101 188" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#F59E0B" stroke-width="20" stroke-dasharray="81 208" stroke-dashoffset="-101" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#10B981" stroke-width="20" stroke-dasharray="63 226" stroke-dashoffset="-182" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#94a3b8" stroke-width="20" stroke-dasharray="44 245" stroke-dashoffset="-245" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="36" fill="white"></circle>
-                  <text x="60" y="56" text-anchor="middle" font-size="14" font-weight="700" font-family="var(--font-mono)" fill="#0F172A">186</text>
-                  <text x="60" y="70" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="var(--font-mono)">总计</text>
-                </svg>
-                <div class="donut-legend">
-                  <div class="legend-row"><span class="legend-dot" style="background:#4F46E5"></span><span>功能异常</span><span>35%</span></div>
-                  <div class="legend-row"><span class="legend-dot" style="background:#F59E0B"></span><span>操作疑问</span><span>28%</span></div>
-                  <div class="legend-row"><span class="legend-dot" style="background:#10B981"></span><span>性能问题</span><span>22%</span></div>
-                  <div class="legend-row"><span class="legend-dot" style="background:#94a3b8"></span><span>其他</span><span>15%</span></div>
-                </div>
-              </div>
-          </div>
-          <div class="card">
-              <div class="card-header"><span class="card-title">BUG 分布</span><select class="filter-select" style="min-width:90px"><option>近1月</option><option>近3月</option><option selected="">近6月</option><option>近12月</option></select></div>
-              <div class="donut-wrap">
-                <svg width="120" height="120" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#e2e8f0" stroke-width="20"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#EF4444" stroke-width="20" stroke-dasharray="87 202" stroke-dashoffset="0" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#F59E0B" stroke-width="20" stroke-dasharray="72 217" stroke-dashoffset="-87" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#06B6D4" stroke-width="20" stroke-dasharray="81 208" stroke-dashoffset="-159" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="46" fill="none" stroke="#94a3b8" stroke-width="20" stroke-dasharray="49 240" stroke-dashoffset="-240" transform="rotate(-90 60 60)"></circle>
-                  <circle cx="60" cy="60" r="36" fill="white"></circle>
-                  <text x="60" y="56" text-anchor="middle" font-size="14" font-weight="700" font-family="var(--font-mono)" fill="#0F172A">124</text>
-                  <text x="60" y="70" text-anchor="middle" font-size="9" fill="#94a3b8" font-family="var(--font-mono)">总计</text>
-                </svg>
-                <div class="donut-legend">
-                  <div class="legend-row"><span class="legend-dot" style="background:#EF4444"></span><span>前端缺陷</span><span>30%</span></div>
-                  <div class="legend-row"><span class="legend-dot" style="background:#F59E0B"></span><span>后端缺陷</span><span>25%</span></div>
-                  <div class="legend-row"><span class="legend-dot" style="background:#06B6D4"></span><span>数据异常</span><span>28%</span></div>
-                  <div class="legend-row"><span class="legend-dot" style="background:#94a3b8"></span><span>兼容问题</span><span>17%</span></div>
-                </div>
-              </div>
-          </div>
-        </div>
-        <div class="card" style="margin-top:16px">
-              <div class="card-header"><span class="card-title">待处理事项</span><span class="badge badge-danger">8</span><span style="margin-left:auto;font-size:.75rem;color:var(--text-muted);font-family:var(--font-mono)">总数 42</span></div>
-              <div class="todo-grid" id="homeTodoList">
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-primary">需求</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-15</span></div><div class="todo-card-title">报销流程优化</div><div class="todo-card-meta"><span>待评估</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-warn">问题</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-15</span></div><div class="todo-card-title">财务查询超时</div><div class="todo-card-meta"><span>待处理</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-danger">BUG</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-15</span></div><div class="todo-card-title">订单金额计算精度丢失</div><div class="todo-card-meta"><span>激活中</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-success">验收</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-15</span></div><div class="todo-card-title">人事系统V2.1验收</div><div class="todo-card-meta"><span>待审批</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-primary">需求</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-14</span></div><div class="todo-card-title">移动端审批流程</div><div class="todo-card-meta"><span>待评估</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-danger">BUG</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-14</span></div><div class="todo-card-title">登录页验证码刷新失败</div><div class="todo-card-meta"><span>激活中</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-warn">投诉</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-14</span></div><div class="todo-card-title">系统响应速度</div><div class="todo-card-meta"><span>待处理</span></div></div>
-                <div class="todo-card"><div class="todo-card-head"><span class="badge badge-primary">需求</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">06-14</span></div><div class="todo-card-title">数据导出功能</div><div class="todo-card-meta"><span>待评估</span></div></div>
-              </div>
-              <div style="text-align:center;padding:10px 0 2px;border-top:1px dashed var(--border-light);margin-top:6px">
-                <button class="btn btn-secondary" id="homeTodoLoadMore" onclick="loadMoreHomeTodo()" style="padding:6px 18px;font-size:.78rem">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                  加载更多
-                </button>
-              </div>
-        </div>
-      
       </div>
 
       <!-- ===== 业务需求池 ===== -->
@@ -8884,7 +8883,7 @@ function initHome() {
     {type:'验收', badge:'badge-success', title:'IC-20260611-0007 数据中台V1.4验收',     status:'待审批', date:'2026-06-11 指派'},
     {type:'BUG',  badge:'badge-danger',  title:'BUG-20260611-0009 用户头像上传失败',    status:'激活中', date:'2026-06-11 指派'}
   ];
-  window.__homeTodoState = { loaded: 8, pool: HOME_TODO_POOL, poolIdx: 0, total: 42 };
+  window.__homeTodoState = { loaded: 10, pool: HOME_TODO_POOL, poolIdx: 0, total: 42 };
 }
 
 function loadMoreHomeTodo(){
@@ -8892,16 +8891,14 @@ function loadMoreHomeTodo(){
   if (!st || st.loaded >= st.total) return;
   var list = document.getElementById('homeTodoList');
   var btn = document.getElementById('homeTodoLoadMore');
-  var toAdd = Math.min(4, st.total - st.loaded);
+  var toAdd = Math.min(5, st.total - st.loaded);
   var html = '';
   for (var i = 0; i < toAdd; i++) {
     var item = st.pool[st.poolIdx % st.pool.length];
     st.poolIdx++;
-    var d = item.date.match(/\d{2}-\d{2}/);
-    var dateShort = d ? d[0] : item.date.slice(5,10);
-    html += '<div class="todo-card"><div class="todo-card-head"><span class="badge ' + item.badge + '">' + item.type + '</span><span style="font-size:.7rem;color:var(--text-muted);font-family:var(--font-mono)">' + dateShort + '</span></div>'
-      + '<div class="todo-card-title">' + item.title.replace(/^[A-Z]+-\w+-\d+[-\d]*\s*/, '') + '</div>'
-      + '<div class="todo-card-meta"><span>' + item.status + '</span></div></div>';
+    html += '<div class="todo-item"><span class="badge ' + item.badge + '">' + item.type + '</span>'
+      + '<div class="todo-content"><div class="todo-title">' + item.title + '</div>'
+      + '<div class="todo-meta"><span>' + item.status + '</span><span>·</span><span>' + item.date + '</span></div></div></div>';
   }
   list.insertAdjacentHTML('beforeend', html);
   st.loaded += toAdd;
@@ -9202,23 +9199,15 @@ function onConvertSystemChange() {
   const sysData = data && data.systems[sys.value];
   if (sysData) {
     clientBox.innerHTML = sysData.clients.map(c =>
-      `<span class="client-tag" onclick="toggleConvertClient(this,'${c}')">
-        <span class="client-check"></span>${c}
-        <input type="checkbox" value="${c}" style="display:none">
-       </span>`
+      `<label style="display:flex;align-items:center;gap:4px;font-size:.83rem;cursor:pointer;padding:4px 8px;border:1px solid var(--border);border-radius:4px;user-select:none" onclick="this.classList.toggle('selected-client');this.querySelector('input').checked=!this.querySelector('input').checked;_renderModuleTree()">
+        <input type="checkbox" value="${c}" style="display:none">${c}
+       </label>`
     ).join('');
     if (moduleTree) moduleTree.innerHTML = '<span style="color:var(--text-muted);font-size:.82rem">请先选择分端</span>';
   } else {
     clientBox.innerHTML = '<span style="color:var(--text-muted);font-size:.82rem">请先选择系统</span>';
     if (moduleTree) moduleTree.innerHTML = '<span style="color:var(--text-muted);font-size:.82rem">请先选择分端</span>';
   }
-}
-
-function toggleConvertClient(el, val) {
-  const cb = el.querySelector('input[type="checkbox"]');
-  cb.checked = !cb.checked;
-  el.classList.toggle('selected-client', cb.checked);
-  _renderModuleTree();
 }
 
 function _renderModuleTree() {
