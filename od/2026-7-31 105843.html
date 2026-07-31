@@ -323,22 +323,11 @@ table.data tr:last-child td{border-bottom:none}
 .th-tooltip-text::after{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-bottom-color:#1e1e2e}
 .th-tooltip:hover .th-tooltip-text{display:block}
 th:has(.th-tooltip){overflow:visible!important}
-.req-src-tag{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:4px;font-size:11px;font-weight:700;line-height:1;vertical-align:middle;flex-shrink:0}
-.req-src-convert{background:#F97316;color:#fff;border:1px solid #F97316}
-.req-src-native{background:#2563EB;color:#fff;border:1px solid #2563EB}
-.req-src-link{display:inline-flex;align-items:center;gap:4px;font-size:.8rem;color:var(--primary);text-decoration:none;margin-left:6px;vertical-align:middle}
-.req-src-link:hover{text-decoration:underline;text-underline-offset:2px}
-.req-src-link .req-src-id{font-family:var(--font-mono);font-weight:600}
-.req-title-cell{display:flex;align-items:center;gap:4px}
 .btn-showcase{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;font-size:.75rem;font-weight:500;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text-secondary);transition:all .15s ease}
 .btn-showcase:hover{border-color:var(--primary);color:var(--primary)}
 .btn-showcase.active{background:rgba(79,70,229,.08);border-color:var(--primary);color:var(--primary)}
 
 /* CheckList rows */
-.accept-field-cell{display:inline-flex;align-items:center;gap:4px;max-width:100%}
-.accept-field-text{flex:1;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
-.accept-edit-btn{flex-shrink:0;background:none;border:none;cursor:pointer;color:var(--text-tertiary);padding:2px;border-radius:3px;display:inline-flex;align-items:center;opacity:.5;transition:opacity .15s,color .15s}
-.accept-edit-btn:hover{opacity:1;color:var(--accent)}
 .checklist-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border-bottom:1px solid var(--border);transition:background .15s}
 .checklist-row:last-child{border-bottom:none}
 .checklist-row:hover{background:var(--bg-muted)}
@@ -3075,11 +3064,7 @@ th:has(.th-tooltip){overflow:visible!important}
               <span class="mono" id="req-detail-id" style="color:var(--primary);font-weight:600" data-od-id="path-3-1-1-13-1-0-0">DE-B-20260615-1234</span>
               <span class="action-link" onclick="copyText(document.getElementById('req-detail-id').textContent)" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span>
             </div>
-            <div id="req-detail-title-row" style="margin:6px 0 0;display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-              <span id="req-detail-src-tag"></span>
-              <h2 id="req-detail-title" style="margin:0" data-od-id="path-3-1-1-13-1-0-1">OA系统报销流程优化</h2>
-              <span id="req-detail-src-link"></span>
-            </div>
+            <h2 id="req-detail-title" style="margin:6px 0 0" data-od-id="path-3-1-1-13-1-0-1">OA系统报销流程优化</h2>
           </div>
         </div>
         <div class="detail-meta" data-od-id="path-3-1-1-13-2">
@@ -3575,9 +3560,9 @@ th:has(.th-tooltip){overflow:visible!important}
             <table class="data">
               <thead><tr><th><input type="checkbox"></th><th>需求ID</th><th>复制</th><th>状态</th><th>需求标题</th><th>优先级</th><th>创建人</th><th>指派给</th><th>创建日期</th><th>操作</th></tr></thead>
               <tbody>
-                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')"><span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span><span>首页改版</span></div></td><td><span class="badge badge-danger">高</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-15</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')">复制</a><a class="action-link" style="color:var(--danger)" onclick="openCloseReqModal('DE-C-20260615-0010')">关闭</a></div></td></tr>
-                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0011</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0011')"><span class="req-src-tag req-src-native" title="本平台自行创建">自</span><span>购物车优化</span></div></td><td><span class="badge badge-primary">中</span></td><td>张伟</td><td>—</td><td class="mono">2026-06-14</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-2">复制</a><a class="action-link" style="color:var(--danger)" onclick="openCloseReqModal('DE-C-20260615-0011')">关闭</a></div></td></tr>
-                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0012</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-gray">关闭</span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0012')"><span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span><span>订单导出功能</span></div></td><td><span class="badge badge-primary">中</span></td><td>李娜</td><td>赵强</td><td class="mono">2026-06-12</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-C-20260615-0012')" data-od-id="path-3-1-1-17-7-1-0-1-2-8-0-0">详情</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')">首页改版</td><td><span class="badge badge-danger">高</span></td><td>王建国</td><td>李明</td><td class="mono">2026-06-15</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-0-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')">复制</a><a class="action-link" style="color:var(--danger)" onclick="openCloseReqModal('DE-C-20260615-0010')">关闭</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0011</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-success">正常</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0011')">购物车优化</td><td><span class="badge badge-primary">中</span></td><td>张伟</td><td>—</td><td class="mono">2026-06-14</td><td><div class="actions-cell"><a class="action-link" onclick="openModal('modal-batch-assign-version')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-0">分配</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-1">指派</a><a class="action-link" onclick="openModal('modal-req-edit')">编辑</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-7-1-0-1-1-8-0-2">复制</a><a class="action-link" style="color:var(--danger)" onclick="openCloseReqModal('DE-C-20260615-0011')">关闭</a></div></td></tr>
+                <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0012</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><span class="badge badge-gray">关闭</span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0012')">订单导出功能</td><td><span class="badge badge-primary">中</span></td><td>李娜</td><td>赵强</td><td class="mono">2026-06-12</td><td><div class="actions-cell"><a class="action-link" onclick="showReqDetail('DE-C-20260615-0012')" data-od-id="path-3-1-1-17-7-1-0-1-2-8-0-0">详情</a></div></td></tr>
               </tbody>
             </table>
           </div>
@@ -3901,11 +3886,11 @@ th:has(.th-tooltip){overflow:visible!important}
               <table class="data">
                 <thead><tr><th><input type="checkbox"></th><th>需求ID</th><th>复制</th><th>需求标题</th><th>优先级</th><th>阶段</th><th>创建人</th><th>创建日期</th><th>阶段负责人</th><th>操作</th></tr></thead>
                 <tbody>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')"><span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span><span>首页改版</span></div></td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-review">需求</span></td><td>王建国</td><td class="mono">2026-06-15</td><td>李明</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('首页改版')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260615-0010','首页改版')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260615-0010','首页改版')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-4">调整需求</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0013</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0013')"><span class="req-src-tag req-src-native" title="本平台自行创建">自</span><span>优惠券叠加规则</span></div></td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-dev">研发</span></td><td>李娜</td><td class="mono">2026-06-13</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('优惠券叠加规则')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260615-0013','优惠券叠加规则')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260615-0013','优惠券叠加规则')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-4">调整需求</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260612-0008</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260612-0008')"><span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span><span>订单拆分逻辑优化</span></div></td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-test">质检</span></td><td>张伟</td><td class="mono">2026-06-12</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('订单拆分逻辑优化')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260612-0008','订单拆分逻辑优化')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260612-0008','订单拆分逻辑优化')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-4">调整需求</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260608-0005</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260608-0005')"><span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span><span>商品搜索筛选重构</span></div></td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-accept">验收</span></td><td>王建国</td><td class="mono">2026-06-08</td><td>李明</td><td><div class="actions-cell"><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-3-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260608-0005','商品搜索筛选重构')" data-od-id="path-3-1-1-17-10-1-1-0-1-3-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260608-0005','商品搜索筛选重构')">调整需求</a></div></td></tr>
-                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260601-0002</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td><div class="req-title-cell" style="cursor:pointer" onclick="showReqDetail('DE-C-20260601-0002')"><span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span><span>会员等级体系上线</span></div></td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-live">已上线</span></td><td>李娜</td><td class="mono">2026-06-01</td><td>周宇</td><td><div class="actions-cell"><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260601-0002','会员等级体系上线')">调整需求</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0010</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0010')">首页改版</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-review">需求</span></td><td>王建国</td><td class="mono">2026-06-15</td><td>李明</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('首页改版')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260615-0010','首页改版')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260615-0010','首页改版')" data-od-id="path-3-1-1-17-10-1-1-0-1-0-10-0-4">调整需求</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260615-0013</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260615-0013')">优惠券叠加规则</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-dev">研发</span></td><td>李娜</td><td class="mono">2026-06-13</td><td>赵强</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('优惠券叠加规则')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260615-0013','优惠券叠加规则')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260615-0013','优惠券叠加规则')" data-od-id="path-3-1-1-17-10-1-1-0-1-1-10-0-4">调整需求</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260612-0008</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260612-0008')">订单拆分逻辑优化</td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-test">质检</span></td><td>张伟</td><td class="mono">2026-06-12</td><td>孙丽</td><td><div class="actions-cell"><a class="action-link" onclick="confirmRemoveVersionReq('订单拆分逻辑优化')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-0">移除</a><a class="action-link" onclick="openModal('modal-assign')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-1">指派</a><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260612-0008','订单拆分逻辑优化')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260612-0008','订单拆分逻辑优化')" data-od-id="path-3-1-1-17-10-1-1-0-1-2-10-0-4">调整需求</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260608-0005</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260608-0005')">商品搜索筛选重构</td><td><span class="badge badge-primary">中</span></td><td><span class="stage-badge stage-accept">验收</span></td><td>王建国</td><td class="mono">2026-06-08</td><td>李明</td><td><div class="actions-cell"><a class="action-link" onclick="showToast('success','已复制')" data-od-id="path-3-1-1-17-10-1-1-0-1-3-10-0-2">复制</a><a class="action-link" onclick="openVersionIssueCreate('DE-C-20260608-0005','商品搜索筛选重构')" data-od-id="path-3-1-1-17-10-1-1-0-1-3-10-0-3">问题</a><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260608-0005','商品搜索筛选重构')">调整需求</a></div></td></tr>
+                  <tr><td><input type="checkbox"></td><td class="mono">DE-C-20260601-0002</td><td><span class="action-link" onclick="copyText(this.closest('tr').querySelector('.mono').textContent.trim())" title="复制ID"><svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></span></td><td style="cursor:pointer" onclick="showReqDetail('DE-C-20260601-0002')">会员等级体系上线</td><td><span class="badge badge-danger">高</span></td><td><span class="stage-badge stage-live">已上线</span></td><td>李娜</td><td class="mono">2026-06-01</td><td>周宇</td><td><div class="actions-cell"><a class="action-link action-link-primary" onclick="openAdjustReqModal('DE-C-20260601-0002','会员等级体系上线')">调整需求</a></div></td></tr>
                 </tbody>
               </table>
             </div>
@@ -4453,27 +4438,6 @@ th:has(.th-tooltip){overflow:visible!important}
 <!-- /appShell -->
 
 <!-- ===== MODALS ===== -->
-
-<!-- 验收问题回复/备注编辑弹窗 -->
-<div class="modal-overlay" id="modal-accept-field" onclick="closeModalOnBackdrop(event)">
-  <div class="modal" style="width:480px">
-    <div class="modal-header">
-      <span id="accept-field-modal-title">填写问题回复</span>
-      <button class="modal-close" onclick="closeModal('modal-accept-field')">✕</button>
-    </div>
-    <div class="modal-body" style="padding:20px">
-      <div class="form-group">
-        <label class="form-label" id="accept-field-label">问题回复</label>
-        <textarea id="accept-field-input" class="form-control" rows="4" placeholder="选填，可留空提交" style="resize:vertical"></textarea>
-        <div style="text-align:right;font-size:.75rem;color:var(--text-tertiary);margin-top:4px"><span id="accept-field-count">0</span>/200</div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal('modal-accept-field')">取消</button>
-      <button class="btn btn-primary" onclick="submitAcceptField()">保存</button>
-    </div>
-  </div>
-</div>
 
 <!-- 录入检查项弹窗 -->
 <div class="modal-overlay" id="modal-checklist-input" onclick="closeModalOnBackdrop(event)">
@@ -9753,42 +9717,6 @@ function renderAcceptStepper(row) {
   }).join('');
 }
 
-let _acceptFieldState = { sn: null, type: null }; // 'reply' | 'note'
-
-function openAcceptFieldModal(sn, type) {
-  _acceptFieldState = { sn, type };
-  const row = _ACCEPT_REQ_DATA.find(r => r.sn === sn);
-  const isReply = type === 'reply';
-  document.getElementById('accept-field-modal-title').textContent = isReply ? '填写问题回复' : '填写问题备注';
-  document.getElementById('accept-field-label').textContent = isReply ? '问题回复' : '问题备注';
-  const input = document.getElementById('accept-field-input');
-  input.value = row ? (isReply ? (row.issueReply || '') : (row.issueNote || '')) : '';
-  document.getElementById('accept-field-count').textContent = input.value.length;
-  input.oninput = () => { document.getElementById('accept-field-count').textContent = input.value.length; };
-  openModal('modal-accept-field');
-  setTimeout(() => input.focus(), 150);
-}
-
-function submitAcceptField() {
-  const { sn, type } = _acceptFieldState;
-  if (!sn) return;
-  const val = document.getElementById('accept-field-input').value.trim();
-  const row = _ACCEPT_REQ_DATA.find(r => r.sn === sn);
-  if (row) {
-    if (type === 'reply') {
-      row.issueReply = val;
-      const el = document.getElementById('acc-reply-' + sn);
-      if (el) el.innerHTML = val || '<span style="color:var(--text-tertiary)">—</span>';
-    } else {
-      row.issueNote = val;
-      const el = document.getElementById('acc-note-' + sn);
-      if (el) el.innerHTML = val || '<span style="color:var(--text-tertiary)">—</span>';
-    }
-  }
-  closeModal('modal-accept-field');
-  showToast((type === 'reply' ? '问题回复' : '问题备注') + '已保存');
-}
-
 function renderAcceptListTab() {
   const tbody = document.getElementById('accept-detail-tbody');
   if (!tbody) return;
@@ -9827,8 +9755,8 @@ function renderAcceptListTab() {
       '<td>' + r.tester2 + '</td>' +
       '<td><span class="badge ' + res.cls + '">' + res.label + '</span>' + (r.remark ? '<div style="font-size:.75rem;color:var(--text-secondary);margin-top:2px">' + r.remark + '</div>' : '') + '</td>' +
       '<td>' + (r.acceptNote || '—') + '</td>' +
-      '<td><span class="accept-field-cell">' + (showIssueReply ? ('<span class="accept-field-text" id="acc-reply-' + r.sn + '">' + (r.issueReply || '<span style="color:var(--text-tertiary)">—</span>') + '</span><button class="accept-edit-btn" onclick="openAcceptFieldModal(' + r.sn + ',\'reply\')" title="填写/编辑问题回复"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 2l3 3-9 9H2v-3l9-9z"/></svg></button>') : '<span style="color:var(--text-tertiary)">—</span>') + '</span></td>' +
-      '<td><span class="accept-field-cell"><span class="accept-field-text" id="acc-note-' + r.sn + '">' + (r.issueNote || '<span style="color:var(--text-tertiary)">—</span>') + '</span><button class="accept-edit-btn" onclick="openAcceptFieldModal(' + r.sn + ',\'note\')" title="填写/编辑问题备注"><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 2l3 3-9 9H2v-3l9-9z"/></svg></button></span></td>' +
+      '<td>' + (showIssueReply ? '<input type="text" value="' + (r.issueReply||'') + '" placeholder="输入问题回复" style="width:100%;padding:3px 6px;font-size:.78rem;border:1px solid var(--border-light);border-radius:4px">' : '—') + '</td>' +
+      '<td><input type="text" value="' + (r.issueNote||'') + '" placeholder="输入问题备注" style="width:100%;padding:3px 6px;font-size:.78rem;border:1px solid var(--border-light);border-radius:4px"></td>' +
       '</tr>';
   }).join('');
 }
@@ -10134,13 +10062,6 @@ var reqConvertMap = {
   'DE-C-20260601-0002': { total:0, research:0, accept:0, online:0, closed:0 }
 };
 
-var REQ_SOURCE_MAP = {
-  'DE-C-20260615-0010': { srcId:'DE-B-20260615-1234', srcTitle:'OA系统报销流程优化' },
-  'DE-C-20260615-0012': { srcId:'DE-B-20260614-0095', srcTitle:'数据导出功能增强' },
-  'DE-C-20260612-0008': { srcId:'DE-B-20260612-0076', srcTitle:'库存预警功能' },
-  'DE-C-20260608-0005': { srcId:'DE-B-20260613-0088', srcTitle:'财务月报自动生成' },
-  'DE-C-20260601-0002': { srcId:'DE-B-20260610-0065', srcTitle:'考勤打卡体验优化' }
-};
 function showReqDetail(id) {
   switchView('req-detail');
   var reqMap = {
@@ -10165,23 +10086,6 @@ function showReqDetail(id) {
   var titleEl = document.getElementById('req-detail-title');
   if (idEl) idEl.textContent = id;
   if (titleEl) titleEl.textContent = info.title;
-  var srcTagEl = document.getElementById('req-detail-src-tag');
-  var srcLinkEl = document.getElementById('req-detail-src-link');
-  if (srcTagEl && srcLinkEl) {
-    if (id.indexOf('DE-C-') === 0) {
-      var src = REQ_SOURCE_MAP[id];
-      if (src) {
-        srcTagEl.innerHTML = '<span class="req-src-tag req-src-convert" title="由业务需求池转化">转</span>';
-        srcLinkEl.innerHTML = '<a class="req-src-link" onclick="showReqDetail(\'' + src.srcId + '\')" title="点击跳转至业务需求详情页"><span class="req-src-id">' + src.srcId + '</span>' + src.srcTitle + '</a>';
-      } else {
-        srcTagEl.innerHTML = '<span class="req-src-tag req-src-native" title="本平台自行创建">自</span>';
-        srcLinkEl.innerHTML = '';
-      }
-    } else {
-      srcTagEl.innerHTML = '';
-      srcLinkEl.innerHTML = '';
-    }
-  }
   var prEl = document.getElementById('req-detail-priority');
   if (prEl) prEl.innerHTML = '<span class="badge ' + info.priorityCls + '">' + info.priority + '</span>';
   var stEl = document.getElementById('req-detail-status');
